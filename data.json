@@ -1,1 +1,12 @@
-
+[
+  {"name":"Huge Cat","category":"huge","value":"9B","demand":7,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Rainbow Huge Cat","category":"huge","value":"26.7B","demand":7,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Exclusive Dog","category":"exclusive","value":"15B","demand":8,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Eggling","category":"egg","value":"1.2B","demand":5,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Misc Pet","category":"misc","value":"0.5B","demand":3,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Golden Puppy","category":"exclusive","value":"20B","demand":9,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Huge Dragon","category":"huge","value":"30B","demand":10,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Rainbow Egg","category":"egg","value":"3B","demand":6,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Mystery Cat","category":"misc","value":"1B","demand":4,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Ultra Dog","category":"exclusive","value":"18B","demand":8,"image":"https://via.placeholder.com/300x300"}
+]
