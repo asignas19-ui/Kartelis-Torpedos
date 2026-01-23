@@ -44,32 +44,18 @@ footer { text-align:center; padding:20px; opacity:.5; font-size:13px; }
 </section>
 <footer>© 2026 Tap Simulator Values</footer>
 <script>
-async function loadPets() {
-  const response = await fetch('data.json');
-  const pets = await response.json();
-  displayPets(pets);
-
-  const searchInput = document.querySelector('.search-bar input');
-  const filterButtons = document.querySelectorAll('.filters button');
-
-  searchInput.addEventListener('input', () => {
-    const value = searchInput.value.toLowerCase();
-    displayPets(pets.filter(p => p.name.toLowerCase().includes(value)));
-  });
-
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.innerText.toLowerCase();
-      if(filter === 'all') {
-        displayPets(pets);
-      } else {
-        displayPets(pets.filter(p => p.category === filter));
-      }
-    });
-  });
-}
+const pets = [
+  {"name":"Huge Cat","category":"huge","value":"9B","demand":7,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Rainbow Huge Cat","category":"huge","value":"26.7B","demand":7,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Exclusive Dog","category":"exclusive","value":"15B","demand":8,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Eggling","category":"egg","value":"1.2B","demand":5,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Misc Pet","category":"misc","value":"0.5B","demand":3,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Golden Puppy","category":"exclusive","value":"20B","demand":9,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Huge Dragon","category":"huge","value":"30B","demand":10,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Rainbow Egg","category":"egg","value":"3B","demand":6,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Mystery Cat","category":"misc","value":"1B","demand":4,"image":"https://via.placeholder.com/300x300"},
+  {"name":"Ultra Dog","category":"exclusive","value":"18B","demand":8,"image":"https://via.placeholder.com/300x300"}
+];
 
 function displayPets(list) {
   const grid = document.getElementById('petGrid');
@@ -83,7 +69,29 @@ function displayPets(list) {
   });
 }
 
-loadPets();
+displayPets(pets);
+
+// Search functionality
+const searchInput = document.querySelector('.search-bar input');
+searchInput.addEventListener('input', () => {
+  const value = searchInput.value.toLowerCase();
+  displayPets(pets.filter(p => p.name.toLowerCase().includes(value)));
+});
+
+// Filter buttons
+const filterButtons = document.querySelectorAll('.filters button');
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.innerText.toLowerCase();
+    if(filter === 'all') {
+      displayPets(pets);
+    } else {
+      displayPets(pets.filter(p => p.category === filter));
+    }
+  });
+});
 </script>
 </body>
 </html>
