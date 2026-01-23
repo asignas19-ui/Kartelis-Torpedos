@@ -44,18 +44,46 @@ footer { text-align:center; padding:20px; opacity:.5; font-size:13px; }
 </section>
 <footer>© 2026 Tap Simulator Values</footer>
 <script>
-const pets = [];
-// Sukuriame 50 pet'ų su placeholder nuotraukomis
-for(let i=1;i<=50;i++){
-  pets.push({
-    name:`Pet ${i}`,
-    category:['huge','exclusives','egg','misc'][i%4],
-    value:`${i}B`,
-    demand:Math.floor(Math.random()*10)+1,
-    image:`https://via.placeholder.com/300x300?text=Pet+${i}`
-  });
-}
+// Čia lengvai gali pridėti/pakeisti savo pet'us
+const pets = [
+  {
+    name: "Huge Cat",
+    category: "huge",
+    value: "9B",
+    demand: 7,
+    image: "https://via.placeholder.com/300x300?text=Huge+Cat"
+  },
+  {
+    name: "Rainbow Dog",
+    category: "exclusive",
+    value: "15B",
+    demand: 8,
+    image: "https://via.placeholder.com/300x300?text=Rainbow+Dog"
+  },
+  {
+    name: "Eggling",
+    category: "egg",
+    value: "1.2B",
+    demand: 5,
+    image: "https://via.placeholder.com/300x300?text=Eggling"
+  },
+  {
+    name: "Mystery Cat",
+    category: "misc",
+    value: "0.5B",
+    demand: 3,
+    image: "https://via.placeholder.com/300x300?text=Mystery+Cat"
+  },
+  {
+    name: "Golden Puppy",
+    category: "exclusive",
+    value: "20B",
+    demand: 9,
+    image: "https://via.placeholder.com/300x300?text=Golden+Puppy"
+  }
+];
 
+// Funkcija generuoja korteles
 function displayPets(list) {
   const grid = document.getElementById('petGrid');
   grid.innerHTML = '';
@@ -63,21 +91,26 @@ function displayPets(list) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.dataset.category = pet.category;
-    card.innerHTML = `<img src='${pet.image}'><h3>${pet.name}</h3><div class='stat'><span>Value</span><span class='value'>${pet.value}</span></div><div class='stat'><span>Demand</span><span class='demand'>${pet.demand} / 10</span></div>`;
+    card.innerHTML = `
+      <img src='${pet.image}'>
+      <h3>${pet.name}</h3>
+      <div class='stat'><span>Value</span><span class='value'>${pet.value}</span></div>
+      <div class='stat'><span>Demand</span><span class='demand'>${pet.demand} / 10</span></div>
+    `;
     grid.appendChild(card);
   });
 }
 
 displayPets(pets);
 
-// Search functionality
+// Search funkcija
 const searchInput = document.querySelector('.search-bar input');
 searchInput.addEventListener('input', () => {
   const value = searchInput.value.toLowerCase();
   displayPets(pets.filter(p => p.name.toLowerCase().includes(value)));
 });
 
-// Filter buttons
+// Filter mygtukai
 const filterButtons = document.querySelectorAll('.filters button');
 filterButtons.forEach(btn => {
   btn.addEventListener('click', () => {
