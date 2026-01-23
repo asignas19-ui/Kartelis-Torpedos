@@ -44,18 +44,17 @@ footer { text-align:center; padding:20px; opacity:.5; font-size:13px; }
 </section>
 <footer>© 2026 Tap Simulator Values</footer>
 <script>
-const pets = [
-  {"name":"Mega Cat","category":"huge","value":"1","demand":7,"image":"https://imgur.com/a/of7psZp/300x300"},
-  {"name":"Rainbow Huge Cat","category":"huge","value":"26.7B","demand":7,"image":"https://via.placeholder.com/300x300"},
-  {"name":"Exclusive Dog","category":"exclusive","value":"15B","demand":8,"image":"https://via.placeholder.com/300x300"},
-  {"name":"Eggling","category":"egg","value":"1.2B","demand":5,"image":"https://via.placeholder.com/300x300"},
-  {"name":"Misc Pet","category":"misc","value":"0.5B","demand":3,"image":"https://via.placeholder.com/300x300"},
-  {"name":"Golden Puppy","category":"exclusive","value":"20B","demand":9,"image":"https://via.placeholder.com/300x300"},
-  {"name":"Huge Dragon","category":"huge","value":"30B","demand":10,"image":"https://via.placeholder.com/300x300"},
-  {"name":"Rainbow Egg","category":"egg","value":"3B","demand":6,"image":"https://via.placeholder.com/300x300"},
-  {"name":"Mystery Cat","category":"misc","value":"1B","demand":4,"image":"https://via.placeholder.com/300x300"},
-  {"name":"Ultra Dog","category":"exclusive","value":"18B","demand":8,"image":"https://via.placeholder.com/300x300"}
-];
+const pets = [];
+// Pavyzdžiui, čia pridėk 50 objektų, kiekvienas su name, category, value, demand, image
+for(let i=1;i<=50;i++){
+  pets.push({
+    name:`Pet ${i}`,
+    category:['huge','exclusives','egg','misc'][i%4],
+    value:`${i}B`,
+    demand:Math.floor(Math.random()*10)+1,
+    image:`https://via.placeholder.com/300x300?text=Pet+${i}`
+  });
+}
 
 function displayPets(list) {
   const grid = document.getElementById('petGrid');
