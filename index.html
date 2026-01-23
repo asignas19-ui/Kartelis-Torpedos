@@ -1,164 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Value List</title>
-  <style>
-    * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
-      color: #eaeaff;
-    }
-
-    header {
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(8px);
-    }
-
-    header h1 {
-      font-size: 22px;
-      color: #b88cff;
-    }
-
-    .search-bar {
-      width: 100%;
-      max-width: 500px;
-      margin: 30px auto;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 14px;
-      border: none;
-      background: #151528;
-      color: white;
-      outline: none;
-    }
-
-    .filters {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .filters button {
-      padding: 10px 18px;
-      border-radius: 12px;
-      border: none;
-      background: #1d1d35;
-      color: #ccc;
-      cursor: pointer;
-      transition: all .2s;
-    }
-
-    .filters button.active,
-    .filters button:hover {
-      background: linear-gradient(135deg, #8c52ff, #5f2cff);
-      color: white;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 26px;
-      padding: 0 40px 60px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, #1e1e2f, #141421);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 0 0 25px rgba(140,82,255,0.25);
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 0 45px rgba(140,82,255,0.55);
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 14px;
-      margin-bottom: 12px;
-      filter: drop-shadow(0 0 12px rgba(140,82,255,0.6));
-    }
-
-    .card h3 {
-      margin: 6px 0;
-      font-size: 16px;
-      color: #ffffff;
-    }
-
-    .stat {
-      font-size: 14px;
-      margin-top: 4px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .value { color: #57ff8a; }
-    .demand { color: #b88cff; }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      opacity: .5;
-      font-size: 13px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tap Simulator Value List</title>
+<style>
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { margin:0; background: radial-gradient(circle at top, #1a1a2e, #0f0f1a); color: #eaeaff; }
+header { padding:20px 40px; display:flex; justify-content:space-between; align-items:center; background: rgba(0,0,0,0.35); backdrop-filter: blur(8px); }
+header h1 { font-size:22px; color: #b88cff; }
+.search-bar { width:100%; max-width:500px; margin:30px auto; }
+.search-bar input { width:100%; padding:14px 18px; border-radius:14px; border:none; background:#151528; color:white; outline:none; }
+.filters { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:30px; }
+.filters button { padding:10px 18px; border-radius:12px; border:none; background:#1d1d35; color:#ccc; cursor:pointer; transition: all .2s; }
+.filters button.active, .filters button:hover { background: linear-gradient(135deg, #8c52ff, #5f2cff); color:white; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:26px; padding:0 40px 60px; }
+.card { background: linear-gradient(145deg, #1e1e2f, #141421); border-radius:18px; padding:16px; box-shadow:0 0 25px rgba(140,82,255,0.25); transition: transform .25s, box-shadow .25s; }
+.card:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 0 45px rgba(140,82,255,0.55); }
+.card img { width:100%; border-radius:14px; margin-bottom:12px; filter: drop-shadow(0 0 12px rgba(140,82,255,0.6)); }
+.card h3 { margin:6px 0; font-size:16px; color:#ffffff; }
+.stat { font-size:14px; margin-top:4px; display:flex; justify-content:space-between; }
+.value { color:#57ff8a; }
+.demand { color:#b88cff; }
+footer { text-align:center; padding:20px; opacity:.5; font-size:13px; }
+</style>
 </head>
 <body>
-
 <header>
-  <h1>Value List</h1>
+<h1>Tap Simulator Value List</h1>
 </header>
-
 <div class="search-bar">
-  <input type="text" placeholder="Search item..." />
+<input type="text" placeholder="Search pet...">
 </div>
-
 <div class="filters">
-  <button class="active">All</button>
-  <button>Exclusives</button>
-  <button>Eggs</button>
-  <button>Huge</button>
-  <button>Misc</button>
+<button class="active">All</button>
+<button>Huge</button>
+<button>Exclusives</button>
+<button>Eggs</button>
+<button>Misc</button>
 </div>
+<section class="grid" id="petGrid">
+<!-- Pets will be generated by JS -->
+</section>
+<footer>© 2026 Tap Simulator Values</footer>
+<script>
+async function loadPets() {
+  const response = await fetch('data.json');
+  const pets = await response.json();
+  displayPets(pets);
 
-<section class="grid">
-  <div class="card">
-    <img src="https://via.placeholder.com/300x300" />
-    <h3>HUGE CAT</h3>
-    <div class="stat"><span>Value</span><span class="value">9B</span></div>
-    <div class="stat"><span>Demand</span><span class="demand">7 / 10</span></div>
-  </div>
+  const searchInput = document.querySelector('.search-bar input');
+  const filterButtons = document.querySelectorAll('.filters button');
 
-  <div class="card">
-    <img src="https://via.placeholder.com/300x300" />
-    <h3>RAINBOW HUGE CAT</h3>
-    <div class="stat"><span>Value</span><span class="value">26.7B</span></div>
-    <div class="stat"><span>Demand</span><span class="demand">7 / 10</span></div>
-  </div>
-  <div class="card" data-category="exclusive">
-    <img src="https://via.placeholder.com/300x300" />
-    <h3>EXCLUSIVE DRAGON</h3>
-    <div class="stat"><span>Value</span><span class="value">15B</span></div>
-    <div class="stat"><span>Demand</span><span class="demand">8 / 10</span></div>
+  searchInput.addEventListener('input', () => {
+    const value = searchInput.value.toLowerCase();
+    displayPets(pets.filter(p => p.name.toLowerCase().includes(value)));
+  });
 
-<footer>
-  © 2026 Game Value List Template
-</footer>
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.innerText.toLowerCase();
+      if(filter === 'all') {
+        displayPets(pets);
+      } else {
+        displayPets(pets.filter(p => p.category === filter));
+      }
+    });
+  });
+}
 
+function displayPets(list) {
+  const grid = document.getElementById('petGrid');
+  grid.innerHTML = '';
+  list.forEach(pet => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.category = pet.category;
+    card.innerHTML = `<img src='${pet.image}'><h3>${pet.name}</h3><div class='stat'><span>Value</span><span class='value'>${pet.value}</span></div><div class='stat'><span>Demand</span><span class='demand'>${pet.demand} / 10</span></div>`;
+    grid.appendChild(card);
+  });
+}
+
+loadPets();
+</script>
 </body>
 </html>
