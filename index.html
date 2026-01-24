@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tap Simulator Values</title>
 
 <style>
@@ -16,7 +16,7 @@ body {
 /* ===== HEADER ===== */
 .top-header {
   background: rgba(15,23,45,0.95);
-  padding: 18px 24px;
+  padding: 16px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -29,15 +29,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .left-header {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
-.header-content h1 {
+h1 {
   margin: 0;
   font-size: 26px;
   font-weight: 800;
@@ -47,9 +49,8 @@ body {
   background: rgba(0,0,0,0.45);
   color: white;
   border: none;
-  padding: 8px 14px;
+  padding: 7px 14px;
   border-radius: 999px;
-  font-weight: 600;
   font-size: 13px;
   cursor: pointer;
 }
@@ -58,10 +59,10 @@ body {
   background: linear-gradient(135deg,#5865f2,#4752c4);
   color: white;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 7px 16px;
   border-radius: 999px;
-  font-weight: 700;
   font-size: 13px;
+  font-weight: 700;
 }
 
 /* ===== CONTAINER ===== */
@@ -71,107 +72,128 @@ body {
   margin: auto;
 }
 
-/* ===== FILTERS ===== */
+/* ===== HOME CARDS ===== */
+.home-card {
+  background: rgba(15,23,45,0.85);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.update-card {
+  display: flex;
+  gap: 20px;
+}
+
+.update-card img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.home-card h2 {
+  color: #7ffcff;
+}
+
+.home-card p,
+.home-card li {
+  color: #cfd4ff;
+}
+
+/* ===== PETS ===== */
 .filters {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:16px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .filter-btn {
-  background:#141c33;
-  border:1px solid #263055;
-  color:white;
-  padding:7px 14px;
-  border-radius:999px;
-  cursor:pointer;
-  font-size:13px;
+  background: #141c33;
+  border: 1px solid #263055;
+  color: white;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
 }
 
 .filter-btn.active {
-  background:#5865f2;
-  border-color:#5865f2;
+  background: #5865f2;
+  border-color: #5865f2;
 }
 
 .search-box input {
-  width:100%;
-  max-width:380px;
-  padding:12px 14px;
-  border-radius:14px;
-  border:none;
-  background:#141c33;
-  color:white;
+  width: 100%;
+  max-width: 380px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: none;
+  background: #141c33;
+  color: white;
 }
 
-/* ===== PET GRID ===== */
 .grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 18px;
 }
 
 .card {
-  background:#0f172d;
-  border-radius:18px;
-  padding:14px;
+  background: #0f172d;
+  border-radius: 18px;
+  padding: 14px;
 }
 
 .card img {
-  width:100%;
-  border-radius:14px;
-  margin-bottom:10px;
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 10px;
 }
 
 .pet-name {
-  font-size:16px;
-  font-weight:700;
-  margin-bottom:10px;
-  text-align:center;
-  color:#7ffcff;
+  text-align: center;
+  font-weight: 700;
+  color: #7ffcff;
+  margin-bottom: 10px;
 }
 
-/* ===== VALUE ROWS ===== */
+/* ===== VALUES (FIXED ALIGN) ===== */
 .value-row {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:14px;
-  margin-bottom:6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
 .value-amount {
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  font-weight:600;
-  line-height:1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+  font-weight: 600;
 }
 
 .value-amount img {
-  width:16px;
-  height:16px;
-  vertical-align:middle;
-  transform: translateY(1px); /* PERFECT ALIGN */
+  width: 16px;
+  height: 16px;
+  transform: translateY(1px);
 }
 
 /* ===== MOBILE ===== */
 @media (max-width:768px) {
-
   .header-content {
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-  }
-
-  .left-header {
-    justify-content: center;
   }
 
   .discord-btn {
-    padding: 6px 14px;
     font-size: 12px;
-    margin-top: 4px;
+    padding: 6px 14px;
+  }
+
+  .update-card {
+    flex-direction: column;
   }
 
   .grid {
@@ -180,10 +202,10 @@ body {
 }
 
 footer {
-  text-align:center;
-  padding:24px;
-  color:#8fa2ff;
-  font-size:12px;
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: #8fa2ff;
 }
 </style>
 </head>
@@ -203,26 +225,30 @@ footer {
 
 <div class="container">
 
+<!-- HOME -->
 <div id="homeContent">
-  <h2>⚡ Recent Update</h2>
-  <ul>
-    <li>New Areas</li>
-    <li>New Pets</li>
-    <li>New Secrets</li>
-  </ul>
+  <div class="home-card update-card">
+    <div>
+      <h2>⚡ Recent Game Update</h2>
+      <ul>
+        <li>Space World</li>
+        <li>2 New Areas</li>
+        <li>Void Spin Wheel</li>
+        <li>New Exclusives</li>
+      </ul>
+    </div>
+    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280">
+  </div>
 </div>
 
+<!-- PETS -->
 <div id="petsContent" style="display:none;">
   <div class="filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="secret">Secret</button>
-    <button class="filter-btn" data-filter="exclusive">Exclusive</button>
+    <button class="filter-btn active">All</button>
   </div>
-
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search pets...">
+    <input type="text" placeholder="Search pets...">
   </div>
-
   <div class="grid" id="petsGrid"></div>
 </div>
 
@@ -232,41 +258,31 @@ footer {
 
 <script>
 const TOKEN_ICON = "https://cdn.discordapp.com/emojis/1437069603913076840.webp?size=32";
-let pets = [];
-
 const petsGrid = document.getElementById("petsGrid");
 
-fetch('https://asignas19-ui.github.io/value-list/pets.json?' + Date.now())
-.then(res => res.json())
-.then(data => {
-  pets = data;
-  renderPets();
+document.querySelectorAll(".nav-btn").forEach(btn=>{
+  btn.onclick = () => {
+    document.getElementById("homeContent").style.display =
+      btn.dataset.target === "homeContent" ? "block" : "none";
+    document.getElementById("petsContent").style.display =
+      btn.dataset.target === "petsContent" ? "block" : "none";
+  }
 });
 
-function renderPets(){
-  petsGrid.innerHTML = "";
-  pets.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${p.image}">
-      <div class="pet-name">${p.name}</div>
-      <div class="value-row">
-        <span>💎 Normal</span>
-        <span class="value-amount">${p.values.normal}<img src="${TOKEN_ICON}"></span>
-      </div>
-      <div class="value-row">
-        <span>✨ Golden</span>
-        <span class="value-amount">${p.values.golden}<img src="${TOKEN_ICON}"></span>
-      </div>
-      <div class="value-row">
-        <span>🌈 Rainbow</span>
-        <span class="value-amount">${p.values.rainbow}<img src="${TOKEN_ICON}"></span>
-      </div>
-    `;
-    petsGrid.appendChild(card);
+fetch("https://asignas19-ui.github.io/value-list/pets.json")
+.then(res => res.json())
+.then(data => {
+  data.forEach(p=>{
+    petsGrid.innerHTML += `
+      <div class="card">
+        <img src="${p.image}">
+        <div class="pet-name">${p.name}</div>
+        <div class="value-row"><span>Normal</span><span class="value-amount">${p.values.normal}<img src="${TOKEN_ICON}"></span></div>
+        <div class="value-row"><span>Golden</span><span class="value-amount">${p.values.golden}<img src="${TOKEN_ICON}"></span></div>
+        <div class="value-row"><span>Rainbow</span><span class="value-amount">${p.values.rainbow}<img src="${TOKEN_ICON}"></span></div>
+      </div>`;
   });
-}
+});
 </script>
 
 </body>
