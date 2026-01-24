@@ -125,7 +125,7 @@ petsContent.style.display=target==='petsContent'?'block':'none';
 });});
 
 // Fetch JSON from GitHub Pages
-fetch('https://asignas19-ui.github.io/REPO/pets.json')
+fetch('https://asignas19-ui.github.io/value-list/pets.json')
 .then(res=>res.json())
 .then(data=>{pets=data; renderPets();})
 .catch(err=>{console.error("Cannot load pets.json",err); pets=[]; renderPets();});
