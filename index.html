@@ -6,173 +6,154 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{box-sizing:border-box;font-family:"Segoe UI",Arial}
+:root{
+  --bg:#071a2f;
+  --bg2:#0b2e4f;
+  --card:#0f3b63;
+  --accent:#4da3ff;
+  --text:#eaf2ff;
+  --muted:#9bb3cc;
+}
+
+*{box-sizing:border-box;font-family:Segoe UI,Arial}
 body{
   margin:0;
-  background:radial-gradient(circle at top,#0f3c6e,#020b18);
-  color:#eaf4ff;
+  background:linear-gradient(180deg,var(--bg),#04101f);
+  color:var(--text);
 }
 
 /* HEADER */
 header{
+  background:linear-gradient(180deg,#0c3a66,#062442);
+  padding:30px 15px;
   text-align:center;
-  padding:36px 16px;
 }
-header h1{
-  font-size:34px;
-  margin-bottom:6px;
-}
-header p{
-  opacity:.8;
-  margin-bottom:18px;
-}
+header h1{margin:0;font-size:30px}
+header p{color:var(--muted);margin-top:6px}
 
-/* MAIN TABS */
-.nav-tabs{
+/* TOP NAV */
+.nav{
   display:flex;
   justify-content:center;
-  gap:12px;
+  gap:10px;
+  margin-top:15px;
 }
-.nav-tabs button{
-  background:#173f6c;
+.nav button{
+  background:var(--card);
   border:none;
-  color:#fff;
-  padding:9px 18px;
-  border-radius:18px;
+  color:var(--text);
+  padding:8px 16px;
+  border-radius:20px;
   cursor:pointer;
-  font-size:14px;
 }
-.nav-tabs button.active{
-  background:#4da3ff;
+.nav button.active{
+  background:var(--accent);
   color:#000;
 }
 
-/* SECTIONS */
-section{display:none}
-section.active{display:block}
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:25px 15px;
+}
 
 /* HOME */
-.home-hero{
-  max-width:1100px;
-  margin:40px auto;
+.home-grid{
   display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:28px;
-  padding:0 16px;
+  grid-template-columns:1.2fr 1fr;
+  gap:20px;
 }
-.home-image img{
+.block{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+}
+.block h3{margin-top:0}
+.block ul{padding-left:18px}
+.block li{margin-bottom:6px}
+
+.news-img{
   width:100%;
-  border-radius:18px;
-  box-shadow:0 0 35px rgba(90,160,255,.35);
-}
-.home-info{
-  background:rgba(20,50,85,.65);
-  border-radius:18px;
-  padding:22px;
-  border:1px solid rgba(120,180,255,.2);
-}
-.home-info h3{
-  margin-top:0;
-  color:#9fd7ff;
-}
-.home-info ul{
-  padding-left:18px;
-}
-.home-info li{
-  margin:6px 0;
+  border-radius:14px;
+  margin-bottom:12px;
 }
 
 /* DISCLAIMER */
 .disclaimer{
-  max-width:900px;
-  margin:28px auto;
+  margin-top:25px;
+  background:var(--card);
+  border-radius:14px;
+  padding:15px;
   text-align:center;
-  background:rgba(15,35,60,.6);
-  border-radius:16px;
-  padding:14px;
   font-size:13px;
-  opacity:.85;
+  color:var(--muted);
 }
 
 /* VALUE LIST */
-.value-wrap{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
+.search{
+  max-width:420px;
+  margin:0 auto 15px;
 }
-
-/* SEARCH */
-.search-box{
-  display:flex;
-  justify-content:center;
-  margin-bottom:18px;
-}
-.search-box input{
-  width:320px;
-  padding:10px 14px;
-  border-radius:18px;
+.search input{
+  width:100%;
+  padding:10px 16px;
+  border-radius:20px;
   border:none;
   outline:none;
-  font-size:14px;
 }
 
-/* CATEGORY */
-.category-tabs{
+.cat-tabs{
   display:flex;
   flex-wrap:wrap;
-  gap:8px;
   justify-content:center;
-  margin-bottom:22px;
+  gap:8px;
+  margin-bottom:20px;
 }
-.category-tabs button{
-  padding:7px 14px;
-  border-radius:16px;
+.cat-tabs button{
+  background:var(--card);
   border:none;
-  background:#173f6c;
-  color:#fff;
+  color:var(--text);
+  padding:6px 14px;
+  border-radius:14px;
   cursor:pointer;
-  font-size:13px;
 }
-.category-tabs button.active{
-  background:#4da3ff;
+.cat-tabs button.active{
+  background:var(--accent);
   color:#000;
 }
 
-/* PET GRID */
-.pet-grid{
+/* PETS */
+.pets{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
   gap:16px;
 }
-.pet-card{
-  background:rgba(25,60,95,.75);
+.pet{
+  background:linear-gradient(180deg,#114a7d,#0b2f52);
   border-radius:16px;
   padding:14px;
   text-align:center;
-  border:1px solid rgba(120,180,255,.18);
-  transition:.2s;
 }
-.pet-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 20px rgba(80,160,255,.25);
-}
-.pet-card img{
+.pet img{
   width:90px;
   height:90px;
   object-fit:contain;
 }
-.pet-card h4{
-  margin:10px 0 6px;
+.pet h4{
+  margin:8px 0 6px;
+  font-size:15px;
 }
-.pet-values{
+.price{
   font-size:13px;
-  opacity:.9;
-  line-height:1.5;
+  color:var(--muted);
 }
 
-/* MOBILE */
-@media(max-width:900px){
-  .home-hero{grid-template-columns:1fr}
+/* UTIL */
+.hidden{display:none}
+
+@media(max-width:800px){
+  .home-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -181,117 +162,121 @@ section.active{display:block}
 
 <header>
   <h1>Tap Simulator Value List</h1>
-  <p>Browse and track the current market prices for pets</p>
+  <p>Browse and track current pet values</p>
 
-  <div class="nav-tabs">
-    <button class="active" onclick="openTab('home',this)">🏠 Home</button>
-    <button onclick="openTab('values',this)">📊 Value List</button>
-    <button onclick="window.open('https://discord.gg','_blank')">💬 Discord</button>
+  <div class="nav">
+    <button class="active" onclick="showTab('home')">🏠 Home</button>
+    <button onclick="showTab('values')">📋 Value List</button>
+    <button onclick="window.open('https://discord.gg/tapsim')">💬 Discord</button>
   </div>
 </header>
 
+<div class="container">
+
 <!-- HOME -->
-<section id="home" class="active">
-  <div class="home-hero">
-    <div class="home-image">
-      <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280">
+<section id="home">
+  <div class="home-grid">
+    <div class="block">
+      <img class="news-img" src="https://i.imgur.com/7c1RkzH.png">
+      <h3>⚡ Latest Update</h3>
+      <p><b>List Last Updated:</b> 01/19/26</p>
+      <p><b>Most Recent Game Update:</b> 10/12/24</p>
+      <ul>
+        <li>🌌 Space World</li>
+        <li>🗺 2 New Areas</li>
+        <li>🎡 Void Spin Wheel</li>
+        <li>📦 New Exclusives</li>
+        <li>🐉 3+ New Secret Pets</li>
+        <li>🥚 4 New Eggs</li>
+        <li>✨ 35+ New Pets</li>
+      </ul>
     </div>
 
-    <div class="home-info">
-      <h3>⚡ Latest Update</h3>
+    <div class="block">
+      <h3>👑 Value List Owners</h3>
       <ul>
-        <li>✨ Space World</li>
-        <li>🗺️ 2 New Areas</li>
-        <li>🎁 New Exclusives</li>
-        <li>🐾 3+ New Secret Pets</li>
+        <li>GoldAstro <span style="color:var(--muted)">(goldastro)</span></li>
+        <li>Hyper <span style="color:var(--muted)">(nrg_elixr3)</span></li>
       </ul>
 
-      <h3>👑 Owners</h3>
-      GoldAstro<br>Hyper
-
-      <h3 style="margin-top:12px">🛠 Editors</h3>
-      NotSpeedGuy<br>Diamondz
+      <h3>🛠 Editors</h3>
+      <ul>
+        <li>NotSpeedGuy <span style="color:var(--muted)">(zacklist)</span></li>
+        <li>Diamondz <span style="color:var(--muted)">(diamondz_1)</span></li>
+      </ul>
     </div>
   </div>
 
   <div class="disclaimer">
-    DISCLAIMER: Serials can affect values drastically<br>
-    O/C = Owners Choice · N/A = Not Available
+    DISCLAIMER: Serials can affect values drastically.<br><br>
+    O/C = Owners Choice<br>
+    N/A = Not Available (Doesn't exist)
   </div>
 </section>
 
 <!-- VALUE LIST -->
-<section id="values">
-  <div class="value-wrap">
+<section id="values" class="hidden">
 
-    <div class="search-box">
-      <input id="searchInput" placeholder="🔍 Search pets..." oninput="renderPets()">
-    </div>
-
-    <div class="category-tabs" id="categoryTabs"></div>
-    <div class="pet-grid" id="petGrid"></div>
-
+  <div class="search">
+    <input id="search" placeholder="Search pets..." oninput="renderPets()">
   </div>
+
+  <div class="cat-tabs">
+    <button class="active" onclick="setCat('all')">All</button>
+    <button onclick="setCat('secret1')">Secret I</button>
+    <button onclick="setCat('secret2')">Secret II</button>
+    <button onclick="setCat('exclusive')">Exclusive</button>
+    <button onclick="setCat('leaderboard')">Leaderboard</button>
+    <button onclick="setCat('mythic')">Mythic</button>
+  </div>
+
+  <div class="pets" id="pets"></div>
+
 </section>
+</div>
 
 <script>
-let pets=[];
-let currentCategory="All";
+let petsData=[];
+let currentCat="all";
 
-function openTab(id,btn){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  document.querySelectorAll(".nav-tabs button").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
+fetch("https://asignas19-ui.github.io/value-list/main/pets.json")
+.then(r=>r.json())
+.then(d=>{petsData=d;renderPets();});
+
+function showTab(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+  event.target.classList.add("active");
 }
 
-fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
-.then(r=>r.json())
-.then(data=>{
-  pets=data;
-  buildCategories();
+function setCat(c){
+  currentCat=c;
+  document.querySelectorAll(".cat-tabs button").forEach(b=>b.classList.remove("active"));
+  event.target.classList.add("active");
   renderPets();
-});
-
-function buildCategories(){
-  const cats=["All",...new Set(pets.map(p=>p.category))];
-  const el=document.getElementById("categoryTabs");
-  el.innerHTML="";
-  cats.forEach(c=>{
-    const b=document.createElement("button");
-    b.textContent=c;
-    if(c==="All") b.classList.add("active");
-    b.onclick=()=>{
-      currentCategory=c;
-      document.querySelectorAll(".category-tabs button").forEach(x=>x.classList.remove("active"));
-      b.classList.add("active");
-      renderPets();
-    }
-    el.appendChild(b);
-  });
 }
 
 function renderPets(){
-  const grid=document.getElementById("petGrid");
-  const q=document.getElementById("searchInput").value.toLowerCase();
-  grid.innerHTML="";
-  pets.filter(p=>
-    (currentCategory==="All"||p.category===currentCategory) &&
-    p.name.toLowerCase().includes(q)
-  ).forEach(p=>{
-    grid.innerHTML+=`
-    <div class="pet-card">
-      <img src="${p.image}">
-      <h4>${p.name}</h4>
-      <div class="pet-values">
-        💎 Normal: ${p.values.normal}<br>
-        🥇 Golden: ${p.values.golden}<br>
-        🌈 Rainbow: ${p.values.rainbow}
-      </div>
-    </div>`;
+  const q=document.getElementById("search").value.toLowerCase();
+  const box=document.getElementById("pets");
+  box.innerHTML="";
+
+  petsData
+  .filter(p=>(currentCat==="all"||p.category===currentCat))
+  .filter(p=>p.name.toLowerCase().includes(q))
+  .forEach(p=>{
+    box.innerHTML+=`
+      <div class="pet">
+        <img src="${p.image}">
+        <h4>${p.name}</h4>
+        <div class="price">💎 Normal: ${p.values.normal}</div>
+        <div class="price">✨ Golden: ${p.values.golden}</div>
+        <div class="price">🌈 Rainbow: ${p.values.rainbow}</div>
+      </div>`;
   });
 }
 </script>
 
 </body>
-  </html>
+</html>
