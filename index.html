@@ -50,6 +50,7 @@ button{background:#5865f2;color:white;font-weight:700;cursor:pointer;}
 </style>
 </head>
 <body>
+
 <header class="top-header">
 <div class="header-content">
 <div class="left-header">
@@ -177,9 +178,9 @@ card.className="card";
 card.innerHTML=`
 <img src="${p.image}" alt="${p.name}">
 <div class="pet-name">${p.name}</div>
-<div class="value-row"><span class="left-label normal">Normal</span><span class="price">${p.values.normal}<img src="${TOKEN_ICON}"></span></div>
-<div class="value-row"><span class="left-label golden">Golden</span><span class="price">${p.values.golden}<img src="${TOKEN_ICON}"></span></div>
-<div class="value-row"><span class="left-label rainbow">Rainbow</span><span class="price">${p.values.rainbow}<img src="${TOKEN_ICON}"></span></div>`;
+<div class="value-row"><span>💎 Normal</span><span>${p.values.normal} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:middle;margin-left:4px;"></span></div>
+<div class="value-row"><span>✨ Golden</span><span>${p.values.golden} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:middle;margin-left:4px;"></span></div>
+<div class="value-row"><span>🌈 Rainbow</span><span>${p.values.rainbow} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:middle;margin-left:4px;"></span></div>`;
 petsGrid.appendChild(card);
 });
 }
@@ -199,7 +200,6 @@ renderPets(activeFilter,searchInput.value);
 renderPets();
 
 // Admin functions
-function togglePassword(){ passwordModal.style.display="flex"; }
 function checkPass(){
 if(passInput.value===ADMIN_PASSWORD){
 passwordModal.style.display="none";
