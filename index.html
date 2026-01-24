@@ -6,127 +6,52 @@
 <title>Tap Simulator Values</title>
 
 <style>
+*{box-sizing:border-box;font-family:Arial}
 body{
   margin:0;
-  font-family:Segoe UI,Tahoma,sans-serif;
-  background:linear-gradient(135deg,#0b1324,#1c2541,#3a506b);
-  color:white;
+  background:linear-gradient(135deg,#0b132b,#1c2541);
+  color:#fff;
 }
-.hidden{display:none}
 
 /* HEADER */
-.header{
-  background:rgba(15,23,45,.95);
-  border-bottom:2px solid #5865f2;
-  padding:18px;
-}
-.header-inner{
-  max-width:1200px;
-  margin:auto;
+header{
   text-align:center;
-  position:relative;
+  padding:16px;
 }
-.title{
-  font-size:28px;
-  font-weight:900;
-}
-.nav{
-  margin-top:12px;
+nav{
   display:flex;
   justify-content:center;
   gap:10px;
   flex-wrap:wrap;
 }
-.nav-btn{
-  background:#141c33;
-  border:1px solid #263055;
-  color:white;
-  padding:7px 16px;
-  border-radius:999px;
-  font-weight:700;
-  cursor:pointer;
-}
-.nav-btn.active{background:#5865f2}
-.discord{
-  position:absolute;
-  right:0;
-  top:0;
-}
-.discord a{
-  background:#5865f2;
-  padding:8px 14px;
-  border-radius:999px;
-  color:white;
-  font-weight:700;
-  text-decoration:none;
-}
-
-/* CONTENT */
-.container{max-width:1200px;margin:auto;padding:20px}
-.card{
-  background:rgba(15,23,45,.85);
-  border-radius:20px;
-  padding:22px;
-  margin-bottom:20px;
-}
-
-/* HOME */
-.update{
-  display:flex;
-  gap:24px;
-  align-items:center;
-}
-.update img{width:220px;border-radius:20px}
-.update ul{padding-left:18px}
-.update li{margin:10px 0;line-height:1.6}
-
-/* VALUE LIST */
-.tabs{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:15px;
-}
-.tab{
-  background:#141c33;
-  border:1px solid #263055;
-  padding:6px 14px;
-  border-radius:999px;
-  cursor:pointer;
-  font-weight:700;
-}
-.tab.active{background:#5865f2}
-
-.search{
-  width:100%;
-  padding:10px;
-  border-radius:999px;
+nav button{
+  background:#1f3b8a;
   border:none;
-  outline:none;
-  margin-bottom:20px;
+  padding:8px 14px;
+  border-radius:20px;
+  color:#fff;
+  cursor:pointer;
 }
+nav button.active{background:#3a6cff}
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-.pet{
-  background:#0f172d;
+/* HOME BLOCKS */
+.section{
+  max-width:900px;
+  margin:16px auto;
+  background:#111a33;
   border-radius:16px;
-  padding:14px;
+  padding:16px;
 }
-.pet img{
-  width:100%;
-  border-radius:14px;
+.section h2{margin-top:0;color:#4fd1ff}
+
+.home-flex{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
 }
-.pet h3{
-  margin:8px 0 6px;
-  font-size:17px;
-}
-.value{
-  font-size:14px;
-  opacity:.9;
+.home-flex img{
+  width:140px;
+  border-radius:12px;
 }
 
 /* DISCLAIMER */
@@ -134,44 +59,66 @@ body{
   text-align:center;
   font-size:13px;
   opacity:.8;
-  margin-top:30px;
-  line-height:1.7;
+  margin:20px;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-  .title{font-size:22px}
-  .update{flex-direction:column}
-  .update img{width:180px}
-  .discord{position:static;margin-bottom:10px}
+/* TABS */
+.tabs{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
 }
+.tabs button{
+  background:#0f1b3d;
+  border:none;
+  color:#fff;
+  padding:6px 12px;
+  border-radius:14px;
+  cursor:pointer;
+}
+.tabs button.active{background:#4fd1ff;color:#000}
+
+/* PETS */
+#pets{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+  padding:16px;
+}
+.pet{
+  background:#111a33;
+  border-radius:14px;
+  padding:10px;
+  text-align:center;
+}
+.pet img{
+  width:100%;
+  border-radius:10px;
+}
+.pet h3{margin:8px 0;color:#4fd1ff;font-size:16px}
+.pet p{margin:4px 0;font-size:13px}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="header-inner">
-    <div class="discord">
-      <a href="https://discord.gg/tapsim" target="_blank">Discord</a>
-    </div>
-    <div class="title">Tap Simulator Values</div>
-    <div class="nav">
-      <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
-      <button class="nav-btn" onclick="showPage('values')">💎 Value List</button>
-      <button class="nav-btn" onclick="showPage('calc')">🧮 Calculator</button>
-    </div>
-  </div>
-</div>
-
-<div class="container">
+<header>
+  <h1>Tap Simulator Values</h1>
+  <nav>
+    <button class="active" onclick="showHome()">🏠 Home</button>
+    <button onclick="showValues()">💎 Value List</button>
+  </nav>
+</header>
 
 <!-- HOME -->
-<div id="home" class="page">
-  <div class="card update">
-    <div>
-      <h2>⚡ Recent Game Update</h2>
+<div id="home">
+  <div class="section">
+    <h2>⚡ Recent Game Update</h2>
+    <div class="home-flex">
+      <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280">
       <ul>
         <li>Space World ✨</li>
         <li>New Areas 🔮</li>
@@ -179,108 +126,76 @@ body{
         <li>35+ New Pets 🐾</li>
       </ul>
     </div>
-    <img src="https://i.imgur.com/8nZ6kKk.png">
   </div>
 
-  <div class="card">
+  <div class="section">
     <h2>🎩 Owners</h2>
-    <ul>
-      <li>GoldAstro</li>
-      <li>Hyper</li>
-    </ul>
+    <p>• GoldAstro<br>• Hyper</p>
   </div>
 
-  <div class="card">
+  <div class="section">
     <h2>✨ Editors</h2>
-    <ul>
-      <li>NotSpeedGuy</li>
-      <li>Diamondz</li>
-    </ul>
+    <p>• NotSpeedGuy<br>• Diamondz</p>
+  </div>
+
+  <div class="section disclaimer">
+    DISCLAIMER: Serials can affect values drastically.<br>
+    O/C = Owners Choice · N/A = Not Available
   </div>
 </div>
 
 <!-- VALUE LIST -->
-<div id="values" class="page hidden">
+<div id="values" style="display:none">
   <div class="tabs">
-    <div class="tab active" onclick="setCategory('All')">All</div>
-    <div class="tab" onclick="setCategory('Secret I')">Secret I</div>
-    <div class="tab" onclick="setCategory('Secret II')">Secret II</div>
-    <div class="tab" onclick="setCategory('Exclusive')">Exclusive</div>
-    <div class="tab" onclick="setCategory('Leaderboard')">Leaderboard</div>
-    <div class="tab" onclick="setCategory('Mythic')">Mythics</div>
+    <button class="active" onclick="filterCat('all')">All</button>
+    <button onclick="filterCat('secret1')">Secret I</button>
+    <button onclick="filterCat('secret2')">Secret II</button>
+    <button onclick="filterCat('exclusive')">Exclusive</button>
+    <button onclick="filterCat('leaderboard')">Leaderboard</button>
+    <button onclick="filterCat('mythic')">Mythics</button>
   </div>
-
-  <input class="search" placeholder="Search pets..." oninput="searchPets(this.value)">
-  <div class="grid" id="petGrid"></div>
-</div>
-
-<!-- CALCULATOR -->
-<div id="calc" class="page hidden">
-  <div class="card">
-    <h2>🧮 Calculator</h2>
-    <p>Coming soon...</p>
-  </div>
-</div>
-
-<div class="disclaimer">
-  DISCLAIMER: Serials can affect values drastically.<br><br>
-  O/C = Owners Choice<br>
-  N/A = Not Available
-</div>
-
+  <div id="pets"></div>
 </div>
 
 <script>
-let pets=[],currentCategory="All";
+let allPets=[];
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
-.then(data=>{pets=data;renderPets();});
+.then(data=>{
+  allPets=data;
+  renderPets(data);
+});
 
-function renderPets(){
-  const grid=document.getElementById("petGrid");
-  grid.innerHTML="";
-  pets.filter(p=>{
-    return (currentCategory==="All"||p.category===currentCategory)
-  }).forEach(p=>{
-    grid.innerHTML+=`
+function renderPets(list){
+  const box=document.getElementById("pets");
+  box.innerHTML="";
+  list.forEach(p=>{
+    box.innerHTML+=`
     <div class="pet">
       <img src="${p.image}">
       <h3>${p.name}</h3>
-      <div class="value">Normal: ${p.normal}</div>
-      <div class="value">Golden: ${p.golden}</div>
-      <div class="value">Rainbow: ${p.rainbow}</div>
+      <p>💎 Normal: ${p.values.normal ?? "N/A"}</p>
+      <p>✨ Golden: ${p.values.golden ?? "N/A"}</p>
+      <p>🌈 Rainbow: ${p.values.rainbow ?? "N/A"}</p>
     </div>`;
   });
 }
 
-function setCategory(cat){
-  currentCategory=cat;
-  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+function filterCat(cat){
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
   event.target.classList.add("active");
-  renderPets();
+  if(cat==="all") renderPets(allPets);
+  else renderPets(allPets.filter(p=>p.category===cat));
 }
 
-function searchPets(q){
-  q=q.toLowerCase();
-  document.getElementById("petGrid").innerHTML="";
-  pets.filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
-    petGrid.innerHTML+=`
-    <div class="pet">
-      <img src="${p.image}">
-      <h3>${p.name}</h3>
-      <div class="value">Normal: ${p.normal}</div>
-      <div class="value">Golden: ${p.golden}</div>
-      <div class="value">Rainbow: ${p.rainbow}</div>
-    </div>`;
-  });
+function showHome(){
+  home.style.display="block";
+  values.style.display="none";
 }
-
-function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
-  event.target.classList.add("active");
+function showValues(){
+  home.style.display="none";
+  values.style.display="block";
 }
 </script>
 
