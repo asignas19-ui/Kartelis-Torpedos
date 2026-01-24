@@ -1,209 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="lt">
 <head>
-<meta charset="UTF-8">
-<title>Tap Simulator Values</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-    margin:0;
-    font-family:Segoe UI,Arial,sans-serif;
-    background:linear-gradient(180deg,#0b1022,#18264a);
-    color:white;
-}
-
-/* HEADER */
-header{
-    padding:20px;
-    text-align:center;
-    background:#0d1433;
-}
-header h1{margin:0;font-size:26px;}
-
-.top-buttons{
-    margin-top:10px;
-    display:flex;
-    justify-content:center;
-    gap:10px;
-}
-.top-buttons button{
-    background:#1b2555;
-    border:none;
-    padding:8px 18px;
-    border-radius:18px;
-    color:white;
-}
-.top-buttons .active{background:#5865f2;}
-
-.discord{
-    margin-top:8px;
-}
-.discord a{
-    color:#9aa7ff;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-/* TABS */
-.tabs{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin:18px 0;
-}
-.tabs button{
-    background:#1a2550;
-    border:none;
-    padding:8px 14px;
-    border-radius:20px;
-    color:white;
-}
-.tabs .active{background:#5865f2;}
-
-/* SEARCH */
-.search{
-    max-width:320px;
-    margin:0 auto 20px;
-}
-.search input{
-    width:100%;
-    padding:10px;
-    border-radius:14px;
-    border:none;
-    background:#0e1630;
-    color:white;
-}
-
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:18px;
-    max-width:1200px;
-    margin:auto;
-    padding:10px;
-}
-
-/* CARD */
-.card{
-    background:#0e1630;
-    border-radius:18px;
-    padding:14px;
-    box-shadow:0 0 18px rgba(88,101,242,0.2);
-}
-
-.card img{
-    width:100%;
-    height:150px;
-    object-fit:contain;
-    margin-bottom:8px;
-}
-
-.name{
-    font-weight:bold;
-    color:#7ffcff;
-    margin-bottom:6px;
-    font-size:18px;
-}
-
-/* VALUES — KAIP 2 NUOTRAUKOJE */
-.values{
-    font-size:15px;
-    line-height:1.6;
-}
-
-.empty{
-    grid-column:1/-1;
-    text-align:center;
-    padding:30px;
-    opacity:0.7;
-}
-
-@media(max-width:768px){
-    .grid{
-        grid-template-columns:1fr;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tap Simulator Values</title>  <style>
+    * { box-sizing: border-box; font-family: Inter, system-ui, sans-serif; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: #e5e7eb;
     }
-}
-</style>
-</head>
 
-<body>
+    header {
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-<header>
-    <h1>Tap Simulator Values</h1>
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
 
-    <div class="top-buttons">
-        <button class="active">🏠 Home</button>
-        <button>💎 Value List</button>
-    </div>
+    .nav {
+      display: flex;
+      gap: 8px;
+    }
 
-    <div class="discord">
-        <a href="https://discord.gg/tapsim" target="_blank">Discord.gg/tapsim</a>
-    </div>
-</header>
+    .nav button {
+      background: #020617;
+      color: #c7d2fe;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
 
-<div class="tabs">
-    <button class="cat active" data-cat="all">All</button>
-    <button class="cat" data-cat="secret1">Secret I</button>
-    <button class="cat" data-cat="secret2">Secret II</button>
-    <button class="cat" data-cat="exclusive">Exclusive</button>
-    <button class="cat" data-cat="leaderboard">Leaderboard</button>
-    <button class="cat" data-cat="mythic">Mythics</button>
-</div>
+    .nav button.active {
+      background: #4f46e5;
+      color: white;
+    }
 
-<div class="search">
-    <input id="search" placeholder="Search pets...">
-</div>
+    .tabs {
+      display: flex;
+      gap: 8px;
+      padding: 0 16px;
+      overflow-x: auto;
+    }
 
-<div class="grid" id="grid"></div>
+    .tabs button {
+      flex: 1;
+      min-width: 120px;
+      background: #020617;
+      color: #c7d2fe;
+      border: none;
+      padding: 10px;
+      border-radius: 14px;
+      font-size: 14px;
+    }
+
+    .tabs button.active {
+      background: linear-gradient(135deg,#6366f1,#4f46e5);
+      color: white;
+    }
+
+    .search {
+      padding: 16px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: none;
+      background: #020617;
+      color: white;
+    }
+
+    .grid {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .card h3 {
+      margin: 8px 0 6px;
+      font-size: 15px;
+    }
+
+    .token {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .token img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .discord-float {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #5865F2;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(88,101,242,.4);
+      z-index: 999;
+    }
+
+    @media(min-width:768px){ .discord-float{display:none;} }
+  </style></head>
+<body><header>
+  <h1>Tap Simulator Values</h1>
+  <div class="nav">
+    <button class="active">Home</button>
+    <button>Pets</button>
+  </div>
+</header><div class="tabs">
+  <button class="tab active" data-tab="all">All</button>
+  <button class="tab" data-tab="secret">Secret Pets</button>
+  <button class="tab" data-tab="exclusive">Exclusive</button>
+  <button class="tab" data-tab="mythic">Mythic</button>
+  <button class="tab" data-tab="limited">Limited</button>
+</div><div class="search">
+  <input type="text" placeholder="Search pets..." id="search" />
+</div><div class="grid" id="pets">  <div class="card" data-category="secret">
+    <img src="https://i.imgur.com/6XGQZQp.png">
+    <h3>Frost Queen</h3>
+    <div class="token"><img src="https://i.imgur.com/1Q9Z1Zm.png">25</div>
+  </div>  <div class="card" data-category="secret">
+    <img src="https://i.imgur.com/4n6p9W5.png">
+    <h3>Sakura Dominator</h3>
+    <div class="token"><img src="https://i.imgur.com/1Q9Z1Zm.png">40</div>
+  </div>  <div class="card" data-category="mythic">
+    <img src="https://i.imgur.com/y0X6XkC.png">
+    <h3>Divine Dragon</h3>
+    <div class="token"><img src="https://i.imgur.com/1Q9Z1Zm.png">30</div>
+  </div></div><a class="discord-float" href="https://discord.gg/">Join Discord</a>
 
 <script>
-const grid=document.getElementById("grid");
-const search=document.getElementById("search");
-let pets=[],cat="all";
+  const tabs = document.querySelectorAll('.tab');
+  const cards = document.querySelectorAll('.card');
+  const search = document.getElementById('search');
 
-fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
-.then(r=>r.json())
-.then(d=>{pets=d;render();});
+  tabs.forEach(tab => {
+    tab.onclick = () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.tab;
 
-function render(){
-    grid.innerHTML="";
-    const list=pets.filter(p=>{
-        return (cat==="all"||p.category===cat) &&
-        p.name.toLowerCase().includes(search.value.toLowerCase());
-    });
-
-    if(list.length===0){
-        grid.innerHTML='<div class="empty">No pets here</div>';
-        return;
-    }
-
-    list.forEach(p=>{
-        grid.innerHTML+=`
-        <div class="card">
-            <img src="${p.image}">
-            <div class="name">${p.name}</div>
-            <div class="values">
-                💎 Normal: ${p.values.normal}<br>
-                ✨ Golden: ${p.values.golden}<br>
-                🌈 Rainbow: ${p.values.rainbow}
-            </div>
-        </div>`;
-    });
-}
-
-document.querySelectorAll(".cat").forEach(b=>{
-    b.onclick=()=>{
-        document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
-        b.classList.add("active");
-        cat=b.dataset.cat;
-        render();
+      cards.forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.category === cat) ? 'block' : 'none';
+      });
     };
-});
-search.oninput=render;
-</script>
+  });
 
-</body>
+  search.oninput = () => {
+    const val = search.value.toLowerCase();
+    cards.forEach(card => {
+      card.style.display = card.innerText.toLowerCase().includes(val) ? 'block' : 'none';
+    });
+  };
+</script></body>
 </html>
