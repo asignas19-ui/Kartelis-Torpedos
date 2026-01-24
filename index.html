@@ -10,7 +10,7 @@
   --bg:#0b0d14;
   --panel:#14182a;
   --card:#1b2035;
-  --accent:#6da8ff;
+  --accent:#4da3ff;
   --text:#f2f4ff;
   --muted:#9aa0c7;
 }
@@ -41,7 +41,6 @@ body{
   gap:6px;
 }
 .nav a:hover{color:var(--accent)}
-
 .discord{
   background:#5865F2;
   padding:8px 14px;
@@ -49,9 +48,6 @@ body{
   color:#fff;
   font-weight:600;
   text-decoration:none;
-  display:flex;
-  align-items:center;
-  gap:6px;
 }
 
 /* HERO */
@@ -75,7 +71,6 @@ body{
 .news{
   display:flex;
   gap:20px;
-  align-items:flex-start;
 }
 .news-img{
   width:180px;
@@ -92,7 +87,6 @@ body{
 .news ul{
   margin:0;
   padding-left:18px;
-  color:#e3e6ff;
 }
 
 /* TABS */
@@ -123,6 +117,13 @@ body{
   margin:0 auto 25px;
   position:relative;
 }
+.search span{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  opacity:.6;
+}
 .search input{
   width:100%;
   padding:14px 18px 14px 44px;
@@ -131,13 +132,6 @@ body{
   outline:none;
   background:#15192a;
   color:#fff;
-}
-.search span{
-  position:absolute;
-  left:14px;
-  top:50%;
-  transform:translateY(-50%);
-  opacity:.6;
 }
 
 /* GRID */
@@ -198,7 +192,7 @@ footer{
 <div id="home">
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
-    <p>Community driven Tap Simulator values – updated regularly.</p>
+    <p>Community driven Tap Simulator values.</p>
   </div>
 
   <div class="section news">
@@ -206,7 +200,7 @@ footer{
       <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkc9IFtEEFDxS7spwNrZgxSPSzgZb6c7xdlPnf0iOplgMklWN8kovZZqeYZIg8EA6aQYYlnyY6-1GFDQ022uuehnWRM7mJXFkLuAerUEYQ0bEodQGVNgg55qEhlV-O5Elg4YqnP5xe8h-vS8He3_c_CzNGO0njRzF0hze7awF3uFtdAS0fxpZSIR6rc=w1280">
     </div>
     <div>
-      <h3>⚡ Latest Update</h3>
+      <h3>⚡ Latest News</h3>
       <ul>
         <li>⚡ List Last Updated – 24/01/26</li>
         <li>📅 Game Update – 22/01/26</li>
@@ -220,11 +214,28 @@ footer{
       </ul>
     </div>
   </div>
+
+  <div class="section">
+    <h3>👑 Owners</h3>
+    GoldAstro (goldastro)<br>
+    Hyper (rng_elixr)
+  </div>
+
+  <div class="section">
+    <h3>🛠 Editors</h3>
+    NotSpeedGuy (zacklist)<br>
+    Diamondz (diamondz_1)
+  </div>
+
+  <div class="section">
+    <h3>⚠ Disclaimer</h3>
+    Serials & mutations affect values drastically<br>
+    O/C = Owners Choice • N/A = Not Available
+  </div>
 </div>
 
 <!-- VALUES -->
 <div id="values" class="hidden">
-
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
   </div>
@@ -239,7 +250,7 @@ footer{
   <div class="grid" id="grid"></div>
 </div>
 
-<footer>© 2026 Tap Sim Values – Fan made</footer>
+<footer>© 2026 Tap Sim Values</footer>
 
 <script>
 let pets=[],currentCat="all";
@@ -253,16 +264,20 @@ fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 });
 
 function buildTabs(){
-  const cats=["all",...new Set(pets.map(p=>p.category))];
+  const cats=["all","secret1","secret2","exclusive","leaderboard","mythic"];
   const wrap=document.getElementById("tabs");
   wrap.innerHTML="";
   cats.forEach(c=>{
     const t=document.createElement("div");
     t.className="tab"+(c==="all"?" active":"");
-    t.textContent=c==="all"?"All":c.replace("secret1","Secret I").replace("secret2","Secret II");
+    t.textContent=c==="all"?"All":
+      c==="secret1"?"Secret I":
+      c==="secret2"?"Secret II":
+      c==="exclusive"?"Exclusive":
+      c==="leaderboard"?"Leaderboard Pets":"Mythics";
     t.onclick=()=>{
       currentCat=c;
-      document.getElementById("search").value="";
+      search.value="";
       document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
       t.classList.add("active");
       renderPets();
@@ -272,11 +287,12 @@ function buildTabs(){
 }
 
 function renderPets(){
-  const q=document.getElementById("search").value.toLowerCase();
-  const grid=document.getElementById("grid");
+  const q=search.value.toLowerCase();
   grid.innerHTML="";
-  pets.filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
-  .forEach(p=>{
+  pets.filter(p=>
+    (currentCat==="all"||p.category===currentCat) &&
+    p.name.toLowerCase().includes(q)
+  ).forEach(p=>{
     grid.innerHTML+=`
       <div class="pet">
         <img src="${p.image}">
@@ -290,14 +306,8 @@ function renderPets(){
   });
 }
 
-function showHome(){
-  home.classList.remove("hidden");
-  values.classList.add("hidden");
-}
-function showValues(){
-  values.classList.remove("hidden");
-  home.classList.add("hidden");
-}
+function showHome(){home.classList.remove("hidden");values.classList.add("hidden")}
+function showValues(){values.classList.remove("hidden");home.classList.add("hidden")}
 </script>
 
 </body>
