@@ -1,8 +1,74 @@
 [
-  {"name":"Frost Queen","image":"https://i.imgur.com/UNt6YPp.png","category":"secret1","values":{"normal":25,"golden":120,"rainbow":120}},
-  {"name":"Divine Dragon","image":"https://i.imgur.com/mhe8GJe.png","category":"secret1","values":{"normal":30,"golden":135,"rainbow":135}},
-  {"name":"Weeping Angel","image":"https://i.imgur.com/8aszU2S.png","category":"secret1","values":{"normal":35,"golden":160,"rainbow":160}},
-  {"name":"Sakura Dominator","image":"https://i.imgur.com/rg0ypBp.png","category":"secret1","values":{"normal":40,"golden":180,"rainbow":180}},
-  {"name":"Magmasaur","image":"https://i.imgur.com/sN3Knm9.png","category":"secret1","values":{"normal":40,"golden":180,"rainbow":180}}
+  {
+    "name": "Frost Queen",
+    "image": "https://i.imgur.com/UNt6YPp.png",
+    "category": "secret1",
+    "values": { "normal": 25, "golden": 120, "rainbow": 120 }
+  },
+  {
+    "name": "Divine Dragon",
+    "image": "https://i.imgur.com/mhe8Gje.png",
+    "category": "secret1",
+    "values": { "normal": 30, "golden": 135, "rainbow": 135 }
+  },
+  {
+    "name": "Weeping Angel",
+    "image": "https://i.imgur.com/8aszJZS.png",
+    "category": "secret1",
+    "values": { "normal": 35, "golden": 160, "rainbow": 160 }
+  },
+  {
+    "name": "Sakura Dominator",
+    "image": "https://i.imgur.com/cnoypBp.png",
+    "category": "secret1",
+    "values": { "normal": 40, "golden": 180, "rainbow": 180 }
+  },
+  {
+    "name": "Magmasaur",
+    "image": "https://i.imgur.com/SN3Kmn9.png",
+    "category": "secret1",
+    "values": { "normal": 40, "golden": 180, "rainbow": 180 }
+  },
+  {
+    "name": "Candy God",
+    "image": "https://i.imgur.com/YOUR_IMAGE.png",
+    "category": "secret1",
+    "values": { "normal": 40, "golden": 180, "rainbow": 180 }
+  },
+  {
+    "name": "Orca Dominator",
+    "image": "https://i.imgur.com/YOUR_IMAGE.png",
+    "category": "secret1",
+    "values": { "normal": 40, "golden": 180, "rainbow": 180 }
+  },
+  {
+    "name": "Luminary Star",
+    "image": "https://i.imgur.com/YOUR_IMAGE.png",
+    "category": "secret1",
+    "values": { "normal": 45, "golden": 200, "rainbow": 200 }
+  },
+  {
+    "name": "Grand Ice Wizard",
+    "image": "https://i.imgur.com/YOUR_IMAGE.png",
+    "category": "secret1",
+    "values": { "normal": 80, "golden": 350, "rainbow": 350 }
+  },
+  {
+    "name": "Infernal Lord",
+    "image": "https://i.imgur.com/YOUR_IMAGE.png",
+    "category": "secret1",
+    "values": { "normal": 110, "golden": 440, "rainbow": 440 }
+  },
+  {
+    "name": "Neon Cat",
+    "image": "https://i.imgur.com/YOUR_IMAGE.png",
+    "category": "secret1",
+    "values": { "normal": "N/A", "golden": "N/A", "rainbow": "N/A" }
+  },
+  {
+    "name": "Skybound Relic",
+    "image": "https://i.imgur.com/YOUR_IMAGE.png",
+    "category": "secret1",
+    "values": { "normal": 140, "golden": 840, "rainbow": 840 }
+  }
 ]
-  
