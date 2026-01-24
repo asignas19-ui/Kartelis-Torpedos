@@ -2,106 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tap Simulator Value List</title>
+<title>Tap Simulator Values</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{box-sizing:border-box;font-family:Arial,Segoe UI}
+*{box-sizing:border-box;font-family:Segoe UI,Arial}
 body{
   margin:0;
-  background:linear-gradient(180deg,#0a1f33,#061423);
-  color:#eaf3ff;
+  background:
+    radial-gradient(circle at top,#1b3d6b,#050c16 70%);
+  color:#eaf6ff;
 }
 
-/* HEADER */
-header{
-  background:#050f1a;
-  padding:14px 30px;
+/* ===== TOP ICON BAR ===== */
+.top-icons{
   display:flex;
-  align-items:center;
-  justify-content:space-between;
+  justify-content:center;
+  gap:40px;
+  padding:18px;
+  background:rgba(10,25,45,.7);
+  backdrop-filter:blur(14px);
 }
-header h1{
-  margin:0;
-  font-size:22px;
-}
-
-/* TOP NAV */
-.top-nav{
-  display:flex;
-  gap:20px;
-}
-.top-nav button{
-  background:none;
-  border:none;
-  color:#cfe9ff;
-  font-size:15px;
+.top-icons div{
+  text-align:center;
+  font-size:13px;
+  opacity:.9;
   cursor:pointer;
-  font-weight:bold;
 }
-.top-nav button.active,
-.top-nav button:hover{
-  color:#3dbbff;
+.top-icons div:hover{opacity:1}
+
+/* ===== TITLE ===== */
+.hero{
+  text-align:center;
+  padding:35px 20px 15px;
+}
+.hero h1{
+  margin:0;
+  font-size:42px;
+  font-weight:800;
+}
+.hero p{
+  opacity:.8;
+  max-width:700px;
+  margin:10px auto;
 }
 
-/* SECTIONS */
+/* ===== MAIN NAV ===== */
+.main-nav{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:20px;
+}
+.main-nav button{
+  background:rgba(40,90,150,.35);
+  border:1px solid rgba(120,180,255,.25);
+  color:white;
+  padding:10px 22px;
+  border-radius:999px;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+}
+.main-nav button.active{
+  background:#3da8ff;
+}
+
+/* ===== SECTIONS ===== */
 section{display:none}
 section.active{display:block}
 
-/* HOME */
-.home-container{
-  max-width:1100px;
-  margin:auto;
-  padding:30px;
+/* ===== HOME ===== */
+.home{
+  max-width:900px;
+  margin:40px auto;
   display:grid;
-  grid-template-columns:1.4fr 1fr;
+  grid-template-columns:1fr 1fr;
   gap:25px;
 }
-.block{
-  background:#0b2c44;
-  padding:18px;
-  border-radius:8px;
+.card{
+  background:rgba(20,50,80,.55);
+  border:1px solid rgba(140,190,255,.15);
+  border-radius:14px;
+  padding:20px;
+  backdrop-filter:blur(14px);
 }
-.block h2{
+.card h2{
   margin-top:0;
   color:#8fd3ff;
 }
 
-/* VALUE LIST */
+/* ===== CATEGORY TABS ===== */
 .categories{
   display:flex;
   justify-content:center;
-  gap:12px;
-  margin:25px 0;
+  gap:10px;
   flex-wrap:wrap;
+  margin:35px 0;
 }
 .categories button{
-  background:#0b2c44;
+  background:rgba(60,120,190,.3);
+  border:1px solid rgba(120,180,255,.25);
   color:white;
-  border:none;
-  padding:8px 16px;
-  border-radius:6px;
+  padding:8px 18px;
+  border-radius:999px;
   cursor:pointer;
 }
 .categories button.active{
-  background:#1ea7ff;
+  background:#3da8ff;
 }
 
+/* ===== PET GRID ===== */
 .container{
   max-width:1200px;
   margin:auto;
-  padding:20px;
 }
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:18px;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:22px;
 }
 .pet{
-  background:#0b2c44;
-  border-radius:8px;
-  padding:12px;
+  background:rgba(20,50,80,.6);
+  border-radius:16px;
+  padding:14px;
   text-align:center;
+  border:1px solid rgba(140,190,255,.15);
+  backdrop-filter:blur(14px);
+  box-shadow:0 0 25px rgba(70,150,255,.15);
 }
 .pet img{
   width:120px;
@@ -110,64 +137,64 @@ section.active{display:block}
 }
 .pet h3{
   margin:10px 0 6px;
-  font-size:16px;
 }
 .values{
   font-size:14px;
-  line-height:1.5;
+  opacity:.9;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
-  margin-top:40px;
+  margin:50px 0 20px;
   text-align:center;
+  opacity:.7;
   font-size:13px;
-  opacity:.8;
-  padding:20px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Tap Simulator Values</h1>
-  <div class="top-nav">
+<div class="top-icons">
+  <div>🔁<br>Trade Ads</div>
+  <div>📋<br>Value List</div>
+  <div>🧮<br>Calculator</div>
+  <div>👍<br>Vouch</div>
+  <div>🔍<br>Search</div>
+  <div>🎁<br>Giveaways</div>
+</div>
+
+<div class="hero">
+  <h1>Tap Simulator Value List</h1>
+  <p>Browse and track the current market prices for pets. Values are researched and updated regularly.</p>
+
+  <div class="main-nav">
     <button class="active" onclick="showSection('home',this)">🏠 Home</button>
     <button onclick="showSection('values',this)">📊 Value List</button>
     <button onclick="window.open('https://discord.gg/tapsim','_blank')">💬 Discord</button>
   </div>
-</header>
+</div>
 
-<!-- HOME -->
 <section id="home" class="active">
-  <div class="home-container">
-
-    <div class="block">
+  <div class="home">
+    <div class="card">
       <h2>📰 Latest Update</h2>
-      <p>📅 01/19/26</p>
       <p>✨ Space World</p>
       <p>🗺️ 2 New Areas</p>
-      <p>🎡 Void Spin Wheel</p>
       <p>🎁 New Exclusives</p>
-      <p>🐾 3+ New Secret Pets</p>
-      <p>🔥 35+ New Pets</p>
+      <p>🐾 3+ New Secrets</p>
     </div>
-
-    <div class="block">
+    <div class="card">
       <h2>👑 Owners</h2>
       <p>GoldAstro</p>
       <p>Hyper</p>
-
-      <h2 style="margin-top:18px">🛠 Editors</h2>
+      <h2>🛠 Editors</h2>
       <p>NotSpeedGuy</p>
       <p>Diamondz</p>
     </div>
-
   </div>
 </section>
 
-<!-- VALUE LIST -->
 <section id="values">
   <div class="categories">
     <button class="active" onclick="showAll()">All</button>
@@ -184,64 +211,50 @@ footer{
 </section>
 
 <footer>
-  DISCLAIMER: Serials can affect values drastically.<br>
-  O/C = Owners Choice · N/A = Not Available
+  DISCLAIMER: Serials can affect values drastically · O/C = Owners Choice
 </footer>
 
 <script>
-const URL = "https://asignas19-ui.github.io/value-list/pets.json";
-let pets = [];
+const URL="https://asignas19-ui.github.io/value-list/pets.json";
+let pets=[];
 
-fetch(URL)
-  .then(r=>r.json())
-  .then(d=>{
-    pets=d;
-    render(pets);
-  })
-  .catch(()=> {
-    document.getElementById("pets").innerHTML="Failed to load pets.";
-  });
+fetch(URL).then(r=>r.json()).then(d=>{
+  pets=d; render(pets);
+});
 
 function showSection(id,btn){
   document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.querySelectorAll(".top-nav button").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".main-nav button").forEach(b=>b.classList.remove("active"));
   document.getElementById(id).classList.add("active");
   btn.classList.add("active");
 }
 
 function render(list){
-  const grid=document.getElementById("pets");
-  grid.innerHTML="";
+  const g=document.getElementById("pets");
+  g.innerHTML="";
   list.forEach(p=>{
-    grid.innerHTML+=`
-      <div class="pet">
-        <img src="${p.image}">
-        <h3>${p.name}</h3>
-        <div class="values">
-          ⭐ Normal: ${p.values.normal}<br>
-          🟡 Golden: ${p.values.golden}<br>
-          🌈 Rainbow: ${p.values.rainbow}
-        </div>
+    g.innerHTML+=`
+    <div class="pet">
+      <img src="${p.image}">
+      <h3>${p.name}</h3>
+      <div class="values">
+        ⭐ ${p.values.normal}<br>
+        🟡 ${p.values.golden}<br>
+        🌈 ${p.values.rainbow}
       </div>
-    `;
+    </div>`;
   });
 }
 
-function clearActiveCat(){
-  document.querySelectorAll(".categories button")
-    .forEach(b=>b.classList.remove("active"));
+function clearCat(){
+  document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
 }
-
 function showAll(){
-  clearActiveCat();
-  event.target.classList.add("active");
-  render(pets);
+  clearCat(); event.target.classList.add("active"); render(pets);
 }
-
-function filterPets(cat){
-  clearActiveCat();
-  event.target.classList.add("active");
-  render(pets.filter(p=>p.category===cat));
+function filterPets(c){
+  clearCat(); event.target.classList.add("active");
+  render(pets.filter(p=>p.category===c));
 }
 </script>
 
