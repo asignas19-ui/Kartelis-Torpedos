@@ -9,16 +9,46 @@
       font-family: 'Segoe UI', Tahoma, sans-serif;
       background: #0b0f1a;
       color: white;
-    }header {
-  background: linear-gradient(135deg, #5b6cff, #7f5cff);
-  padding: 14px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }.top-header {
+  background: url('https://images.unsplash.com/photo-1604014237744-3b3f0c5d0c4b?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  padding: 20px 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.discord-btn {
+  background: linear-gradient(135deg, #5865F2, #4752C4);
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.discord-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
 header h1 {
@@ -161,17 +191,11 @@ footer {
 
   </style>
 </head>
-<body><header>
-  <h1>Bubble Gum Simulator Infinity – Pets Dashboard</h1>
-  <nav class="top-menu">
-    <a href="#">Trade Ads</a>
-    <a href="#">Value List</a>
-    <a href="#">Calculator</a>
-    <a href="#">Vouch</a>
-    <a href="#">Search</a>
-    <a href="#">Giveaways</a>
-    <a href="https://discord.gg/alphagg" target="_blank" title="Join Discord">💬 Discord</a>
-  </nav>
+<body><header class="top-header">
+  <div class="header-content">
+    <h1>Tap Simulator Values</h1>
+    <a href="https://discord.gg/alphagg" target="_blank" class="discord-btn">Join Discord</a>
+  </div>
 </header><div class="container">  <div class="filters">
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="secret">Secret Pets</button>
