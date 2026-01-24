@@ -1,28 +1,28 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tap Simulator Values</title>
 
+<!-- ================= CSS ================= -->
 <style>
+/* ========== BODY & HEADER ========== */
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, sans-serif;
   background: linear-gradient(135deg, #0b1324, #1c2541, #3a506b);
   color: white;
 }
-
-/* ===== HEADER ===== */
 .top-header {
   background: rgba(15,23,45,0.95);
-  padding: 16px 20px;
+  padding: 18px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
   position: sticky;
   top: 0;
   z-index: 1000;
   border-bottom: 2px solid #5865f2;
 }
-
 .header-content {
   max-width: 1400px;
   margin: auto;
@@ -30,49 +30,44 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
 }
-
-.left-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-h1 {
+.left-header { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.header-content h1 {
   margin: 0;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
-
 .nav-btn {
   background: rgba(0,0,0,0.45);
   color: white;
   border: none;
-  padding: 7px 14px;
+  padding: 8px 14px;
   border-radius: 999px;
+  font-weight: 600;
   font-size: 13px;
   cursor: pointer;
+  transition: 0.2s;
 }
-
+.nav-btn:hover { background: rgba(255,255,255,0.15); }
 .discord-btn {
   background: linear-gradient(135deg,#5865f2,#4752c4);
   color: white;
   text-decoration: none;
-  padding: 7px 16px;
+  padding: 10px 18px;
   border-radius: 999px;
-  font-size: 13px;
   font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
 }
+.discord-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
 
-/* ===== CONTAINER ===== */
-.container {
-  padding: 24px;
-  max-width: 1400px;
-  margin: auto;
-}
+/* ========== CONTAINER ========== */
+.container { padding: 24px; max-width: 1400px; margin: auto; }
 
-/* ===== HOME CARDS ===== */
+/* ================= HOME CARDS ================= */
 .home-card {
   background: rgba(15,23,45,0.85);
   border-radius: 16px;
@@ -80,210 +75,199 @@ h1 {
   margin-bottom: 20px;
 }
 
-.update-card {
-  display: flex;
-  gap: 20px;
-}
-
-.update-card img {
+/* Recent Game Update flex layout */
+.update-card { display: flex; gap: 20px; align-items: flex-start; }
+.update-text { flex: 1; }
+.update-image { flex: 1; }
+.update-image img {
   width: 100%;
   border-radius: 16px;
+  object-fit: cover;
 }
 
-.home-card h2 {
-  color: #7ffcff;
-}
+/* Other Home Card styles */
+.home-card h2 { color:#7ffcff; margin-bottom:12px; }
+.home-card p, .home-card li { color:#cfd4ff; margin-bottom:6px; line-height:1.6; }
+.home-card img { max-width: 100%; border-radius:16px; display:block; margin-bottom:12px; }
 
-.home-card p,
-.home-card li {
-  color: #cfd4ff;
-}
+/* ================= PETS DASHBOARD ================= */
+.filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+.filter-btn { background:#141c33; border:1px solid #263055; color:white; padding:7px 14px; border-radius:999px; cursor:pointer; font-size:13px; transition:0.2s; }
+.filter-btn:hover { background:#1e2950; }
+.filter-btn.active { background:#5865f2; border-color:#5865f2; }
+.search-box { width:100%; max-width:380px; margin-bottom:22px; }
+.search-box input { width:100%; padding:12px 14px; border-radius:14px; border:none; outline:none; background:#141c33; color:white; font-size:14px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; }
+.card { background:#0f172d; border-radius:18px; padding:14px; box-shadow:0 8px 25px rgba(0,0,0,0.4); transition: transform 0.2s, box-shadow 0.2s; cursor:pointer; }
+.card:hover { transform:translateY(-4px); box-shadow:0 12px 35px rgba(0,0,0,0.6);}
+.card img { width:100%; border-radius:14px; margin-bottom:10px; background:#060b1c; }
+.pet-name { font-size:16px; font-weight:700; margin-bottom:8px; color:#7ffcff; text-align:center; }
+.value-row { display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:14px; }
+.value-amount { display:flex; align-items:center; gap:4px; }
 
-/* ===== PETS ===== */
-.filters {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
+/* Token Colors */
+.left-label.normal { color:#2b2f45; font-weight:700; }
+.left-label.golden { color:gold; font-weight:700; }
+.left-label.rainbow { background:linear-gradient(45deg,red,orange,yellow,green,cyan,blue,violet); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:700; }
 
-.filter-btn {
-  background: #141c33;
-  border: 1px solid #263055;
-  color: white;
-  padding: 7px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  cursor: pointer;
-}
+footer { text-align:center; padding:24px; color:#8fa2ff; font-size:12px; opacity:0.7; }
 
-.filter-btn.active {
-  background: #5865f2;
-  border-color: #5865f2;
-}
-
-.search-box input {
-  width: 100%;
-  max-width: 380px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: none;
-  background: #141c33;
-  color: white;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-  gap: 18px;
-}
-
-.card {
-  background: #0f172d;
-  border-radius: 18px;
-  padding: 14px;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 14px;
-  margin-bottom: 10px;
-}
-
-.pet-name {
-  text-align: center;
-  font-weight: 700;
-  color: #7ffcff;
-  margin-bottom: 10px;
-}
-
-/* ===== VALUES (FIXED ALIGN) ===== */
-.value-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-.value-amount {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  line-height: 1;
-  font-weight: 600;
-}
-
-.value-amount img {
-  width: 16px;
-  height: 16px;
-  transform: translateY(1px);
-}
-
-/* ===== MOBILE ===== */
-@media (max-width:768px) {
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .discord-btn {
-    font-size: 12px;
-    padding: 6px 14px;
-  }
-
-  .update-card {
-    flex-direction: column;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-footer {
-  text-align: center;
-  padding: 24px;
-  font-size: 12px;
-  color: #8fa2ff;
+/* ========== RESPONSIVE ========== */
+@media (max-width:768px){
+.container { padding:16px; }
+.home-card h2 { font-size:20px; }
+.home-card p, .home-card li { font-size:15px; line-height:1.6; }
+.filters { flex-direction:column; gap:8px; }
+.search-box { max-width:100%; }
+.card { padding:10px; }
+.grid { grid-template-columns:1fr; gap:14px; }
+.update-card { flex-direction: column; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="top-header">
-  <div class="header-content">
-    <div class="left-header">
-      <h1>Tap Simulator Values</h1>
-      <button class="nav-btn" data-target="homeContent">Home</button>
-      <button class="nav-btn" data-target="petsContent">Pets</button>
-    </div>
-    <a href="https://discord.gg/tapsim" target="_blank" class="discord-btn">Join Discord</a>
+<div class="header-content">
+  <div class="left-header">
+    <h1>Tap Simulator Values</h1>
+    <button class="nav-btn" data-target="homeContent">Home</button>
+    <button class="nav-btn" data-target="petsContent">Pets</button>
   </div>
+  <a href="https://discord.gg/tapsim" target="_blank" class="discord-btn">Join Discord</a>
+</div>
 </header>
 
 <div class="container">
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
 <div id="homeContent">
+  <!-- Recent Game Update -->
   <div class="home-card update-card">
-    <div>
+    <div class="update-text">
       <h2>⚡ Recent Game Update</h2>
       <ul>
-        <li>Space World</li>
-        <li>2 New Areas</li>
-        <li>Void Spin Wheel</li>
-        <li>New Exclusives</li>
+        <li>Space World✨</li>
+        <li>2 New Areas🔮</li>
+        <li>Void Spin Wheel🎈</li>
+        <li>New Exclusives🛒</li>
+        <li>3+ New Secret Pets🦖</li>
+        <li>4 NEW EGGS🥚!</li>
+        <li>35+ NEW PETS 🐾!</li>
       </ul>
     </div>
-    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280">
+    <div class="update-image">
+      <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280" alt="Game Update">
+    </div>
+  </div>
+
+  <!-- Owners -->
+  <div class="home-card">
+    <h2>🎩 Owners</h2>
+    <ul>
+      <li>GoldAstro - (goldastro)</li>
+      <li>Hyper - (nrg_elixr3)</li>
+    </ul>
+  </div>
+
+  <!-- Editors -->
+  <div class="home-card">
+    <h2>🪄 Editors</h2>
+    <ul>
+      <li>NotSpeedGuy - (zacklist)</li>
+      <li>Diamondz - (diamondz_1)</li>
+    </ul>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="home-card">
+    <h2>⚠ Disclaimer</h2>
+    <p>Serials can affect values drastically.</p>
+    <p>O/C = Owners Choice</p>
+    <p>N/A = Not Available (AKA Doesn't exist)</p>
   </div>
 </div>
 
-<!-- PETS -->
+<!-- ================= PETS ================= -->
 <div id="petsContent" style="display:none;">
-  <div class="filters">
-    <button class="filter-btn active">All</button>
-  </div>
-  <div class="search-box">
-    <input type="text" placeholder="Search pets...">
-  </div>
-  <div class="grid" id="petsGrid"></div>
+<div class="filters">
+<button class="filter-btn active" data-filter="all">All</button>
+<button class="filter-btn" data-filter="secret">Secret Pets</button>
+<button class="filter-btn" data-filter="exclusive">Exclusive Pets</button>
+<button class="filter-btn" data-filter="mythic">Mythic</button>
+<button class="filter-btn" data-filter="limited">Limited</button>
+</div>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search pets..." />
+</div>
+<div class="grid" id="petsGrid"></div>
 </div>
 
 </div>
 
-<footer>© 2026 Tap Simulator Values</footer>
+<footer>© 2026 Tap Simulator Value List — Fan-made (Dc: 90centu)</footer>
 
+<!-- ================= JAVASCRIPT ================= -->
 <script>
-const TOKEN_ICON = "https://cdn.discordapp.com/emojis/1437069603913076840.webp?size=32";
-const petsGrid = document.getElementById("petsGrid");
+const TOKEN_ICON="https://cdn.discordapp.com/emojis/1437069603913076840.webp?size=32";
+let pets=[];
 
-document.querySelectorAll(".nav-btn").forEach(btn=>{
-  btn.onclick = () => {
-    document.getElementById("homeContent").style.display =
-      btn.dataset.target === "homeContent" ? "block" : "none";
-    document.getElementById("petsContent").style.display =
-      btn.dataset.target === "petsContent" ? "block" : "none";
-  }
-});
+const homeContent=document.getElementById('homeContent');
+const petsContent=document.getElementById('petsContent');
+const navButtons=document.querySelectorAll('.nav-btn');
+const petsGrid=document.getElementById("petsGrid");
+const searchInput=document.getElementById("searchInput");
+const filterButtons=document.querySelectorAll(".filter-btn");
 
-fetch("https://asignas19-ui.github.io/value-list/pets.json")
-.then(res => res.json())
-.then(data => {
-  data.forEach(p=>{
-    petsGrid.innerHTML += `
-      <div class="card">
-        <img src="${p.image}">
-        <div class="pet-name">${p.name}</div>
-        <div class="value-row"><span>Normal</span><span class="value-amount">${p.values.normal}<img src="${TOKEN_ICON}"></span></div>
-        <div class="value-row"><span>Golden</span><span class="value-amount">${p.values.golden}<img src="${TOKEN_ICON}"></span></div>
-        <div class="value-row"><span>Rainbow</span><span class="value-amount">${p.values.rainbow}<img src="${TOKEN_ICON}"></span></div>
-      </div>`;
+// Home / Pets toggle
+navButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=btn.dataset.target;
+    homeContent.style.display=target==='homeContent'?'block':'none';
+    petsContent.style.display=target==='petsContent'?'block':'none';
   });
 });
-</script>
 
+// Load pets.json from value-list repo
+fetch('https://asignas19-ui.github.io/value-list/pets.json?'+Date.now())
+  .then(res=>res.json())
+  .then(data=>{ pets = data; renderPets(); })
+  .catch(err=>{ console.error("Cannot load pets.json", err); pets=[]; renderPets(); });
+
+// Render pets
+function renderPets(filter="all",search=""){
+petsGrid.innerHTML="";
+const filtered=pets.filter(p=>(filter==='all'||p.category===filter)&&p.name.toLowerCase().includes(search.toLowerCase()));
+if(filtered.length===0){ petsGrid.innerHTML="<p>No pets found.</p>"; return;}
+filtered.forEach(p=>{
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`
+<img src="${p.image}" alt="${p.name}">
+<div class="pet-name">${p.name}</div>
+<div class="value-row"><span>💎 Normal</span><span class="value-amount">${p.values.normal} <img src="${TOKEN_ICON}" width="16" height="16"></span></div>
+<div class="value-row"><span>✨ Golden</span><span class="value-amount">${p.values.golden} <img src="${TOKEN_ICON}" width="16" height="16"></span></div>
+<div class="value-row"><span>🌈 Rainbow</span><span class="value-amount">${p.values.rainbow} <img src="${TOKEN_ICON}" width="16" height="16"></span></div>`;
+petsGrid.appendChild(card);
+});
+}
+
+// Filters
+filterButtons.forEach(btn=>{
+btn.addEventListener("click",()=>{
+filterButtons.forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+renderPets(btn.dataset.filter,searchInput.value);
+});
+});
+
+// Search bar
+searchInput.addEventListener("input",()=>{
+const activeFilter=document.querySelector(".filter-btn.active").dataset.filter;
+renderPets(activeFilter,searchInput.value);
+});
+</script>
 </body>
 </html>
