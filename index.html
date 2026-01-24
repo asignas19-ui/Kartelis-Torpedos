@@ -10,8 +10,8 @@
     background: url("https://images.unsplash.com/photo-1604014237744-3b3f0c5d0c4b?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
     padding:18px 24px; box-shadow:0 4px 20px rgba(0,0,0,0.4); position:sticky; top:0; z-index:1000;
   }
-  .header-content { max-width:1400px; margin:auto; display:flex; align-items:center; justify-content:space-between;}
-  .left-header {display:flex; align-items:center; gap:16px;}
+  .header-content { max-width:1400px; margin:auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;}
+  .left-header {display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
   .header-content h1 {margin:0; font-size:26px; font-weight:800; color:white; text-shadow:0 2px 10px rgba(0,0,0,0.6);}
   .nav-btn { background: rgba(0,0,0,0.45); color:white; border:none; padding:8px 14px; border-radius:999px; font-weight:600; font-size:13px; cursor:pointer; transition:0.2s; }
   .nav-btn:hover { background: rgba(255,255,255,0.15);}
@@ -38,7 +38,7 @@
   .filter-btn.active { background:#5865f2; border-color:#5865f2; }
   .search-box { width:100%; max-width:380px; margin-bottom:22px; }
   .search-box input { width:100%; padding:12px 14px; border-radius:14px; border:none; outline:none; background:#141c33; color:white; font-size:14px; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:18px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; }
   .card { background:#0f172d; border-radius:18px; padding:14px; box-shadow:0 8px 25px rgba(0,0,0,0.4); transition: transform 0.2s, box-shadow 0.2s; cursor:pointer; }
   .card:hover { transform:translateY(-4px); box-shadow:0 12px 35px rgba(0,0,0,0.6);}
   .card img { width:100%; border-radius:14px; margin-bottom:10px; background:#060b1c; }
@@ -50,6 +50,17 @@
   .badge.golden { background:gold; color:#000; }
   .badge.rainbow { background:linear-gradient(45deg,red,orange,yellow,green,cyan,blue,violet); color:#000; }
   footer { text-align:center; padding:24px; color:#8fa2ff; font-size:12px; opacity:0.7; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .container { padding:16px; }
+    #homeContent h2 { font-size:20px; }
+    #homeContent p, #homeContent li { font-size:15px; line-height:1.6; }
+    .filters { flex-direction:column; gap:8px; }
+    .search-box { max-width:100%; }
+    .card { padding:10px; }
+    .grid { grid-template-columns:1fr; gap:14px; }
+  }
 </style>
 </head>
 <body>
