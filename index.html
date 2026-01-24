@@ -140,9 +140,9 @@ card.className="card";
 card.innerHTML=`
 <img src="${p.image}" alt="${p.name}">
 <div class="pet-name">${p.name}</div>
-<div class="value-row"><span>💎 Normal</span><span>${p.values.normal} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:middle;margin-left:4px;"></span></div>
-<div class="value-row"><span>✨ Golden</span><span>${p.values.golden} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:middle;margin-left:4px;"></span></div>
-<div class="value-row"><span>🌈 Rainbow</span><span>${p.values.rainbow} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:middle;margin-left:4px;"></span></div>`;
+<div class="value-row"><span>💎 Normal</span><span>${p.values.normal} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:text-bottom;margin-left:4px;"></span></div>
+<div class="value-row"><span>✨ Golden</span><span>${p.values.golden} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:text-bottom;margin-left:4px;"></span></div>
+<div class="value-row"><span>🌈 Rainbow</span><span>${p.values.rainbow} <img src="${TOKEN_ICON}" style="width:16px;height:16px;vertical-align:text-bottom;margin-left:4px;"></span></div>`;
 petsGrid.appendChild(card);
 });
 }
