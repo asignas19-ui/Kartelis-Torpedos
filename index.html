@@ -25,18 +25,25 @@ body{
 
 /* TOP BAR */
 .topbar{
+  position:sticky;
+  top:0;
+  z-index:999;
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:14px 20px;
+  background:rgba(11,13,20,.95);
+  backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
+.logo{font-weight:700}
 .nav a{
   color:#dce0ff;
-  margin:0 14px;
+  margin:0 12px;
   text-decoration:none;
   font-size:14px;
 }
+.nav a:hover{opacity:.8}
 .discord{
   background:#5865F2;
   padding:10px 16px;
@@ -62,9 +69,7 @@ body{
   border-radius:20px;
   padding:20px;
 }
-.section h3{
-  margin-top:0;
-}
+.section h3{margin-top:0}
 
 /* NEWS */
 .news{
@@ -78,19 +83,12 @@ body{
   object-fit:cover;
   border-radius:16px;
 }
-.news ul{
-  margin:0;
-  padding-left:20px;
-}
+.news ul{margin:0;padding-left:20px}
 .news li{margin:6px 0}
 
-/* OWNERS / EDITORS */
-.section ul{
-  padding-left:20px;
-}
-.section li{
-  margin:6px 0;
-}
+/* LISTS */
+.section ul{padding-left:20px}
+.section li{margin:6px 0}
 
 /* TABS */
 .tabs{
@@ -119,6 +117,13 @@ body{
   margin:0 auto 25px;
   position:relative;
 }
+.search span{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  opacity:.6;
+}
 .search input{
   width:100%;
   padding:14px 18px 14px 42px;
@@ -128,19 +133,12 @@ body{
   background:#15192a;
   color:#fff;
 }
-.search span{
-  position:absolute;
-  left:14px;
-  top:50%;
-  transform:translateY(-50%);
-  opacity:.6;
-}
 
 /* GRID */
 .grid{
   max-width:1300px;
   margin:auto;
-  padding:0 20px 80px;
+  padding:0 20px 60px;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
   gap:18px;
@@ -175,44 +173,14 @@ footer{
   font-size:12px;
   color:#7f85b6;
 }
-
-/* MOBILE NAV */
-.mobile-nav{display:none}
-
-@media(max-width:768px){
-  .topbar .nav{display:none}
-
-  .mobile-nav{
-    display:flex;
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    background:#14182a;
-    padding:10px;
-    gap:10px;
-    border-top:1px solid rgba(255,255,255,.08);
-    z-index:999;
-  }
-  .mobile-nav button{
-    flex:1;
-    border:none;
-    border-radius:16px;
-    padding:14px;
-    background:#1c2140;
-    color:#fff;
-    font-weight:600;
-    font-size:15px;
-  }
-  body{padding-bottom:90px}
-}
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <div class="topbar">
-  <b>Tap Sim Values</b>
+  <div class="logo">Tap Sim Values</div>
   <div class="nav">
     <a href="#" onclick="showHome()">🏠 Home</a>
     <a href="#" onclick="showValues()">📋 Value List</a>
@@ -245,25 +213,25 @@ footer{
   <div class="section">
     <h3>👑 Owners</h3>
     <ul>
-      <li>GoldAstro (goldastro)</li>
-      <li>Hyper (rng_elixr)</li>
+      <li>• GoldAstro (goldastro)</li>
+      <li>• Hyper (rng_elixr)</li>
     </ul>
   </div>
 
   <div class="section">
     <h3>🛠 Editors</h3>
     <ul>
-      <li>NotSpeedGuy (zacklist)</li>
-      <li>Diamondz (diamondz_1)</li>
+      <li>• NotSpeedGuy (zacklist)</li>
+      <li>• Diamondz (diamondz_1)</li>
     </ul>
   </div>
 
   <div class="section">
     <h3>⚠ Disclaimer</h3>
     <ul>
-      <li>Serials & mutations affect values drastically</li>
-      <li>O/C = Owners Choice</li>
-      <li>N/A = Not Available</li>
+      <li>• Serials & mutations affect values drastically</li>
+      <li>• O/C = Owners Choice</li>
+      <li>• N/A = Not Available</li>
     </ul>
   </div>
 </div>
@@ -284,15 +252,11 @@ footer{
   <div class="grid" id="grid"></div>
 </div>
 
-<div class="mobile-nav">
-  <button onclick="showHome()">🏠 Home</button>
-  <button onclick="showValues()">📋 Values</button>
-</div>
-
 <footer>© 2026 Tap Sim Values</footer>
 
 <script>
-let pets=[],currentCat="all";
+let pets=[];
+let currentCat="all";
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
@@ -303,19 +267,30 @@ fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 });
 
 function buildTabs(){
-  const cats=["all",...new Set(pets.map(p=>p.category))];
+  const tabs=[
+    ["all","All"],
+    ["mythics","Mythics"],
+    ["exclusive","Exclusive"],
+    ["secret1","Secret I"],
+    ["secret2","Secret II"],
+    ["leaderboard","Leaderboard Pets"],
+    ["limited","Limited"],
+    ["event","Event Pets"]
+  ];
+
   const wrap=document.getElementById("tabs");
   wrap.innerHTML="";
-  cats.forEach(c=>{
+
+  tabs.forEach(([key,label])=>{
     const t=document.createElement("div");
-    t.className="tab"+(c==="all"?" active":"");
-    t.textContent=c.toUpperCase().replace("_"," ");
+    t.className="tab"+(key==="all"?" active":"");
+    t.textContent=label;
     t.onclick=()=>{
-      currentCat=c;
+      currentCat=key;
       document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
       t.classList.add("active");
       renderPets();
-    }
+    };
     wrap.appendChild(t);
   });
 }
@@ -324,18 +299,22 @@ function renderPets(){
   const q=document.getElementById("search").value.toLowerCase();
   const grid=document.getElementById("grid");
   grid.innerHTML="";
-  pets.filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
-  .forEach(p=>{
+
+  pets.filter(p=>
+    (currentCat==="all" || p.category===currentCat) &&
+    p.name.toLowerCase().includes(q)
+  ).forEach(p=>{
     grid.innerHTML+=`
-    <div class="pet">
-      <img src="${p.image}">
-      <h3>${p.name}</h3>
-      <div class="price">
-        💎 Normal: ${p.values?.normal ?? "N/A"}<br>
-        ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
-        🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
+      <div class="pet">
+        <img src="${p.image}">
+        <h3>${p.name}</h3>
+        <div class="price">
+          💎 Normal: ${p.values?.normal ?? "N/A"}<br>
+          ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
+          🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
+        </div>
       </div>
-    </div>`;
+    `;
   });
 }
 
