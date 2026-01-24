@@ -29,11 +29,20 @@ body{margin:0;font-family:"Segoe UI",Tahoma,sans-serif;background:#0b1324;color:
 .card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,0.6);}
 .card img{width:100%;border-radius:14px;margin-bottom:10px;background:#060b1c;}
 .pet-name{font-size:16px;font-weight:700;margin-bottom:8px;color:#7ffcff;text-align:center;}
-.value-row{display:flex;justify-content:space-between;align-items:center;gap:8px;}
-footer{text-align:center;padding:24px;color:#8fa2ff;font-size:12px;opacity:0.7;}
+.value-row{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;}
 .left-label.normal{color:#2b2f45;font-weight:700;}
 .left-label.golden{color:gold;font-weight:700;}
 .left-label.rainbow{background:linear-gradient(45deg,red,orange,yellow,green,cyan,blue,violet);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;}
+footer{text-align:center;padding:24px;color:#8fa2ff;font-size:12px;opacity:0.7;}
+@media (max-width: 768px){
+.container{padding:16px;}
+#homeContent h2{font-size:20px;}
+#homeContent p,#homeContent li{font-size:15px;line-height:1.6;}
+.filters{flex-direction:column;gap:8px;}
+.search-box{max-width:100%;}
+.card{padding:10px;}
+.grid{grid-template-columns:1fr;gap:14px;}
+}
 </style>
 </head>
 <body>
@@ -50,7 +59,7 @@ footer{text-align:center;padding:24px;color:#8fa2ff;font-size:12px;opacity:0.7;}
 </header>
 
 <div class="container">
-<!-- HOME -->
+
 <div id="homeContent">
 <h2>⚡ List Last Updated - 01/19/26</h2>
 <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280" alt="Game Update">
@@ -80,7 +89,6 @@ footer{text-align:center;padding:24px;color:#8fa2ff;font-size:12px;opacity:0.7;}
 <p>N/A = Not Available (AKA Doesn't exist)</p>
 </div>
 
-<!-- PETS -->
 <div id="petsContent" style="display:none;">
 <div class="filters">
 <button class="filter-btn active" data-filter="all">All</button>
@@ -94,6 +102,7 @@ footer{text-align:center;padding:24px;color:#8fa2ff;font-size:12px;opacity:0.7;}
 </div>
 <div class="grid" id="petsGrid"></div>
 </div>
+
 </div>
 
 <footer>© 2026 Tap Simulator Values — Fan-made Value List</footer>
@@ -109,24 +118,21 @@ const petsGrid=document.getElementById("petsGrid");
 const searchInput=document.getElementById("searchInput");
 const filterButtons=document.querySelectorAll(".filter-btn");
 
-// Home / Pets toggle
 navButtons.forEach(btn=>{btn.addEventListener('click',()=>{
 const target=btn.dataset.target;
 homeContent.style.display=target==='homeContent'?'block':'none';
 petsContent.style.display=target==='petsContent'?'block':'none';
 });});
 
-// Load pets.json
-fetch('pets.json')
+// Fetch JSON from GitHub Pages
+fetch('https://asignas19-ui.github.io/REPO/pets.json')
 .then(res=>res.json())
 .then(data=>{pets=data; renderPets();})
 .catch(err=>{console.error("Cannot load pets.json",err); pets=[]; renderPets();});
 
-// Render pets
 function renderPets(filter="all",search=""){
 petsGrid.innerHTML="";
-const filtered=pets.filter(p=>(filter==='all'||p.category===filter)
-&& p.name.toLowerCase().includes(search.toLowerCase()));
+const filtered=pets.filter(p=>(filter==='all'||p.category===filter)&&p.name.toLowerCase().includes(search.toLowerCase()));
 if(filtered.length===0){ petsGrid.innerHTML="<p>No pets found.</p>"; return;}
 filtered.forEach(p=>{
 const card=document.createElement("div");
@@ -141,7 +147,6 @@ petsGrid.appendChild(card);
 });
 }
 
-// Filters
 filterButtons.forEach(btn=>{btn.addEventListener("click",()=>{
 filterButtons.forEach(b=>b.classList.remove("active"));
 btn.classList.add("active");
