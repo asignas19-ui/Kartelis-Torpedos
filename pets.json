@@ -31,7 +31,7 @@
   },
   {
     "name": "Candy God",
-    "image": "/images/secret1/candy-god.png",
+    "image": "/value-list/images/secret1/candy-god.png",
     "category": "secret1",
     "values": { "normal": 40, "golden": 180, "rainbow": 180 }
   },
