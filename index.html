@@ -2,204 +2,152 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tap Simulator Values</title>
+<title>Tap Simulator Value List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-:root{
-  --bg:#070b14;
-  --panel:#0c1733;
-  --card:#101e40;
-  --accent:#5da9ff;
-  --accent2:#7cffd4;
-  --text:#eaf2ff;
-  --muted:#9fb3d1;
-}
-
-*{box-sizing:border-box;font-family:Inter,Segoe UI,Arial}
-
+*{box-sizing:border-box;font-family:Segoe UI,Arial}
 body{
   margin:0;
-  background:radial-gradient(circle at top,#12204a,#070b14 60%);
-  color:var(--text);
+  background:#0b1320;
+  color:#e6eeff;
 }
 
 a{text-decoration:none;color:inherit}
 
-/* ===== NAV ===== */
+/* HEADER */
 header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(7,11,20,.9);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid #1f2a44;
+  background:#0a111d;
+  border-bottom:1px solid #1c2740;
 }
-
-.nav{
-  max-width:1200px;
+.header-inner{
+  max-width:1100px;
   margin:auto;
-  padding:14px 20px;
+  padding:16px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
-
-.logo{
-  font-size:20px;
-  font-weight:800;
-  color:var(--accent);
+.title{
+  font-size:22px;
+  font-weight:700;
 }
-
-.nav-links a{
+.nav a{
   margin:0 12px;
   color:#cfe2ff;
   font-weight:500;
 }
-
-.discord-btn{
+.discord{
   background:#5865F2;
   padding:8px 14px;
-  border-radius:10px;
-  font-weight:700;
+  border-radius:6px;
+  font-weight:600;
 }
 
-/* ===== HERO (BGSI STYLE) ===== */
-.bgsi-hero{
-  text-align:center;
-  padding:90px 20px 70px;
-  border-bottom:1px solid #1f2a44;
-}
-
-.bgsi-hero h1{
-  font-size:44px;
-  font-weight:800;
-  margin-bottom:10px;
-}
-
-.bgsi-hero p{
-  color:#b9ccff;
-  margin-bottom:28px;
-}
-
-/* SEARCH */
-.hero-search{
-  position:relative;
-  max-width:520px;
-  margin:0 auto 24px;
-}
-
-.hero-search i{
-  position:absolute;
-  left:16px;
-  top:50%;
-  transform:translateY(-50%);
-  color:#8fa6ff;
-}
-
-.hero-search input{
-  width:100%;
-  padding:14px 18px 14px 44px;
-  border-radius:999px;
-  border:none;
-  outline:none;
-  background:var(--panel);
-  color:#fff;
-  font-size:15px;
-  box-shadow:0 0 25px rgba(93,169,255,.3);
-}
-
-/* TABS */
-.hero-tabs{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.tab{
-  padding:9px 18px;
-  border-radius:999px;
-  border:none;
-  cursor:pointer;
-  background:#0e1a36;
-  color:#cfe0ff;
-  font-weight:500;
-  transition:.25s;
-}
-
-.tab.active{
-  background:linear-gradient(135deg,var(--accent),#7ab8ff);
-  color:#000;
-  font-weight:700;
-}
-
-/* ===== CONTENT ===== */
-.container{
-  max-width:1200px;
+/* CENTER */
+.center{
+  max-width:1100px;
   margin:auto;
-  padding:40px 20px;
+  padding:30px 20px;
 }
 
 /* HOME */
-.cards{
+.hero{
+  text-align:center;
+  margin-bottom:40px;
+}
+.hero h1{
+  font-size:40px;
+  margin-bottom:10px;
+}
+.hero p{
+  color:#9fb4d8;
+}
+
+.blocks{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
+  gap:20px;
 }
 
-.card{
-  background:rgba(16,30,64,.85);
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 0 30px rgba(0,0,0,.5);
+.block{
+  background:#121c32;
+  border-radius:14px;
+  padding:18px;
+}
+.block h3{
+  margin-top:0;
 }
 
-/* PETS */
+.news p{
+  margin:6px 0;
+  color:#c6d6f3;
+}
+
+.list{
+  list-style:disc;
+  padding-left:20px;
+}
+.owner{color:#ff5c5c;font-weight:600}
+.editor{color:#ffd34d;font-weight:600}
+
+/* VALUE LIST */
+.tabs{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:30px 0;
+}
+.tab{
+  background:#121c32;
+  padding:10px 18px;
+  border-radius:20px;
+  cursor:pointer;
+}
+.tab.active{
+  background:#4aa3ff;
+  color:#000;
+  font-weight:600;
+}
+
+.search{
+  width:100%;
+  padding:14px;
+  background:#0f1930;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  margin-bottom:25px;
+}
+
 .pets{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:22px;
+  gap:18px;
 }
-
 .pet{
-  background:var(--card);
-  border-radius:18px;
-  padding:18px;
+  background:#0f1930;
+  border-radius:14px;
+  padding:14px;
   text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.5);
-  transition:.25s;
 }
-
-.pet:hover{
-  transform:translateY(-6px) scale(1.03);
-}
-
 .pet img{
   width:120px;
   height:120px;
   object-fit:contain;
 }
+.rarity-secret{color:#ff77ff}
+.rarity-exclusive{color:#ffd700}
+.rarity-mythic{color:#00ffe1}
+.rarity-leaderboard{color:#ff9966}
 
-.pet h4{margin:10px 0 4px}
-
-.value{color:var(--accent2);font-weight:700}
-
-/* RARITY COLORS */
-.rarity-secret{color:#ff6bff}
-.rarity-exclusive{color:#ffd54f}
-.rarity-mythic{color:#5dffe1}
-
-/* FOOTER */
 .footer{
   text-align:center;
-  padding:35px 20px;
-  color:#8fa6c9;
+  padding:30px;
+  color:#8aa2c9;
   font-size:14px;
-  border-top:1px solid #1f2a44;
 }
 </style>
 </head>
@@ -207,97 +155,104 @@ header{
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">Tap Sim Values</div>
-    <div class="nav-links">
-      <a href="#" onclick="showHome()">Home</a>
-      <a href="#" onclick="showValues()">Value List</a>
+  <div class="header-inner">
+    <div class="title">Tap Simulator Value List</div>
+    <div class="nav">
+      <a href="#" onclick="showHome()">🏠 Home</a>
+      <a href="#" onclick="showValues()">📜 Value List</a>
     </div>
-    <a class="discord-btn" href="https://discord.gg/tapsim" target="_blank">
+    <a class="discord" href="https://discord.gg/" target="_blank">
       <i class="fab fa-discord"></i> Discord
     </a>
   </div>
 </header>
 
-<section class="bgsi-hero">
-  <h1>Tap Simulator Value List</h1>
-  <p>Updated daily • Accurate prices • Community driven</p>
+<div class="center">
 
-  <div class="hero-search">
-    <i class="fa fa-search"></i>
-    <input id="search" placeholder="Search pets..." onkeyup="renderPets()">
-  </div>
-
-  <div class="hero-tabs">
-    <button class="tab active" onclick="setCategory('all')">All</button>
-    <button class="tab" onclick="setCategory('Secret')">Secret</button>
-    <button class="tab" onclick="setCategory('Exclusive')">Exclusive</button>
-    <button class="tab" onclick="setCategory('Mythic')">Mythic</button>
-  </div>
-</section>
-
-<div class="container">
-
+<!-- HOME -->
 <div id="home">
-  <div class="cards">
-    <div class="card">
-      <h3>⚡ Latest Update</h3>
-      <p>🌌 New World</p>
-      <p>🎡 Electric Spin Wheel</p>
-      <p>🥚 Exclusive Egg</p>
-      <p>🐉 5+ New Secret Pets</p>
+  <div class="hero">
+    <h1>Tap Simulator Values</h1>
+    <p>Accurate • Community Driven • Updated Daily</p>
+  </div>
+
+  <div class="blocks">
+    <div class="block news">
+      <h3>📰 News</h3>
+      <p>🌌 New World Added</p>
+      <p>🥚 New Exclusive Egg</p>
+      <p>🐉 New Secret Pets</p>
+      <p>⚡ Balance Changes</p>
     </div>
-    <div class="card">
+
+    <div class="block">
       <h3>👑 Owners</h3>
-      <p>GoldAstro</p>
-      <p>Hyper</p>
+      <ul class="list">
+        <li><span class="owner">GoldAstro</span></li>
+        <li><span class="owner">Hyper</span></li>
+      </ul>
     </div>
-    <div class="card">
-      <h3>🛠 Editors</h3>
-      <p>NotSpeedGuy</p>
-      <p>Diamondz</p>
+
+    <div class="block">
+      <h3>🛠️ Editors</h3>
+      <ul class="list">
+        <li><span class="editor">NotSpeedGuy</span></li>
+        <li><span class="editor">Diamondz</span></li>
+      </ul>
     </div>
   </div>
 </div>
 
+<!-- VALUES -->
 <div id="values" style="display:none">
-  <div class="pets" id="petList"></div>
+  <input class="search" id="search" placeholder="🔍 Search pets..." onkeyup="renderPets()">
+
+  <div class="tabs">
+    <div class="tab active" onclick="setCat('all')">All</div>
+    <div class="tab" onclick="setCat('Secret')">Secret I</div>
+    <div class="tab" onclick="setCat('Secret II')">Secret II</div>
+    <div class="tab" onclick="setCat('Exclusive')">Exclusive</div>
+    <div class="tab" onclick="setCat('Mythic')">Mythic</div>
+    <div class="tab" onclick="setCat('Leaderboard')">Leaderboard</div>
+  </div>
+
+  <div class="pets" id="pets"></div>
 </div>
 
 </div>
 
 <div class="footer">
-DISCLAIMER: Serials & mutations affect values drastically<br>
-O/C = Owners Choice • N/A = Not Available
+DISCLAIMER: Values may change • O/C = Owners Choice
 </div>
 
 <script>
-let pets=[],category="all";
+let pets=[],cat="all";
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
-.then(r=>r.json())
-.then(d=>{pets=d;renderPets();});
+.then(r=>r.json()).then(d=>{pets=d;renderPets()});
 
-function setCategory(c){
-  category=c;
+function setCat(c){
+  cat=c;
   document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
   event.target.classList.add("active");
   renderPets();
 }
 
 function renderPets(){
-  let q=search.value.toLowerCase();
-  petList.innerHTML=pets.filter(p=>
-    (category==="all"||p.category===category)&&
-    p.name.toLowerCase().includes(q)
-  ).map(p=>`
+  let q=document.getElementById("search").value.toLowerCase();
+  petsDiv=document.getElementById("pets");
+  petsDiv.innerHTML="";
+  pets.filter(p=>{
+    return (cat==="all"||p.category===cat)&&p.name.toLowerCase().includes(q);
+  }).forEach(p=>{
+    petsDiv.innerHTML+=`
     <div class="pet">
       <img src="${p.image}">
       <h4>${p.name}</h4>
-      <div class="rarity-${p.rarity.toLowerCase()}">${p.rarity}</div>
-      <div class="value">💰 ${p.value}</div>
-    </div>
-  `).join("");
+      <div class="rarity-${p.rarity.toLowerCase()}">${p.rarity} ✨</div>
+      <div>💰 ${p.value}</div>
+    </div>`;
+  });
 }
 
 function showHome(){home.style.display="block";values.style.display="none"}
