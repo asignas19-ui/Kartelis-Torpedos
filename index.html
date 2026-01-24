@@ -10,7 +10,7 @@
   --bg:#0b0d14;
   --panel:#14182a;
   --card:#1b2035;
-  --accent:#7c6cff;
+  --accent:#4da3ff;
   --text:#f2f4ff;
   --muted:#9aa0c7;
 }
@@ -49,73 +49,66 @@ body{
 /* HERO */
 .hero{
   text-align:center;
-  padding:70px 20px 30px;
+  padding:60px 20px 25px;
 }
-.hero h1{font-size:40px;margin:0}
+.hero h1{font-size:38px;margin:0}
 .hero p{color:var(--muted)}
 
-/* SECTIONS */
+/* HOME SECTIONS */
 .section{
-  max-width:900px;
+  max-width:950px;
   margin:30px auto;
   background:linear-gradient(180deg,#1a1f35,#14182a);
   border-radius:18px;
   padding:20px;
 }
-.section h3{
-  margin-top:0;
-}
-
-/* NEWS */
 .news{
   display:flex;
   gap:20px;
-  align-items:flex-start;
 }
 .news img{
   width:160px;
   border-radius:14px;
 }
-.news ul{
-  margin:0;
-  padding-left:18px;
-}
+.news ul{padding-left:18px;margin:0}
 
 /* TABS */
 .tabs{
   display:flex;
+  flex-wrap:wrap;
   gap:10px;
   justify-content:center;
-  flex-wrap:wrap;
-  margin:30px 0 15px;
+  margin:30px 0 20px;
 }
 .tab{
   background:#20243a;
-  padding:8px 16px;
+  padding:9px 18px;
   border-radius:999px;
   font-size:13px;
   cursor:pointer;
+  color:#cfd5ff;
+  transition:.2s;
 }
+.tab:hover{background:#2a2f4d}
 .tab.active{
   background:var(--accent);
   color:#000;
   font-weight:600;
+  box-shadow:0 0 0 2px rgba(77,163,255,.35);
 }
 
 /* SEARCH */
 .search{
-  max-width:620px;
-  margin:0 auto 25px;
+  max-width:600px;
+  margin:0 auto 30px;
   position:relative;
 }
-.search i{
+.search span{
   position:absolute;
   left:16px;
   top:50%;
   transform:translateY(-50%);
   color:#8f95c7;
-  font-size:14px;
-  pointer-events:none;
 }
 .search input{
   width:100%;
@@ -137,7 +130,7 @@ body{
   gap:18px;
 }
 
-/* PET CARD */
+/* PET */
 .pet{
   background:linear-gradient(180deg,#1c2034,#14182a);
   border-radius:16px;
@@ -171,7 +164,6 @@ footer{
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <b>Tap Sim Values</b>
   <div class="nav">
@@ -185,7 +177,7 @@ footer{
 <div id="home">
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
-    <p>Community driven Tap Simulator values – updated regularly.</p>
+    <p>Community driven Tap Simulator values</p>
   </div>
 
   <div class="section news">
@@ -205,38 +197,19 @@ footer{
       </ul>
     </div>
   </div>
-
-  <div class="section">
-    <h3>👑 Owners</h3>
-    GoldAstro (goldastro)<br>
-    Hyper (rng_elixr)
-  </div>
-
-  <div class="section">
-    <h3>🛠 Editors</h3>
-    NotSpeedGuy (zacklist)<br>
-    Diamondz (diamondz_1)
-  </div>
-
-  <div class="section">
-    <h3>⚠ Disclaimer</h3>
-    Serials & mutations affect values drastically<br>
-    O/C = Owners Choice<br>
-    N/A = Not Available
-  </div>
 </div>
 
 <!-- VALUES -->
 <div id="values" class="hidden">
 
   <div class="hero">
-    <h1>Tap Simulator Value List</h1>
+    <h1>Tap Simulator Values</h1>
   </div>
 
   <div class="tabs" id="tabs"></div>
 
   <div class="search">
-    <i>🔍</i>
+    <span>🔍</span>
     <input id="search" placeholder="Search pets..." oninput="renderPets()">
   </div>
 
@@ -246,7 +219,7 @@ footer{
 <footer>© 2026 Tap Sim Values – Fan made</footer>
 
 <script>
-let pets=[], currentCat="All";
+let pets=[],currentCat="all";
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
@@ -256,56 +229,9 @@ fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
   renderPets();
 });
 
-function buildTabs(){
-  const cats=["All",...new Set(pets.map(p=>p.category))];
-  const wrap=document.getElementById("tabs");
-  wrap.innerHTML="";
-  cats.forEach(c=>{
-    const t=document.createElement("div");
-    t.className="tab"+(c==="All"?" active":"");
-    t.textContent=c.replace("secret1","Secret I").replace("secret2","Secret II");
-    t.onclick=()=>{
-      currentCat=c;
-      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-      t.classList.add("active");
-      renderPets();
-    };
-    wrap.appendChild(t);
-  });
-}
-
-function renderPets(){
-  const q=document.getElementById("search").value.toLowerCase();
-  const grid=document.getElementById("grid");
-  grid.innerHTML="";
-
-  pets
-  .filter(p=>(currentCat==="All"||p.category===currentCat) && p.name.toLowerCase().includes(q))
-  .forEach(p=>{
-    grid.innerHTML+=`
-      <div class="pet">
-        <img src="${p.image}">
-        <h3>${p.name}</h3>
-        <div class="price">
-          💎 Normal: ${p.values?.normal ?? "N/A"}<br>
-          ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
-          🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
-        </div>
-      </div>
-    `;
-  });
-}
-
-function showHome(){
-  home.classList.remove("hidden");
-  values.classList.add("hidden");
-}
-
-function showValues(){
-  values.classList.remove("hidden");
-  home.classList.add("hidden");
-}
-</script>
-
-</body>
-</html>
+const tabOrder=[
+  {id:"all",label:"All"},
+  {id:"secret1",label:"Secret I"},
+  {id:"secret2",label:"Secret II"},
+  {id:"exclusive",label:"Exclusive"},
+  {id:"leaderboard",label:"Leaderboard Pets"},
