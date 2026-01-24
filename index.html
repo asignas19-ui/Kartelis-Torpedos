@@ -1,237 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tap Simulator Values</title>
 
 <style>
-:root{
-  --bg:#0b1224;
-  --hud:#0f1730;
-  --card:#121c3b;
-  --accent:#4fc3ff;
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: linear-gradient(135deg, #0b1324, #1c2541, #3a506b);
+  color: white;
 }
 
-*{box-sizing:border-box}
+/* ================= HEADER ================= */
+.top-header {
+  background: rgba(15,23,45,0.95);
+  padding: 18px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #5865f2;
+}
+.header-content {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.nav-btn {
+  background: rgba(0,0,0,0.45);
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.15); }
 
-body{
-  margin:0;
-  font-family:"Segoe UI",sans-serif;
-  background:linear-gradient(180deg,#0b1224,#0e1a3a);
-  color:white;
-}
-
-/* ===== HUD ===== */
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(15,23,48,.95);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid #2a3f7a;
-}
-.header-inner{
-  max-width:1400px;
-  margin:auto;
-  padding:14px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.header-left{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-header h1{
-  font-size:18px;
-  margin:0;
-  font-weight:800;
-}
-.nav-btn{
-  background:#141c33;
-  border:none;
-  color:white;
-  padding:6px 14px;
-  border-radius:999px;
-  font-size:13px;
-  cursor:pointer;
-}
-.nav-btn.active{background:var(--accent);color:#000}
-.discord{
-  background:linear-gradient(135deg,#5865f2,#4752c4);
-  padding:8px 16px;
-  border-radius:999px;
-  color:white;
-  text-decoration:none;
-  font-weight:700;
+.discord-btn {
+  background: linear-gradient(135deg,#5865f2,#4752c4);
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
 }
 
-/* ===== LAYOUT ===== */
-.container{
-  max-width:1400px;
-  margin:auto;
-  padding:20px;
+/* ================= LAYOUT ================= */
+.container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 24px;
 }
 
-/* ===== HOME ===== */
-.home-card{
-  background:rgba(18,28,59,.9);
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:20px;
-}
-.home-card h2{color:var(--accent);margin-top:0}
-
-/* ===== FILTERS ===== */
-.filters{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:12px;
-}
-.filter-btn{
-  background:#141c33;
-  border:1px solid #263055;
-  color:white;
-  padding:6px 14px;
-  border-radius:999px;
-  font-size:13px;
-  cursor:pointer;
-}
-.filter-btn.active{
-  background:var(--accent);
-  color:#000;
+/* ================= HOME ================= */
+.home-card {
+  background: rgba(15,23,45,0.85);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 20px;
 }
 
-/* ===== SEARCH ===== */
-.search-box{
-  max-width:320px;
-  margin-bottom:18px;
+.update-card {
+  display: flex;
+  gap: 20px;
 }
-.search-box input{
-  width:100%;
-  padding:10px 14px;
-  border-radius:999px;
-  border:none;
-  background:#141c33;
-  color:white;
+.update-image img {
+  width: 100%;
+  border-radius: 16px;
 }
 
-/* ===== PET GRID ===== */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:16px;
-}
-.card{
-  background:linear-gradient(180deg,#121c3b,#0f1730);
-  border-radius:18px;
-  padding:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,.4);
-  transition:.2s;
-}
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 0 0 1px rgba(79,195,255,.25),0 12px 35px rgba(0,0,0,.6);
-}
-.card img{
-  width:100%;
-  border-radius:14px;
-  margin-bottom:8px;
-}
-.pet-name{
-  text-align:center;
-  font-weight:700;
-  margin-bottom:8px;
-}
-.value-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:13px;
-  padding:2px 0;
-}
-.value-row img{
-  width:14px;
-  height:14px;
-}
-.rainbow{
-  background:linear-gradient(45deg,red,orange,yellow,green,cyan,blue,violet);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  font-weight:700;
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
 }
 
-/* ===== FOOTER ===== */
-footer{
-  text-align:center;
-  font-size:11px;
-  opacity:.5;
-  padding:20px;
+.info-block {
+  background: rgba(15,23,45,0.9);
+  border-radius: 16px;
+  padding: 18px;
 }
 
-/* ===== MOBILE ===== */
+.info-block h3 {
+  margin-top: 0;
+  color: #7ffcff;
+}
+
+/* ================= PETS ================= */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.filter-btn {
+  background: #141c33;
+  border: 1px solid #263055;
+  color: white;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.filter-btn.active {
+  background: #5865f2;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 380px;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  background: #141c33;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  gap: 18px;
+}
+
+.card {
+  background: #0f172d;
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.pet-name {
+  text-align: center;
+  font-weight: 700;
+  color: #7ffcff;
+  margin: 8px 0;
+}
+
+.value-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.value-amount img {
+  vertical-align: middle;
+  margin-left: 4px;
+  transform: translateY(2px);
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #8fa2ff;
+  font-size: 12px;
+}
+
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-  .grid{grid-template-columns:repeat(2,1fr)}
+  .update-card { flex-direction: column; }
+  .grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="header-inner">
-    <div class="header-left">
-      <h1>Tap Simulator Values</h1>
-      <button class="nav-btn active" data-page="home">Home</button>
-      <button class="nav-btn" data-page="pets">Pets</button>
+<header class="top-header">
+  <div class="header-content">
+    <div class="left-header">
+      <h2>Tap Simulator Values</h2>
+      <button class="nav-btn" data-target="homeContent">Home</button>
+      <button class="nav-btn" data-target="petsContent">Pets</button>
     </div>
-    <a class="discord" href="https://discord.gg/tapsim" target="_blank">Join Discord</a>
+    <a href="#" class="discord-btn">Join Discord</a>
   </div>
 </header>
 
 <div class="container">
 
-<!-- HOME -->
-<div id="home">
-  <div class="home-card">
-    <h2>⚡ Most Recent Update</h2>
-    <ul>
-      <li>Space World ✨</li>
-      <li>2 New Areas</li>
-      <li>Void Spin Wheel</li>
-      <li>3+ New Secret Pets</li>
-      <li>35+ New Pets</li>
-    </ul>
+<!-- ================= HOME ================= -->
+<div id="homeContent">
+
+  <div class="home-card update-card">
+    <div>
+      <h2>⚡ Recent Game Update</h2>
+      <ul>
+        <li>Space World ✨</li>
+        <li>2 New Areas 🔮</li>
+        <li>Void Spin Wheel 🎈</li>
+        <li>New Exclusives 🛒</li>
+        <li>35+ New Pets 🐾</li>
+      </ul>
+    </div>
+    <div class="update-image">
+      <img src="https://via.placeholder.com/600x350">
+    </div>
   </div>
 
-  <div class="home-card">
-    <h2>⚠ Disclaimer</h2>
-    <p>Serials can affect values drastically.</p>
-    <p>O/C = Owners Choice</p>
-    <p>N/A = Not Available</p>
+  <div class="home-grid">
+    <div class="info-block">
+      <h3>🎩 Owners</h3>
+      <ul>
+        <li>GoldAstro (goldastro)</li>
+        <li>Hyper (nrg_elixr3)</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h3>🪄 Editors</h3>
+      <ul>
+        <li>NotSpeedGuy (zacklist)</li>
+        <li>Diamondz (diamondz_1)</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h3>⚠ Disclaimer</h3>
+      <p>Serials can affect values drastically.</p>
+      <p>O/C = Owners Choice</p>
+      <p>N/A = Not Available</p>
+    </div>
   </div>
+
 </div>
 
-<!-- PETS -->
-<div id="pets" style="display:none">
-
+<!-- ================= PETS ================= -->
+<div id="petsContent" style="display:none;">
   <div class="filters">
     <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="secret">Secret Pets</button>
+    <button class="filter-btn" data-filter="secret">Secret</button>
     <button class="filter-btn" data-filter="exclusive">Exclusive</button>
-    <button class="filter-btn" data-filter="mythic">Mythic</button>
-    <button class="filter-btn" data-filter="limited">Limited</button>
   </div>
 
   <div class="search-box">
-    <input id="search" placeholder="Search pets...">
+    <input id="searchInput" placeholder="Search pets...">
   </div>
 
-  <div class="grid" id="grid"></div>
-
+  <div class="grid" id="petsGrid"></div>
 </div>
 
 </div>
@@ -239,61 +259,32 @@ footer{
 <footer>© 2026 Tap Simulator Values — Fan-made</footer>
 
 <script>
-const TOKEN="https://cdn.discordapp.com/emojis/1437069603913076840.webp?size=32";
-let pets=[];
+const TOKEN_ICON="https://cdn.discordapp.com/emojis/1437069603913076840.webp?size=32";
+const homeContent=document.getElementById("homeContent");
+const petsContent=document.getElementById("petsContent");
 
-// NAV
-document.querySelectorAll(".nav-btn").forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    home.style.display=btn.dataset.page==="home"?"block":"none";
-    petsDiv.style.display=btn.dataset.page==="pets"?"block":"none";
+document.querySelectorAll(".nav-btn").forEach(b=>{
+  b.onclick=()=>{
+    homeContent.style.display=b.dataset.target==="homeContent"?"block":"none";
+    petsContent.style.display=b.dataset.target==="petsContent"?"block":"none";
   }
 });
 
-const home=document.getElementById("home");
-const petsDiv=document.getElementById("pets");
-const grid=document.getElementById("grid");
-const search=document.getElementById("search");
-
-// LOAD JSON
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
-.then(d=>{pets=d;render();});
-
-// RENDER
-function render(filter="all",q=""){
-  grid.innerHTML="";
-  pets.filter(p=>
-    (filter==="all"||p.category===filter)&&
-    p.name.toLowerCase().includes(q.toLowerCase())
-  ).forEach(p=>{
+.then(data=>{
+  const grid=document.getElementById("petsGrid");
+  data.forEach(p=>{
     grid.innerHTML+=`
-    <div class="card">
-      <img src="${p.image}">
-      <div class="pet-name">${p.name}</div>
-      <div class="value-row"><span>💎 Normal</span><span>${p.values.normal} <img src="${TOKEN}"></span></div>
-      <div class="value-row"><span>✨ Golden</span><span>${p.values.golden} <img src="${TOKEN}"></span></div>
-      <div class="value-row"><span class="rainbow">🌈 Rainbow</span><span>${p.values.rainbow} <img src="${TOKEN}"></span></div>
-    </div>`;
+      <div class="card">
+        <img src="${p.image}">
+        <div class="pet-name">${p.name}</div>
+        <div class="value-row"><span>Normal</span><span class="value-amount">${p.values.normal}<img src="${TOKEN_ICON}" width="16"></span></div>
+        <div class="value-row"><span>Golden</span><span class="value-amount">${p.values.golden}<img src="${TOKEN_ICON}" width="16"></span></div>
+        <div class="value-row"><span>Rainbow</span><span class="value-amount">${p.values.rainbow}<img src="${TOKEN_ICON}" width="16"></span></div>
+      </div>`;
   });
-}
-
-// FILTERS
-document.querySelectorAll(".filter-btn").forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    render(btn.dataset.filter,search.value);
-  }
 });
-
-// SEARCH
-search.oninput=()=>{
-  const f=document.querySelector(".filter-btn.active").dataset.filter;
-  render(f,search.value);
-};
 </script>
 
 </body>
