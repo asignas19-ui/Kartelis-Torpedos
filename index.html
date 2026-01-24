@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="lt">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,277 +9,242 @@
 *{box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
 body{
   margin:0;
-  background:radial-gradient(circle at top,#0f172a,#020617);
+  background:linear-gradient(180deg,#0b1228,#020617);
   color:#e5e7eb;
 }
-.container{
-  max-width:1100px;
+.wrapper{
+  max-width:1200px;
   margin:auto;
-  padding:0 16px 100px;
+  padding:20px;
 }
-.hidden{display:none}
-
-/* HEADER */
 header{
-  padding:24px 0;
   text-align:center;
 }
 header h1{
   margin:0;
-  font-size:28px;
+  font-size:30px;
 }
-.nav{
+.top-buttons{
+  margin-top:12px;
   display:flex;
   justify-content:center;
-  gap:10px;
-  margin-top:14px;
+  gap:12px;
 }
-.nav button{
-  background:#020617;
-  color:#c7d2fe;
+.top-buttons button{
+  background:#1e293b;
   border:none;
+  color:#c7d2fe;
   padding:8px 18px;
   border-radius:999px;
-  font-size:14px;
   cursor:pointer;
 }
-.nav button.active{
+.top-buttons button.active{
   background:#4f46e5;
   color:white;
 }
 
-/* BANNER */
-.banner{
-  margin-top:24px;
-  border-radius:20px;
-  overflow:hidden;
-}
-.banner img{
-  width:100%;
-  display:block;
-}
-
-/* HOME */
-.home{
-  margin-top:30px;
-  text-align:center;
-}
-.home p{
-  color:#94a3b8;
-  max-width:650px;
-  margin:0 auto 24px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
-}
-.card{
-  background:#020617;
-  border-radius:16px;
-  padding:16px;
-  text-align:left;
-}
-.card h3{
-  margin:0 0 10px;
-  font-size:16px;
-}
-.card ul{
-  padding-left:18px;
-  margin:0;
-}
-.card li{
-  font-size:14px;
-  color:#cbd5f5;
-  margin-bottom:6px;
-}
-
-/* PETS */
 .tabs{
   display:flex;
-  gap:8px;
   justify-content:center;
-  flex-wrap:wrap;
-  margin:30px 0 16px;
+  gap:10px;
+  margin:20px 0;
 }
 .tabs button{
   background:#020617;
-  color:#c7d2fe;
   border:none;
-  padding:8px 16px;
+  color:#94a3b8;
+  padding:6px 14px;
   border-radius:999px;
   cursor:pointer;
 }
 .tabs button.active{
-  background:#4f46e5;
+  background:#1e293b;
   color:white;
 }
+
 .search{
-  max-width:400px;
-  margin:0 auto 20px;
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px;
 }
 .search input{
-  width:100%;
-  padding:12px;
-  border-radius:14px;
+  width:320px;
+  padding:8px 12px;
+  border-radius:8px;
   border:none;
   background:#020617;
   color:white;
 }
+
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-  gap:16px;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:20px;
 }
-.pet{
+
+.card{
   background:#020617;
-  border-radius:16px;
+  border-radius:14px;
   padding:12px;
 }
-.pet img{
+.card img{
   width:100%;
   border-radius:12px;
 }
-.pet h4{
-  margin:8px 0;
+.card h3{
+  margin:10px 0 6px;
 }
 .values{
   font-size:13px;
-}
-.values div{
-  margin-bottom:4px;
+  color:#cbd5f5;
+  line-height:1.4;
 }
 
-/* DISCORD */
-.discord-float{
-  position:fixed;
-  bottom:16px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#5865F2;
-  color:white;
-  padding:10px 18px;
-  border-radius:999px;
-  font-weight:600;
-  text-decoration:none;
+.hidden{display:none}
+
+/* HOME */
+.section{
+  background:#020617;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:16px;
 }
-@media(min-width:768px){
-  .discord-float{display:none}
+.section h3{
+  margin:0 0 8px;
+}
+.section ul{
+  margin:0;
+  padding-left:18px;
+}
+.section li,p{
+  font-size:14px;
+  color:#cbd5f5;
+}
+
+.discord{
+  text-align:center;
+  margin-top:20px;
+}
+.discord a{
+  color:#5865F2;
+  text-decoration:none;
+  font-weight:600;
 }
 </style>
 </head>
-
 <body>
+
+<div class="wrapper">
 
 <header>
   <h1>Tap Simulator Values</h1>
-  <div class="nav">
-    <button class="nav-btn active" data-page="home">Home</button>
-    <button class="nav-btn" data-page="pets">Pets</button>
+  <div class="top-buttons">
+    <button class="nav active" data-page="home">🏠 Home</button>
+    <button class="nav" data-page="pets">💎 Value List</button>
   </div>
 </header>
 
-<div class="container">
-
 <!-- HOME -->
-<section id="home" class="home">
-  <div class="banner">
-    <img src="https://via.placeholder.com/1100x300">
+<div id="home">
+  <div class="section">
+    <h3>📰 News</h3>
+    <ul>
+      <li>New pets added</li>
+      <li>Values updated daily</li>
+    </ul>
   </div>
 
-  <p>Community-driven Tap Simulator value list based on real Discord trades.</p>
-
-  <div class="cards">
-
-    <div class="card">
-      <h3>📢 News</h3>
-      <ul>
-        <li>Values updated daily</li>
-        <li>Secret % system added</li>
-        <li>Golden & Rainbow prices adjusted</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>👑 Owners</h3>
-      <ul>
-        <li>asignas19</li>
-        <li>TapSim Staff</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>✏️ Editors</h3>
-      <ul>
-        <li>Value Editors</li>
-        <li>Trusted Traders</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>⚠️ Disclaimer</h3>
-      <ul>
-        <li>Values are estimates</li>
-        <li>Not official</li>
-        <li>Can change anytime</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>📊 Value Types</h3>
-      <ul>
-        <li>💎 Normal</li>
-        <li>✨ Golden</li>
-        <li>🌈 Rainbow</li>
-      </ul>
-    </div>
-
+  <div class="section">
+    <h3>👑 Owners</h3>
+    <ul><li>YourName</li></ul>
   </div>
-</section>
+
+  <div class="section">
+    <h3>✏️ Editors</h3>
+    <ul><li>Editor1</li><li>Editor2</li></ul>
+  </div>
+
+  <div class="section">
+    <h3>⚠️ Disclaimer</h3>
+    <p>All values are community based and may change.</p>
+  </div>
+
+  <div class="discord">
+    <a href="https://discord.gg/">Join Discord</a>
+  </div>
+</div>
 
 <!-- PETS -->
-<section id="pets" class="hidden">
+<div id="pets" class="hidden">
 
   <div class="tabs">
-    <button class="tab active" data-tab="all">All</button>
-    <button class="tab" data-tab="secret">Secret</button>
-    <button class="tab" data-tab="mythic">Mythic</button>
-    <button class="tab" data-tab="limited">Limited</button>
+    <button class="tab active" data-cat="all">All</button>
+    <button class="tab" data-cat="secret">Secret</button>
+    <button class="tab" data-cat="exclusive">Exclusive</button>
+    <button class="tab" data-cat="mythic">Mythic</button>
+    <button class="tab" data-cat="limited">Limited</button>
   </div>
 
   <div class="search">
-    <input type="text" id="search" placeholder="Search pets...">
+    <input type="text" id="search" placeholder="Search pet...">
   </div>
 
-  <div class="grid" id="petGrid">
-    <div class="pet" data-cat="secret">
-      <img src="https://via.placeholder.com/300">
-      <h4>Frost Queen</h4>
-      <div class="values">
-        💎 25<br>
-        ✨ 120<br>
-        🌈 120
-      </div>
-    </div>
-  </div>
-
-</section>
+  <div class="grid" id="petGrid"></div>
+</div>
 
 </div>
 
-<a class="discord-float" href="https://discord.gg/">Join Discord</a>
-
 <script>
-const navBtns=document.querySelectorAll('.nav-btn');
-const pages={home:document.getElementById('home'),pets:document.getElementById('pets')};
+const navs=document.querySelectorAll('.nav');
+const home=document.getElementById('home');
+const pets=document.getElementById('pets');
 
-navBtns.forEach(btn=>{
-  btn.onclick=()=>{
-    navBtns.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    Object.values(pages).forEach(p=>p.classList.add('hidden'));
-    pages[btn.dataset.page].classList.remove('hidden');
+navs.forEach(b=>{
+  b.onclick=()=>{
+    navs.forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    if(b.dataset.page==='home'){home.classList.remove('hidden');pets.classList.add('hidden')}
+    else{pets.classList.remove('hidden');home.classList.add('hidden')}
+  }
+});
+
+const grid=document.getElementById('petGrid');
+let allPets=[];
+
+fetch('pets.json')
+.then(r=>r.json())
+.then(data=>{
+  allPets=data;
+  render(allPets);
+});
+
+function render(list){
+  grid.innerHTML='';
+  list.forEach(p=>{
+    grid.innerHTML+=`
+    <div class="card" data-cat="${p.category}">
+      <img src="${p.image}">
+      <h3>${p.name}</h3>
+      <div class="values">
+        💎 Normal: ${p.normal}<br>
+        ✨ Golden: ${p.golden}<br>
+        🌈 Rainbow: ${p.rainbow}
+      </div>
+    </div>`;
+  });
+}
+
+document.getElementById('search').oninput=e=>{
+  const v=e.target.value.toLowerCase();
+  render(allPets.filter(p=>p.name.toLowerCase().includes(v)));
+};
+
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    const c=t.dataset.cat;
+    render(c==='all'?allPets:allPets.filter(p=>p.category===c));
   }
 });
 </script>
