@@ -2,152 +2,131 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tap Simulator Values</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
 body{
   margin:0;
-  background:linear-gradient(180deg,#0b1228,#020617);
+  font-family:Inter,Arial,sans-serif;
+  background:radial-gradient(circle at top,#0b132b,#020617);
   color:#e5e7eb;
 }
-.wrapper{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-}
-header{
-  text-align:center;
-}
-header h1{
-  margin:0;
-  font-size:30px;
-}
-.top-buttons{
-  margin-top:12px;
+.container{max-width:1200px;margin:auto;padding:24px}
+h1{text-align:center;font-size:40px;margin-bottom:10px}
+
+.top-nav{
   display:flex;
   justify-content:center;
   gap:12px;
+  margin-bottom:30px
 }
-.top-buttons button{
-  background:#1e293b;
-  border:none;
+.top-nav button{
+  background:#020617;
   color:#c7d2fe;
-  padding:8px 18px;
+  border:none;
+  padding:12px 22px;
   border-radius:999px;
-  cursor:pointer;
+  font-size:16px;
+  cursor:pointer
 }
-.top-buttons button.active{
+.top-nav button.active{
   background:#4f46e5;
-  color:white;
+  color:white
+}
+
+.section{
+  background:#020617;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:20px
+}
+
+.section h2{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:0
 }
 
 .tabs{
   display:flex;
-  justify-content:center;
   gap:10px;
-  margin:20px 0;
+  margin-bottom:14px;
+  flex-wrap:wrap
 }
 .tabs button{
   background:#020617;
+  color:#c7d2fe;
   border:none;
-  color:#94a3b8;
-  padding:6px 14px;
+  padding:10px 18px;
   border-radius:999px;
-  cursor:pointer;
+  cursor:pointer
 }
 .tabs button.active{
-  background:#1e293b;
-  color:white;
+  background:#4f46e5;
+  color:white
 }
 
 .search{
-  display:flex;
-  justify-content:center;
-  margin-bottom:20px;
-}
-.search input{
-  width:320px;
-  padding:8px 12px;
-  border-radius:8px;
+  width:100%;
+  padding:12px 14px;
+  border-radius:14px;
   border:none;
   background:#020617;
   color:white;
+  margin-bottom:20px
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:18px
 }
 
 .card{
   background:#020617;
-  border-radius:14px;
-  padding:12px;
+  border-radius:18px;
+  padding:14px
 }
 .card img{
   width:100%;
-  border-radius:12px;
+  border-radius:14px
 }
-.card h3{
-  margin:10px 0 6px;
-}
-.values{
-  font-size:13px;
-  color:#cbd5f5;
-  line-height:1.4;
-}
+.card h3{margin:10px 0 6px}
 
-.hidden{display:none}
+.price{font-size:14px;line-height:1.5}
 
-/* HOME */
-.section{
-  background:#020617;
-  border-radius:14px;
-  padding:16px;
-  margin-bottom:16px;
-}
-.section h3{
-  margin:0 0 8px;
-}
-.section ul{
-  margin:0;
-  padding-left:18px;
-}
-.section li,p{
-  font-size:14px;
-  color:#cbd5f5;
-}
+.center{text-align:center}
 
 .discord{
-  text-align:center;
+  display:inline-block;
   margin-top:20px;
-}
-.discord a{
-  color:#5865F2;
+  padding:12px 24px;
+  background:#5865F2;
+  color:white;
   text-decoration:none;
-  font-weight:600;
+  border-radius:999px;
+  font-weight:600
 }
 </style>
 </head>
+
 <body>
+<div class="container">
 
-<div class="wrapper">
+<h1>Tap Simulator Values</h1>
 
-<header>
-  <h1>Tap Simulator Values</h1>
-  <div class="top-buttons">
-    <button class="nav active" data-page="home">🏠 Home</button>
-    <button class="nav" data-page="pets">💎 Value List</button>
-  </div>
-</header>
+<div class="top-nav">
+  <button id="homeBtn" class="active">🏠 Home</button>
+  <button id="valuesBtn">💎 Value List</button>
+</div>
 
 <!-- HOME -->
 <div id="home">
+
   <div class="section">
-    <h3>📰 News</h3>
+    <h2>📰 News</h2>
     <ul>
       <li>New pets added</li>
       <li>Values updated daily</li>
@@ -155,77 +134,90 @@ header h1{
   </div>
 
   <div class="section">
-    <h3>👑 Owners</h3>
-    <ul><li>YourName</li></ul>
+    <h2>👑 Owners</h2>
+    <ul>
+      <li>YourName</li>
+    </ul>
   </div>
 
   <div class="section">
-    <h3>✏️ Editors</h3>
-    <ul><li>Editor1</li><li>Editor2</li></ul>
+    <h2>✏️ Editors</h2>
+    <ul>
+      <li>Editor1</li>
+      <li>Editor2</li>
+    </ul>
   </div>
 
   <div class="section">
-    <h3>⚠️ Disclaimer</h3>
+    <h2>⚠️ Disclaimer</h2>
     <p>All values are community based and may change.</p>
   </div>
 
-  <div class="discord">
-    <a href="https://discord.gg/">Join Discord</a>
+  <div class="center">
+    <a class="discord" href="https://discord.gg/" target="_blank">Join Discord</a>
   </div>
+
 </div>
 
-<!-- PETS -->
-<div id="pets" class="hidden">
+<!-- VALUES -->
+<div id="values" style="display:none">
 
-  <div class="tabs">
-    <button class="tab active" data-cat="all">All</button>
-    <button class="tab" data-cat="secret">Secret</button>
-    <button class="tab" data-cat="exclusive">Exclusive</button>
-    <button class="tab" data-cat="mythic">Mythic</button>
-    <button class="tab" data-cat="limited">Limited</button>
-  </div>
-
-  <div class="search">
-    <input type="text" id="search" placeholder="Search pet...">
-  </div>
-
-  <div class="grid" id="petGrid"></div>
+<div class="tabs">
+  <button class="tab active" data-cat="all">All</button>
+  <button class="tab" data-cat="secret1">Secret I</button>
+  <button class="tab" data-cat="secret2">Secret II</button>
+  <button class="tab" data-cat="exclusive">Exclusive</button>
+  <button class="tab" data-cat="mythic">Mythic</button>
+  <button class="tab" data-cat="limited">Limited</button>
 </div>
 
+<input class="search" id="search" placeholder="Search pet...">
+
+<div class="grid" id="petGrid"></div>
+
+</div>
 </div>
 
 <script>
-const navs=document.querySelectorAll('.nav');
-const home=document.getElementById('home');
-const pets=document.getElementById('pets');
+const homeBtn=document.getElementById("homeBtn");
+const valuesBtn=document.getElementById("valuesBtn");
+const home=document.getElementById("home");
+const values=document.getElementById("values");
 
-navs.forEach(b=>{
-  b.onclick=()=>{
-    navs.forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    if(b.dataset.page==='home'){home.classList.remove('hidden');pets.classList.add('hidden')}
-    else{pets.classList.remove('hidden');home.classList.add('hidden')}
-  }
-});
+homeBtn.onclick=()=>{
+  home.style.display="block";
+  values.style.display="none";
+  homeBtn.classList.add("active");
+  valuesBtn.classList.remove("active");
+};
+valuesBtn.onclick=()=>{
+  home.style.display="none";
+  values.style.display="block";
+  valuesBtn.classList.add("active");
+  homeBtn.classList.remove("active");
+};
 
-const grid=document.getElementById('petGrid');
-let allPets=[];
+let pets=[];
 
-fetch('pets.json')
+fetch("https://asignas19-ui.github.io/value-list/pets.json")
 .then(r=>r.json())
 .then(data=>{
-  allPets=data;
-  render(allPets);
+  pets=data;
+  render();
 });
 
-function render(list){
-  grid.innerHTML='';
-  list.forEach(p=>{
+function render(filter="all",search=""){
+  const grid=document.getElementById("petGrid");
+  grid.innerHTML="";
+  pets.filter(p=>{
+    return (filter==="all"||p.category===filter) &&
+           p.name.toLowerCase().includes(search);
+  }).forEach(p=>{
     grid.innerHTML+=`
-    <div class="card" data-cat="${p.category}">
+    <div class="card">
       <img src="${p.image}">
       <h3>${p.name}</h3>
-      <div class="values">
+      <div class="price">
         💎 Normal: ${p.normal}<br>
         ✨ Golden: ${p.golden}<br>
         🌈 Rainbow: ${p.rainbow}
@@ -234,19 +226,18 @@ function render(list){
   });
 }
 
-document.getElementById('search').oninput=e=>{
-  const v=e.target.value.toLowerCase();
-  render(allPets.filter(p=>p.name.toLowerCase().includes(v)));
-};
-
-document.querySelectorAll('.tab').forEach(t=>{
+document.querySelectorAll(".tab").forEach(t=>{
   t.onclick=()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    const c=t.dataset.cat;
-    render(c==='all'?allPets:allPets.filter(p=>p.category===c));
-  }
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    render(t.dataset.cat,document.getElementById("search").value.toLowerCase());
+  };
 });
+
+document.getElementById("search").oninput=e=>{
+  const cat=document.querySelector(".tab.active").dataset.cat;
+  render(cat,e.target.value.toLowerCase());
+};
 </script>
 
 </body>
