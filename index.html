@@ -35,22 +35,37 @@ body{
   font-weight:700;
   font-size:16px;
 }
+
+/* ===== NAV PILL BUTTONS ===== */
 .nav{
   display:flex;
-  gap:16px;
+  gap:10px;
 }
 .nav a{
   color:#dce0ff;
   text-decoration:none;
   font-size:14px;
+  padding:8px 16px;
+  border-radius:999px;
+  background:#20243a;
   display:flex;
   align-items:center;
   gap:6px;
+  transition:.2s;
 }
+.nav a:hover{
+  background:#2a2f52;
+}
+.nav a.active{
+  background:var(--accent);
+  color:#000;
+  font-weight:600;
+}
+
 .discord{
   background:#5865F2;
   padding:10px 16px;
-  border-radius:14px;
+  border-radius:999px;
   color:#fff;
   font-weight:600;
   text-decoration:none;
@@ -89,11 +104,7 @@ body{
 .news ul{margin:0;padding-left:20px}
 .news li{margin:6px 0}
 
-/* ===== LISTS ===== */
-.section ul{padding-left:20px}
-.section li{margin:6px 0}
-
-/* ===== TABS ===== */
+/* ===== TABS (PILL) ===== */
 .tabs{
   display:flex;
   gap:10px;
@@ -103,10 +114,14 @@ body{
 }
 .tab{
   background:#20243a;
-  padding:8px 16px;
+  padding:8px 18px;
   border-radius:999px;
   font-size:13px;
   cursor:pointer;
+  transition:.2s;
+}
+.tab:hover{
+  background:#2a2f52;
 }
 .tab.active{
   background:var(--accent);
@@ -130,7 +145,7 @@ body{
 .search input{
   width:100%;
   padding:14px 18px 14px 42px;
-  border-radius:14px;
+  border-radius:999px;
   border:none;
   outline:none;
   background:#15192a;
@@ -177,14 +192,11 @@ footer{
   color:#7f85b6;
 }
 
-/* ================= MOBILE FIX ================= */
+/* ===== MOBILE ===== */
 @media (max-width:768px){
   .topbar{
     flex-direction:column;
     gap:12px;
-  }
-  .nav{
-    gap:24px;
   }
   .discord{
     width:100%;
@@ -205,8 +217,8 @@ footer{
   <div class="logo">Tap Sim Values</div>
 
   <div class="nav">
-    <a href="#" onclick="showHome()">🏠 Home</a>
-    <a href="#" onclick="showValues()">📋 Value List</a>
+    <a href="#" id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
+    <a href="#" id="btnValues" onclick="showValues()">📋 Value List</a>
   </div>
 
   <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
@@ -237,25 +249,25 @@ footer{
   <div class="section">
     <h3>👑 Owners</h3>
     <ul>
-      <li>• GoldAstro (goldastro)</li>
-      <li>• Hyper (rng_elixr)</li>
+      <li>GoldAstro (goldastro)</li>
+      <li>Hyper (rng_elixr)</li>
     </ul>
   </div>
 
   <div class="section">
     <h3>🛠 Editors</h3>
     <ul>
-      <li>• NotSpeedGuy (zacklist)</li>
-      <li>• Diamondz (diamondz_1)</li>
+      <li>NotSpeedGuy (zacklist)</li>
+      <li>Diamondz (diamondz_1)</li>
     </ul>
   </div>
 
   <div class="section">
     <h3>⚠ Disclaimer</h3>
     <ul>
-      <li>• Serials & mutations affect values drastically</li>
-      <li>• O/C = Owners Choice</li>
-      <li>• N/A = Not Available</li>
+      <li>Serials & mutations affect values drastically</li>
+      <li>O/C = Owners Choice</li>
+      <li>N/A = Not Available</li>
     </ul>
   </div>
 </div>
@@ -291,24 +303,23 @@ fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 });
 
 function buildTabs(){
-  const tabs=[
-    "all","mythics","exclusive","secret1","secret2","leaderboard","limited","event"
-  ];
+  const tabs=["all","mythics","exclusive","secret1","secret2","leaderboard","limited","event"];
+  const names={
+    all:"All",
+    mythics:"Mythics",
+    exclusive:"Exclusive",
+    secret1:"Secret I",
+    secret2:"Secret II",
+    leaderboard:"Leaderboard Pets",
+    limited:"Limited",
+    event:"Event Pets"
+  };
   const wrap=document.getElementById("tabs");
   wrap.innerHTML="";
   tabs.forEach(c=>{
     const t=document.createElement("div");
     t.className="tab"+(c==="all"?" active":"");
-    t.textContent={
-      all:"All",
-      mythics:"Mythics",
-      exclusive:"Exclusive",
-      secret1:"Secret I",
-      secret2:"Secret II",
-      leaderboard:"Leaderboard Pets",
-      limited:"Limited",
-      event:"Event Pets"
-    }[c];
+    t.textContent=names[c];
     t.onclick=()=>{
       currentCat=c;
       document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
@@ -343,10 +354,14 @@ function renderPets(){
 function showHome(){
   home.classList.remove("hidden");
   values.classList.add("hidden");
+  btnHome.classList.add("active");
+  btnValues.classList.remove("active");
 }
 function showValues(){
   values.classList.remove("hidden");
   home.classList.add("hidden");
+  btnValues.classList.add("active");
+  btnHome.classList.remove("active");
 }
 </script>
 
