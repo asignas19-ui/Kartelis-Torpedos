@@ -6,94 +6,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{box-sizing:border-box;font-family:Arial,Segoe UI}
 body{
   margin:0;
-  background:#0b3a57;
-  color:#eaf3ff;
-}
-
-/* HEADER */
-header{
-  background:#062f47;
-  padding:20px;
-  text-align:center;
-}
-header h1{margin:0;font-size:30px}
-
-/* NAV */
-.nav{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:15px;
-}
-.nav button{
-  background:#0e4a6d;
+  background:linear-gradient(180deg,#0a1f33,#061423);
   color:white;
-  border:none;
-  padding:8px 18px;
-  border-radius:20px;
-  cursor:pointer;
+  font-family:Arial,Helvetica,sans-serif;
 }
-.nav button.active{
-  background:#19b5ff;
+
+header{
+  background:#050f1a;
+  padding:15px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+header h1{
+  margin:0;
+  font-size:22px;
+}
+
+nav{
+  display:flex;
+  gap:20px;
+}
+
+nav a{
+  color:#cfe9ff;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+nav a:hover{
+  color:#3dbbff;
 }
 
 /* CATEGORY TABS */
-.tabs{
+.categories{
   display:flex;
   justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin:20px;
+  gap:12px;
+  margin:25px 0;
 }
-.tabs button{
-  background:#0e4a6d;
-  border:none;
+
+.categories button{
+  background:#0b2c44;
   color:white;
-  padding:6px 14px;
-  border-radius:14px;
+  border:none;
+  padding:8px 16px;
+  border-radius:6px;
   cursor:pointer;
 }
-.tabs button.active{
-  background:#19b5ff;
+
+.categories button.active{
+  background:#1ea7ff;
 }
 
 /* PET GRID */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
-  gap:15px;
-  padding:20px;
-  max-width:1100px;
-  margin:auto;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:18px;
 }
 
-.card{
-  background:#0f4d73;
-  border-radius:12px;
-  padding:10px;
+.pet{
+  background:#0b2c44;
+  border-radius:8px;
+  padding:12px;
   text-align:center;
 }
-.card img{
-  width:90px;
-  height:90px;
+
+.pet img{
+  width:120px;
+  height:120px;
   object-fit:contain;
 }
-.card h3{
-  margin:8px 0 6px;
-  font-size:15px;
-}
-.values{
-  font-size:13px;
-  line-height:1.4;
+
+.pet h3{
+  margin:10px 0 6px;
+  font-size:16px;
 }
 
-/* FOOTER */
+.values{
+  font-size:14px;
+  line-height:1.5;
+}
+
 footer{
+  margin-top:40px;
   text-align:center;
-  font-size:12px;
+  font-size:13px;
   opacity:.8;
   padding:20px;
 }
@@ -104,14 +112,14 @@ footer{
 
 <header>
   <h1>Tap Simulator Value List</h1>
-
-  <div class="nav">
-    <button class="active">Home</button>
-    <button>Value List</button>
-  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Value List</a>
+    <a href="#">Discord</a>
+  </nav>
 </header>
 
-<div class="tabs">
+<div class="categories">
   <button class="active" onclick="showAll()">All</button>
   <button onclick="filterPets('secret1')">Secret I</button>
   <button onclick="filterPets('secret2')">Secret II</button>
@@ -120,7 +128,9 @@ footer{
   <button onclick="filterPets('leaderboard')">Leaderboard</button>
 </div>
 
-<div id="pets" class="grid"></div>
+<div class="container">
+  <div id="pets" class="grid"></div>
+</div>
 
 <footer>
   DISCLAIMER: Serials can affect values drastically.<br>
@@ -128,54 +138,52 @@ footer{
 </footer>
 
 <script>
-const PETS_URL = "https://asignas19-ui.github.io/value-list/pets.json";
-let allPets = [];
+const URL = "https://asignas19-ui.github.io/value-list/pets.json";
+let pets = [];
 
-fetch(PETS_URL)
-  .then(res => res.json())
-  .then(data => {
-    allPets = data;
-    renderPets(allPets);
+fetch(URL)
+  .then(r => r.json())
+  .then(d => {
+    pets = d;
+    render(pets);
   })
-  .catch(() => {
+  .catch(()=> {
     document.getElementById("pets").innerHTML = "Failed to load pets.";
   });
 
-function renderPets(list){
+function render(list){
   const grid = document.getElementById("pets");
   grid.innerHTML = "";
-
-  list.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${p.image}">
-      <h3>${p.name}</h3>
-      <div class="values">
-        Normal: ${p.values.normal}<br>
-        Golden: ${p.values.golden}<br>
-        Rainbow: ${p.values.rainbow}
+  list.forEach(p=>{
+    grid.innerHTML += `
+      <div class="pet">
+        <img src="${p.image}">
+        <h3>${p.name}</h3>
+        <div class="values">
+          ⭐ Normal: ${p.values.normal}<br>
+          🟡 Golden: ${p.values.golden}<br>
+          🌈 Rainbow: ${p.values.rainbow}
+        </div>
       </div>
     `;
-    grid.appendChild(card);
   });
 }
 
 function clearActive(){
-  document.querySelectorAll(".tabs button")
+  document.querySelectorAll(".categories button")
     .forEach(b=>b.classList.remove("active"));
 }
 
 function showAll(){
   clearActive();
   event.target.classList.add("active");
-  renderPets(allPets);
+  render(pets);
 }
 
 function filterPets(cat){
   clearActive();
   event.target.classList.add("active");
-  renderPets(allPets.filter(p => p.category === cat));
+  render(pets.filter(p=>p.category===cat));
 }
 </script>
 
