@@ -6,194 +6,292 @@
 <title>Tap Simulator Values</title>
 
 <style>
-*{box-sizing:border-box;font-family:Arial}
 body{
-  margin:0;
-  background:linear-gradient(135deg,#0b132b,#1c2541);
-  color:#fff;
-}
-
-/* DISCORD BUTTON */
-.discord-btn{
-  position:fixed;
-  top:14px;
-  right:14px;
-  background:#5865F2;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:20px;
-  text-decoration:none;
-  font-weight:bold;
-  z-index:999;
+    margin:0;
+    font-family:Segoe UI,Arial,sans-serif;
+    background:linear-gradient(180deg,#0c1220,#1b2a4a);
+    color:white;
 }
 
 /* HEADER */
-header{text-align:center;padding:16px}
-nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-nav button{
-  background:#1f3b8a;border:none;padding:8px 14px;
-  border-radius:20px;color:#fff;cursor:pointer
+header{
+    background:#0f1730;
+    padding:18px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:999;
 }
-nav button.active{background:#3a6cff}
+header h1{
+    margin:0;
+    font-size:28px;
+}
+.top-nav{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+.top-nav button{
+    background:#1a2550;
+    border:none;
+    padding:8px 16px;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+}
+.top-nav button.active{
+    background:#5865f2;
+}
+.discord{
+    position:absolute;
+    right:16px;
+    top:22px;
+}
+.discord a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
 
-/* SECTIONS */
-.section{
-  max-width:1000px;margin:16px auto;
-  background:#111a33;border-radius:16px;padding:16px
+/* CONTAINER */
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
 }
-.section h2{margin-top:0;color:#4fd1ff}
 
 /* HOME */
-.home-flex{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.home-flex img{width:140px;border-radius:12px}
-
-/* TABS */
-.tabs{
-  display:flex;justify-content:center;
-  gap:8px;flex-wrap:wrap;margin:12px 0
+.home-card{
+    background:#121c3d;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:18px;
 }
-.tabs button{
-  background:#0f1b3d;border:none;color:#fff;
-  padding:6px 12px;border-radius:14px;cursor:pointer
+.news{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
 }
-.tabs button.active{background:#3a6cff}
+.news img{
+    width:100%;
+    max-width:520px;
+    border-radius:16px;
+}
+.news ul{
+    padding-left:18px;
+}
+.home-card h2{
+    color:#7ffcff;
+}
 
-/* SEARCH */
-.search{
-  width:100%;padding:10px;
-  border-radius:14px;border:none;margin-bottom:14px
+/* VALUE LIST */
+.center-tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+}
+.center-tabs button{
+    background:#1a2550;
+    border:none;
+    padding:7px 14px;
+    border-radius:20px;
+    color:white;
+    cursor:pointer;
+}
+.center-tabs button.active{
+    background:#5865f2;
+}
+
+.search-box{
+    max-width:320px;
+    margin:0 auto 20px;
+}
+.search-box input{
+    width:100%;
+    padding:10px;
+    border-radius:12px;
+    border:none;
+    background:#0e1630;
+    color:white;
 }
 
 /* PET GRID */
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:14px;
-  justify-content:center;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:18px;
 }
-
-/* PET CARD (FIXED SIZE) */
-.pet{
-  background:#0e1835;
-  border-radius:16px;
-  padding:10px;
-  text-align:center;
-  height:260px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+.card{
+    background:#0e1630;
+    border-radius:16px;
+    padding:12px;
+    text-align:center;
+    height:340px; /* FIXED SIZE */
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
-.pet img{
-  width:100%;
-  height:120px;
-  object-fit:cover;
-  border-radius:12px;
+.card img{
+    width:100%;
+    height:140px;
+    object-fit:contain;
 }
-.pet h4{margin:8px 0 4px;font-size:14px}
-.pet p{margin:2px;font-size:12px}
+.pet-name{
+    font-weight:bold;
+    color:#7ffcff;
+}
+.value-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+}
 
 /* DISCLAIMER */
-.disclaimer{text-align:center;font-size:13px;opacity:.8;margin:20px}
+.disclaimer{
+    background:#0e1630;
+    border-radius:14px;
+    padding:14px;
+    margin-top:20px;
+    opacity:0.85;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    opacity:0.6;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    header h1{font-size:22px;}
+    .discord{position:static;margin-top:10px;}
+    .news{flex-direction:column;}
+}
 </style>
 </head>
 
 <body>
 
-<a class="discord-btn" href="https://discord.gg/tapsim" target="_blank">Discord</a>
-
 <header>
-  <h1>Tap Simulator Values</h1>
-  <nav>
-    <button onclick="showHome()" class="active">🏠 Home</button>
-    <button onclick="showValues()">💎 Value List</button>
-  </nav>
+    <h1>Tap Simulator Values</h1>
+    <div class="top-nav">
+        <button class="main-tab active" data-tab="home">Home</button>
+        <button class="main-tab" data-tab="values">Value List</button>
+    </div>
+    <div class="discord">
+        <a href="https://discord.gg/tapsim" target="_blank">Discord</a>
+    </div>
 </header>
 
+<div class="container">
+
 <!-- HOME -->
-<div id="home" class="section">
-  <div class="home-flex">
-    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280">
-    <div>
-      <h2>⚡ Recent Game Update</h2>
-      <p>• Space World ✨</p>
-      <p>• New Areas</p>
-      <p>• New Exclusives</p>
-      <p>• 35+ New Pets 🐾</p>
+<div id="home">
+    <div class="home-card news">
+        <div>
+            <h2>⚡ Recent Game Update</h2>
+            <ul>
+                <li>Space World</li>
+                <li>Void Spin Wheel</li>
+                <li>New Exclusives</li>
+                <li>35+ New Pets</li>
+            </ul>
+        </div>
+        <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280">
     </div>
-  </div>
 
-  <h2>🎩 Owners</h2>
-  <p>• GoldAstro</p>
-  <p>• Hyper</p>
+    <div class="home-card">
+        <h2>🎩 Owners</h2>
+        <p>• GoldAstro</p>
+        <p>• Hyper</p>
+    </div>
 
-  <h2>✨ Editors</h2>
-  <p>• NotSpeedGuy</p>
-  <p>• Diamondz</p>
+    <div class="home-card">
+        <h2>🪄 Editors</h2>
+        <p>• NotSpeedGuy</p>
+        <p>• Diamondz</p>
+    </div>
+
+    <div class="disclaimer">
+        <b>Disclaimer:</b><br>
+        Serials can affect values drastically.<br>
+        O/C = Owner Choice · N/A = Not Available
+    </div>
 </div>
 
-<!-- VALUES -->
-<div id="values" class="section" style="display:none">
+<!-- VALUE LIST -->
+<div id="values" style="display:none;">
+    <div class="center-tabs">
+        <button class="cat active" data-cat="all">All</button>
+        <button class="cat" data-cat="secret1">Secret I</button>
+        <button class="cat" data-cat="secret2">Secret II</button>
+        <button class="cat" data-cat="exclusive">Exclusive</button>
+        <button class="cat" data-cat="leaderboard">Leaderboard Pets</button>
+        <button class="cat" data-cat="mythic">Mythics</button>
+    </div>
 
-  <div class="tabs">
-    <button class="active" onclick="filter('all')">All</button>
-    <button onclick="filter('secret1')">Secret I</button>
-    <button onclick="filter('secret2')">Secret II</button>
-    <button onclick="filter('exclusive')">Exclusive</button>
-    <button onclick="filter('leaderboard')">Leaderboard Pets</button>
-    <button onclick="filter('mythic')">Mythics</button>
-  </div>
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search pets...">
+    </div>
 
-  <input class="search" placeholder="Search pets..." oninput="searchPets(this.value)">
-
-  <div class="grid" id="grid"></div>
+    <div class="grid" id="grid"></div>
 </div>
 
-<div class="disclaimer">
-  DISCLAIMER: Serials can affect values drastically.<br>
-  O/C = Owners Choice • N/A = Not Available
 </div>
+
+<footer>© 2026 Tap Simulator Values</footer>
 
 <script>
-let pets=[],current='all',query='';
+const grid=document.getElementById("grid");
+const search=document.getElementById("search");
+let pets=[];
+let currentCat="all";
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
-.then(r=>r.json()).then(d=>{pets=d;render()});
-
-function showHome(){
-  home.style.display='block';
-  values.style.display='none';
-}
-function showValues(){
-  home.style.display='none';
-  values.style.display='block';
-}
-
-function filter(c){
-  current=c;
-  document.querySelectorAll('.tabs button')
-    .forEach(b=>b.classList.remove('active'));
-  event.target.classList.add('active');
-  render();
-}
-
-function searchPets(q){query=q.toLowerCase();render()}
+.then(r=>r.json())
+.then(d=>{pets=d;render();});
 
 function render(){
-  grid.innerHTML='';
-  pets.filter(p=>
-    (current==='all'||p.category===current)&&
-    p.name.toLowerCase().includes(query)
-  ).forEach(p=>{
-    grid.innerHTML+=`
-    <div class="pet">
-      <img src="${p.image}">
-      <h4>${p.name}</h4>
-      <p>💎 Normal: ${p.values.normal ?? 'N/A'}</p>
-      <p>✨ Golden: ${p.values.golden ?? 'N/A'}</p>
-      <p>🌈 Rainbow: ${p.values.rainbow ?? 'N/A'}</p>
-    </div>`;
-  });
+    grid.innerHTML="";
+    pets.filter(p=>{
+        return (currentCat==="all"||p.category===currentCat) &&
+        p.name.toLowerCase().includes(search.value.toLowerCase());
+    }).forEach(p=>{
+        grid.innerHTML+=`
+        <div class="card">
+            <img src="${p.image}">
+            <div class="pet-name">${p.name}</div>
+            <div class="value-row"><span>Normal</span><span>${p.values.normal}</span></div>
+            <div class="value-row"><span>Golden</span><span>${p.values.golden}</span></div>
+            <div class="value-row"><span>Rainbow</span><span>${p.values.rainbow}</span></div>
+        </div>`;
+    });
 }
+
+document.querySelectorAll(".cat").forEach(b=>{
+    b.onclick=()=>{
+        document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+        b.classList.add("active");
+        currentCat=b.dataset.cat;
+        render();
+    };
+});
+
+search.oninput=render;
+
+document.querySelectorAll(".main-tab").forEach(b=>{
+    b.onclick=()=>{
+        document.querySelectorAll(".main-tab").forEach(x=>x.classList.remove("active"));
+        b.classList.add("active");
+        home.style.display=b.dataset.tab==="home"?"block":"none";
+        values.style.display=b.dataset.tab==="values"?"block":"none";
+    };
+});
 </script>
 
 </body>
