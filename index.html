@@ -36,9 +36,6 @@ body{
   margin:0 14px;
   text-decoration:none;
   font-size:14px;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
 }
 .discord{
   background:#5865F2;
@@ -59,7 +56,7 @@ body{
 
 /* SECTIONS */
 .section{
-  max-width:900px;
+  max-width:950px;
   margin:30px auto;
   background:linear-gradient(180deg,#1a1f35,#14182a);
   border-radius:18px;
@@ -76,14 +73,16 @@ body{
 .news{
   display:flex;
   gap:20px;
+  align-items:flex-start;
 }
 .news img{
-  width:150px;
+  width:180px;
   border-radius:14px;
 }
 .news ul{
   margin:0;
   padding-left:18px;
+  line-height:1.6;
 }
 
 /* TABS */
@@ -185,11 +184,11 @@ footer{
   <div class="section news">
     <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkc9IFtEEFDxS7spwNrZgxSPSzgZb6c7xdlPnf0iOplgMklWN8kovZZqeYZIg8EA6aQYYlnyY6-1GFDQ022uuehnWRM7mJXFkLuAerUEYQ0bEodQGVNgg55qEhlV-O5Elg4YqnP5xe8h-vS8He3_c_CzNGO0njRzF0hze7awF3uFtdAS0fxpZSIR6rc=w1280">
     <div>
-      <h3>⚡ Recent Game Update</h3>
+      <h3>⚡ Latest Update</h3>
       <ul>
-        <li>⚡ List Last Updated – 24/01/26</li>
-        <li>📅 Most Recent Game Update – 22/01/26</li>
-        <li>✨ Celestial World</li>
+        <li><b>List Last Updated:</b> 24/01/26</li>
+        <li><b>Most Recent Game Update:</b> 22/01/26</li>
+        <li>🌌 Celestial World</li>
         <li>🔮 1 New Area</li>
         <li>🎈 Electric Spin Wheel</li>
         <li>🛒 New Exclusive Egg</li>
@@ -229,7 +228,7 @@ footer{
 
   <div class="tabs" id="tabs"></div>
 
-  <div class="search">
+  <div class="search" id="searchBox">
     <input id="search" placeholder="Search pets..." oninput="renderPets()">
   </div>
 
@@ -239,7 +238,7 @@ footer{
 <footer>© 2026 Tap Sim Values – Fan made</footer>
 
 <script>
-let pets=[],currentCat="All";
+let pets=[],currentCat="all";
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
@@ -250,14 +249,21 @@ fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 });
 
 function buildTabs(){
-  const cats=["All",...new Set(pets.map(p=>p.category))];
+  const cats=["all",...new Set(pets.map(p=>p.category))];
   const wrap=document.getElementById("tabs");
   wrap.innerHTML="";
   cats.forEach(c=>{
     const t=document.createElement("div");
-    t.className="tab"+(c==="All"?" active":"");
-    t.textContent=c.replace("secret1","Secret I").replace("secret2","Secret II");
-    t.onclick=()=>{currentCat=c;document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");renderPets();}
+    t.className="tab"+(c==="all"?" active":"");
+    t.textContent=c==="all"?"All":c.replace("secret1","Secret I").replace("secret2","Secret II");
+    t.onclick=()=>{
+      currentCat=c;
+      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+      t.classList.add("active");
+      document.getElementById("searchBox").style.display =
+        c==="all" ? "block" : "none";
+      renderPets();
+    };
     wrap.appendChild(t);
   });
 }
@@ -266,16 +272,18 @@ function renderPets(){
   const q=document.getElementById("search").value.toLowerCase();
   const grid=document.getElementById("grid");
   grid.innerHTML="";
-  pets.filter(p=>(currentCat==="All"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
-  .forEach(p=>{
+  pets.filter(p=>{
+    return (currentCat==="all"||p.category===currentCat)
+      && (currentCat!=="all"||p.name.toLowerCase().includes(q));
+  }).forEach(p=>{
     grid.innerHTML+=`
       <div class="pet">
         <img src="${p.image}">
         <h3>${p.name}</h3>
         <div class="price">
-          💎 Normal: ${p.normal ?? "N/A"}<br>
-          ⭐ Golden: ${p.golden ?? "N/A"}<br>
-          🌈 Rainbow: ${p.rainbow ?? "N/A"}
+          💎 Normal: ${p.values?.normal ?? "N/A"}<br>
+          ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
+          🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
         </div>
       </div>`;
   });
