@@ -5,10 +5,11 @@
 <title>Tap Simulator Values</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root{
+:root {
   --bg:#0b1020;
   --card:#121833;
   --pill:#1f254a;
@@ -75,8 +76,9 @@ nav{
   padding:20px;
   border-radius:18px;
 }
+.card ul{padding-left:18px}
 
-/* VALUE */
+/* VALUE LIST */
 .value{
   max-width:1200px;
   margin:auto;
@@ -96,6 +98,7 @@ nav{
   border-radius:999px;
   background:var(--pill);
   cursor:pointer;
+  font-size:14px;
 }
 .pill.active{
   background:var(--active);
@@ -113,6 +116,12 @@ nav{
   padding:10px 14px;
   border-radius:12px;
   border:none;
+  outline:none;
+}
+.search i{
+  padding:10px;
+  background:var(--pill);
+  border-radius:12px;
 }
 
 /* PET GRID */
@@ -131,28 +140,18 @@ nav{
   width:100%;
   border-radius:12px;
 }
+.pet h4{margin:8px 0 4px}
 
 /* FOOTER */
 .footer{
   max-width:1100px;
   margin:40px auto;
   padding:20px;
-  background:linear-gradient(180deg,#141b3a,#0f1530);
-  border-radius:20px;
 }
-.footer h4{
-  margin-bottom:6px;
-}
-.list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
+.footer ul{
+  list-style:disc;
+  padding-left:20px;
   color:var(--muted);
-}
-.list span::before{
-  content:"• ";
-  color:#4f6bff;
-  font-weight:bold;
 }
 
 /* MOBILE */
@@ -179,6 +178,7 @@ nav{
   <p>Community driven Tap Simulator values</p>
 </section>
 
+<!-- HOME -->
 <section class="home" id="home">
   <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkc9IFtEEFDxS7spwNrZgxSPSzgZB6c7xdlPnf0iOplgMklWN8kovZZqeYZIg8EA6aQYYlnyY6-1GFDQ022uuehnWRM7mJXFkLuAerUEYQ0bEodQGVNgg55qEhlV-O5Elg4YqnP5xe8h-vS8He3_c_CzNGO0njRzF0hze7awF3uFtdAS0fxpZSIR6rc=w1280">
 
@@ -197,6 +197,7 @@ nav{
   </div>
 </section>
 
+<!-- VALUE LIST -->
 <section class="value" id="value">
   <div class="pills" id="tabs"></div>
 
@@ -210,36 +211,32 @@ nav{
 
 <footer class="footer">
   <h4>Owners</h4>
-  <div class="list">
-    <span>Asignas</span>
-  </div>
+  <ul><li>• Asignas</li></ul>
 
-  <h4 style="margin-top:14px">Editors</h4>
-  <div class="list">
-    <span>Editor1</span>
-    <span>Editor2</span>
-  </div>
+  <h4>Editors</h4>
+  <ul><li>• Editor1</li><li>• Editor2</li></ul>
 
-  <h4 style="margin-top:14px">Disclaimer</h4>
+  <h4>Disclaimer</h4>
   <p class="muted">Values are community based and may change.</p>
 </footer>
 
 <script>
-const jsonURL="https://asignas19-ui.github.io/value-list/pets.json?"+Date.now();
-let pets=[],current="All";
+const jsonURL = "https://asignas19-ui.github.io/value-list/pets.json?"+Date.now();
+let pets=[], current="All";
+
 const tabs=["All","Mythics","Secret I","Secret II","Exclusive","Leaderboard Pets"];
 
 fetch(jsonURL).then(r=>r.json()).then(d=>{pets=d;renderTabs();renderPets()});
 
 function renderTabs(){
-  tabsDiv=document.getElementById("tabs");
-  tabsDiv.innerHTML="";
-  tabs.forEach(t=>{
+  const t=document.getElementById("tabs");
+  t.innerHTML="";
+  tabs.forEach(tab=>{
     const d=document.createElement("div");
-    d.className="pill"+(t===current?" active":"");
-    d.innerText=t;
-    d.onclick=()=>{current=t;renderTabs();renderPets()};
-    tabsDiv.appendChild(d);
+    d.className="pill"+(tab===current?" active":"");
+    d.innerText=tab;
+    d.onclick=()=>{current=tab;renderTabs();renderPets()};
+    t.appendChild(d);
   });
 }
 
