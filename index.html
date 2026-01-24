@@ -1,192 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tap Simulator Values</title>
+
 <style>
-  body {margin:0; font-family:"Segoe UI", Tahoma, sans-serif; background:#0b1324; color:white;}
-  .top-header {
-    background: url("https://images.unsplash.com/photo-1604014237744-3b3f0c5d0c4b?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
-    padding:18px 24px; box-shadow:0 4px 20px rgba(0,0,0,0.4); position:sticky; top:0; z-index:1000;
-  }
-  .header-content { max-width:1400px; margin:auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;}
-  .left-header {display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
-  .header-content h1 {margin:0; font-size:26px; font-weight:800; color:white; text-shadow:0 2px 10px rgba(0,0,0,0.6);}
-  .nav-btn { background: rgba(0,0,0,0.45); color:white; border:none; padding:8px 14px; border-radius:999px; font-weight:600; font-size:13px; cursor:pointer; transition:0.2s; }
-  .nav-btn:hover { background: rgba(255,255,255,0.15);}
-  .discord-btn { background: linear-gradient(135deg,#5865f2,#4752c4); color:white; text-decoration:none; padding:10px 18px; border-radius:999px; font-weight:700; font-size:14px; box-shadow:0 4px 15px rgba(0,0,0,0.3); transition: transform 0.15s, box-shadow 0.15s;}
-  .discord-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.5); }
+body{margin:0;font-family:Segoe UI;background:#0b1324;color:#fff}
+header{text-align:center;padding:20px;font-size:26px;font-weight:900;color:#7ffcff}
+.container{max-width:1400px;margin:auto;padding:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.card{background:#0f172d;border-radius:18px;padding:14px}
+.card img{width:100%;border-radius:14px}
+.pet-name{text-align:center;font-weight:800;margin:8px 0}
+.value-row{display:flex;justify-content:space-between;margin:6px 0}
+.normal{color:#cfd4ff}
+.golden{color:gold}
+.rainbow{background:linear-gradient(45deg,red,orange,yellow,green,cyan,blue,violet);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.price{display:flex;align-items:center;gap:6px;font-weight:800}
+.price img{width:16px}
 
-  .container { padding:24px; max-width:1400px; margin:auto; }
-
-  /* HOME CONTENT */
-  #homeContent img { 
-    width: 100%; 
-    max-width: 500px; 
-    border-radius:18px; 
-    margin:16px auto; 
-    display:block; 
-  }
-  #homeContent h2 { color:#7ffcff; margin-top:20px; font-size:22px; }
-  #homeContent p, #homeContent li { font-size:16px; line-height:1.8; color:#cfd4ff; margin-bottom:10px; }
-
-  /* PETS DASHBOARD */
-  .filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
-  .filter-btn { background:#141c33; border:1px solid #263055; color:white; padding:7px 14px; border-radius:999px; cursor:pointer; font-size:13px; transition:0.2s; }
-  .filter-btn:hover { background:#1e2950; }
-  .filter-btn.active { background:#5865f2; border-color:#5865f2; }
-  .search-box { width:100%; max-width:380px; margin-bottom:22px; }
-  .search-box input { width:100%; padding:12px 14px; border-radius:14px; border:none; outline:none; background:#141c33; color:white; font-size:14px; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; }
-  .card { background:#0f172d; border-radius:18px; padding:14px; box-shadow:0 8px 25px rgba(0,0,0,0.4); transition: transform 0.2s, box-shadow 0.2s; cursor:pointer; }
-  .card:hover { transform:translateY(-4px); box-shadow:0 12px 35px rgba(0,0,0,0.6);}
-  .card img { width:100%; border-radius:14px; margin-bottom:10px; background:#060b1c; }
-  .pet-name { font-size:16px; font-weight:700; margin-bottom:8px; color:#7ffcff; text-align:center; }
-  .values { font-size:13px; line-height:1.6; color:#cfd4ff; }
-  .value-row { display:flex; justify-content:space-between; align-items:center; gap:8px; }
-  .badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:700; }
-  .badge.normal { background:#2b2f45; }
-  .badge.golden { background:gold; color:#000; }
-  .badge.rainbow { background:linear-gradient(45deg,red,orange,yellow,green,cyan,blue,violet); color:#000; }
-  footer { text-align:center; padding:24px; color:#8fa2ff; font-size:12px; opacity:0.7; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .container { padding:16px; }
-    #homeContent h2 { font-size:20px; }
-    #homeContent p, #homeContent li { font-size:15px; line-height:1.6; }
-    .filters { flex-direction:column; gap:8px; }
-    .search-box { max-width:100%; }
-    .card { padding:10px; }
-    .grid { grid-template-columns:1fr; gap:14px; }
-  }
+#passwordModal,#adminPanel{
+position:fixed;inset:0;background:rgba(0,0,0,0.85);
+display:none;justify-content:center;align-items:center;z-index:9999
+}
+.box{background:#0f172d;padding:20px;border-radius:16px;width:90%;max-width:600px;max-height:90vh;overflow:auto}
+input,button{padding:8px;border-radius:8px;border:none}
+button{background:#5865f2;color:white;font-weight:700;cursor:pointer}
+.admin-row{display:grid;grid-template-columns:1fr 80px 80px 80px 1fr 40px;gap:6px;margin-bottom:8px}
+.admin-header{display:flex;justify-content:space-between;align-items:center;font-weight:800;margin-bottom:10px}
 </style>
 </head>
+
 <body>
 
-<header class="top-header">
-  <div class="header-content">
-    <div class="left-header">
-      <h1>Tap Simulator Values</h1>
-      <button class="nav-btn" data-target="homeContent">Home</button>
-      <button class="nav-btn" data-target="petsContent">Pets</button>
-    </div>
-    <a href="https://discord.gg/tapsim" target="_blank" class="discord-btn">Join Discord</a>
-  </div>
-</header>
+<header id="logo">Tap Simulator Values</header>
 
 <div class="container">
-
-  <!-- HOME CONTENT -->
-  <div id="homeContent">
-    <h2>⚡ List Last Updated - 01/19/26</h2>
-    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280" alt="Game Update">
-    <p><strong>Most Recent Game Update:</strong> 10/12/24</p>
-    <ul>
-      <li>Space World✨</li>
-      <li>2 New Areas🔮</li>
-      <li>Void Spin Wheel🎈</li>
-      <li>New Exclusives🛒</li>
-      <li>3+ New Secret Pets🦖</li>
-      <li>4 NEW EGGS🥚!</li>
-      <li>35+ NEW PETS 🐾!</li>
-    </ul>
-
-    <h2>🎩 Value List Owners</h2>
-    <ul>
-      <li>GoldAstro - (goldastro)</li>
-      <li>Hyper - (nrg_elixr3)</li>
-    </ul>
-
-    <h2>🪄 Value List Editors</h2>
-    <ul>
-      <li>NotSpeedGuy - (zacklist)</li>
-      <li>Diamondz - (diamondz_1)</li>
-    </ul>
-
-    <h2>⚠ Disclaimer</h2>
-    <p>Serials can affect values drastically.</p>
-    <p>O/C = Owners Choice</p>
-    <p>N/A = Not Available (AKA Doesn't exist)</p>
-  </div>
-
-  <!-- PETS DASHBOARD -->
-  <div id="petsContent" style="display:none;">
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="secret">Secret Pets</button>
-      <button class="filter-btn" data-filter="exclusive">Exclusive Pets</button>
-      <button class="filter-btn" data-filter="mythic">Mythic</button>
-      <button class="filter-btn" data-filter="limited">Limited</button>
-    </div>
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search pets..." />
-    </div>
-    <div class="grid" id="petsGrid"></div>
-  </div>
-
+  <div class="grid" id="petsGrid"></div>
 </div>
 
-<footer>© 2026 Tap Simulator Values — Fan-made Value List</footer>
+<!-- PASSWORD -->
+<div id="passwordModal">
+  <div class="box">
+    <h3>Admin Login</h3>
+    <input id="passInput" type="password" placeholder="Password" style="width:100%">
+    <button onclick="checkPass()" style="width:100%;margin-top:10px">Login</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+  <div class="box">
+    <div class="admin-header">
+      <span>ADMIN PANEL</span>
+      <button onclick="addPet()">+ Add Pet</button>
+    </div>
+    <div id="adminList"></div>
+    <button onclick="closeAdmin()" style="width:100%">Save & Close</button>
+  </div>
+</div>
 
 <script>
-  // Home / Pets toggle
-  const navButtons=document.querySelectorAll('.nav-btn');
-  const homeContent=document.getElementById('homeContent');
-  const petsContent=document.getElementById('petsContent');
-  navButtons.forEach(btn=>{btn.addEventListener('click',()=>{
-    const target=btn.dataset.target;
-    homeContent.style.display=target==='homeContent'?'block':'none';
-    petsContent.style.display=target==='petsContent'?'block':'none';
-  });});
+const ADMIN_PASSWORD="1234";
+const TOKEN_ICON="https://cdn.discordapp.com/emojis/1437069603913076840.webp?size=32";
 
-  // Pets data
-  const pets=[
-    {name:"Frost Queen", image:"https://i.imgur.com/UNt6YPp.png", category:"secret", values:{normal:25,golden:120,rainbow:120}},
-    {name:"Divine Dragon", image:"https://i.imgur.com/mhe8GJe.png", category:"secret", values:{normal:30,golden:135,rainbow:135}},
-    {name:"Weeping Angel", image:"https://i.imgur.com/8aszU2S.png", category:"secret", values:{normal:35,golden:160,rainbow:160}},
-    {name:"Sakura Dominator", image:"https://i.imgur.com/rg0ypBp.png", category:"secret", values:{normal:40,golden:180,rainbow:180}},
-    {name:"Magmasaur", image:"https://i.imgur.com/sN3Knm9.png", category:"secret", values:{normal:40,golden:180,rainbow:180}}
-  ];
+let pets=JSON.parse(localStorage.getItem("petsData"))||[
+ {name:"Frost Queen",image:"https://i.imgur.com/UNt6YPp.png",values:{normal:25,golden:120,rainbow:120}}
+];
 
-  const petsGrid=document.getElementById("petsGrid");
-  const searchInput=document.getElementById("searchInput");
-  const filterButtons=document.querySelectorAll(".filter-btn");
+const grid=document.getElementById("petsGrid");
+const adminList=document.getElementById("adminList");
 
-  function renderPets(filter="all",search=""){
-    petsGrid.innerHTML="";
-    const filtered=pets.filter(pet=>(filter==='all'||pet.category===filter)
-      && pet.name.toLowerCase().includes(search.toLowerCase()));
-    if(filtered.length===0){ petsGrid.innerHTML="<p>No pets found.</p>"; return;}
-    filtered.forEach(pet=>{
-      const card=document.createElement("div");
-      card.className="card";
-      card.innerHTML=`
-        <img src="${pet.image}" alt="${pet.name}">
-        <div class="pet-name">${pet.name}</div>
-        <div class="values">
-          <div class="value-row"><span>💎 Normal</span><span>${pet.values.normal} <span class="badge normal">Normal</span></span></div>
-          <div class="value-row"><span>✨ Golden</span><span>${pet.values.golden} <span class="badge golden">Golden</span></span></div>
-          <div class="value-row"><span>🌈 Rainbow</span><span>${pet.values.rainbow} <span class="badge rainbow">Rainbow</span></span></div>
-        </div>`;
-      petsGrid.appendChild(card);
-    });
-  }
+function render(){
+grid.innerHTML="";
+pets.forEach(p=>{
+grid.innerHTML+=`
+<div class="card">
+<img src="${p.image}">
+<div class="pet-name">${p.name}</div>
+<div class="value-row"><span class="normal">Normal</span><span class="price">${p.values.normal}<img src="${TOKEN_ICON}"></span></div>
+<div class="value-row"><span class="golden">Golden</span><span class="price">${p.values.golden}<img src="${TOKEN_ICON}"></span></div>
+<div class="value-row"><span class="rainbow">Rainbow</span><span class="price">${p.values.rainbow}<img src="${TOKEN_ICON}"></span></div>
+</div>`;
+});
+}
 
-  filterButtons.forEach(btn=>{btn.addEventListener("click",()=>{
-    filterButtons.forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    const filter=btn.dataset.filter;
-    renderPets(filter,searchInput.value);
-  });});
+function openAdmin(){
+adminList.innerHTML="";
+pets.forEach((p,i)=>{
+adminList.innerHTML+=`
+<div class="admin-row">
+<input value="${p.name}" onchange="pets[${i}].name=this.value">
+<input value="${p.values.normal}" onchange="pets[${i}].values.normal=this.value">
+<input value="${p.values.golden}" onchange="pets[${i}].values.golden=this.value">
+<input value="${p.values.rainbow}" onchange="pets[${i}].values.rainbow=this.value">
+<input value="${p.image}" onchange="pets[${i}].image=this.value">
+<button onclick="deletePet(${i})">❌</button>
+</div>`;
+});
+document.getElementById("adminPanel").style.display="flex";
+}
 
-  searchInput.addEventListener("input",()=>{
-    const activeFilter=document.querySelector(".filter-btn.active").dataset.filter;
-    renderPets(activeFilter,searchInput.value);
-  });
+function closeAdmin(){
+localStorage.setItem("petsData",JSON.stringify(pets));
+document.getElementById("adminPanel").style.display="none";
+render();
+}
 
-  renderPets();
+function addPet(){
+pets.push({name:"New Pet",image:"https://i.imgur.com/UNt6YPp.png",values:{normal:0,golden:0,rainbow:0}});
+openAdmin();
+}
+
+function deletePet(i){
+pets.splice(i,1);
+openAdmin();
+}
+
+function checkPass(){
+if(document.getElementById("passInput").value===ADMIN_PASSWORD){
+document.getElementById("passwordModal").style.display="none";
+openAdmin();
+}
+}
+
+document.addEventListener("keydown",e=>{
+if(e.ctrlKey&&e.shiftKey&&e.key==="A"){
+document.getElementById("passwordModal").style.display="flex";
+}
+});
+
+// MOBILE: tap logo 5x
+let taps=0;
+document.getElementById("logo").addEventListener("click",()=>{
+taps++;setTimeout(()=>taps=0,600);
+if(taps===5){
+document.getElementById("passwordModal").style.display="flex";
+}
+});
+
+render();
 </script>
 
 </body>
