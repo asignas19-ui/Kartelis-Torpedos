@@ -5,24 +5,28 @@
 <title>Tap Simulator Values</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ICONS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0b0e17;
-  --panel:#14182a;
-  --card:#1a1f36;
+  --bg:#070a14;
+  --panel:#0f1426;
+  --card:#141a33;
   --accent:#7c6cff;
+  --accent-soft:rgba(124,108,255,.25);
   --text:#eef1ff;
   --muted:#9aa2c7;
 }
 
-*{box-sizing:border-box;font-family:Inter,Segoe UI,system-ui}
+*{box-sizing:border-box;font-family:Inter,system-ui}
 
 body{
   margin:0;
-  background:radial-gradient(circle at top,#1b1f35,#0b0e17 65%);
+  background:
+    radial-gradient(circle at 50% -20%,#242b55 0%,transparent 60%),
+    radial-gradient(circle at bottom,#11162e,transparent 60%),
+    var(--bg);
   color:var(--text);
 }
 
@@ -31,34 +35,53 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:14px 24px;
+  padding:14px 26px;
+  background:rgba(10,14,30,.6);
+  backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
-.logo{font-weight:700}
+.logo{
+  font-weight:700;
+  letter-spacing:.4px;
+}
 .nav a{
   color:#dfe3ff;
-  margin:0 12px;
+  margin:0 14px;
   text-decoration:none;
   font-size:14px;
+  opacity:.85;
 }
+.nav a:hover{opacity:1}
 .nav i{margin-right:6px}
+
 .discord{
-  background:#5865F2;
-  padding:8px 14px;
-  border-radius:10px;
+  background:linear-gradient(135deg,#5865F2,#7c6cff);
+  padding:8px 16px;
+  border-radius:12px;
   color:#fff;
   text-decoration:none;
   font-weight:600;
+  box-shadow:0 0 25px rgba(124,108,255,.45);
 }
 .discord i{margin-right:6px}
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:60px 20px 30px;
+  padding:80px 20px 35px;
 }
-.hero h1{font-size:40px;margin:0}
-.hero p{color:var(--muted);margin-top:8px}
+.hero h1{
+  font-size:42px;
+  margin:0;
+  background:linear-gradient(90deg,#fff,#b7bdff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+  font-size:15px;
+}
 
 /* TABS */
 .tabs{
@@ -66,81 +89,110 @@ body{
   gap:10px;
   justify-content:center;
   flex-wrap:wrap;
-  margin:25px 20px;
+  margin:28px 20px;
 }
 .tab{
-  background:rgba(255,255,255,.08);
-  padding:8px 18px;
+  padding:9px 20px;
   border-radius:999px;
   font-size:13px;
   cursor:pointer;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  color:#cfd5ff;
+  transition:.25s;
+}
+.tab:hover{
+  background:rgba(124,108,255,.25);
 }
 .tab.active{
   background:var(--accent);
   color:#000;
   font-weight:600;
+  box-shadow:0 0 20px var(--accent-soft);
 }
 
 /* SEARCH */
 .search{
-  max-width:680px;
-  margin:0 auto 30px;
+  max-width:720px;
+  margin:0 auto 35px;
 }
 .search input{
   width:100%;
-  padding:14px 18px;
-  border-radius:14px;
-  border:none;
-  outline:none;
-  background:#14182a;
+  padding:15px 20px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(15,20,40,.8);
   color:#fff;
+  font-size:14px;
 }
+.search input::placeholder{color:#8e95c9}
 
 /* GRID */
 .grid{
-  max-width:1300px;
+  max-width:1350px;
   margin:auto;
-  padding:0 20px 60px;
+  padding:0 24px 70px;
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:22px;
 }
 
 /* PET CARD */
 .pet{
-  background:linear-gradient(180deg,#1d223a,#15192d);
-  border-radius:18px;
+  background:
+    linear-gradient(180deg,#1a2144,#121733);
+  border-radius:20px;
   padding:14px;
-  box-shadow:0 15px 40px rgba(0,0,0,.5);
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 18px 50px rgba(0,0,0,.55);
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
 }
+.pet::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top,rgba(124,108,255,.25),transparent 60%);
+  opacity:0;
+  transition:.35s;
+}
+.pet:hover::before{opacity:1}
+.pet:hover{
+  transform:translateY(-6px) scale(1.015);
+  box-shadow:0 30px 70px rgba(0,0,0,.8);
+}
+
 .pet img{
   width:100%;
   border-radius:14px;
 }
 .pet h3{
   text-align:center;
-  margin:10px 0 8px;
+  margin:12px 0 8px;
   font-size:15px;
+  font-weight:600;
 }
 .meta{
   font-size:12px;
   color:var(--muted);
-  line-height:1.6;
+  line-height:1.7;
+  text-align:center;
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:30px;
+  padding:35px 20px;
   font-size:12px;
   color:#7f86b8;
+  opacity:.8;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP -->
 <div class="topbar">
   <div class="logo">Tap Sim Values</div>
   <div class="nav">
@@ -152,23 +204,19 @@ footer{
   </a>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <h1>Tap Simulator Value List</h1>
-  <p>Community driven Tap Simulator pet values.</p>
+  <p>Community driven • Accurate Tap Simulator pet values</p>
 </div>
 
-<!-- TABS -->
 <div class="tabs" id="tabs">
   <div class="tab active" data-cat="all">All</div>
 </div>
 
-<!-- SEARCH -->
 <div class="search">
   <input id="search" placeholder="Search pets...">
 </div>
 
-<!-- PET GRID -->
 <div class="grid" id="grid"></div>
 
 <footer>
@@ -196,18 +244,16 @@ function buildTabs(){
     const t=document.createElement("div");
     t.className="tab";
     t.textContent=formatCat(c);
-    t.dataset.cat=c;
     t.onclick=()=>setCat(c,t);
     tabs.appendChild(t);
   });
 }
 
 function formatCat(c){
-  return c
-    .replace("secret1","Secret I")
-    .replace("secret2","Secret II")
-    .replace(/_/g," ")
-    .toUpperCase();
+  return c.replace("secret1","Secret I")
+          .replace("secret2","Secret II")
+          .replace(/_/g," ")
+          .toUpperCase();
 }
 
 function setCat(c,el){
@@ -237,8 +283,7 @@ function render(){
           ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
           🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
         </div>
-      </div>
-    `;
+      </div>`;
   });
 }
 </script>
