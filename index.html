@@ -23,27 +23,30 @@ body{
   color:var(--text);
 }
 
-/* TOP BAR */
+/* ===== TOP BAR ===== */
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:999;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 20px;
-  background:rgba(11,13,20,.95);
-  backdrop-filter:blur(10px);
+  padding:14px 18px;
   border-bottom:1px solid rgba(255,255,255,.06);
 }
-.logo{font-weight:700}
+.logo{
+  font-weight:700;
+  font-size:16px;
+}
+.nav{
+  display:flex;
+  gap:16px;
+}
 .nav a{
   color:#dce0ff;
-  margin:0 12px;
   text-decoration:none;
   font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
-.nav a:hover{opacity:.8}
 .discord{
   background:#5865F2;
   padding:10px 16px;
@@ -53,7 +56,7 @@ body{
   text-decoration:none;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
   text-align:center;
   padding:70px 20px 30px;
@@ -61,7 +64,7 @@ body{
 .hero h1{font-size:38px;margin:0}
 .hero p{color:var(--muted)}
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 .section{
   max-width:900px;
   margin:25px auto;
@@ -71,7 +74,7 @@ body{
 }
 .section h3{margin-top:0}
 
-/* NEWS */
+/* ===== NEWS ===== */
 .news{
   display:flex;
   gap:20px;
@@ -86,11 +89,11 @@ body{
 .news ul{margin:0;padding-left:20px}
 .news li{margin:6px 0}
 
-/* LISTS */
+/* ===== LISTS ===== */
 .section ul{padding-left:20px}
 .section li{margin:6px 0}
 
-/* TABS */
+/* ===== TABS ===== */
 .tabs{
   display:flex;
   gap:10px;
@@ -111,7 +114,7 @@ body{
   font-weight:600;
 }
 
-/* SEARCH */
+/* ===== SEARCH ===== */
 .search{
   max-width:600px;
   margin:0 auto 25px;
@@ -134,7 +137,7 @@ body{
   color:#fff;
 }
 
-/* GRID */
+/* ===== GRID ===== */
 .grid{
   max-width:1300px;
   margin:auto;
@@ -144,7 +147,7 @@ body{
   gap:18px;
 }
 
-/* PET CARD */
+/* ===== PET CARD ===== */
 .pet{
   background:linear-gradient(180deg,#1c2034,#14182a);
   border-radius:18px;
@@ -173,18 +176,39 @@ footer{
   font-size:12px;
   color:#7f85b6;
 }
+
+/* ================= MOBILE FIX ================= */
+@media (max-width:768px){
+  .topbar{
+    flex-direction:column;
+    gap:12px;
+  }
+  .nav{
+    gap:24px;
+  }
+  .discord{
+    width:100%;
+    text-align:center;
+  }
+  .news{
+    flex-direction:column;
+    text-align:center;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- TOP NAV -->
 <div class="topbar">
   <div class="logo">Tap Sim Values</div>
+
   <div class="nav">
     <a href="#" onclick="showHome()">🏠 Home</a>
     <a href="#" onclick="showValues()">📋 Value List</a>
   </div>
+
   <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
 </div>
 
@@ -268,25 +292,25 @@ fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 
 function buildTabs(){
   const tabs=[
-    ["all","All"],
-    ["mythics","Mythics"],
-    ["exclusive","Exclusive"],
-    ["secret1","Secret I"],
-    ["secret2","Secret II"],
-    ["leaderboard","Leaderboard Pets"],
-    ["limited","Limited"],
-    ["event","Event Pets"]
+    "all","mythics","exclusive","secret1","secret2","leaderboard","limited","event"
   ];
-
   const wrap=document.getElementById("tabs");
   wrap.innerHTML="";
-
-  tabs.forEach(([key,label])=>{
+  tabs.forEach(c=>{
     const t=document.createElement("div");
-    t.className="tab"+(key==="all"?" active":"");
-    t.textContent=label;
+    t.className="tab"+(c==="all"?" active":"");
+    t.textContent={
+      all:"All",
+      mythics:"Mythics",
+      exclusive:"Exclusive",
+      secret1:"Secret I",
+      secret2:"Secret II",
+      leaderboard:"Leaderboard Pets",
+      limited:"Limited",
+      event:"Event Pets"
+    }[c];
     t.onclick=()=>{
-      currentCat=key;
+      currentCat=c;
       document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
       t.classList.add("active");
       renderPets();
@@ -299,9 +323,8 @@ function renderPets(){
   const q=document.getElementById("search").value.toLowerCase();
   const grid=document.getElementById("grid");
   grid.innerHTML="";
-
   pets.filter(p=>
-    (currentCat==="all" || p.category===currentCat) &&
+    (currentCat==="all"||p.category===currentCat) &&
     p.name.toLowerCase().includes(q)
   ).forEach(p=>{
     grid.innerHTML+=`
@@ -313,8 +336,7 @@ function renderPets(){
           ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
           🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
         </div>
-      </div>
-    `;
+      </div>`;
   });
 }
 
