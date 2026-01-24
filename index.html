@@ -5,88 +5,72 @@
 <title>Tap Simulator Values</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- ICONS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
 <style>
 :root{
-  --bg:#0a0c13;
-  --panel:#121625;
-  --card:#171b2f;
-  --accent:#6d6aff;
-  --text:#f1f3ff;
-  --muted:#9aa0c7;
+  --bg:#0b0e17;
+  --panel:#14182a;
+  --card:#1a1f36;
+  --accent:#7c6cff;
+  --text:#eef1ff;
+  --muted:#9aa2c7;
 }
 
 *{box-sizing:border-box;font-family:Inter,Segoe UI,system-ui}
 
 body{
   margin:0;
-  background:radial-gradient(circle at top,#1a1e33,#0a0c13 65%);
+  background:radial-gradient(circle at top,#1b1f35,#0b0e17 65%);
   color:var(--text);
 }
 
 /* TOP BAR */
 .topbar{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:14px 26px;
+  justify-content:space-between;
+  padding:14px 24px;
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .logo{font-weight:700}
 .nav a{
-  color:#dce0ff;
+  color:#dfe3ff;
   margin:0 12px;
   text-decoration:none;
   font-size:14px;
 }
+.nav i{margin-right:6px}
 .discord{
   background:#5865F2;
   padding:8px 14px;
   border-radius:10px;
   color:#fff;
-  font-weight:600;
   text-decoration:none;
+  font-weight:600;
 }
+.discord i{margin-right:6px}
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:70px 20px 40px;
+  padding:60px 20px 30px;
 }
-.hero h1{font-size:42px;margin-bottom:6px}
-.hero p{color:var(--muted)}
-
-/* PANELS */
-.panel{
-  max-width:950px;
-  margin:22px auto;
-  background:linear-gradient(180deg,#151a2f,#101425);
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
-}
-.panel h3{margin-top:0}
-
-/* NEWS IMAGE */
-.news-img{
-  width:100%;
-  border-radius:14px;
-  margin-bottom:16px;
-}
-
-/* LISTS */
-ul{padding-left:18px;margin:0}
-li{margin:6px 0}
+.hero h1{font-size:40px;margin:0}
+.hero p{color:var(--muted);margin-top:8px}
 
 /* TABS */
 .tabs{
   display:flex;
-  justify-content:center;
   gap:10px;
-  margin:30px 0 18px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:25px 20px;
 }
 .tab{
-  background:#1b2040;
-  padding:8px 16px;
+  background:rgba(255,255,255,.08);
+  padding:8px 18px;
   border-radius:999px;
   font-size:13px;
   cursor:pointer;
@@ -99,15 +83,16 @@ li{margin:6px 0}
 
 /* SEARCH */
 .search{
-  max-width:650px;
-  margin:0 auto 28px;
+  max-width:680px;
+  margin:0 auto 30px;
 }
 .search input{
   width:100%;
   padding:14px 18px;
   border-radius:14px;
   border:none;
-  background:#14192d;
+  outline:none;
+  background:#14182a;
   color:#fff;
 }
 
@@ -118,125 +103,119 @@ li{margin:6px 0}
   padding:0 20px 60px;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:18px;
+  gap:20px;
 }
 
-/* PET */
+/* PET CARD */
 .pet{
-  background:linear-gradient(180deg,#1c2140,#13172b);
-  border-radius:16px;
+  background:linear-gradient(180deg,#1d223a,#15192d);
+  border-radius:18px;
   padding:14px;
-  transition:.2s;
+  box-shadow:0 15px 40px rgba(0,0,0,.5);
 }
-.pet:hover{transform:translateY(-4px)}
 .pet img{
   width:100%;
-  border-radius:12px;
+  border-radius:14px;
 }
-.pet h3{margin:10px 0 6px;font-size:15px}
-.meta{font-size:12px;color:var(--muted);line-height:1.6}
+.pet h3{
+  text-align:center;
+  margin:10px 0 8px;
+  font-size:15px;
+}
+.meta{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.6;
+}
 
 /* FOOTER */
 footer{
   text-align:center;
   padding:30px;
   font-size:12px;
-  color:#7f85b6;
+  color:#7f86b8;
 }
 </style>
 </head>
 
 <body>
 
+<!-- TOP -->
 <div class="topbar">
   <div class="logo">Tap Sim Values</div>
   <div class="nav">
-    <a href="#">🏠 Home</a>
-    <a href="#">📊 Value List</a>
+    <a href="#"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="#"><i class="fa-solid fa-list"></i>Value List</a>
   </div>
-  <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
+  <a class="discord" href="https://discord.gg/tapsim" target="_blank">
+    <i class="fa-brands fa-discord"></i>Discord
+  </a>
 </div>
 
+<!-- HERO -->
 <div class="hero">
   <h1>Tap Simulator Value List</h1>
-  <p>Community driven Tap Simulator values – updated regularly.</p>
+  <p>Community driven Tap Simulator pet values.</p>
 </div>
 
-<!-- HOME PANELS -->
-<div class="panel">
-  <img class="news-img" src="NEWS_IMAGE_URL" alt="Update">
-  <h3>🔥 Recent Game Update</h3>
-  <ul>
-    <li>🌌 Celestial World</li>
-    <li>🗺️ 1 New Area</li>
-    <li>⚡ Electric Spin Wheel</li>
-    <li>🥚 New Exclusive Egg</li>
-    <li>🔒 5+ New Secret Pets</li>
-    <li>🐾 30+ New Pets</li>
-  </ul>
-</div>
-
-<div class="panel">
-  <h3>👑 Owners</h3>
-  <ul>
-    <li>• GoldAstro (goldastro)</li>
-    <li>• Hyper (rng_elixr3)</li>
-  </ul>
-</div>
-
-<div class="panel">
-  <h3>🛠️ Editors</h3>
-  <ul>
-    <li>• NotSpeedGuy (zacklist)</li>
-    <li>• Diamondz (diamondz_1)</li>
-  </ul>
-</div>
-
-<div class="panel">
-  <h3>⚠️ Disclaimer</h3>
-  <ul>
-    <li>• Serials & mutations can affect values drastically</li>
-    <li>• O/C = Owners Choice</li>
-    <li>• N/A = Not Available</li>
-  </ul>
-</div>
-
-<!-- VALUE LIST -->
+<!-- TABS -->
 <div class="tabs" id="tabs">
   <div class="tab active" data-cat="all">All</div>
-  <div class="tab" data-cat="secret1">Secret I</div>
-  <div class="tab" data-cat="secret2">Secret II</div>
-  <div class="tab" data-cat="leaderboard">Leaderboard</div>
-  <div class="tab" data-cat="mythic">Mythic</div>
-  <div class="tab" data-cat="exclusive">Exclusive</div>
 </div>
 
+<!-- SEARCH -->
 <div class="search">
-  <input id="search" placeholder="🔍 Search pets...">
+  <input id="search" placeholder="Search pets...">
 </div>
 
+<!-- PET GRID -->
 <div class="grid" id="grid"></div>
 
-<footer>© 2026 Tap Simulator Values – Fan made</footer>
+<footer>
+  DISCLAIMER: Serials & mutations affect values drastically<br>
+  O/C = Owners Choice • N/A = Not Available
+</footer>
 
 <script>
-let pets=[],category="all";
+let pets=[];
+let activeCategory="all";
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
 .then(data=>{
   pets=data;
+  buildTabs();
   render();
 });
 
-document.querySelectorAll(".tab").forEach(t=>{
-  t.onclick=()=>{
-    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-    t.classList.add("active");
-    category=t.dataset.cat;
-    render();
-  }
-});
+function buildTabs(){
+  const tabs=document.getElementById("tabs");
+  const cats=[...new Set(pets.map(p=>p.category))];
+
+  cats.forEach(c=>{
+    const t=document.createElement("div");
+    t.className="tab";
+    t.textContent=formatCat(c);
+    t.dataset.cat=c;
+    t.onclick=()=>setCat(c,t);
+    tabs.appendChild(t);
+  });
+}
+
+function formatCat(c){
+  return c
+    .replace("secret1","Secret I")
+    .replace("secret2","Secret II")
+    .replace(/_/g," ")
+    .toUpperCase();
+}
+
+function setCat(c,el){
+  activeCategory=c;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  el.classList.add("active");
+  render();
+}
 
 document.getElementById("search").oninput=render;
 
@@ -246,7 +225,7 @@ function render(){
   grid.innerHTML="";
 
   pets.filter(p=>{
-    return (category==="all"||p.category===category)
+    return (activeCategory==="all"||p.category===activeCategory)
       && p.name.toLowerCase().includes(q);
   }).forEach(p=>{
     grid.innerHTML+=`
@@ -254,11 +233,12 @@ function render(){
         <img src="${p.image}">
         <h3>${p.name}</h3>
         <div class="meta">
-          💎 Normal: ${p.normal ?? "N/A"}<br>
-          🌟 Golden: ${p.golden ?? "N/A"}<br>
-          🌈 Rainbow: ${p.rainbow ?? "N/A"}
+          💎 Normal: ${p.values?.normal ?? "N/A"}<br>
+          ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
+          🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
         </div>
-      </div>`;
+      </div>
+    `;
   });
 }
 </script>
