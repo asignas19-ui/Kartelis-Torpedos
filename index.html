@@ -6,141 +6,304 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+:root{
+  --bg:#0b0d14;
+  --panel:#14182a;
+  --card:#1b2035;
+  --accent:#7c6cff;
+  --text:#f2f4ff;
+  --muted:#9aa0c7;
+}
+
+*{box-sizing:border-box;font-family:Inter,Segoe UI,system-ui}
+
 body{
   margin:0;
-  background:#0b0d14;
-  color:#fff;
-  font-family:Inter,Segoe UI,system-ui;
+  background:radial-gradient(circle at top,#1a1d2b,#0b0d14 60%);
+  color:var(--text);
 }
+
+/* TOP BAR */
 .topbar{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:14px 24px;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-.nav a{color:#ccc;margin:0 10px;text-decoration:none}
-.hero{text-align:center;padding:50px 20px}
-.tabs{display:flex;justify-content:center;gap:10px}
+.nav a{
+  color:#dce0ff;
+  margin:0 14px;
+  text-decoration:none;
+  font-size:14px;
+}
+.discord{
+  background:#5865F2;
+  padding:8px 14px;
+  border-radius:10px;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:70px 20px 30px;
+}
+.hero h1{font-size:40px;margin:0}
+.hero p{color:var(--muted)}
+
+/* SECTIONS */
+.section{
+  max-width:900px;
+  margin:30px auto;
+  background:linear-gradient(180deg,#1a1f35,#14182a);
+  border-radius:18px;
+  padding:20px;
+}
+.section h3{
+  margin-top:0;
+}
+
+/* NEWS */
+.news{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+.news img{
+  width:160px;
+  border-radius:14px;
+}
+.news ul{
+  margin:0;
+  padding-left:18px;
+}
+
+/* TABS */
+.tabs{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:30px 0 15px;
+}
 .tab{
+  background:#20243a;
   padding:8px 16px;
-  background:#1b2140;
   border-radius:999px;
+  font-size:13px;
   cursor:pointer;
 }
-.tab.active{background:#7c6cff;color:#000;font-weight:700}
-.search{max-width:600px;margin:20px auto}
+.tab.active{
+  background:var(--accent);
+  color:#000;
+  font-weight:600;
+}
+
+/* SEARCH */
+.search{
+  max-width:620px;
+  margin:0 auto 25px;
+  position:relative;
+}
+.search i{
+  position:absolute;
+  left:16px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#8f95c7;
+  font-size:14px;
+  pointer-events:none;
+}
 .search input{
   width:100%;
-  padding:14px;
-  border-radius:12px;
+  padding:14px 18px 14px 44px;
+  border-radius:14px;
   border:none;
-  background:#151a2d;
+  outline:none;
+  background:#15192a;
   color:#fff;
 }
+
+/* GRID */
 .grid{
   max-width:1300px;
   margin:auto;
-  padding:20px;
+  padding:0 20px 60px;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
   gap:18px;
 }
+
+/* PET CARD */
 .pet{
-  background:#151a2d;
+  background:linear-gradient(180deg,#1c2034,#14182a);
   border-radius:16px;
   padding:14px;
+  text-align:center;
 }
-.pet img{width:100%;border-radius:12px}
-.pet h3{text-align:center;margin:10px 0}
-.values{font-size:13px;line-height:1.6;color:#ddd}
-section{display:none}
-section.active{display:block}
+.pet img{
+  width:100%;
+  border-radius:12px;
+}
+.pet h3{
+  margin:10px 0;
+  font-size:15px;
+}
+.price{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.hidden{display:none}
+
+footer{
+  text-align:center;
+  padding:30px;
+  font-size:12px;
+  color:#7f85b6;
+}
 </style>
 </head>
 
 <body>
 
+<!-- TOP BAR -->
 <div class="topbar">
   <b>Tap Sim Values</b>
   <div class="nav">
-    <a href="#" onclick="show('home')">🏠 Home</a>
-    <a href="#" onclick="show('values')">📋 Value List</a>
+    <a href="#" onclick="showHome()">Home</a>
+    <a href="#" onclick="showValues()">Value List</a>
+  </div>
+  <a class="discord" href="https://discord.gg/tapsim" target="_blank">Discord</a>
+</div>
+
+<!-- HOME -->
+<div id="home">
+  <div class="hero">
+    <h1>Tap Simulator Value List</h1>
+    <p>Community driven Tap Simulator values – updated regularly.</p>
+  </div>
+
+  <div class="section news">
+    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkc9IFtEEFDxS7spwNrZgxSPSzgZb6c7xdlPnf0iOplgMklWN8kovZZqeYZIg8EA6aQYYlnyY6-1GFDQ022uuehnWRM7mJXFkLuAerUEYQ0bEodQGVNgg55qEhlV-O5Elg4YqnP5xe8h-vS8He3_c_CzNGO0njRzF0hze7awF3uFtdAS0fxpZSIR6rc=w1280">
+    <div>
+      <h3>⚡ Recent Game Update</h3>
+      <ul>
+        <li>⚡ List Last Updated – 24/01/26</li>
+        <li>📅 Most Recent Game Update – 22/01/26</li>
+        <li>✨ Celestial World</li>
+        <li>🔮 1 New Area</li>
+        <li>🎈 Electric Spin Wheel</li>
+        <li>🛒 New Exclusive Egg</li>
+        <li>🦖 5+ New Secret Pets</li>
+        <li>🥚 2 New Eggs (1 LIMITED)</li>
+        <li>🐾 30+ New Pets</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>👑 Owners</h3>
+    GoldAstro (goldastro)<br>
+    Hyper (rng_elixr)
+  </div>
+
+  <div class="section">
+    <h3>🛠 Editors</h3>
+    NotSpeedGuy (zacklist)<br>
+    Diamondz (diamondz_1)
+  </div>
+
+  <div class="section">
+    <h3>⚠ Disclaimer</h3>
+    Serials & mutations affect values drastically<br>
+    O/C = Owners Choice<br>
+    N/A = Not Available
   </div>
 </div>
 
-<section id="home" class="active">
+<!-- VALUES -->
+<div id="values" class="hidden">
+
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
-    <p>⚡ List Last Updated – 24/01/26</p>
-  </div>
-</section>
-
-<section id="values">
-  <div class="hero">
-    <h1>Value List</h1>
   </div>
 
-  <div class="tabs">
-    <div class="tab active" data-cat="all">All</div>
-    <div class="tab" data-cat="secret1">Secret I</div>
-    <div class="tab" data-cat="secret2">Secret II</div>
-  </div>
+  <div class="tabs" id="tabs"></div>
 
   <div class="search">
-    <input id="search" placeholder="Search pets...">
+    <i>🔍</i>
+    <input id="search" placeholder="Search pets..." oninput="renderPets()">
   </div>
 
   <div class="grid" id="grid"></div>
-</section>
+</div>
+
+<footer>© 2026 Tap Sim Values – Fan made</footer>
 
 <script>
-let pets=[],current="all";
-
-function show(id){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
+let pets=[], currentCat="All";
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
-.then(d=>{pets=d;render()});
-
-document.querySelectorAll(".tab").forEach(t=>{
-  t.onclick=()=>{
-    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-    t.classList.add("active");
-    current=t.dataset.cat;
-    render();
-  }
+.then(data=>{
+  pets=data;
+  buildTabs();
+  renderPets();
 });
 
-document.getElementById("search").oninput=render;
+function buildTabs(){
+  const cats=["All",...new Set(pets.map(p=>p.category))];
+  const wrap=document.getElementById("tabs");
+  wrap.innerHTML="";
+  cats.forEach(c=>{
+    const t=document.createElement("div");
+    t.className="tab"+(c==="All"?" active":"");
+    t.textContent=c.replace("secret1","Secret I").replace("secret2","Secret II");
+    t.onclick=()=>{
+      currentCat=c;
+      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+      t.classList.add("active");
+      renderPets();
+    };
+    wrap.appendChild(t);
+  });
+}
 
-function render(){
+function renderPets(){
   const q=document.getElementById("search").value.toLowerCase();
   const grid=document.getElementById("grid");
   grid.innerHTML="";
 
-  pets.filter(p=>{
-    return (current==="all"||p.category===current)
-      && p.name.toLowerCase().includes(q);
-  }).forEach(p=>{
-    const normal  = p.normal  ?? p.Normal  ?? p.value?.normal  ?? "N/A";
-    const golden  = p.golden  ?? p.Golden  ?? p.value?.golden  ?? "N/A";
-    const rainbow = p.rainbow ?? p.Rainbow ?? p.value?.rainbow ?? "N/A";
-
+  pets
+  .filter(p=>(currentCat==="All"||p.category===currentCat) && p.name.toLowerCase().includes(q))
+  .forEach(p=>{
     grid.innerHTML+=`
       <div class="pet">
         <img src="${p.image}">
         <h3>${p.name}</h3>
-        <div class="values">
-          💎 Normal: ${normal}<br>
-          ⭐ Golden: ${golden}<br>
-          🌈 Rainbow: ${rainbow}
+        <div class="price">
+          💎 Normal: ${p.values?.normal ?? "N/A"}<br>
+          ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
+          🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
         </div>
       </div>
     `;
   });
+}
+
+function showHome(){
+  home.classList.remove("hidden");
+  values.classList.add("hidden");
+}
+
+function showValues(){
+  values.classList.remove("hidden");
+  home.classList.add("hidden");
 }
 </script>
 
