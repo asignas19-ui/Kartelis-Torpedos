@@ -2,78 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tap Simulator Values</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
     margin:0;
     font-family:Segoe UI,Arial,sans-serif;
-    background:linear-gradient(180deg,#0b1022,#1a2a4a);
+    background:linear-gradient(180deg,#0b1022,#18264a);
     color:white;
 }
 
 /* HEADER */
 header{
-    background:#0e1533;
-    padding:18px;
+    padding:20px;
     text-align:center;
-    position:sticky;
-    top:0;
-    z-index:1000;
+    background:#0d1433;
 }
 header h1{margin:0;font-size:26px;}
-.nav{
+
+.top-buttons{
     margin-top:10px;
     display:flex;
     justify-content:center;
-    gap:12px;
+    gap:10px;
 }
-.nav button{
+.top-buttons button{
     background:#1b2555;
     border:none;
-    padding:8px 16px;
-    border-radius:20px;
+    padding:8px 18px;
+    border-radius:18px;
     color:white;
-    cursor:pointer;
 }
-.nav button.active{background:#5865f2;}
+.top-buttons .active{background:#5865f2;}
 
 .discord{
-    position:absolute;
-    right:16px;
-    top:22px;
+    margin-top:8px;
 }
 .discord a{
-    color:white;
+    color:#9aa7ff;
     text-decoration:none;
     font-weight:bold;
 }
 
-/* CONTAINER */
-.container{
-    max-width:1400px;
-    margin:auto;
-    padding:20px;
-}
-
-/* CATEGORY TABS */
+/* TABS */
 .tabs{
     display:flex;
     justify-content:center;
     gap:10px;
     flex-wrap:wrap;
-    margin-bottom:14px;
+    margin:18px 0;
 }
 .tabs button{
     background:#1a2550;
     border:none;
-    padding:7px 14px;
-    border-radius:18px;
+    padding:8px 14px;
+    border-radius:20px;
     color:white;
-    cursor:pointer;
 }
-.tabs button.active{background:#5865f2;}
+.tabs .active{background:#5865f2;}
 
 /* SEARCH */
 .search{
@@ -83,7 +70,7 @@ header h1{margin:0;font-size:26px;}
 .search input{
     width:100%;
     padding:10px;
-    border-radius:12px;
+    border-radius:14px;
     border:none;
     background:#0e1630;
     color:white;
@@ -92,57 +79,55 @@ header h1{margin:0;font-size:26px;}
 /* GRID */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     gap:18px;
+    max-width:1200px;
+    margin:auto;
+    padding:10px;
 }
 
 /* CARD */
 .card{
     background:#0e1630;
     border-radius:18px;
-    padding:12px;
-    height:330px;
+    padding:14px;
+    box-shadow:0 0 18px rgba(88,101,242,0.2);
+    height:340px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    box-shadow:0 0 20px rgba(88,101,242,0.15);
 }
+
 .card img{
     width:100%;
-    height:140px;
+    height:150px;
     object-fit:contain;
 }
+
 .name{
     font-weight:bold;
     color:#7ffcff;
     margin-top:6px;
 }
+
 .val{
     display:flex;
     justify-content:space-between;
     font-size:14px;
-    opacity:0.9;
+    margin-top:4px;
 }
 
-/* EMPTY */
 .empty{
     grid-column:1/-1;
-    background:#0e1630;
-    border-radius:18px;
+    text-align:center;
     padding:30px;
-    text-align:center;
-    opacity:0.8;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:18px;
-    opacity:0.6;
+    opacity:0.7;
 }
 
 @media(max-width:768px){
-    .discord{position:static;margin-top:10px;}
+    .grid{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
@@ -151,22 +136,23 @@ footer{
 
 <header>
     <h1>Tap Simulator Values</h1>
-    <div class="nav">
-        <button class="main active" data-tab="values">Value List</button>
+
+    <div class="top-buttons">
+        <button class="active">🏠 Home</button>
+        <button>💎 Value List</button>
     </div>
+
     <div class="discord">
-        <a href="https://discord.gg/tapsim" target="_blank">Discord</a>
+        <a href="https://discord.gg/tapsim" target="_blank">Discord.gg/tapsim</a>
     </div>
 </header>
-
-<div class="container">
 
 <div class="tabs">
     <button class="cat active" data-cat="all">All</button>
     <button class="cat" data-cat="secret1">Secret I</button>
     <button class="cat" data-cat="secret2">Secret II</button>
     <button class="cat" data-cat="exclusive">Exclusive</button>
-    <button class="cat" data-cat="leaderboard">Leaderboard Pets</button>
+    <button class="cat" data-cat="leaderboard">Leaderboard</button>
     <button class="cat" data-cat="mythic">Mythics</button>
 </div>
 
@@ -175,10 +161,6 @@ footer{
 </div>
 
 <div class="grid" id="grid"></div>
-
-</div>
-
-<footer>© 2026 Tap Simulator Values</footer>
 
 <script>
 const grid=document.getElementById("grid");
@@ -191,17 +173,17 @@ fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 
 function render(){
     grid.innerHTML="";
-    const filtered=pets.filter(p=>{
+    const list=pets.filter(p=>{
         return (cat==="all"||p.category===cat) &&
         p.name.toLowerCase().includes(search.value.toLowerCase());
     });
 
-    if(filtered.length===0){
-        grid.innerHTML=`<div class="empty">😴 No pets in this category</div>`;
+    if(list.length===0){
+        grid.innerHTML='<div class="empty">No pets here</div>';
         return;
     }
 
-    filtered.forEach(p=>{
+    list.forEach(p=>{
         grid.innerHTML+=`
         <div class="card">
             <img src="${p.image}">
@@ -221,7 +203,6 @@ document.querySelectorAll(".cat").forEach(b=>{
         render();
     };
 });
-
 search.oninput=render;
 </script>
 
