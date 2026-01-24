@@ -124,11 +124,11 @@ homeContent.style.display=target==='homeContent'?'block':'none';
 petsContent.style.display=target==='petsContent'?'block':'none';
 });});
 
-// Fetch JSON from GitHub Pages
-fetch('https://asignas19-ui.github.io/value-list/pets.json')
-.then(res=>res.json())
-.then(data=>{pets=data; renderPets();})
-.catch(err=>{console.error("Cannot load pets.json",err); pets=[]; renderPets();});
+// Fetch JSON su timestamp, kad visada gautų naujausią versiją
+fetch('https://asignas19-ui.github.io/REPO/pets.json?'+Date.now())
+  .then(res=>res.json())
+  .then(data=>{ pets = data; renderPets(); })
+  .catch(err=>{ console.error("Cannot load pets.json", err); pets=[]; renderPets(); });
 
 function renderPets(filter="all",search=""){
 petsGrid.innerHTML="";
