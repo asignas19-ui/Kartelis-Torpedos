@@ -2,244 +2,180 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tap Simulator Values</title>
+<title>Tap Simulator Value List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{box-sizing:border-box;font-family:Arial,Segoe UI}
 body{
   margin:0;
-  font-family: "Segoe UI", Arial;
-  background: radial-gradient(circle at top, #0b1225, #020617);
-  color:#e5e7eb;
+  background:#0b3a57;
+  color:#eaf3ff;
 }
 
+/* HEADER */
 header{
-  padding:15px;
+  background:#062f47;
+  padding:20px;
   text-align:center;
-  border-bottom:1px solid #1e293b;
 }
+header h1{margin:0;font-size:30px}
 
-header h1{
-  margin:0;
-  font-size:22px;
-}
-
+/* NAV */
 .nav{
-  margin-top:10px;
   display:flex;
   justify-content:center;
   gap:10px;
+  margin-top:15px;
 }
-
 .nav button{
-  background:#0f172a;
-  color:#e5e7eb;
+  background:#0e4a6d;
+  color:white;
   border:none;
-  padding:8px 16px;
+  padding:8px 18px;
   border-radius:20px;
   cursor:pointer;
-  display:flex;
-  gap:6px;
-  align-items:center;
 }
-
 .nav button.active{
-  background:#2563eb;
+  background:#19b5ff;
 }
 
-section{
-  max-width:1000px;
-  margin:20px auto;
-  padding:0 15px;
+/* CATEGORY TABS */
+.tabs{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:20px;
+}
+.tabs button{
+  background:#0e4a6d;
+  border:none;
+  color:white;
+  padding:6px 14px;
+  border-radius:14px;
+  cursor:pointer;
+}
+.tabs button.active{
+  background:#19b5ff;
+}
+
+/* PET GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  gap:15px;
+  padding:20px;
+  max-width:1100px;
+  margin:auto;
 }
 
 .card{
-  background:linear-gradient(135deg,#0f172a,#020617);
-  border-radius:16px;
-  padding:15px;
-  margin-bottom:20px;
-}
-
-.home-top{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.home-top img{
-  width:100%;
-  border-radius:14px;
-}
-
-h2{
-  margin-top:0;
-}
-
-.badge{
-  background:#020617;
-  padding:6px 10px;
-  border-radius:10px;
-  display:inline-block;
-  margin:4px 0;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:18px;
-}
-
-.pet{
-  background:linear-gradient(135deg,#0f172a,#020617);
-  border-radius:18px;
-  padding:12px;
-}
-
-.pet img{
-  width:100%;
-  border-radius:14px;
-}
-
-.pet h3{
-  margin:8px 0 6px;
+  background:#0f4d73;
+  border-radius:12px;
+  padding:10px;
   text-align:center;
 }
-
+.card img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+}
+.card h3{
+  margin:8px 0 6px;
+  font-size:15px;
+}
 .values{
-  font-size:14px;
-  line-height:1.6;
+  font-size:13px;
+  line-height:1.4;
 }
 
-.search{
-  width:100%;
-  padding:10px;
-  border-radius:12px;
-  border:none;
-  background:#020617;
-  color:white;
-  margin-bottom:15px;
-}
-
-.filters{
-  margin-bottom:15px;
-  display:flex;
-  gap:8px;
-}
-
-.filters button{
-  padding:6px 12px;
-  border-radius:14px;
-  border:none;
-  background:#0f172a;
-  color:white;
-  cursor:pointer;
-}
-
+/* FOOTER */
 footer{
   text-align:center;
-  opacity:.6;
   font-size:12px;
+  opacity:.8;
   padding:20px;
 }
-.hidden{display:none}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Tap Simulator Values</h1>
+  <h1>Tap Simulator Value List</h1>
+
   <div class="nav">
-    <button id="btnHome" class="active" onclick="openTab('home')">🏠 Home</button>
-    <button id="btnPets" onclick="openTab('pets')">🐾 Value List</button>
+    <button class="active">Home</button>
+    <button>Value List</button>
   </div>
 </header>
 
-<section id="home">
-  <div class="card home-top">
-    <div>
-      <h2>⚡ Recent Game Update</h2>
-      <div class="badge">✨ Space World</div><br>
-      <div class="badge">🌀 Void Spin Wheel</div><br>
-      <div class="badge">🐾 35+ New Pets</div><br>
-      <div class="badge">🥚 4 New Eggs</div>
-    </div>
-    <img src="https://i.imgur.com/1FJwPZC.png">
-  </div>
+<div class="tabs">
+  <button class="active" onclick="showAll()">All</button>
+  <button onclick="filterPets('secret1')">Secret I</button>
+  <button onclick="filterPets('secret2')">Secret II</button>
+  <button onclick="filterPets('exclusive')">Exclusive</button>
+  <button onclick="filterPets('mythic')">Mythic</button>
+  <button onclick="filterPets('leaderboard')">Leaderboard</button>
+</div>
 
-  <div class="card">
-    <h2>👑 Owners</h2>
-    GoldAstro (goldastro)<br>
-    Hyper (nrg_elixr3)
-  </div>
+<div id="pets" class="grid"></div>
 
-  <div class="card">
-    <h2>🛠️ Editors</h2>
-    NotSpeedGuy (zacklist)<br>
-    Diamondz (diamondz_1)
-  </div>
-
-  <div class="card">
-    <h2>⚠️ Disclaimer</h2>
-    Serials can affect values drastically.<br>
-    O/C = Owners Choice<br>
-    N/A = Not Available
-  </div>
-</section>
-
-<section id="pets" class="hidden">
-  <input class="search" id="search" placeholder="Search pets..." oninput="renderPets()">
-
-  <div class="filters">
-    <button onclick="filter='all';renderPets()">All</button>
-    <button onclick="filter='secret';renderPets()">Secret</button>
-    <button onclick="filter='exclusive';renderPets()">Exclusive</button>
-  </div>
-
-  <div class="grid" id="petGrid"></div>
-</section>
-
-<footer>© 2026 Tap Simulator Values — Fan-made</footer>
+<footer>
+  DISCLAIMER: Serials can affect values drastically.<br>
+  O/C = Owners Choice · N/A = Not Available
+</footer>
 
 <script>
-let pets=[];
-let filter="all";
+const PETS_URL = "https://asignas19-ui.github.io/value-list/pets.json";
+let allPets = [];
 
-fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
-.then(r=>r.json())
-.then(d=>{pets=d;renderPets()});
+fetch(PETS_URL)
+  .then(res => res.json())
+  .then(data => {
+    allPets = data;
+    renderPets(allPets);
+  })
+  .catch(() => {
+    document.getElementById("pets").innerHTML = "Failed to load pets.";
+  });
 
-function openTab(tab){
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("pets").classList.add("hidden");
-  document.getElementById(tab).classList.remove("hidden");
+function renderPets(list){
+  const grid = document.getElementById("pets");
+  grid.innerHTML = "";
 
-  btnHome.classList.remove("active");
-  btnPets.classList.remove("active");
-  tab==="home"?btnHome.classList.add("active"):btnPets.classList.add("active");
-}
-
-function renderPets(){
-  const q=document.getElementById("search").value.toLowerCase();
-  petGrid.innerHTML="";
-  pets.filter(p=>{
-    if(filter!=="all" && p.type!==filter) return false;
-    return p.name.toLowerCase().includes(q);
-  }).forEach(p=>{
-    petGrid.innerHTML+=`
-    <div class="pet">
+  list.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
       <img src="${p.image}">
       <h3>${p.name}</h3>
       <div class="values">
-        💎 Normal: ${p.normal}<br>
-        ✨ Golden: ${p.golden}<br>
-        🌈 Rainbow: ${p.rainbow}<br>
-        ${p.secret1?`🔒 Secret 1: ${p.secret1}<br>`:""}
-        ${p.secret2?`🔒 Secret 2: ${p.secret2}<br>`:""}
-        ${p.secret3?`🔒 Secret 3: ${p.secret3}<br>`:""}
+        Normal: ${p.values.normal}<br>
+        Golden: ${p.values.golden}<br>
+        Rainbow: ${p.values.rainbow}
       </div>
-    </div>`;
+    `;
+    grid.appendChild(card);
   });
+}
+
+function clearActive(){
+  document.querySelectorAll(".tabs button")
+    .forEach(b=>b.classList.remove("active"));
+}
+
+function showAll(){
+  clearActive();
+  event.target.classList.add("active");
+  renderPets(allPets);
+}
+
+function filterPets(cat){
+  clearActive();
+  event.target.classList.add("active");
+  renderPets(allPets.filter(p => p.category === cat));
 }
 </script>
 
