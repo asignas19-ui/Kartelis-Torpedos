@@ -36,6 +36,7 @@ body{
   margin:0 14px;
   text-decoration:none;
   font-size:14px;
+  cursor:pointer;
 }
 .discord{
   background:#5865F2;
@@ -54,7 +55,7 @@ body{
 .hero h1{font-size:38px;margin:0}
 .hero p{color:var(--muted)}
 
-/* HOME SECTIONS */
+/* SECTIONS */
 .section{
   max-width:950px;
   margin:30px auto;
@@ -62,6 +63,9 @@ body{
   border-radius:18px;
   padding:20px;
 }
+.section h3{margin-top:0}
+
+/* NEWS */
 .news{
   display:flex;
   gap:20px;
@@ -87,14 +91,12 @@ body{
   font-size:13px;
   cursor:pointer;
   color:#cfd5ff;
-  transition:.2s;
 }
-.tab:hover{background:#2a2f4d}
 .tab.active{
   background:var(--accent);
   color:#000;
   font-weight:600;
-  box-shadow:0 0 0 2px rgba(77,163,255,.35);
+  box-shadow:0 0 0 2px rgba(77,163,255,.4);
 }
 
 /* SEARCH */
@@ -167,14 +169,15 @@ footer{
 <div class="topbar">
   <b>Tap Sim Values</b>
   <div class="nav">
-    <a href="#" onclick="showHome()">Home</a>
-    <a href="#" onclick="showValues()">Value List</a>
+    <a onclick="showHome()">Home</a>
+    <a onclick="showValues()">Value List</a>
   </div>
   <a class="discord" href="https://discord.gg/tapsim" target="_blank">Discord</a>
 </div>
 
 <!-- HOME -->
 <div id="home">
+
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
     <p>Community driven Tap Simulator values</p>
@@ -197,6 +200,26 @@ footer{
       </ul>
     </div>
   </div>
+
+  <div class="section">
+    <h3>👑 Owners</h3>
+    • GoldAstro (goldastro)<br>
+    • Hyper (rng_elixr)
+  </div>
+
+  <div class="section">
+    <h3>🛠 Editors</h3>
+    • NotSpeedGuy (zacklist)<br>
+    • Diamondz (diamondz_1)
+  </div>
+
+  <div class="section">
+    <h3>⚠ Disclaimer</h3>
+    • Serials & mutations affect values drastically<br>
+    • O/C = Owners Choice<br>
+    • N/A = Not Available
+  </div>
+
 </div>
 
 <!-- VALUES -->
@@ -219,7 +242,11 @@ footer{
 <footer>© 2026 Tap Sim Values – Fan made</footer>
 
 <script>
-let pets=[],currentCat="all";
+let pets=[];
+let currentCat="all";
+
+const homeDiv=document.getElementById("home");
+const valuesDiv=document.getElementById("values");
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
@@ -235,3 +262,57 @@ const tabOrder=[
   {id:"secret2",label:"Secret II"},
   {id:"exclusive",label:"Exclusive"},
   {id:"leaderboard",label:"Leaderboard Pets"},
+  {id:"mythic",label:"Mythics"}
+];
+
+function buildTabs(){
+  const wrap=document.getElementById("tabs");
+  wrap.innerHTML="";
+  tabOrder.forEach(t=>{
+    const el=document.createElement("div");
+    el.className="tab"+(t.id==="all"?" active":"");
+    el.textContent=t.label;
+    el.onclick=()=>{
+      currentCat=t.id;
+      document.getElementById("search").value="";
+      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+      el.classList.add("active");
+      renderPets();
+    };
+    wrap.appendChild(el);
+  });
+}
+
+function renderPets(){
+  const q=document.getElementById("search").value.toLowerCase();
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  pets
+    .filter(p=>(currentCat==="all"||p.category===currentCat) && p.name.toLowerCase().includes(q))
+    .forEach(p=>{
+      grid.innerHTML+=`
+      <div class="pet">
+        <img src="${p.image}">
+        <h3>${p.name}</h3>
+        <div class="price">
+          💎 Normal: ${p.values?.normal ?? "N/A"}<br>
+          ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
+          🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
+        </div>
+      </div>`;
+    });
+}
+
+function showHome(){
+  homeDiv.classList.remove("hidden");
+  valuesDiv.classList.add("hidden");
+}
+
+function showValues(){
+  valuesDiv.classList.remove("hidden");
+  homeDiv.classList.add("hidden");
+}
+</script>
+
+</body>
+</html>
