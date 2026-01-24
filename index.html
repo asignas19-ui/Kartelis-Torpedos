@@ -92,29 +92,26 @@ header h1{margin:0;font-size:26px;}
     border-radius:18px;
     padding:14px;
     box-shadow:0 0 18px rgba(88,101,242,0.2);
-    height:340px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
 }
 
 .card img{
     width:100%;
     height:150px;
     object-fit:contain;
+    margin-bottom:8px;
 }
 
 .name{
     font-weight:bold;
     color:#7ffcff;
-    margin-top:6px;
+    margin-bottom:6px;
+    font-size:18px;
 }
 
-.val{
-    display:flex;
-    justify-content:space-between;
-    font-size:14px;
-    margin-top:4px;
+/* VALUES — KAIP 2 NUOTRAUKOJE */
+.values{
+    font-size:15px;
+    line-height:1.6;
 }
 
 .empty{
@@ -188,9 +185,11 @@ function render(){
         <div class="card">
             <img src="${p.image}">
             <div class="name">${p.name}</div>
-            <div class="val"><span>⭐ Normal</span><span>${p.values.normal}</span></div>
-            <div class="val"><span>🌟 Golden</span><span>${p.values.golden}</span></div>
-            <div class="val"><span>🌈 Rainbow</span><span>${p.values.rainbow}</span></div>
+            <div class="values">
+                💎 Normal: ${p.values.normal}<br>
+                ✨ Golden: ${p.values.golden}<br>
+                🌈 Rainbow: ${p.values.rainbow}
+            </div>
         </div>`;
     });
 }
