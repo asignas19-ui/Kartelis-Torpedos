@@ -156,7 +156,7 @@ body {
   text-align:center;
 }
 
-/* ===== VALUES (FIXED TOKENS) ===== */
+/* ===== VALUES (DISCORD STYLE) ===== */
 .value-row {
   display:grid;
   grid-template-columns:1fr auto;
@@ -164,20 +164,17 @@ body {
   font-size:14px;
 }
 .value-amount {
-  display:flex;
+  display:inline-flex;
   align-items:baseline;
-  gap:6px;
-  min-width:90px;
-  justify-content:flex-end;
-  font-weight:600;
+  gap:4px;
+  font-weight:500; /* regular */
 }
 .token-icon {
-  width:14px;
-  height:14px;
+  width:0.9em;
+  height:0.9em;
   display:inline-block;
+  vertical-align:-0.15em; /* Discord baseline */
   flex-shrink:0;
-  position:relative;
-  top:2px; /* Discord look */
 }
 
 /* ===== FOOTER ===== */
@@ -217,7 +214,7 @@ footer {
 
 <div class="container">
 
-<!-- HOME -->
+<!-- ===== HOME ===== -->
 <div id="homeContent">
   <div class="home-card update-card">
     <div class="update-text">
@@ -261,7 +258,7 @@ footer {
   </div>
 </div>
 
-<!-- PETS -->
+<!-- ===== PETS ===== -->
 <div id="petsContent" style="display:none;">
   <div class="filters">
     <button class="filter-btn active" data-filter="all">All</button>
