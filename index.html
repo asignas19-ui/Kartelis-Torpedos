@@ -5,44 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tap Simulator Values</title>
 <style>
-body{margin:0;font-family:"Segoe UI",Tahoma,sans-serif;background:#0b1324;color:white;}
-.top-header{background:#141c33;padding:18px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.4);position:sticky;top:0;z-index:1000;}
-.header-content{max-width:1400px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-.left-header{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.header-content h1{margin:0;font-size:26px;font-weight:800;color:white;text-shadow:0 2px 10px rgba(0,0,0,0.6);}
-.nav-btn{background: rgba(0,0,0,0.45); color:white; border:none; padding:8px 14px; border-radius:999px; font-weight:600; font-size:13px; cursor:pointer; transition:0.2s;}
-.nav-btn:hover{background: rgba(255,255,255,0.15);}
-.discord-btn{background: linear-gradient(135deg,#5865f2,#4752c4); color:white; text-decoration:none; padding:10px 18px; border-radius:999px; font-weight:700; font-size:14px; box-shadow:0 4px 15px rgba(0,0,0,0.3); transition: transform 0.15s, box-shadow 0.15s;}
-.discord-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.5);}
-.container{padding:24px;max-width:1400px;margin:auto;}
-#homeContent img{width:100%;max-width:500px;border-radius:18px;margin:16px auto;display:block;}
-#homeContent h2{color:#7ffcff;margin-top:20px;font-size:22px;}
-#homeContent p,#homeContent li{font-size:16px;line-height:1.8;color:#cfd4ff;margin-bottom:10px;}
-.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
-.filter-btn{background:#141c33;border:1px solid #263055;color:white;padding:7px 14px;border-radius:999px;cursor:pointer;font-size:13px;transition:0.2s;}
-.filter-btn:hover{background:#1e2950;}
-.filter-btn.active{background:#5865f2;border-color:#5865f2;}
-.search-box{width:100%;max-width:380px;margin-bottom:22px;}
-.search-box input{width:100%;padding:12px 14px;border-radius:14px;border:none;outline:none;background:#141c33;color:white;font-size:14px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;}
-.card{background:#0f172d;border-radius:18px;padding:14px;box-shadow:0 8px 25px rgba(0,0,0,0.4);transition: transform 0.2s, box-shadow 0.2s;cursor:pointer;}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,0.6);}
-.card img{width:100%;border-radius:14px;margin-bottom:10px;background:#060b1c;}
-.pet-name{font-size:16px;font-weight:700;margin-bottom:8px;color:#7ffcff;text-align:center;}
-.value-row{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;}
-.value-amount{display:flex;align-items:center;gap:4px;}
-.left-label.normal{color:#2b2f45;font-weight:700;}
-.left-label.golden{color:gold;font-weight:700;}
-.left-label.rainbow{background:linear-gradient(45deg,red,orange,yellow,green,cyan,blue,violet);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;}
-footer{text-align:center;padding:24px;color:#8fa2ff;font-size:12px;opacity:0.7;}
-@media (max-width: 768px){
-.container{padding:16px;}
-#homeContent h2{font-size:20px;}
-#homeContent p,#homeContent li{font-size:15px;line-height:1.6;}
-.filters{flex-direction:column;gap:8px;}
-.search-box{max-width:100%;}
-.card{padding:10px;}
-.grid{grid-template-columns:1fr;gap:14px;}
+body {
+  margin: 0;
+  font-family:"Segoe UI",Tahoma,sans-serif;
+  background: linear-gradient(135deg, #0b1324, #1c2541, #3a506b);
+  color:white;
+}
+
+/* Header */
+.top-header {
+  background: rgba(15,23,45,0.95);
+  padding:18px 24px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:2px solid #5865f2;
+}
+.header-content {
+  max-width:1400px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.left-header { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.header-content h1 {
+  margin:0;
+  font-size:28px;
+  font-weight:800;
+  color:white;
+  text-shadow:0 2px 10px rgba(0,0,0,0.6);
+}
+.nav-btn {
+  background: rgba(0,0,0,0.45);
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:13px;
+  cursor:pointer;
+  transition:0.2s;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.15); }
+.discord-btn {
+  background: linear-gradient(135deg,#5865f2,#4752c4);
+  color:white;
+  text-decoration:none;
+  padding:10px 18px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:14px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.discord-btn:hover { transform: translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.5); }
+
+/* Container */
+.container { padding:24px; max-width:1400px; margin:auto; }
+
+/* Home Cards */
+.home-card {
+  background: rgba(15,23,45,0.85);
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:20px;
+}
+.home-card h2 { color:#7ffcff; margin-bottom:12px; }
+.home-card p, .home-card li { color:#cfd4ff; margin-bottom:6px; line-height:1.6; }
+.home-card img { width:100%; max-width:500px; border-radius:16px; margin-bottom:12px; display:block; }
+
+/* Pets Dashboard */
+.filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+.filter-btn { background:#141c33; border:1px solid #263055; color:white; padding:7px 14px; border-radius:999px; cursor:pointer; font-size:13px; transition:0.2s; }
+.filter-btn:hover { background:#1e2950; }
+.filter-btn.active { background:#5865f2; border-color:#5865f2; }
+.search-box { width:100%; max-width:380px; margin-bottom:22px; }
+.search-box input { width:100%; padding:12px 14px; border-radius:14px; border:none; outline:none; background:#141c33; color:white; font-size:14px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; }
+.card { background:#0f172d; border-radius:18px; padding:14px; box-shadow:0 8px 25px rgba(0,0,0,0.4); transition: transform 0.2s, box-shadow 0.2s; cursor:pointer; }
+.card:hover { transform:translateY(-4px); box-shadow:0 12px 35px rgba(0,0,0,0.6);}
+.card img { width:100%; border-radius:14px; margin-bottom:10px; background:#060b1c; }
+.pet-name { font-size:16px; font-weight:700; margin-bottom:8px; color:#7ffcff; text-align:center; }
+.value-row { display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:14px; }
+.value-amount { display:flex; align-items:center; gap:4px; }
+footer { text-align:center; padding:24px; color:#8fa2ff; font-size:12px; opacity:0.7; }
+
+/* Token Colors */
+.left-label.normal { color:#2b2f45; font-weight:700; }
+.left-label.golden { color:gold; font-weight:700; }
+.left-label.rainbow { background:linear-gradient(45deg,red,orange,yellow,green,cyan,blue,violet); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:700; }
+
+/* Responsive */
+@media (max-width:768px){
+.container { padding:16px; }
+.home-card h2 { font-size:20px; }
+.home-card p, .home-card li { font-size:15px; line-height:1.6; }
+.filters { flex-direction:column; gap:8px; }
+.search-box { max-width:100%; }
+.card { padding:10px; }
+.grid { grid-template-columns:1fr; gap:14px; }
 }
 </style>
 </head>
@@ -61,35 +125,47 @@ footer{text-align:center;padding:24px;color:#8fa2ff;font-size:12px;opacity:0.7;}
 
 <div class="container">
 
+<!-- HOME -->
 <div id="homeContent">
-<h2>⚡ List Last Updated - 01/19/26</h2>
-<img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280" alt="Game Update">
-<p><strong>Most Recent Game Update:</strong> 10/12/24</p>
-<ul>
-<li>Space World✨</li>
-<li>2 New Areas🔮</li>
-<li>Void Spin Wheel🎈</li>
-<li>New Exclusives🛒</li>
-<li>3+ New Secret Pets🦖</li>
-<li>4 NEW EGGS🥚!</li>
-<li>35+ NEW PETS 🐾!</li>
-</ul>
-<h2>🎩 Value List Owners</h2>
-<ul>
-<li>GoldAstro - (goldastro)</li>
-<li>Hyper - (nrg_elixr3)</li>
-</ul>
-<h2>🪄 Value List Editors</h2>
-<ul>
-<li>NotSpeedGuy - (zacklist)</li>
-<li>Diamondz - (diamondz_1)</li>
-</ul>
-<h2>⚠ Disclaimer</h2>
-<p>Serials can affect values drastically.</p>
-<p>O/C = Owners Choice</p>
-<p>N/A = Not Available (AKA Doesn't exist)</p>
+  <div class="home-card">
+    <h2>⚡ Recent Game Update</h2>
+    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280" alt="Game Update">
+    <ul>
+      <li>Space World✨</li>
+      <li>2 New Areas🔮</li>
+      <li>Void Spin Wheel🎈</li>
+      <li>New Exclusives🛒</li>
+      <li>3+ New Secret Pets🦖</li>
+      <li>4 NEW EGGS🥚!</li>
+      <li>35+ NEW PETS 🐾!</li>
+    </ul>
+  </div>
+
+  <div class="home-card">
+    <h2>🎩 Owners</h2>
+    <ul>
+      <li>GoldAstro - (goldastro)</li>
+      <li>Hyper - (nrg_elixr3)</li>
+    </ul>
+  </div>
+
+  <div class="home-card">
+    <h2>🪄 Editors</h2>
+    <ul>
+      <li>NotSpeedGuy - (zacklist)</li>
+      <li>Diamondz - (diamondz_1)</li>
+    </ul>
+  </div>
+
+  <div class="home-card">
+    <h2>⚠ Disclaimer</h2>
+    <p>Serials can affect values drastically.</p>
+    <p>O/C = Owners Choice</p>
+    <p>N/A = Not Available (AKA Doesn't exist)</p>
+  </div>
 </div>
 
+<!-- PETS -->
 <div id="petsContent" style="display:none;">
 <div class="filters">
 <button class="filter-btn active" data-filter="all">All</button>
@@ -105,7 +181,6 @@ footer{text-align:center;padding:24px;color:#8fa2ff;font-size:12px;opacity:0.7;}
 </div>
 
 </div>
-
 <footer>© 2026 Tap Simulator Values — Fan-made Value List</footer>
 
 <script>
@@ -120,12 +195,12 @@ const searchInput=document.getElementById("searchInput");
 const filterButtons=document.querySelectorAll(".filter-btn");
 
 navButtons.forEach(btn=>{btn.addEventListener('click',()=>{
-const target=btn.dataset.target;
-homeContent.style.display=target==='homeContent'?'block':'none';
-petsContent.style.display=target==='petsContent'?'block':'none';
+  const target=btn.dataset.target;
+  homeContent.style.display=target==='homeContent'?'block':'none';
+  petsContent.style.display=target==='petsContent'?'block':'none';
 });});
 
-// Fetch JSON su timestamp
+// Load pets.json from value-list repo
 fetch('https://asignas19-ui.github.io/value-list/pets.json?'+Date.now())
   .then(res=>res.json())
   .then(data=>{ pets = data; renderPets(); })
