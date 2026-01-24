@@ -6,49 +6,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{box-sizing:border-box;font-family:Arial,Segoe UI}
 body{
   margin:0;
   background:linear-gradient(180deg,#0a1f33,#061423);
-  color:white;
-  font-family:Arial,Helvetica,sans-serif;
+  color:#eaf3ff;
 }
 
+/* HEADER */
 header{
   background:#050f1a;
-  padding:15px 30px;
+  padding:14px 30px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
-
 header h1{
   margin:0;
   font-size:22px;
 }
 
-nav{
+/* TOP NAV */
+.top-nav{
   display:flex;
   gap:20px;
 }
-
-nav a{
+.top-nav button{
+  background:none;
+  border:none;
   color:#cfe9ff;
-  text-decoration:none;
+  font-size:15px;
+  cursor:pointer;
   font-weight:bold;
 }
-
-nav a:hover{
+.top-nav button.active,
+.top-nav button:hover{
   color:#3dbbff;
 }
 
-/* CATEGORY TABS */
+/* SECTIONS */
+section{display:none}
+section.active{display:block}
+
+/* HOME */
+.home-container{
+  max-width:1100px;
+  margin:auto;
+  padding:30px;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:25px;
+}
+.block{
+  background:#0b2c44;
+  padding:18px;
+  border-radius:8px;
+}
+.block h2{
+  margin-top:0;
+  color:#8fd3ff;
+}
+
+/* VALUE LIST */
 .categories{
   display:flex;
   justify-content:center;
   gap:12px;
   margin:25px 0;
+  flex-wrap:wrap;
 }
-
 .categories button{
   background:#0b2c44;
   color:white;
@@ -57,47 +83,41 @@ nav a:hover{
   border-radius:6px;
   cursor:pointer;
 }
-
 .categories button.active{
   background:#1ea7ff;
 }
 
-/* PET GRID */
 .container{
   max-width:1200px;
   margin:auto;
   padding:20px;
 }
-
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
   gap:18px;
 }
-
 .pet{
   background:#0b2c44;
   border-radius:8px;
   padding:12px;
   text-align:center;
 }
-
 .pet img{
   width:120px;
   height:120px;
   object-fit:contain;
 }
-
 .pet h3{
   margin:10px 0 6px;
   font-size:16px;
 }
-
 .values{
   font-size:14px;
   line-height:1.5;
 }
 
+/* FOOTER */
 footer{
   margin-top:40px;
   text-align:center;
@@ -111,26 +131,57 @@ footer{
 <body>
 
 <header>
-  <h1>Tap Simulator Value List</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Value List</a>
-    <a href="#">Discord</a>
-  </nav>
+  <h1>Tap Simulator Values</h1>
+  <div class="top-nav">
+    <button class="active" onclick="showSection('home',this)">🏠 Home</button>
+    <button onclick="showSection('values',this)">📊 Value List</button>
+    <button onclick="window.open('https://discord.gg/tapsim','_blank')">💬 Discord</button>
+  </div>
 </header>
 
-<div class="categories">
-  <button class="active" onclick="showAll()">All</button>
-  <button onclick="filterPets('secret1')">Secret I</button>
-  <button onclick="filterPets('secret2')">Secret II</button>
-  <button onclick="filterPets('exclusive')">Exclusive</button>
-  <button onclick="filterPets('mythic')">Mythic</button>
-  <button onclick="filterPets('leaderboard')">Leaderboard</button>
-</div>
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="home-container">
 
-<div class="container">
-  <div id="pets" class="grid"></div>
-</div>
+    <div class="block">
+      <h2>📰 Latest Update</h2>
+      <p>📅 01/19/26</p>
+      <p>✨ Space World</p>
+      <p>🗺️ 2 New Areas</p>
+      <p>🎡 Void Spin Wheel</p>
+      <p>🎁 New Exclusives</p>
+      <p>🐾 3+ New Secret Pets</p>
+      <p>🔥 35+ New Pets</p>
+    </div>
+
+    <div class="block">
+      <h2>👑 Owners</h2>
+      <p>GoldAstro</p>
+      <p>Hyper</p>
+
+      <h2 style="margin-top:18px">🛠 Editors</h2>
+      <p>NotSpeedGuy</p>
+      <p>Diamondz</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- VALUE LIST -->
+<section id="values">
+  <div class="categories">
+    <button class="active" onclick="showAll()">All</button>
+    <button onclick="filterPets('secret1')">Secret I</button>
+    <button onclick="filterPets('secret2')">Secret II</button>
+    <button onclick="filterPets('exclusive')">Exclusive</button>
+    <button onclick="filterPets('mythic')">Mythic</button>
+    <button onclick="filterPets('leaderboard')">Leaderboard</button>
+  </div>
+
+  <div class="container">
+    <div id="pets" class="grid"></div>
+  </div>
+</section>
 
 <footer>
   DISCLAIMER: Serials can affect values drastically.<br>
@@ -142,20 +193,27 @@ const URL = "https://asignas19-ui.github.io/value-list/pets.json";
 let pets = [];
 
 fetch(URL)
-  .then(r => r.json())
-  .then(d => {
-    pets = d;
+  .then(r=>r.json())
+  .then(d=>{
+    pets=d;
     render(pets);
   })
   .catch(()=> {
-    document.getElementById("pets").innerHTML = "Failed to load pets.";
+    document.getElementById("pets").innerHTML="Failed to load pets.";
   });
 
+function showSection(id,btn){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".top-nav button").forEach(b=>b.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  btn.classList.add("active");
+}
+
 function render(list){
-  const grid = document.getElementById("pets");
-  grid.innerHTML = "";
+  const grid=document.getElementById("pets");
+  grid.innerHTML="";
   list.forEach(p=>{
-    grid.innerHTML += `
+    grid.innerHTML+=`
       <div class="pet">
         <img src="${p.image}">
         <h3>${p.name}</h3>
@@ -169,19 +227,19 @@ function render(list){
   });
 }
 
-function clearActive(){
+function clearActiveCat(){
   document.querySelectorAll(".categories button")
     .forEach(b=>b.classList.remove("active"));
 }
 
 function showAll(){
-  clearActive();
+  clearActiveCat();
   event.target.classList.add("active");
   render(pets);
 }
 
 function filterPets(cat){
-  clearActive();
+  clearActiveCat();
   event.target.classList.add("active");
   render(pets.filter(p=>p.category===cat));
 }
