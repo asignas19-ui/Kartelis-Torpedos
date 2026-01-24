@@ -1,5 +1,5 @@
 [
-  {"name":"Frost Queen","image":"https://i.imgur.com/UNt6YPp.png","category":"mythic","values":{"normal":25,"golden":120,"rainbow":120}},
+  {"name":"Frost Queen","image":"https://i.imgur.com/UNt6YPp.png","category":"secret","values":{"normal":25,"golden":120,"rainbow":120}},
   {"name":"Divine Dragon","image":"https://i.imgur.com/mhe8GJe.png","category":"secret","values":{"normal":30,"golden":135,"rainbow":135}},
   {"name":"Weeping Angel","image":"https://i.imgur.com/8aszU2S.png","category":"secret","values":{"normal":35,"golden":160,"rainbow":160}},
   {"name":"Sakura Dominator","image":"https://i.imgur.com/rg0ypBp.png","category":"secret","values":{"normal":40,"golden":180,"rainbow":180}},
