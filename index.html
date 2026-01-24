@@ -6,14 +6,9 @@
 <title>Tap Simulator Values</title>
 <style>
   body {margin:0; font-family:"Segoe UI", Tahoma, sans-serif; background:#0b1324; color:white;}
-  /* HEADER */
   .top-header {
     background: url("https://images.unsplash.com/photo-1604014237744-3b3f0c5d0c4b?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
-    padding:18px 24px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.4);
-    position:sticky;
-    top:0;
-    z-index:1000;
+    padding:18px 24px; box-shadow:0 4px 20px rgba(0,0,0,0.4); position:sticky; top:0; z-index:1000;
   }
   .header-content { max-width:1400px; margin:auto; display:flex; align-items:center; justify-content:space-between;}
   .left-header {display:flex; align-items:center; gap:16px;}
@@ -23,12 +18,12 @@
   .discord-btn { background: linear-gradient(135deg,#5865f2,#4752c4); color:white; text-decoration:none; padding:10px 18px; border-radius:999px; font-weight:700; font-size:14px; box-shadow:0 4px 15px rgba(0,0,0,0.3); transition: transform 0.15s, box-shadow 0.15s;}
   .discord-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.5); }
 
-  /* MAIN */
   .container { padding:24px; max-width:1400px; margin:auto; }
 
   /* HOME CONTENT */
+  #homeContent img { width:100%; border-radius:18px; margin-bottom:16px; }
   #homeContent h2 { color:#7ffcff; margin-top:20px; }
-  #homeContent p, #homeContent li { font-size:14px; line-height:1.6; color:#cfd4ff; }
+  #homeContent p, #homeContent li { font-size:14px; line-height:1.6; color:#cfd4ff; margin-bottom:6px; }
 
   /* PETS DASHBOARD */
   .filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
@@ -68,18 +63,35 @@
 
   <!-- HOME CONTENT -->
   <div id="homeContent">
-    <h2>Game Info</h2>
-    <p>Tap Simulator is a fun game where you collect pets, tap for rewards, and compete with others.</p>
-
-    <h2>Updates / News</h2>
+    <h2>⚡ List Last Updated - 01/19/26</h2>
+    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkehpoKBSGQvorbL0RDMIq7rvkwbVCuTQfcvt7CRkzqQSGP5qd3ksCW4lKDe-34Wv1B03iE0QSP8ANREJqugR2Beu7hGw8PYLmw_xKtEL6SeFLXMu8bD5YZTjGrtZPTrBzPx1erNO4UbjX2ZgcMaeK_GYPNblISPo5LhcESXTw9rItmRyiPiPFU45DbOZgqLacyt1hpkUqfxMI8cdH-_hwMRL0YLsXJrrNsK=w1280" alt="Game Update">
+    <p><strong>Most Recent Game Update:</strong> 10/12/24</p>
     <ul>
-      <li>Jan 2026 - Added new pets</li>
-      <li>Dec 2025 - Holiday event bonuses</li>
+      <li>Space World✨</li>
+      <li>2 New Areas🔮</li>
+      <li>Void Spin Wheel🎈</li>
+      <li>New Exclusives🛒</li>
+      <li>3+ New Secret Pets🦖</li>
+      <li>4 NEW EGGS🥚!</li>
+      <li>35+ NEW PETS 🐾!</li>
     </ul>
 
-    <h2>Owners / Developers</h2>
-    <p>Main developer: John Doe</p>
-    <p>Community manager: Jane Smith</p>
+    <h2>🎩 Value List Owners</h2>
+    <ul>
+      <li>GoldAstro - (goldastro)</li>
+      <li>Hyper - (nrg_elixr3)</li>
+    </ul>
+
+    <h2>🪄 Value List Editors</h2>
+    <ul>
+      <li>NotSpeedGuy - (zacklist)</li>
+      <li>Diamondz - (diamondz_1)</li>
+    </ul>
+
+    <h2>⚠ Disclaimer</h2>
+    <p>Serials can affect values drastically.</p>
+    <p>O/C = Owners Choice</p>
+    <p>N/A = Not Available (AKA Doesn't exist)</p>
   </div>
 
   <!-- PETS DASHBOARD -->
@@ -114,36 +126,11 @@
 
   // Pets data
   const pets=[
-    {
-      name:"Frost Queen",
-      image:"https://lh3.googleusercontent.com/sitesv/AAzXCkfzE9sIlRM5QwVW-gcbNibLfh1DYfyvL7V4jIvgeor0fEDLfIHYQoqNI-HrZjADqHmu9QBxge6r6qe8TK84qT8Xb1O9IKJA8rUh1OlcHkPekkahTZzp1_n53dVTUOzzsY0ustlw5QkcY_Jn-rV_zUngBqFDTPUKtNpfMlPV6psYQggf9V39sjxDH3v8AbzejbecuWL8tZjUFfOl1Z2Na228bG1ZdT928qv7dUc=w1280",
-      category:"secret",
-      values:{normal:25,golden:120,rainbow:120}
-    },
-    {
-      name:"Divine Dragon",
-      image:"https://lh3.googleusercontent.com/sitesv/AAzXCkdhulGoxe9X3e-grsUYwAKtpQe2Mv2jyFh2r-Y33W_ZSkBU7wONPhFEzFsI_uz7ec0IdhihTltFaMvq3CUwcncOgWcPRcXDcVhqOC8Tl7YIYsiDqExXdiML2DrZlkKefh51a8XltHOYnLqijcsL_tQIsPUdGDgmZayYGzpX5rqkzH6uG2BdXXVxzDUTtayBPe6FFnIkbd3xyFC0pdG0I5ftiuoYtwxvWYYbfSU=w1280",
-      category:"secret",
-      values:{normal:30,golden:135,rainbow:135}
-    },
-    {
-      name:"Weeping Angel",
-      image:"https://lh3.googleusercontent.com/sitesv/AAzXCkcfPlKvbE1cjPygastLLIU9ie2qpjXD6CIHwCmt2F9yEmKnilGcOwOsJI37_dhdG2xZz4nm80KhMPXDPVEM4lfCjeAQIKiK--dUpzTVLALbXjbGxceBxB28livvl-Hk0WM0O5058jKnaTQJJEv1s2xJ_uwreE4qvi3MMgbpeFNFgtQ9jsjZMASVYQR8hP4VQwgrTF6wKQZcOl1N0-C_te8H5_uC--KHRrRoq0o=w1280",
-      category:"secret",
-      values:{normal:35,golden:160,rainbow:160}
-    },
-    {
-      name:"Sakura Dominator",
-      image:"https://lh3.googleusercontent.com/sitesv/AAzXCkdmwaeIjjP4XNJSg1j54l7zYBAYhWa59Dy4yeWdq89NHUnb8hBpRASAMGkFKKS3EqsX53RaE-DKbn1XrsEpKOAqzTOY266ELYyoHZiagfWXoqRGsOumCHQEQO30s-mT1g9_Mwq1ws66O2M92M7s0HlLctI0Tp0DkWGM5JRUBh2Dx3GUhiWpBa_Q3WLa3wqvNwE-dGLW67OIjp-xSNLZLj5k6NMfDNJ1eQIE=w1280",
-      category:"secret",
-      values:{normal:40,golden:180,rainbow:180}
-    },
-    {
-      name:"Magmasaur",
-      image:"https://lh3.googleusercontent.com/sitesv/AAzXCkeYlI_xV0uc7e9C9UPWryjkH21_gObVndIQOKTAuderp9Uc3-Cd695ORZmC4WQYH72_BFmjmQEp31GfRwPdYUsMCGHi7PaiKNfHGX3-Llo39izypq5O_eFjghMagQ_HJQkM4cVnKdSkZqgLR5UwE-GaRuLnm0hHRzkUTb09fycgW_UvXM79d7Ew74FzgDLRKritWXgEiE6W34uCcX5MsWVC8cIevCPSBNMRgYU=w1280",
-      category:"secret",
-      values:{normal:40,golden:180,rainbow:180}
-    }
+    {name:"Frost Queen", image:"https://lh3.googleusercontent.com/sitesv/AAzXCkfzE9sIlRM5QwVW-gcbNibLfh1DYfyvL7V4jIvgeor0fEDLfIHYQoqNI-HrZjADqHmu9QBxge6r6qe8TK84qT8Xb1O9IKJA8rUh1OlcHkPekkahTZzp1_n53dVTUOzzsY0ustlw5QkcY_Jn-rV_zUngBqFDTPUKtNpfMlPV6psYQggf9V39sjxDH3v8AbzejbecuWL8tZjUFfOl1Z2Na228bG1ZdT928qv7dUc=w1280", category:"secret", values:{normal:25,golden:120,rainbow:120}},
+    {name:"Divine Dragon", image:"https://lh3.googleusercontent.com/sitesv/AAzXCkdhulGoxe9X3e-grsUYwAKtpQe2Mv2jyFh2r-Y33W_ZSkBU7wONPhFEzFsI_uz7ec0IdhihTltFaMvq3CUwcncOgWcPRcXDcVhqOC8Tl7YIYsiDqExXdiML2DrZlkKefh51a8XltHOYnLqijcsL_tQIsPUdGDgmZayYGzpX5rqkzH6uG2BdXXVxzDUTtayBPe6FFnIkbd3xyFC0pdG0I5ftiuoYtwxvWYYbfSU=w1280", category:"secret", values:{normal:30,golden:135,rainbow:135}},
+    {name:"Weeping Angel", image:"https://lh3.googleusercontent.com/sitesv/AAzXCkcfPlKvbE1cjPygastLLIU9ie2qpjXD6CIHwCmt2F9yEmKnilGcOwOsJI37_dhdG2xZz4nm80KhMPXDPVEM4lfCjeAQIKiK--dUpzTVLALbXjbGxceBxB28livvl-Hk0WM0O5058jKnaTQJJEv1s2xJ_uwreE4qvi3MMgbpeFNFgtQ9jsjZMASVYQR8hP4VQwgrTF6wKQZcOl1N0-C_te8H5_uC--KHRrRoq0o=w1280", category:"secret", values:{normal:35,golden:160,rainbow:160}},
+    {name:"Sakura Dominator", image:"https://lh3.googleusercontent.com/sitesv/AAzXCkdmwaeIjjP4XNJSg1j54l7zYBAYhWa59Dy4yeWdq89NHUnb8hBpRASAMGkFKKS3EqsX53RaE-DKbn1XrsEpKOAqzTOY266ELYyoHZiagfWXoqRGsOumCHQEQO30s-mT1g9_Mwq1ws66O2M92M7s0HlLctI0Tp0DkWGM5JRUBh2Dx3GUhiWpBa_Q3WLa3wqvNwE-dGLW67OIjp-xSNLZLj5k6NMfDNJ1eQIE=w1280", category:"secret", values:{normal:40,golden:180,rainbow:180}},
+    {name:"Magmasaur", image:"https://lh3.googleusercontent.com/sitesv/AAzXCkeYlI_xV0uc7e9C9UPWryjkH21_gObVndIQOKTAuderp9Uc3-Cd695ORZmC4WQYH72_BFmjmQEp31GfRwPdYUsMCGHi7PaiKNfHGX3-Llo39izypq5O_eFjghMagQ_HJQkM4cVnKdSkZqgLR5UwE-GaRuLnm0hHRzkUTb09fycgW_UvXM79d7Ew74FzgDLRKritWXgEiE6W34uCcX5MsWVC8cIevCPSBNMRgYU=w1280", category:"secret", values:{normal:40,golden:180,rainbow:180}}
   ];
 
   const petsGrid=document.getElementById("petsGrid");
