@@ -2,246 +2,243 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tap Simulator Values</title>
+<title>Tap Sim Value List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{box-sizing:border-box;font-family:Segoe UI,Arial}
+:root{
+  --bg:#0c0b12;
+  --bg2:#151422;
+  --card:#1b1a2a;
+  --muted:#9aa0c3;
+  --accent:#8b5cf6;
+}
+
+*{box-sizing:border-box;font-family:Inter,Segoe UI,Arial}
 body{
   margin:0;
-  background:radial-gradient(circle at top,#121a33,#070b17);
-  color:#eaf1ff;
-}
-
-/* HEADER */
-header{
-  text-align:center;
-  padding:22px 10px;
-}
-header h1{
-  margin:0;
-  font-size:26px;
-}
-.nav{
-  margin-top:12px;
-}
-.nav button{
-  background:#1a2547;
-  border:none;
+  background:radial-gradient(circle at top,#17162a,#09080f);
   color:#fff;
-  padding:8px 18px;
-  border-radius:18px;
-  margin:0 6px;
-  cursor:pointer;
-}
-.nav button.active{
-  background:#4aa3ff;
-  color:#000;
 }
 
-/* MAIN */
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:20px;
-}
-
-/* HOME */
-.home-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-.card{
-  background:#0f1930;
-  border-radius:16px;
-  padding:18px;
-}
-.card h3{
-  margin-top:0;
-}
-
-.update-list p{
-  margin:6px 0;
-  color:#cfe0ff;
-}
-
-.big-img{
-  width:100%;
-  border-radius:14px;
-}
-
-/* PETS */
-.tabs{
+/* TOP BAR */
+.topbar{
   display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:18px;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 28px;
 }
-.tab{
-  background:#1a2547;
-  padding:7px 16px;
-  border-radius:14px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
+.logo img{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+}
+.menu{
+  display:flex;
+  gap:26px;
+  font-size:14px;
+  color:#d5d7ff;
+}
+.menu span{cursor:pointer;opacity:.85}
+.menu span:hover{opacity:1}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:40px 20px 25px;
+}
+.hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+.hero p{
+  color:var(--muted);
+  max-width:700px;
+  margin:auto;
+}
+
+/* CATEGORY PILLS */
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin:30px 0 20px;
+}
+.pill{
+  background:#242338;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:14px;
   cursor:pointer;
 }
-.tab.active{
-  background:#4aa3ff;
+.pill.active{
+  background:var(--accent);
   color:#000;
 }
 
-.pets{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
-  gap:18px;
+/* SEARCH */
+.searchbar{
+  max-width:900px;
+  margin:0 auto 30px;
+  display:flex;
+  gap:10px;
 }
+.searchbar input{
+  flex:1;
+  background:#121121;
+  border:1px solid #2a2940;
+  border-radius:10px;
+  padding:12px 16px;
+  color:#fff;
+  font-size:15px;
+}
+
+/* GRID */
+.grid{
+  max-width:1200px;
+  margin:auto;
+  padding:0 25px 60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:22px;
+}
+
+/* CARD */
 .pet{
-  background:#0f1930;
+  background:linear-gradient(180deg,#1b1a2a,#131221);
   border-radius:16px;
   padding:14px;
-  text-align:center;
+  border:1px solid #26253a;
 }
 .pet img{
-  width:110px;
-  height:110px;
+  width:100%;
+  aspect-ratio:1/1;
   object-fit:contain;
-  margin-bottom:8px;
+  border-radius:12px;
+  background:#0f0e1a;
 }
-.pet h4{
-  margin:6px 0;
+.tag{
+  display:inline-block;
+  margin:8px 0;
+  font-size:12px;
+  background:#2a2940;
+  padding:3px 8px;
+  border-radius:6px;
+}
+.pet h3{
+  margin:6px 0 10px;
+  font-size:16px;
 }
 .pet p{
   margin:4px 0;
-  color:#cfe0ff;
+  font-size:14px;
+  color:#cfd2ff;
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  color:#9bb1dd;
-  padding:25px;
-  font-size:14px;
+  color:#7f85b5;
+  padding:30px;
+  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Tap Simulator Values</h1>
-  <div class="nav">
-    <button id="homeBtn" class="active" onclick="showHome()">Home</button>
-    <button id="petsBtn" onclick="showPets()">Pets</button>
+<!-- TOP -->
+<div class="topbar">
+  <div class="logo">
+    <img src="https://i.imgur.com/7QKXK8G.png">
+    Tap Sim Values
   </div>
-</header>
-
-<div class="container">
-
-<!-- HOME -->
-<div id="home">
-  <div class="home-grid">
-
-    <div class="card update-list">
-      <h3>⚡ Recent Game Update</h3>
-      <p>🌌 Space World</p>
-      <p>🗺️ 2 New Areas</p>
-      <p>🎡 Void Spin Wheel</p>
-      <p>🥚 New Exclusives</p>
-      <p>🐉 3+ New Secret Pets</p>
-      <p>🥚 4 New Eggs</p>
-      <p>✨ 35+ New Pets</p>
-    </div>
-
-    <div class="card">
-      <img class="big-img" src="https://i.imgur.com/6XH7K3C.png">
-    </div>
-
-    <div class="card">
-      <h3>👑 Owners</h3>
-      <p>• GoldAstro (goldastro)</p>
-      <p>• Hyper (nrg_elixr3)</p>
-    </div>
-
-    <div class="card">
-      <h3>🛠️ Editors</h3>
-      <p>• NotSpeedGuy (zacklist)</p>
-      <p>• Diamondz (diamondz_1)</p>
-    </div>
-
-    <div class="card">
-      <h3>⚠️ Disclaimer</h3>
-      <p>Serials can affect values drastically.</p>
-      <p>O/C = Owners Choice</p>
-      <p>N/A = Not Available</p>
-    </div>
-
+  <div class="menu">
+    <span>Trade Ads</span>
+    <span>Value List</span>
+    <span>Calculator</span>
+    <span>Giveaways</span>
+    <span>Discord</span>
   </div>
 </div>
 
-<!-- PETS -->
-<div id="pets" style="display:none">
-
-  <div class="tabs">
-    <div class="tab active" onclick="setCat('all')">All</div>
-    <div class="tab" onclick="setCat('Secret I')">Secret I</div>
-    <div class="tab" onclick="setCat('Secret II')">Secret II</div>
-    <div class="tab" onclick="setCat('Exclusive')">Exclusive</div>
-    <div class="tab" onclick="setCat('Leaderboard')">Leaderboard</div>
-    <div class="tab" onclick="setCat('Mythic')">Mythics</div>
-  </div>
-
-  <div class="pets" id="petGrid"></div>
+<!-- HERO -->
+<div class="hero">
+  <h1>Tap Simulator Value List</h1>
+  <p>Browse and track the current market prices for Tap Simulator pets.  
+  Values are community-based and updated regularly.</p>
 </div>
 
+<!-- CATEGORIES -->
+<div class="pills" id="cats"></div>
+
+<!-- SEARCH -->
+<div class="searchbar">
+  <input id="search" placeholder="Search pets..." oninput="render()">
 </div>
+
+<!-- GRID -->
+<div class="grid" id="grid"></div>
 
 <footer>
-© 2026 Tap Simulator Values — Fan Made
+Fan-made Tap Simulator Value List • Data from GitHub JSON
 </footer>
 
 <script>
-let pets=[],category="all";
+let pets=[],cat="All";
 
-fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
-.then(r=>r.json()).then(d=>{
-  pets=d;
-  renderPets();
+const categories=[
+ "All",
+ "Secret I",
+ "Secret II",
+ "Exclusive",
+ "Mythic",
+ "Leaderboard"
+];
+
+const catBox=document.getElementById("cats");
+categories.forEach(c=>{
+  const d=document.createElement("div");
+  d.className="pill"+(c==="All"?" active":"");
+  d.innerText=c;
+  d.onclick=()=>{
+    cat=c;
+    document.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
+    d.classList.add("active");
+    render();
+  };
+  catBox.appendChild(d);
 });
 
-function setCat(c){
-  category=c;
-  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-  event.target.classList.add("active");
-  renderPets();
-}
+fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
+.then(r=>r.json())
+.then(d=>{pets=d;render()});
 
-function renderPets(){
-  let grid=document.getElementById("petGrid");
-  grid.innerHTML="";
-  pets.filter(p=>category==="all"||p.category===category)
-  .forEach(p=>{
-    grid.innerHTML+=`
-      <div class="pet">
-        <img src="${p.image}">
-        <h4>${p.name}</h4>
-        <p>💰 Normal: ${p.normal}</p>
-        <p>✨ Golden: ${p.golden}</p>
-        <p>🌈 Rainbow: ${p.rainbow}</p>
-      </div>
-    `;
+function render(){
+  const g=document.getElementById("grid");
+  const q=document.getElementById("search").value.toLowerCase();
+  g.innerHTML="";
+  pets.filter(p=>{
+    return (cat==="All"||p.category===cat) &&
+           p.name.toLowerCase().includes(q);
+  }).forEach(p=>{
+    g.innerHTML+=`
+    <div class="pet">
+      <img src="${p.image}">
+      <span class="tag">${p.rarity}</span>
+      <h3>${p.name}</h3>
+      <p>💰 Normal: ${p.normal}</p>
+      <p>✨ Golden: ${p.golden}</p>
+      <p>🌈 Rainbow: ${p.rainbow}</p>
+    </div>`;
   });
-}
-
-function showHome(){
-  home.style.display="block";
-  pets.style.display="none";
-  homeBtn.classList.add("active");
-  petsBtn.classList.remove("active");
-}
-function showPets(){
-  home.style.display="none";
-  pets.style.display="block";
-  petsBtn.classList.add("active");
-  homeBtn.classList.remove("active");
 }
 </script>
 
