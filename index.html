@@ -8,18 +8,17 @@
 <style>
 :root{
   --bg:#0b0d14;
-  --panel:#14182a;
-  --card:#1b2035;
+  --panel:#151a2d;
+  --card:#1b2140;
   --accent:#7c6cff;
   --text:#f2f4ff;
   --muted:#9aa0c7;
 }
 
 *{box-sizing:border-box;font-family:Inter,Segoe UI,system-ui}
-
 body{
   margin:0;
-  background:radial-gradient(circle at top,#1a1d2b,#0b0d14 60%);
+  background:radial-gradient(circle at top,#1a1f3a,#0b0d14 65%);
   color:var(--text);
 }
 
@@ -31,9 +30,10 @@ body{
   padding:14px 24px;
   border-bottom:1px solid rgba(255,255,255,.06);
 }
+.logo{font-weight:700}
 .nav a{
   color:#dce0ff;
-  margin:0 14px;
+  margin:0 12px;
   text-decoration:none;
   font-size:14px;
 }
@@ -42,61 +42,47 @@ body{
   padding:8px 14px;
   border-radius:10px;
   color:#fff;
-  font-weight:600;
   text-decoration:none;
+  font-weight:600;
 }
+
+/* SECTIONS */
+section{display:none}
+section.active{display:block}
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:70px 20px 30px;
+  padding:60px 20px 30px;
 }
-.hero h1{font-size:40px;margin:0}
+.hero h1{font-size:38px;margin-bottom:8px}
 .hero p{color:var(--muted)}
 
-/* SECTIONS */
-.section{
-  max-width:950px;
-  margin:30px auto;
-  background:linear-gradient(180deg,#1a1f35,#14182a);
-  border-radius:18px;
-  padding:20px;
+/* HOME BLOCKS */
+.blocks{
+  max-width:900px;
+  margin:40px auto;
+  display:grid;
+  gap:18px;
 }
-.section h3{
-  margin-top:0;
-  display:flex;
-  align-items:center;
-  gap:8px;
+.block{
+  background:var(--panel);
+  border-radius:16px;
+  padding:18px;
 }
+.block h3{margin-top:0}
 
-/* NEWS */
-.news{
-  display:flex;
-  gap:20px;
-  align-items:flex-start;
-}
-.news img{
-  width:180px;
-  border-radius:14px;
-}
-.news ul{
-  margin:0;
-  padding-left:18px;
-  line-height:1.6;
-}
-
-/* TABS */
+/* FILTER TABS */
 .tabs{
   display:flex;
-  gap:10px;
   justify-content:center;
-  flex-wrap:wrap;
-  margin:30px 0 15px;
+  gap:10px;
+  margin:25px 0;
 }
 .tab{
-  background:#20243a;
   padding:8px 16px;
   border-radius:999px;
+  background:#20254a;
   font-size:13px;
   cursor:pointer;
 }
@@ -117,7 +103,7 @@ body{
   border-radius:12px;
   border:none;
   outline:none;
-  background:#15192a;
+  background:#141833;
   color:#fff;
 }
 
@@ -133,30 +119,29 @@ body{
 
 /* PET CARD */
 .pet{
-  background:linear-gradient(180deg,#1c2034,#14182a);
-  border-radius:16px;
+  background:linear-gradient(180deg,#20255a,#141833);
+  border-radius:18px;
   padding:14px;
-  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.45);
 }
 .pet img{
   width:100%;
-  border-radius:12px;
+  border-radius:14px;
 }
 .pet h3{
-  margin:10px 0;
-  font-size:15px;
+  text-align:center;
+  margin:10px 0 8px;
 }
-.price{
+.values{
   font-size:13px;
-  color:var(--muted);
+  color:#dce0ff;
   line-height:1.6;
 }
 
-.hidden{display:none}
-
+/* FOOTER */
 footer{
   text-align:center;
-  padding:30px;
+  padding:25px;
   font-size:12px;
   color:#7f85b6;
 }
@@ -166,136 +151,132 @@ footer{
 <body>
 
 <div class="topbar">
-  <b>Tap Sim Values</b>
+  <div class="logo">Tap Sim Values</div>
   <div class="nav">
-    <a href="#" onclick="showHome()">🏠 Home</a>
-    <a href="#" onclick="showValues()">📋 Value List</a>
+    <a href="#" onclick="show('home')">🏠 Home</a>
+    <a href="#" onclick="show('values')">📋 Value List</a>
   </div>
   <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
 </div>
 
 <!-- HOME -->
-<div id="home">
+<section id="home" class="active">
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
     <p>Community driven Tap Simulator values – updated regularly.</p>
   </div>
 
-  <div class="section news">
-    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkc9IFtEEFDxS7spwNrZgxSPSzgZb6c7xdlPnf0iOplgMklWN8kovZZqeYZIg8EA6aQYYlnyY6-1GFDQ022uuehnWRM7mJXFkLuAerUEYQ0bEodQGVNgg55qEhlV-O5Elg4YqnP5xe8h-vS8He3_c_CzNGO0njRzF0hze7awF3uFtdAS0fxpZSIR6rc=w1280">
-    <div>
-      <h3>⚡ Latest Update</h3>
+  <div class="blocks">
+    <div class="block">
+      <h3>⚡ Recent Game Update</h3>
       <ul>
-        <li><b>List Last Updated:</b> 24/01/26</li>
-        <li><b>Most Recent Game Update:</b> 22/01/26</li>
-        <li>🌌 Celestial World</li>
+        <li>⚡ List Last Updated – 24/01/26</li>
+        <li>📅 Most Recent Game Update – 22/01/26</li>
+        <li>✨ Celestial World</li>
         <li>🔮 1 New Area</li>
         <li>🎈 Electric Spin Wheel</li>
         <li>🛒 New Exclusive Egg</li>
         <li>🦖 5+ New Secret Pets</li>
-        <li>🥚 2 New Eggs (1 LIMITED)</li>
+        <li>🥚 2 New Eggs (1 Limited)</li>
         <li>🐾 30+ New Pets</li>
       </ul>
     </div>
+
+    <div class="block">
+      <h3>👑 Owners</h3>
+      <ul>
+        <li>GoldAstro (goldastro)</li>
+        <li>Hyper (nrg_elixr)</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>✏️ Editors</h3>
+      <ul>
+        <li>NotSpeedGuy (zacklist)</li>
+        <li>Diamondz (diamondz_1)</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>⚠️ Disclaimer</h3>
+      <ul>
+        <li>Serials & mutations affect values drastically</li>
+        <li>O/C = Owners Choice</li>
+        <li>N/A = Not Available</li>
+      </ul>
+    </div>
   </div>
+</section>
 
-  <div class="section">
-    <h3>👑 Owners</h3>
-    • GoldAstro (goldastro)<br>
-    • Hyper (rng_elixr)
-  </div>
-
-  <div class="section">
-    <h3>🛠 Editors</h3>
-    • NotSpeedGuy (zacklist)<br>
-    • Diamondz (diamondz_1)
-  </div>
-
-  <div class="section">
-    <h3>⚠ Disclaimer</h3>
-    • Serials & mutations affect values drastically<br>
-    • O/C = Owners Choice<br>
-    • N/A = Not Available
-  </div>
-</div>
-
-<!-- VALUES -->
-<div id="values" class="hidden">
-
+<!-- VALUE LIST -->
+<section id="values">
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
   </div>
 
-  <div class="tabs" id="tabs"></div>
+  <div class="tabs">
+    <div class="tab active" data-cat="all">All</div>
+    <div class="tab" data-cat="secret1">Secret I</div>
+    <div class="tab" data-cat="secret2">Secret II</div>
+  </div>
 
-  <div class="search" id="searchBox">
-    <input id="search" placeholder="Search pets..." oninput="renderPets()">
+  <div class="search">
+    <input id="search" placeholder="Search pets...">
   </div>
 
   <div class="grid" id="grid"></div>
-</div>
+</section>
 
 <footer>© 2026 Tap Sim Values – Fan made</footer>
 
 <script>
-let pets=[],currentCat="all";
+let pets=[],current="all";
+
+function show(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
 
 fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
 .then(r=>r.json())
 .then(data=>{
   pets=data;
-  buildTabs();
-  renderPets();
+  render();
 });
 
-function buildTabs(){
-  const cats=["all",...new Set(pets.map(p=>p.category))];
-  const wrap=document.getElementById("tabs");
-  wrap.innerHTML="";
-  cats.forEach(c=>{
-    const t=document.createElement("div");
-    t.className="tab"+(c==="all"?" active":"");
-    t.textContent=c==="all"?"All":c.replace("secret1","Secret I").replace("secret2","Secret II");
-    t.onclick=()=>{
-      currentCat=c;
-      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-      t.classList.add("active");
-      document.getElementById("searchBox").style.display =
-        c==="all" ? "block" : "none";
-      renderPets();
-    };
-    wrap.appendChild(t);
-  });
-}
+document.querySelectorAll(".tab").forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    current=t.dataset.cat;
+    render();
+  };
+});
 
-function renderPets(){
+document.getElementById("search").oninput=render;
+
+function render(){
   const q=document.getElementById("search").value.toLowerCase();
   const grid=document.getElementById("grid");
   grid.innerHTML="";
+
   pets.filter(p=>{
-    return (currentCat==="all"||p.category===currentCat)
-      && (currentCat!=="all"||p.name.toLowerCase().includes(q));
+    return (current==="all"||p.category===current)
+      && p.name.toLowerCase().includes(q);
   }).forEach(p=>{
+    const v=p.value||{};
     grid.innerHTML+=`
       <div class="pet">
         <img src="${p.image}">
         <h3>${p.name}</h3>
-        <div class="price">
-          💎 Normal: ${p.values?.normal ?? "N/A"}<br>
-          ⭐ Golden: ${p.values?.golden ?? "N/A"}<br>
-          🌈 Rainbow: ${p.values?.rainbow ?? "N/A"}
+        <div class="values">
+          💎 Normal: ${v.normal ?? "N/A"}<br>
+          ⭐ Golden: ${v.golden ?? "N/A"}<br>
+          🌈 Rainbow: ${v.rainbow ?? "N/A"}
         </div>
       </div>`;
   });
-}
-
-function showHome(){
-  home.classList.remove("hidden");
-  values.classList.add("hidden");
-}
-function showValues(){
-  values.classList.remove("hidden");
-  home.classList.add("hidden");
 }
 </script>
 
