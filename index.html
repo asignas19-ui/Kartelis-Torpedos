@@ -1,380 +1,376 @@
-<!DOCTYPE html><html lang="lt">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tap Simulator – Pets Value</title>
+  <title>Tap Simulator Values</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: #0b0f1a;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #0b1324;
       color: white;
-    }.top-header {
-  background: url('https://images.unsplash.com/photo-1604014237744-3b3f0c5d0c4b?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-  padding: 20px 30px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    }
 
-.header-content {
-  max-width: 1400px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    /* ===== HEADER ===== */
+    .top-header {
+      background: url("https://images.unsplash.com/photo-1604014237744-3b3f0c5d0c4b?auto=format&fit=crop&w=1400&q=80")
+        center/cover no-repeat;
+      padding: 18px 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.header-content h1 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 800;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-}
+    .header-content {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.discord-btn {
-  background: linear-gradient(135deg, #5865F2, #4752C4);
-  color: white;
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 14px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
+    .left-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-.discord-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-}
+    .header-content h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 800;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 700;
-}
+    .home-btn {
+      background: rgba(0, 0, 0, 0.45);
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: 0.2s;
+    }
 
-.top-menu {
-  display: flex;
-  gap: 20px;
-}
+    .home-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
 
-.top-menu a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  opacity: 0.85;
-  transition: 0.2s;
-}
+    .discord-btn {
+      background: linear-gradient(135deg, #5865f2, #4752c4);
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
 
-.top-menu a:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
+    .discord-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
 
-.container {
-  padding: 30px;
-  max-width: 1400px;
-  margin: auto;
-}
+    /* ===== MAIN ===== */
+    .container {
+      padding: 24px;
+      max-width: 1400px;
+      margin: auto;
+    }
 
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 20px;
-}
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
 
-.filter-btn {
-  background: #1a1f36;
-  border: 1px solid #2a2f4a;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.2s;
-}
+    .filter-btn {
+      background: #141c33;
+      border: 1px solid #263055;
+      color: white;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: 0.2s;
+    }
 
-.filter-btn:hover {
-  background: #2a2f4a;
-}
+    .filter-btn:hover {
+      background: #1e2950;
+    }
 
-.filter-btn.active {
-  background: #5b6cff;
-  border-color: #5b6cff;
-}
+    .filter-btn.active {
+      background: #5865f2;
+      border-color: #5865f2;
+    }
 
-.search-box {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 25px;
-}
+    .search-box {
+      width: 100%;
+      max-width: 380px;
+      margin-bottom: 22px;
+    }
 
-.search-box input {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  background: #1a1f36;
-  color: white;
-  font-size: 15px;
-}
+    .search-box input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: none;
+      outline: none;
+      background: #141c33;
+      color: white;
+      font-size: 14px;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 18px;
+    }
 
-.card {
-  background: #12182b;
-  border-radius: 16px;
-  padding: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
+    .card {
+      background: #0f172d;
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.6);
-}
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
 
-.card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  background: #0a0f1f;
-}
+    .card img {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      background: #060b1c;
+    }
 
-.pet-name {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
+    .pet-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #7ffcff;
+      text-align: center;
+    }
 
-.values {
-  font-size: 13px;
-  line-height: 1.5;
-  color: #cfd4ff;
-}
+    .values {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #cfd4ff;
+    }
 
-.value-row {
-  display: flex;
-  justify-content: space-between;
-}
+    .value-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
 
-.badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  margin-left: 6px;
-}
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
 
-.badge.normal { background: #2b2f45; }
-.badge.golden { background: #ffd700; color: #000; }
-.badge.rainbow { background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet); color: #000; }
+    .badge.normal {
+      background: #2b2f45;
+    }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #888;
-  font-size: 13px;
-}
+    .badge.golden {
+      background: gold;
+      color: #000;
+    }
 
+    .badge.rainbow {
+      background: linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet
+      );
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #8fa2ff;
+      font-size: 12px;
+      opacity: 0.7;
+    }
   </style>
 </head>
-<body><header class="top-header">
-  <div class="header-content">
-    <h1>Tap Simulator Values</h1>
-    <a href="https://discord.gg/alphagg" target="_blank" class="discord-btn">Join Discord</a>
+<body id="home">
+
+  <!-- ===== HEADER ===== -->
+  <header class="top-header">
+    <div class="header-content">
+      <div class="left-header">
+        <h1>Tap Simulator Values</h1>
+        <a href="#home" class="home-btn">Home</a>
+      </div>
+      <a href="https://discord.gg/tapsim" target="_blank" class="discord-btn">
+        Join Discord
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="container">
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="secret">Secret Pets</button>
+      <button class="filter-btn" data-filter="exclusive">Exclusive Pets</button>
+      <button class="filter-btn" data-filter="mythic">Mythic</button>
+      <button class="filter-btn" data-filter="limited">Limited</button>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search pets..." />
+    </div>
+
+    <div class="grid" id="petsGrid"></div>
+
   </div>
-</header><div class="container">  <div class="filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="secret">Secret Pets</button>
-    <button class="filter-btn" data-filter="exclusive">Exclusive Pets</button>
-    <button class="filter-btn" data-filter="mythic">Mythic</button>
-    <button class="filter-btn" data-filter="limited">Limited</button>
-  </div>  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search pets..." />
-  </div>  <div class="grid" id="petsGrid"></div></div><footer>
-  
-</footer><script>
-  const pets = [
-    {
-      name: "Frost Queen",
-      image: "https://i.imgur.com/2uY9m7n.png",
-      category: "secret",
-      values: {
-        normal: 25,
-        golden: 120,
-        rainbow: 120
+
+  <footer>
+    © 2026 Tap Simulator Values — Fan-made Value List
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    const pets = [
+      {
+        name: "Frost Queen",
+        image: "https://imgur.com/a/dth9YdB#dkYzemL.png",
+        category: "secret",
+        values: {
+          normal: 25,
+          golden: 120,
+          rainbow: 120
+        }
+      },
+      {
+        name: "Void Emperor",
+        image: "https://i.imgur.com/YOURIMAGE2.png",
+        category: "exclusive",
+        values: {
+          normal: 40,
+          golden: 180,
+          rainbow: 180
+        }
+      },
+      {
+        name: "Solar Dragon",
+        image: "https://i.imgur.com/YOURIMAGE3.png",
+        category: "mythic",
+        values: {
+          normal: 18,
+          golden: 90,
+          rainbow: 90
+        }
+      },
+      {
+        name: "Galaxy Overlord",
+        image: "https://i.imgur.com/YOURIMAGE4.png",
+        category: "limited",
+        values: {
+          normal: 30,
+          golden: 140,
+          rainbow: 140
+        }
+      },
+      {
+        name: "Shadow Phoenix",
+        image: "https://i.imgur.com/YOURIMAGE5.png",
+        category: "secret",
+        values: {
+          normal: 22,
+          golden: 110,
+          rainbow: 110
+        }
       }
-    },
-    {
-      name: "Divine Dragon",
-      image: "https://i.imgur.com/VXf4r6Y.png",
-      category: "secret",
-      values: {
-        normal: 30,
-        golden: 135,
-        rainbow: 135
+    ];
+
+    const petsGrid = document.getElementById("petsGrid");
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    function renderPets(filter = "all", search = "") {
+      petsGrid.innerHTML = "";
+
+      const filtered = pets.filter(pet => {
+        const matchesFilter = filter === "all" || pet.category === filter;
+        const matchesSearch = pet.name.toLowerCase().includes(search.toLowerCase());
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        petsGrid.innerHTML = "<p>No pets found.</p>";
+        return;
       }
-    },
-    {
-      name: "Weeping Angel",
-      image: "https://i.imgur.com/qG9F0Y7.png",
-      category: "secret",
-      values: {
-        normal: 35,
-        golden: 160,
-        rainbow: 160
-      }
-    },
-    {
-      name: "Sakura Dominator",
-      image: "https://i.imgur.com/BQ5xk1U.png",
-      category: "secret",
-      values: {
-        normal: 40,
-        golden: 180,
-        rainbow: 180
-      }
-    },
-    {
-      name: "Magmasaur",
-      image: "https://i.imgur.com/Fp4Hj6U.png",
-      category: "secret",
-      values: {
-        normal: 40,
-        golden: 180,
-        rainbow: 180
-      }
-    },
-    {
-      name: "Candy God",
-      image: "https://i.imgur.com/nRz7Bso.png",
-      category: "secret",
-      values: {
-        normal: 40,
-        golden: 180,
-        rainbow: 180
-      }
-    },
-    {
-      name: "Orca Dominator",
-      image: "https://i.imgur.com/MpZkI1x.png",
-      category: "secret",
-      values: {
-        normal: 40,
-        golden: 180,
-        rainbow: 180
-      }
-    },
-    {
-      name: "Luminary Star",
-      image: "https://i.imgur.com/W6cU3PZ.png",
-      category: "secret",
-      values: {
-        normal: 45,
-        golden: 200,
-        rainbow: 200
-      }
-    },
-    {
-      name: "Grand Ice Wizard",
-      image: "https://i.imgur.com/kPqYJ3y.png",
-      category: "secret",
-      values: {
-        normal: 80,
-        golden: 350,
-        rainbow: null
-      }
-    },
-    {
-      name: "Infernal Lord",
-      image: "https://i.imgur.com/Dqv8gZk.png",
-      category: "secret",
-      values: {
-        normal: 110,
-        golden: 440,
-        rainbow: null
-      }
-    },
-    {
-      name: "Neon Cat",
-      image: "https://i.imgur.com/QvL6fXy.png",
-      category: "exclusive",
-      values: {
-        normal: "N/A",
-        golden: "N/A",
-        rainbow: "N/A"
-      }
-    },
-    {
-      name: "Skybound Relic",
-      image: "https://i.imgur.com/X7F7zYz.png",
-      category: "exclusive",
-      values: {
-        normal: 200,
-        golden: 900,
-        rainbow: null
-      }
+
+      filtered.forEach(pet => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+          <img src="${pet.image}" alt="${pet.name}">
+          <div class="pet-name">${pet.name}</div>
+          <div class="values">
+            <div class="value-row">
+              <span>💎 Normal</span>
+              <span>${pet.values.normal} <span class="badge normal">Normal</span></span>
+            </div>
+            <div class="value-row">
+              <span>✨ Golden</span>
+              <span>${pet.values.golden} <span class="badge golden">Golden</span></span>
+            </div>
+            <div class="value-row">
+              <span>🌈 Rainbow</span>
+              <span>${pet.values.rainbow} <span class="badge rainbow">Rainbow</span></span>
+            </div>
+          </div>
+        `;
+
+        petsGrid.appendChild(card);
+      });
     }
-  ];
 
-  const petsGrid = document.getElementById("petsGrid");
-  const searchInput = document.getElementById("searchInput");
-  const filterButtons = document.querySelectorAll(".filter-btn");
-
-  function renderPets(filter = "all", search = "") {
-    petsGrid.innerHTML = "";
-
-    const filtered = pets.filter(pet => {
-      const matchesFilter = filter === "all" || pet.category === filter;
-      const matchesSearch = pet.name.toLowerCase().includes(search.toLowerCase());
-      return matchesFilter && matchesSearch;
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.filter;
+        renderPets(filter, searchInput.value);
+      });
     });
 
-    filtered.forEach(pet => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
-        <img src="${pet.image}" alt="${pet.name}">
-        <div class="pet-name">${pet.name}</div>
-        <div class="values">
-          <div class="value-row">Normal: <span>${pet.values.normal} <span class="badge normal">Normal</span></span></div>
-          <div class="value-row">Golden: <span>${pet.values.golden} <span class="badge golden">Golden</span></span></div>
-          <div class="value-row">Rainbow: <span>${pet.values.rainbow} <span class="badge rainbow">Rainbow</span></span></div>
-        </div>
-      `;
-
-      petsGrid.appendChild(card);
+    searchInput.addEventListener("input", () => {
+      const activeFilter = document.querySelector(".filter-btn.active").dataset.filter;
+      renderPets(activeFilter, searchInput.value);
     });
-  }
 
-  filterButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filterButtons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const filter = btn.dataset.filter;
-      renderPets(filter, searchInput.value);
-    });
-  });
+    renderPets();
+  </script>
 
-  searchInput.addEventListener("input", () => {
-    const activeFilter = document.querySelector(".filter-btn.active").dataset.filter;
-    renderPets(activeFilter, searchInput.value);
-  });
-
-  renderPets();
-</script></body>
+</body>
 </html>
