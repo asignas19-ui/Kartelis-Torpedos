@@ -9,7 +9,7 @@
   },
   {
     "name": "Divine Dragon",
-    "image": "/value-list/images/secret1/divine-dragon.png",
+    "image": "/images/secret1/divine-dragon.png",
     "normal": 30,
     "golden": 135,
     "rainbow": 135,
@@ -17,7 +17,7 @@
   },
   {
     "name": "Weeping Angel",
-    "image": "/value-list/images/secret1/weeping-angel.png",
+    "image": "/images/secret1/weeping-angel.png",
     "normal": 35,
     "golden": 160,
     "rainbow": 160,
@@ -25,7 +25,7 @@
   },
   {
     "name": "Sakura Dominator",
-    "image": "/value-list/images/secret1/sakura-dominator.png",
+    "image": "/images/secret1/sakura-dominator.png",
     "normal": 40,
     "golden": 180,
     "rainbow": 180,
@@ -33,7 +33,7 @@
   },
   {
     "name": "Magmasaur",
-    "image": "/value-list/images/secret1/magmasaur.png",
+    "image": "/images/secret1/magmasaur.png",
     "normal": 40,
     "golden": 180,
     "rainbow": 180,
@@ -41,7 +41,7 @@
   },
   {
     "name": "Candy God",
-    "image": "/value-list/images/secret1/candy-god.png",
+    "image": "/images/secret1/candy-god.png",
     "normal": 40,
     "golden": 180,
     "rainbow": 180,
@@ -49,7 +49,7 @@
   },
   {
     "name": "Orca Dominator",
-    "image": "/value-list/images/secret1/orca-dominator.png",
+    "image": "/images/secret1/orca-dominator.png",
     "normal": 40,
     "golden": 180,
     "rainbow": 180,
@@ -57,7 +57,7 @@
   },
   {
     "name": "Luminary Star",
-    "image": "/value-list/images/secret1/luminary-star.png",
+    "image": "/images/secret1/luminary-star.png",
     "normal": 45,
     "golden": 200,
     "rainbow": 200,
@@ -65,7 +65,7 @@
   },
   {
     "name": "Grand Ice Wizard",
-    "image": "/value-list/images/secret1/grand-ice-wizard.png",
+    "image": "/images/secret1/grand-ice-wizard.png",
     "normal": 80,
     "golden": 350,
     "rainbow": 350,
@@ -73,7 +73,7 @@
   },
   {
     "name": "Infernal Lord",
-    "image": "/value-list/images/secret1/infernal-lord.png",
+    "image": "/images/secret1/infernal-lord.png",
     "normal": 110,
     "golden": 440,
     "rainbow": 440,
@@ -81,15 +81,15 @@
   },
   {
     "name": "Neon Cat",
-    "image": "/value-list/images/secret1/neon-cat.png",
-    "normal": "N/A",
-    "golden": "N/A",
-    "rainbow": "N/A",
+    "image": "/images/secret1/neon-cat.png",
+    "normal": null,
+    "golden": null,
+    "rainbow": null,
     "category": "secret1"
   },
   {
     "name": "Skybound Relic",
-    "image": "/value-list/images/secret1/skybound-relic.png",
+    "image": "/images/secret1/skybound-relic.png",
     "normal": 140,
     "golden": 840,
     "rainbow": 840,
