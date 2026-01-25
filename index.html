@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@
 
 body{
   margin:0;
-  background:var(--bg);
+  background:#0b0d14;
   color:var(--text);
   overflow-x:hidden;
 }
@@ -66,30 +67,23 @@ body{
 }
 
 /* HERO */
-.hero{
-  text-align:center;
-  padding:100px 20px 60px;
-}
+.hero{text-align:center;padding:70px 20px 30px}
 .hero h1{font-size:38px;margin:0}
 .subtitle{color:var(--muted);max-width:720px;margin:8px auto}
 
-/* FULL WIDTH SECTION */
+/* SECTIONS */
 .section{
-  width:100%;
-  margin:25px 0;
+  max-width:900px;
+  margin:25px auto;
   background:linear-gradient(180deg,#1a1f35,#14182a);
-  padding:40px 0;
-}
-.section > *{
-  max-width:1200px;
-  margin:0 auto;
-  padding:0 20px;
+  border-radius:20px;
+  padding:20px;
 }
 
 /* NEWS */
 .news{
   display:flex;
-  gap:30px;
+  gap:20px;
   align-items:center;
   flex-wrap:wrap;
 }
@@ -97,13 +91,6 @@ body{
   width:160px;
   height:160px;
   border-radius:16px;
-}
-.news ul{
-  list-style:none;
-  padding:0;
-}
-.news li{
-  margin:6px 0;
 }
 
 /* TABS */
@@ -161,7 +148,7 @@ body{
 
 /* GRID */
 .grid{
-  max-width:1600px;
+  max-width:1300px;
   margin:auto;
   padding:0 20px 60px;
   display:grid;
@@ -230,21 +217,19 @@ footer{
     </p>
   </div>
 
-  <div class="section">
-    <div class="news">
-      <img src="/value-list/images/news/overcharged-robot.png">
-      <ul>
-        <li>⚡ List Last Updated – 24/01/26</li>
-        <li>📅 Most Recent Game Update – 22/01/26</li>
-        <li>✨ Celestial World</li>
-        <li>🔮 1 New Area</li>
-        <li>🎈 Electric Spin Wheel</li>
-        <li>🛒 New Exclusive Egg</li>
-        <li>🦖 5+ New Secret Pets</li>
-        <li>🥚 2 NEW EGGS (1 LIMITED)</li>
-        <li>🐾 30+ NEW PETS</li>
-      </ul>
-    </div>
+  <div class="section news">
+    <img src="/value-list/images/news/overcharged-robot.png">
+    <ul>
+      <li>⚡ List Last Updated – 24/01/26</li>
+      <li>📅 Most Recent Game Update – 22/01/26</li>
+      <li>✨ Celestial World</li>
+      <li>🔮 1 New Area</li>
+      <li>🎈 Electric Spin Wheel</li>
+      <li>🛒 New Exclusive Egg</li>
+      <li>🦖 5+ New Secret Pets</li>
+      <li>🥚 2 NEW EGGS (1 LIMITED)</li>
+      <li>🐾 30+ NEW PETS</li>
+    </ul>
   </div>
 
   <div class="section">
@@ -287,8 +272,10 @@ footer{
 
   <div class="search">
     <span>🔍</span>
-    <input id="search" placeholder="Search pets..."
-      oninput="onSearch()" onkeydown="blurOnEnter(event)">
+    <input id="search"
+       placeholder="Search pets..."
+       oninput="onSearch()"
+       onkeydown="blurOnEnter(event)">
     <div class="clear-btn" id="clearBtn" onclick="clearSearch()">✖</div>
   </div>
 
@@ -301,7 +288,13 @@ footer{
 
 <script>
 particlesJS("particles-js",{
-  particles:{number:{value:90},color:{value:"#4da3ff"},opacity:{value:0.2},size:{value:2},move:{speed:0.5}}
+  particles:{
+    number:{value:90},
+    color:{value:"#4da3ff"},
+    opacity:{value:0.2},
+    size:{value:2},
+    move:{speed:0.5}
+  }
 });
 
 let pets=[],currentCat="all";
@@ -332,28 +325,33 @@ function onSearch(){
   clearBtn.style.display = search.value ? "block" : "none";
   renderPets();
 }
+
 function clearSearch(){
   search.value="";
   clearBtn.style.display="none";
+  search.focus();
   renderPets();
 }
+
 function renderPets(){
   const q=search.value.toLowerCase();
   grid.innerHTML="";
-  pets.filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
-  .forEach(p=>{
-    grid.innerHTML+=`
-    <div class="pet">
-      <img src="/value-list${p.image}">
-      <h3>${p.name}</h3>
-      <div class="price">
-        💎 Normal: ${p.normal ?? "N/A"}<br>
-        ⭐ Golden: ${p.golden ?? "N/A"}<br>
-        🌈 Rainbow: ${p.rainbow ?? "N/A"}
-      </div>
-    </div>`;
-  });
+  pets
+    .filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
+    .forEach(p=>{
+      grid.innerHTML+=`
+      <div class="pet">
+        <img src="/value-list${p.image}">
+        <h3>${p.name}</h3>
+        <div class="price">
+          💎 Normal: ${p.normal ?? "N/A"}<br>
+          ⭐ Golden: ${p.golden ?? "N/A"}<br>
+          🌈 Rainbow: ${p.rainbow ?? "N/A"}
+        </div>
+      </div>`;
+    });
 }
+
 function showHome(){
   home.classList.remove("hidden");
   values.classList.add("hidden");
@@ -367,7 +365,10 @@ function showValues(){
   btnHome.classList.remove("active");
 }
 function blurOnEnter(e){
-  if(e.key==="Enter"){e.preventDefault();e.target.blur();}
+  if(e.key === "Enter"){
+    e.preventDefault();
+    e.target.blur(); // nuima focus nuo search
+  }
 }
 </script>
 </body>
