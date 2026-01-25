@@ -19,13 +19,13 @@
 
 body{
   margin:0;
-  background:#0b0d14;
+  background:radial-gradient(circle at top,#1a1d2b,#0b0d14 60%);
   color:var(--text);
   overflow-x:hidden;
 }
 
 /* PARTICLES */
-#particles-js{
+canvas{
   position:fixed;
   inset:0;
   z-index:-1;
@@ -38,27 +38,18 @@ body{
   align-items:center;
   padding:14px 18px;
   border-bottom:1px solid rgba(255,255,255,.06);
-  backdrop-filter: blur(6px);
+  backdrop-filter:blur(6px);
 }
-.logo{
-  font-weight:700;
-  font-size:18px;
-}
+.logo{font-weight:700;font-size:18px}
 
-.nav{
-  display:flex;
-  gap:10px;
-}
+.nav{display:flex;gap:10px}
 .nav a{
   color:#dce0ff;
   text-decoration:none;
-  font-size:15px;
-  padding:8px 14px;
+  font-size:14px;
+  padding:8px 16px;
   border-radius:999px;
   background:#20243a;
-  display:flex;
-  align-items:center;
-  gap:6px;
 }
 .nav a.active{
   background:var(--accent);
@@ -75,27 +66,27 @@ body{
   text-decoration:none;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
   text-align:center;
-  padding:70px 20px 30px;
+  padding:60px 20px 30px;
 }
 .hero h1{font-size:38px;margin:0}
-.hero .subtitle{
+.subtitle{
+  font-size:15px;
   color:var(--muted);
   max-width:720px;
-  margin:8px auto 0;
+  margin:10px auto 0;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 .section{
-  max-width:900px;
+  max-width:1000px;
   margin:25px auto;
   background:linear-gradient(180deg,#1a1f35,#14182a);
   border-radius:20px;
   padding:20px;
 }
-.section h3{margin-top:0}
 
 /* NEWS */
 .news{
@@ -107,11 +98,24 @@ body{
 .news img{
   width:160px;
   height:160px;
-  object-fit:cover;
   border-radius:16px;
 }
-.news ul{margin:0;padding-left:20px}
-.news li{margin:6px 0}
+
+/* HOME GRID */
+.grid-home{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+.home-card{
+  background:linear-gradient(180deg,#1c2034,#14182a);
+  border-radius:18px;
+  padding:18px;
+}
+.home-card h3{margin-top:0}
+.home-card ul{list-style:none;padding:0;margin:0}
+.home-card li{margin:6px 0;color:#cfd3ff;font-size:14px}
+.home-card span{color:#7f85b6;font-size:12px}
 
 /* TABS */
 .tabs{
@@ -152,7 +156,6 @@ body{
   padding:14px 18px 14px 42px;
   border-radius:999px;
   border:none;
-  outline:none;
   background:#15192a;
   color:#fff;
 }
@@ -173,10 +176,20 @@ body{
   border-radius:18px;
   padding:14px;
   text-align:center;
+  transition:.2s;
 }
+.pet:hover{transform:translateY(-4px)}
 .pet img{width:100%;border-radius:14px}
 .pet h3{margin:10px 0;font-size:15px}
-.price{font-size:13px;color:var(--muted)}
+
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+}
+.price-row.normal{color:#9aa0c7}
+.price-row.golden{color:#ffd24d}
+.price-row.rainbow{color:#6cf2ff}
 
 .hidden{display:none}
 
@@ -197,18 +210,16 @@ footer{
 
 <body>
 
-<div id="particles-js"></div>
+<canvas id="particles"></canvas>
 
-<!-- TOP NAV -->
+<!-- TOP BAR -->
 <div class="topbar">
   <div class="logo">Tap Sim Values</div>
-
   <div class="nav">
     <a href="#" id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
     <a href="#" id="btnValues" onclick="showValues()">📋 Value List</a>
   </div>
-
-  <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
+  <a class="discord" href="https://discord.gg/tapsim" target="_blank">Discord</a>
 </div>
 
 <!-- HOME -->
@@ -224,16 +235,41 @@ footer{
   <div class="section news">
     <img src="/value-list/images/news/overcharged-robot.png">
     <ul>
-      <li>⚡ List Last Updated – 24/01/26</li>
+      <li>⚡ List Updated – 24/01/26</li>
       <li>📅 Game Update – 22/01/26</li>
       <li>✨ Celestial World</li>
-      <li>🔮 1 New Area</li>
       <li>🎈 Electric Spin Wheel</li>
-      <li>🛒 New Exclusive Egg</li>
+      <li>🥚 New Exclusive Egg</li>
       <li>🦖 5+ New Secret Pets</li>
-      <li>🥚 2 New Eggs (1 LIMITED)</li>
-      <li>🐾 30+ New Pets</li>
     </ul>
+  </div>
+
+  <div class="section grid-home">
+    <div class="home-card">
+      <h3>👑 Owners</h3>
+      <ul>
+        <li>GoldAstro <span>@goldastro</span></li>
+        <li>Hyper <span>@rng_elixr</span></li>
+      </ul>
+    </div>
+
+    <div class="home-card">
+      <h3>🛠 Editors</h3>
+      <ul>
+        <li>NotSpeedGuy <span>@zacklist</span></li>
+        <li>Diamondz <span>@diamondz_1</span></li>
+      </ul>
+    </div>
+
+    <div class="home-card">
+      <h3>⚠ Disclaimer</h3>
+      <ul>
+        <li>Values may change</li>
+        <li>Serials & mutations affect value</li>
+        <li>O/C = Owner’s Choice</li>
+        <li>N/A = Not Available</li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -243,7 +279,6 @@ footer{
     <h1>Tap Simulator Value List</h1>
     <p class="subtitle">
       Browse and track the current market prices for all pets.
-      Our values are carefully researched and regularly updated.
     </p>
   </div>
 
@@ -259,62 +294,8 @@ footer{
 
 <footer>© 2026 Tap Sim Values</footer>
 
-<!-- PARTICLES LIB -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
 <script>
-particlesJS("particles-js",{
-  particles:{
-    number:{value:80},
-    color:{value:"#4da3ff"},
-    opacity:{value:0.25},
-    size:{value:2},
-    move:{speed:0.6}
-  },
-  interactivity:{
-    events:{onhover:{enable:true,mode:"repulse"}}
-  }
-});
-</script>
-
-<script>
-let pets=[],currentCat="all";
-
-fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
-.then(r=>r.json())
-.then(d=>{pets=d;buildTabs();renderPets()});
-
-function buildTabs(){
-  const cats=["all","mythics","exclusive","secret1","secret2","leaderboard","limited","event"];
-  const names={all:"All",mythics:"Mythics",exclusive:"Exclusive",secret1:"Secret I",secret2:"Secret II",leaderboard:"Leaderboard",limited:"Limited",event:"Event"};
-  tabs.innerHTML="";
-  cats.forEach(c=>{
-    const t=document.createElement("div");
-    t.className="tab"+(c==="all"?" active":"");
-    t.textContent=names[c];
-    t.onclick=()=>{currentCat=c;document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");renderPets()};
-    tabs.appendChild(t);
-  });
-}
-
-function renderPets(){
-  const q=search.value.toLowerCase();
-  grid.innerHTML="";
-  pets.filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
-  .forEach(p=>{
-    grid.innerHTML+=`
-      <div class="pet">
-        <img src="/value-list${p.image}">
-        <h3>${p.name}</h3>
-        <div class="price">
-          💎 ${p.normal ?? "N/A"}<br>
-          ⭐ ${p.golden ?? "N/A"}<br>
-          🌈 ${p.rainbow ?? "N/A"}
-        </div>
-      </div>`;
-  });
-}
-
+/* NAV */
 function showHome(){
   home.classList.remove("hidden");
   values.classList.add("hidden");
@@ -327,6 +308,74 @@ function showValues(){
   btnValues.classList.add("active");
   btnHome.classList.remove("active");
 }
+
+/* PETS */
+let pets=[], currentCat="all";
+
+fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
+.then(r=>r.json())
+.then(d=>{pets=d;buildTabs();renderPets()});
+
+function buildTabs(){
+  const cats=["all","mythics","exclusive","secret1","secret2","leaderboard","limited","event"];
+  const names={
+    all:"All",mythics:"Mythics",exclusive:"Exclusive",
+    secret1:"Secret I",secret2:"Secret II",
+    leaderboard:"Leaderboard",limited:"Limited",event:"Event"
+  };
+  tabs.innerHTML="";
+  cats.forEach(c=>{
+    const t=document.createElement("div");
+    t.className="tab"+(c==="all"?" active":"");
+    t.textContent=names[c];
+    t.onclick=()=>{
+      currentCat=c;
+      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+      t.classList.add("active");
+      renderPets();
+    };
+    tabs.appendChild(t);
+  });
+}
+
+function renderPets(){
+  const q=search.value.toLowerCase();
+  grid.innerHTML="";
+  pets.filter(p=>
+    (currentCat==="all"||p.category===currentCat) &&
+    p.name.toLowerCase().includes(q)
+  ).forEach(p=>{
+    grid.innerHTML+=`
+    <div class="pet">
+      <img src="${p.image}">
+      <h3>${p.name}</h3>
+      <div class="price">
+        <div class="price-row normal">💎 Normal <b>${p.normal ?? "N/A"}</b></div>
+        <div class="price-row golden">⭐ Golden <b>${p.golden ?? "N/A"}</b></div>
+        <div class="price-row rainbow">🌈 Rainbow <b>${p.rainbow ?? "N/A"}</b></div>
+      </div>
+    </div>`;
+  });
+}
+
+/* PARTICLES */
+const c=document.getElementById("particles"),x=c.getContext("2d");
+let w,h,p=[];
+function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
+addEventListener("resize",resize);resize();
+for(let i=0;i<80;i++)p.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});
+function draw(){
+  x.clearRect(0,0,w,h);
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>w)a.vx*=-1;
+    if(a.y<0||a.y>h)a.vy*=-1;
+    x.fillStyle="#3a3f66";
+    x.fillRect(a.x,a.y,2,2);
+  });
+  requestAnimationFrame(draw);
+}
+draw();
 </script>
 
 </body>
