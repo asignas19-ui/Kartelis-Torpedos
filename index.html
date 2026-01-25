@@ -24,7 +24,6 @@ body{
   overflow-x:hidden;
 }
 
-/* PARTICLES */
 #particles-js{
   position:fixed;
   inset:0;
@@ -50,8 +49,6 @@ body{
   padding:8px 14px;
   border-radius:999px;
   background:#20243a;
-  display:flex;
-  gap:6px;
 }
 .nav a.active{
   background:var(--accent);
@@ -89,7 +86,22 @@ body{
   width:160px;
   height:160px;
   border-radius:16px;
-  object-fit:cover;
+}
+
+/* DISCLAIMER CENTER (PC) */
+@media(min-width:1024px){
+  .disclaimer-card{
+    text-align:center;
+  }
+  .disclaimer-card ul{
+    list-style:none;
+    padding:0;
+    margin:0 auto;
+    max-width:420px;
+  }
+  .disclaimer-card li{
+    margin:6px 0;
+  }
 }
 
 /* TABS */
@@ -155,28 +167,6 @@ body{
 .hidden{display:none}
 
 footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
-
-/* DESKTOP – center disclaimer */
-@media (min-width:1024px){
-  .disclaimer-card ul{
-    max-width:420px;
-    margin:0 auto;
-    text-align:center;
-  }
-  .disclaimer-card li{
-    list-style:none;
-    margin:6px 0;
-  }
-  .disclaimer-card h3{
-    text-align:center;
-  }
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .topbar{flex-direction:column;gap:12px}
-  .news{flex-direction:column;text-align:center}
-}
 </style>
 </head>
 
@@ -213,22 +203,6 @@ footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
       <li>🦖 5+ New Secret Pets</li>
       <li>🥚 2 NEW EGGS (1 LIMITED)</li>
       <li>🐾 30+ NEW PETS</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h3>👑 Owners</h3>
-    <ul>
-      <li>GoldAstro (goldastro)</li>
-      <li>Hyper (rng_elixr)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h3>🛠️ Editors</h3>
-    <ul>
-      <li>NotSpeedGuy (zacklist)</li>
-      <li>Diamondz (diamondz_1)</li>
     </ul>
   </div>
 
@@ -285,7 +259,12 @@ function buildTabs(){
     const t=document.createElement("div");
     t.className="tab"+(c==="all"?" active":"");
     t.textContent=names[c];
-    t.onclick=()=>{currentCat=c;document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");renderPets()};
+    t.onclick=()=>{
+      currentCat=c;
+      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+      t.classList.add("active");
+      renderPets();
+    };
     tabs.appendChild(t);
   });
 }
@@ -293,18 +272,19 @@ function buildTabs(){
 function renderPets(){
   const q=search.value.toLowerCase();
   grid.innerHTML="";
-  pets.filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
+  pets
+  .filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
   .forEach(p=>{
     grid.innerHTML+=`
-      <div class="pet">
-        <img src="/value-list${p.image}">
-        <h3>${p.name}</h3>
-        <div class="price">
-          Normal: ${p.normal ?? "N/A"}<br>
-          Golden: ${p.golden ?? "N/A"}<br>
-          Rainbow: ${p.rainbow ?? "N/A"}
-        </div>
-      </div>`;
+    <div class="pet">
+      <img src="/value-list${p.image}">
+      <h3>${p.name}</h3>
+      <div class="price">
+        💎 Normal: ${p.normal ?? "N/A"}<br>
+        ⭐ Golden: ${p.golden ?? "N/A"}<br>
+        🌈 Rainbow: ${p.rainbow ?? "N/A"}
+      </div>
+    </div>`;
   });
 }
 
