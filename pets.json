@@ -1,7 +1,7 @@
 [
   {
     "name": "Frost Queen",
-    "image": "/value-list/images/secret1/frost-queen.png",
+    "image": "/images/secret1/frost-queen.png",
     "normal": 25,
     "golden": 120,
     "rainbow": 120,
