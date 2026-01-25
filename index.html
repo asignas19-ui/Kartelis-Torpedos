@@ -67,8 +67,8 @@ body{
 }
 
 /* HERO */
-.hero{text-align:center;padding:70px 20px 30px}
-.hero h1{font-size:38px;margin:0}
+.hero{text-align:center;padding:60px 20px 25px}
+.hero h1{font-size:36px;margin:0}
 .subtitle{color:var(--muted);max-width:720px;margin:8px auto}
 
 /* SECTIONS */
@@ -100,7 +100,7 @@ body{
   gap:10px;
   justify-content:center;
   flex-wrap:wrap;
-  margin:30px 0 15px;
+  margin:20px 0 10px;
 }
 .tab{
   background:#20243a;
@@ -115,7 +115,16 @@ body{
   font-weight:600;
 }
 
-/* SEARCH */
+/* SEARCH (TOP, NOT CENTER) */
+.search-wrap{
+  position:sticky;
+  top:70px;
+  z-index:50;
+  background:rgba(11,13,20,.9);
+  backdrop-filter:blur(10px);
+  padding:12px 16px;
+}
+
 .search{
   max-width:600px;
   margin:0 auto;
@@ -138,21 +147,11 @@ body{
   color:#fff;
 }
 
-/* 🔥 STICKY SEARCH */
-.search-sticky{
-  position:sticky;
-  top:0;
-  z-index:999;
-  padding:12px 16px 16px;
-  background:rgba(11,13,20,.88);
-  backdrop-filter:blur(10px);
-}
-
 /* GRID */
 .grid{
   max-width:1300px;
   margin:auto;
-  padding:0 20px 60px;
+  padding:20px 20px 60px;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
   gap:18px;
@@ -186,17 +185,15 @@ footer{
 @media(max-width:768px){
   .topbar{flex-direction:column;gap:12px}
   .news{flex-direction:column;text-align:center}
-  .search-sticky{top:110px;}
+  .search-wrap{top:110px;}
 }
 
-/* MOBILE GRID – 2 PETS */
 @media(max-width:600px){
   .grid{
-    padding:0 12px 50px;
+    padding:15px 12px 50px;
     gap:12px;
     grid-template-columns:repeat(2,1fr);
   }
-  .pet{padding:10px}
   .pet h3{font-size:13px}
   .price{font-size:12px}
 }
@@ -222,7 +219,7 @@ footer{
   <div class="hero">
     <h1>Tap Simulator News</h1>
     <p class="subtitle">
-      Stay updated with the latest Tap Simulator news, game updates,
+      Stay updated with the latest Tap Simulator news, updates,
       new worlds, secret pets, eggs, and limited-time events.
     </p>
   </div>
@@ -241,6 +238,31 @@ footer{
       <li>🐾 30+ NEW PETS</li>
     </ul>
   </div>
+
+  <div class="section">
+    <h3>👑 Owners</h3>
+    <ul>
+      <li>GoldAstro (goldastro)</li>
+      <li>Hyper (rng_elixr)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🛠️ Editors</h3>
+    <ul>
+      <li>NotSpeedGuy (zacklist)</li>
+      <li>Diamondz (diamondz_1)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>⚠️ Disclaimer</h3>
+    <ul>
+      <li>Serials & mutations affect values</li>
+      <li>O/C = Owners Choice</li>
+      <li>N/A = Not Available</li>
+    </ul>
+  </div>
 </div>
 
 <!-- VALUES -->
@@ -255,8 +277,8 @@ footer{
 
   <div class="tabs" id="tabs"></div>
 
-  <!-- STICKY SEARCH -->
-  <div class="search-sticky">
+  <!-- SEARCH TOP -->
+  <div class="search-wrap">
     <div class="search">
       <span>🔍</span>
       <input id="search" placeholder="Search pets..." oninput="renderPets()">
@@ -269,17 +291,8 @@ footer{
 <footer>© 2026 Tap Sim Values</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
 <script>
-particlesJS("particles-js",{
-  particles:{
-    number:{value:90},
-    color:{value:"#4da3ff"},
-    opacity:{value:0.2},
-    size:{value:2},
-    move:{speed:0.5}
-  }
-});
+particlesJS("particles-js",{particles:{number:{value:90},color:{value:"#4da3ff"},opacity:{value:0.2},size:{value:2},move:{speed:0.5}}});
 </script>
 
 <script>
