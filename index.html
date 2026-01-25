@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -118,7 +118,7 @@ body{
 /* SEARCH */
 .search{
   max-width:600px;
-  margin:0 auto 25px;
+  margin:0 auto;
   position:relative;
 }
 .search span{
@@ -136,6 +136,16 @@ body{
   outline:none;
   background:#15192a;
   color:#fff;
+}
+
+/* 🔥 STICKY SEARCH */
+.search-sticky{
+  position:sticky;
+  top:0;
+  z-index:999;
+  padding:12px 16px 16px;
+  background:rgba(11,13,20,.88);
+  backdrop-filter:blur(10px);
 }
 
 /* GRID */
@@ -172,38 +182,23 @@ footer{
   color:#7f85b6;
 }
 
-/* MOBILE BASE */
+/* MOBILE */
 @media(max-width:768px){
   .topbar{flex-direction:column;gap:12px}
   .news{flex-direction:column;text-align:center}
+  .search-sticky{top:110px;}
 }
 
-/* 🔥 MOBILE PET GRID FIX (2 per row like MoonValues) */
+/* MOBILE GRID – 2 PETS */
 @media(max-width:600px){
   .grid{
     padding:0 12px 50px;
     gap:12px;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-template-columns:repeat(2,1fr);
   }
-
-  .pet{
-    padding:10px;
-    border-radius:14px;
-  }
-
-  .pet img{
-    border-radius:12px;
-  }
-
-  .pet h3{
-    font-size:13px;
-    margin:8px 0 4px;
-  }
-
-  .price{
-    font-size:12px;
-    line-height:1.45;
-  }
+  .pet{padding:10px}
+  .pet h3{font-size:13px}
+  .price{font-size:12px}
 }
 </style>
 </head>
@@ -215,12 +210,10 @@ footer{
 <!-- TOP NAV -->
 <div class="topbar">
   <div class="logo">Tap Simulator Values</div>
-
   <div class="nav">
     <a id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
     <a id="btnValues" onclick="showValues()">📋 Value List</a>
   </div>
-
   <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
 </div>
 
@@ -230,7 +223,7 @@ footer{
     <h1>Tap Simulator News</h1>
     <p class="subtitle">
       Stay updated with the latest Tap Simulator news, game updates,
-new worlds, secret pets, eggs, and limited-time events.
+      new worlds, secret pets, eggs, and limited-time events.
     </p>
   </div>
 
@@ -248,46 +241,26 @@ new worlds, secret pets, eggs, and limited-time events.
       <li>🐾 30+ NEW PETS</li>
     </ul>
   </div>
-
-  <div class="section">
-    <h3>👑 Owners</h3>
-    <ul>
-      <li>GoldAstro (goldastro)</li>
-      <li>Hyper (rng_elixr)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h3>🛠️ Editors</h3>
-    <ul>
-      <li>NotSpeedGuy (zacklist)</li>
-      <li>Diamondz (diamondz_1)</li>
-    </ul>
-  </div>
-
-  <div class="section disclaimer-card">
-    <h3>⚠️ Disclaimer</h3>
-    <ul>
-      <li>Serials & mutations affect values</li>
-      <li>O/C = Owners Choice</li>
-      <li>N/A = Not Available</li>
-    </ul>
-  </div>
 </div>
 
 <!-- VALUES -->
 <div id="values" class="hidden">
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
-    <p class="subtitle">Browse and track the current market prices for all pets.
-Our values are carefully researched and updated regularly.</p>
+    <p class="subtitle">
+      Browse and track the current market prices for all pets.
+      Our values are carefully researched and updated regularly.
+    </p>
   </div>
 
   <div class="tabs" id="tabs"></div>
 
-  <div class="search">
-    <span>🔍</span>
-    <input id="search" placeholder="Search pets..." oninput="renderPets()">
+  <!-- STICKY SEARCH -->
+  <div class="search-sticky">
+    <div class="search">
+      <span>🔍</span>
+      <input id="search" placeholder="Search pets..." oninput="renderPets()">
+    </div>
   </div>
 
   <div class="grid" id="grid"></div>
