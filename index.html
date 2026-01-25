@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -172,10 +172,38 @@ footer{
   color:#7f85b6;
 }
 
-/* MOBILE */
+/* MOBILE BASE */
 @media(max-width:768px){
   .topbar{flex-direction:column;gap:12px}
   .news{flex-direction:column;text-align:center}
+}
+
+/* 🔥 MOBILE PET GRID FIX (2 per row like MoonValues) */
+@media(max-width:600px){
+  .grid{
+    padding:0 12px 50px;
+    gap:12px;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .pet{
+    padding:10px;
+    border-radius:14px;
+  }
+
+  .pet img{
+    border-radius:12px;
+  }
+
+  .pet h3{
+    font-size:13px;
+    margin:8px 0 4px;
+  }
+
+  .price{
+    font-size:12px;
+    line-height:1.45;
+  }
 }
 </style>
 </head>
