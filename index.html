@@ -116,34 +116,6 @@ body{
   font-weight:600;
 }
 
-/* DESKTOP SEARCH */
-.desktop-search{
-  max-width:600px;
-  margin:15px auto 10px;
-}
-.desktop-search .search{
-  position:relative;
-}
-.desktop-search input{
-  width:100%;
-  padding:14px 46px 14px 18px;
-  border-radius:999px;
-  border:none;
-  background:#15192a;
-  color:#fff;
-}
-.close-search{
-  position:absolute;
-  right:14px;
-  top:50%;
-  transform:translateY(-50%);
-  background:none;
-  border:none;
-  color:#aaa;
-  font-size:18px;
-  cursor:pointer;
-}
-
 /* GRID */
 .grid{
   max-width:1300px;
@@ -171,6 +143,48 @@ body{
 
 .hidden{display:none}
 
+/* SEARCH OVERLAY */
+.search-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  padding:18px;
+  background:rgba(11,13,20,.95);
+  backdrop-filter:blur(12px);
+  z-index:999;
+  display:none;
+}
+.search-overlay.active{display:block}
+
+.search{
+  max-width:600px;
+  margin:0 auto;
+  position:relative;
+}
+.search input{
+  width:100%;
+  padding:14px 46px 14px 18px;
+  border-radius:999px;
+  border:none;
+  background:#15192a;
+  color:#fff;
+}
+
+/* X button */
+.close-search{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  color:#aaa;
+  font-size:18px;
+  cursor:pointer;
+  display:none;
+}
+
 /* FLOATING SEARCH (MOBILE) */
 .floating-search-btn{
   position:fixed;
@@ -187,28 +201,6 @@ body{
   z-index:1000;
 }
 
-.search-overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  padding:18px;
-  background:rgba(11,13,20,.95);
-  backdrop-filter:blur(12px);
-  z-index:999;
-  display:none;
-}
-.search-overlay.active{display:block}
-.search-overlay .search{max-width:600px;margin:0 auto;position:relative;}
-.search-overlay input{
-  width:100%;
-  padding:14px 46px 14px 18px;
-  border-radius:999px;
-  border:none;
-  background:#15192a;
-  color:#fff;
-}
-
 footer{
   text-align:center;
   padding:30px;
@@ -216,15 +208,10 @@ footer{
   color:#7f85b6;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:768px){
   .topbar{flex-direction:column;gap:12px}
   .news{flex-direction:column;text-align:center}
-  .desktop-search{display:none;}
-}
-@media(min-width:769px){
-  .floating-search-btn,
-  .search-overlay{display:none!important;}
 }
 @media(max-width:600px){
   .grid{
@@ -290,13 +277,9 @@ footer{
     </ul>
   </div>
 
-  <div class="section">
+  <div class="section" style="text-align:center">
     <h3>⚠️ Disclaimer</h3>
-    <ul>
-      <li>Serials & mutations affect values</li>
-      <li>O/C = Owners Choice</li>
-      <li>N/A = Not Available</li>
-    </ul>
+    <p>Serials & mutations affect values · O/C = Owners Choice · N/A = Not Available</p>
   </div>
 </div>
 
@@ -311,22 +294,17 @@ footer{
   </div>
 
   <div class="tabs" id="tabs"></div>
-
-  <!-- DESKTOP SEARCH -->
-  <div class="desktop-search">
-    <div class="search">
-      <input id="search" placeholder="Search pets..." oninput="renderPets()">
-      <button class="close-search" onclick="clearSearch()">✖</button>
-    </div>
-  </div>
-
   <div class="grid" id="grid"></div>
 </div>
 
-<!-- MOBILE SEARCH -->
+<!-- SEARCH -->
 <div id="searchOverlay" class="search-overlay">
   <div class="search">
-    <input id="searchMobile" placeholder="Search pets..." oninput="syncSearch(this.value)">
+    <input id="search"
+      placeholder="Search pets..."
+      oninput="renderPets()"
+      onfocus="handleFocus(this,this.nextElementSibling)"
+      onblur="handleBlur(this,this.nextElementSibling)">
     <button class="close-search" onclick="clearSearch()">✖</button>
   </div>
 </div>
@@ -366,7 +344,7 @@ function buildTabs(){
 }
 
 function renderPets(){
-  const q=(search?.value||"").toLowerCase();
+  const q=search.value.toLowerCase();
   grid.innerHTML="";
   pets.filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
   .forEach(p=>{
@@ -383,20 +361,24 @@ function renderPets(){
   });
 }
 
-function clearSearch(){
-  if(search) search.value="";
-  if(searchMobile) searchMobile.value="";
-  renderPets();
-}
-
-function syncSearch(v){
-  search.value=v;
-  renderPets();
-}
-
 function toggleSearch(){
-  searchOverlay.classList.toggle("active");
-  setTimeout(()=>searchMobile.focus(),100);
+  searchOverlay.classList.add("active");
+  setTimeout(()=>search.focus(),100);
+}
+
+function clearSearch(){
+  search.value="";
+  search.focus();
+  renderPets();
+}
+
+function handleFocus(input,closeBtn){
+  closeBtn.style.display="block";
+}
+function handleBlur(input,closeBtn){
+  if(input.value.trim()===""){
+    closeBtn.style.display="none";
+  }
 }
 
 function showHome(){
