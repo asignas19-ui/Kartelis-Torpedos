@@ -271,7 +271,10 @@ footer{
 
   <div class="search">
     <span>🔍</span>
-    <input id="search" placeholder="Search pets..." oninput="onSearch()">
+    <input id="search"
+       placeholder="Search pets..."
+       oninput="onSearch()"
+       onkeydown="blurOnEnter(event)">
     <div class="clear-btn" id="clearBtn" onclick="clearSearch()">✖</div>
   </div>
 
@@ -359,6 +362,12 @@ function showValues(){
   home.classList.add("hidden");
   btnValues.classList.add("active");
   btnHome.classList.remove("active");
+}
+function blurOnEnter(e){
+  if(e.key === "Enter"){
+    e.preventDefault();
+    e.target.blur(); // nuima focus nuo search
+  }
 }
 </script>
 </body>
