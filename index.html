@@ -5,237 +5,328 @@
 <title>Tap Sim Values</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
+:root{
+  --bg:#0b0d14;
+  --panel:#14182a;
+  --card:#1b2035;
+  --accent:#4da3ff;
+  --text:#f2f4ff;
+  --muted:#9aa0c7;
 }
 
-body {
-  color: #e5e7eb;
-  background: #020617;
-  overflow-x: hidden;
+*{box-sizing:border-box;font-family:Inter,Segoe UI,system-ui}
+
+body{
+  margin:0;
+  background:#0b0d14;
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-/* 🌌 BACKGROUND */
-.background {
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, #1e293b, transparent 40%),
-    radial-gradient(circle at 80% 30%, #312e81, transparent 45%),
-    radial-gradient(circle at 50% 80%, #020617, transparent 60%),
-    #020617;
-  background-size: 200% 200%;
-  animation: spaceMove 40s ease infinite;
-  z-index: -2;
+/* PARTICLES */
+#particles-js{
+  position:fixed;
+  inset:0;
+  z-index:-1;
 }
 
-@keyframes spaceMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ===== TOP BAR ===== */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 18px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(6px);
+}
+.logo{
+  font-weight:700;
+  font-size:18px;
 }
 
-/* ✨ PARTICLES */
-#particles {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
+.nav{
+  display:flex;
+  gap:10px;
+}
+.nav a{
+  color:#dce0ff;
+  text-decoration:none;
+  font-size:15px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#20243a;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.nav a.active{
+  background:var(--accent);
+  color:#000;
+  font-weight:600;
 }
 
-/* 🧭 NAVBAR */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  background: rgba(2, 6, 23, 0.6);
-  backdrop-filter: blur(12px);
+.discord{
+  background:#5865F2;
+  padding:10px 16px;
+  border-radius:999px;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
 }
 
-nav h1 {
-  font-size: 18px;
-  font-weight: 700;
+/* ===== HERO ===== */
+.hero{
+  text-align:center;
+  padding:70px 20px 30px;
+}
+.hero h1{font-size:38px;margin:0}
+.hero .subtitle{
+  color:var(--muted);
+  max-width:720px;
+  margin:8px auto 0;
 }
 
-nav .buttons a {
-  margin-left: 12px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  text-decoration: none;
-  color: #e5e7eb;
-  background: rgba(99,102,241,0.2);
-  transition: 0.2s;
+/* ===== SECTIONS ===== */
+.section{
+  max-width:900px;
+  margin:25px auto;
+  background:linear-gradient(180deg,#1a1f35,#14182a);
+  border-radius:20px;
+  padding:20px;
+}
+.section h3{margin-top:0}
+
+/* NEWS */
+.news{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.news img{
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:16px;
+}
+.news ul{margin:0;padding-left:20px}
+.news li{margin:6px 0}
+
+/* TABS */
+.tabs{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:30px 0 15px;
+}
+.tab{
+  background:#20243a;
+  padding:8px 18px;
+  border-radius:999px;
+  font-size:13px;
+  cursor:pointer;
+}
+.tab.active{
+  background:var(--accent);
+  color:#000;
+  font-weight:600;
 }
 
-nav .buttons a:hover {
-  background: rgba(99,102,241,0.4);
+/* SEARCH */
+.search{
+  max-width:600px;
+  margin:0 auto 25px;
+  position:relative;
+}
+.search span{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  opacity:.6;
+}
+.search input{
+  width:100%;
+  padding:14px 18px 14px 42px;
+  border-radius:999px;
+  border:none;
+  outline:none;
+  background:#15192a;
+  color:#fff;
 }
 
-/* 🧠 HERO */
-.hero {
-  text-align: center;
-  padding: 80px 20px 40px;
+/* GRID */
+.grid{
+  max-width:1300px;
+  margin:auto;
+  padding:0 20px 60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:18px;
 }
 
-.hero h2 {
-  font-size: 36px;
-  margin-bottom: 12px;
+/* PET */
+.pet{
+  background:linear-gradient(180deg,#1c2034,#14182a);
+  border-radius:18px;
+  padding:14px;
+  text-align:center;
+}
+.pet img{width:100%;border-radius:14px}
+.pet h3{margin:10px 0;font-size:15px}
+.price{font-size:13px;color:var(--muted)}
+
+.hidden{display:none}
+
+footer{
+  text-align:center;
+  padding:30px;
+  font-size:12px;
+  color:#7f85b6;
 }
 
-.hero p {
-  color: #9ca3af;
-  max-width: 600px;
-  margin: auto;
-}
-
-/* 🧊 CARDS */
-.section {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.card {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255,255,255,0.05);
-  backdrop-filter: blur(16px);
-  border-radius: 18px;
-  padding: 24px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 40px rgba(99,102,241,0.05);
-}
-
-.card h3 {
-  margin-bottom: 12px;
-}
-
-/* 👑 LISTS */
-ul {
-  list-style: none;
-}
-
-li {
-  margin-bottom: 6px;
-  color: #c7d2fe;
-}
-
-/* ⚠️ FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #6b7280;
-  font-size: 14px;
+/* MOBILE */
+@media(max-width:768px){
+  .topbar{flex-direction:column;gap:12px}
+  .news{flex-direction:column;text-align:center}
 }
 </style>
 </head>
+
 <body>
 
-<div class="background"></div>
-<canvas id="particles"></canvas>
+<div id="particles-js"></div>
 
-<nav>
-  <h1>Tap Sim Values</h1>
-  <div class="buttons">
-    <a href="#">Home</a>
-    <a href="#">Value List</a>
-    <a href="#">Discord</a>
+<!-- TOP NAV -->
+<div class="topbar">
+  <div class="logo">Tap Sim Values</div>
+
+  <div class="nav">
+    <a href="#" id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
+    <a href="#" id="btnValues" onclick="showValues()">📋 Value List</a>
   </div>
-</nav>
 
-<section class="hero">
-  <h2>Tap Simulator News</h2>
-  <p>
-    Stay updated with the latest Tap Simulator news, updates,
-    new worlds, secret pets, eggs, and limited-time events.
-  </p>
-</section>
+  <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
+</div>
 
-<section class="section">
-  <div class="card">
-    <h3>⚡ Latest Update</h3>
+<!-- HOME -->
+<div id="home">
+  <div class="hero">
+    <h1>Tap Simulator News</h1>
+    <p class="subtitle">
+      Stay updated with the latest Tap Simulator news, updates,
+      new worlds, secret pets, eggs, and limited-time events.
+    </p>
+  </div>
+
+  <div class="section news">
+    <img src="/value-list/images/news/overcharged-robot.png">
     <ul>
+      <li>⚡ List Last Updated – 24/01/26</li>
+      <li>📅 Game Update – 22/01/26</li>
       <li>✨ Celestial World</li>
-      <li>🥚 New Exclusive Egg</li>
-      <li>🔒 5+ New Secret Pets</li>
-      <li>🎡 Electric Spin Wheel</li>
+      <li>🔮 1 New Area</li>
+      <li>🎈 Electric Spin Wheel</li>
+      <li>🛒 New Exclusive Egg</li>
+      <li>🦖 5+ New Secret Pets</li>
+      <li>🥚 2 New Eggs (1 LIMITED)</li>
+      <li>🐾 30+ New Pets</li>
     </ul>
   </div>
+</div>
 
-  <div class="card">
-    <h3>👑 Owners</h3>
-    <ul>
-      <li>GoldAstro</li>
-      <li>Hyper</li>
-    </ul>
+<!-- VALUES -->
+<div id="values" class="hidden">
+  <div class="hero">
+    <h1>Tap Simulator Value List</h1>
+    <p class="subtitle">
+      Browse and track the current market prices for all pets.
+      Our values are carefully researched and regularly updated.
+    </p>
   </div>
 
-  <div class="card">
-    <h3>✏️ Editors</h3>
-    <ul>
-      <li>NotSpeedGuy</li>
-      <li>Diamondz</li>
-    </ul>
+  <div class="tabs" id="tabs"></div>
+
+  <div class="search">
+    <span>🔍</span>
+    <input id="search" placeholder="Search pets..." oninput="renderPets()">
   </div>
 
-  <div class="card">
-    <h3>⚠️ Disclaimer</h3>
-    <ul>
-      <li>Serials & mutations affect values</li>
-      <li>O/C = Owners Choice</li>
-      <li>N/A = Not Available</li>
-    </ul>
-  </div>
-</section>
+  <div class="grid" id="grid"></div>
+</div>
 
-<footer>
-  © 2026 Tap Sim Values
-</footer>
+<footer>© 2026 Tap Sim Values</footer>
+
+<!-- PARTICLES LIB -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 <script>
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+particlesJS("particles-js",{
+  particles:{
+    number:{value:80},
+    color:{value:"#4da3ff"},
+    opacity:{value:0.25},
+    size:{value:2},
+    move:{speed:0.6}
+  },
+  interactivity:{
+    events:{onhover:{enable:true,mode:"repulse"}}
+  }
+});
+</script>
 
-let w, h, particles = [];
+<script>
+let pets=[],currentCat="all";
 
-function resize() {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resize);
-resize();
+fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
+.then(r=>r.json())
+.then(d=>{pets=d;buildTabs();renderPets()});
 
-for (let i = 0; i < 35; i++) {
-  particles.push({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    r: Math.random() * 2 + 1,
-    vx: Math.random() * 0.2 - 0.1,
-    vy: Math.random() * 0.2 - 0.1
+function buildTabs(){
+  const cats=["all","mythics","exclusive","secret1","secret2","leaderboard","limited","event"];
+  const names={all:"All",mythics:"Mythics",exclusive:"Exclusive",secret1:"Secret I",secret2:"Secret II",leaderboard:"Leaderboard",limited:"Limited",event:"Event"};
+  tabs.innerHTML="";
+  cats.forEach(c=>{
+    const t=document.createElement("div");
+    t.className="tab"+(c==="all"?" active":"");
+    t.textContent=names[c];
+    t.onclick=()=>{currentCat=c;document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");renderPets()};
+    tabs.appendChild(t);
   });
 }
 
-function draw() {
-  ctx.clearRect(0,0,w,h);
-  ctx.fillStyle = "rgba(165,180,252,0.15)";
-  particles.forEach(p => {
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > w) p.vx *= -1;
-    if (p.y < 0 || p.y > h) p.vy *= -1;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-    ctx.fill();
+function renderPets(){
+  const q=search.value.toLowerCase();
+  grid.innerHTML="";
+  pets.filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
+  .forEach(p=>{
+    grid.innerHTML+=`
+      <div class="pet">
+        <img src="/value-list${p.image}">
+        <h3>${p.name}</h3>
+        <div class="price">
+          💎 ${p.normal ?? "N/A"}<br>
+          ⭐ ${p.golden ?? "N/A"}<br>
+          🌈 ${p.rainbow ?? "N/A"}
+        </div>
+      </div>`;
   });
-  requestAnimationFrame(draw);
 }
-draw();
+
+function showHome(){
+  home.classList.remove("hidden");
+  values.classList.add("hidden");
+  btnHome.classList.add("active");
+  btnValues.classList.remove("active");
+}
+function showValues(){
+  values.classList.remove("hidden");
+  home.classList.add("hidden");
+  btnValues.classList.add("active");
+  btnHome.classList.remove("active");
+}
 </script>
 
 </body>
