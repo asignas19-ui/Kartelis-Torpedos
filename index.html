@@ -19,7 +19,7 @@
 
 body{
   margin:0;
-  background:#0b0d14;
+  background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
 }
@@ -50,6 +50,8 @@ body{
   padding:8px 14px;
   border-radius:999px;
   background:#20243a;
+  display:flex;
+  gap:6px;
 }
 .nav a.active{
   background:var(--accent);
@@ -69,9 +71,9 @@ body{
 /* HERO */
 .hero{text-align:center;padding:70px 20px 30px}
 .hero h1{font-size:38px;margin:0}
-.subtitle{color:var(--muted);max-width:720px;margin:8px auto}
+.subtitle{color:var(--muted);max-width:720px;margin:10px auto}
 
-/* SECTIONS */
+/* SECTION */
 .section{
   max-width:900px;
   margin:25px auto;
@@ -82,16 +84,12 @@ body{
 .section h3{margin-top:0}
 
 /* NEWS */
-.news{
-  display:flex;
-  gap:20px;
-  align-items:center;
-  flex-wrap:wrap;
-}
+.news{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
 .news img{
   width:160px;
   height:160px;
   border-radius:16px;
+  object-fit:cover;
 }
 
 /* TABS */
@@ -116,11 +114,7 @@ body{
 }
 
 /* SEARCH */
-.search{
-  max-width:600px;
-  margin:0 auto 25px;
-  position:relative;
-}
+.search{max-width:600px;margin:0 auto 25px;position:relative}
 .search span{
   position:absolute;
   left:14px;
@@ -133,7 +127,6 @@ body{
   padding:14px 18px 14px 42px;
   border-radius:999px;
   border:none;
-  outline:none;
   background:#15192a;
   color:#fff;
 }
@@ -148,7 +141,7 @@ body{
   gap:18px;
 }
 
-/* PET CARD */
+/* PET */
 .pet{
   background:linear-gradient(180deg,#1c2034,#14182a);
   border-radius:18px;
@@ -157,19 +150,26 @@ body{
 }
 .pet img{width:100%;border-radius:14px}
 .pet h3{margin:10px 0;font-size:15px}
-.price{
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.6;
-}
+.price{font-size:13px;color:var(--muted)}
 
 .hidden{display:none}
 
-footer{
-  text-align:center;
-  padding:30px;
-  font-size:12px;
-  color:#7f85b6;
+footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
+
+/* DESKTOP – center disclaimer */
+@media (min-width:1024px){
+  .disclaimer-card ul{
+    max-width:420px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .disclaimer-card li{
+    list-style:none;
+    margin:6px 0;
+  }
+  .disclaimer-card h3{
+    text-align:center;
+  }
 }
 
 /* MOBILE */
@@ -184,15 +184,13 @@ footer{
 
 <div id="particles-js"></div>
 
-<!-- TOP NAV -->
+<!-- NAV -->
 <div class="topbar">
   <div class="logo">Tap Sim Values</div>
-
   <div class="nav">
-    <a id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
-    <a id="btnValues" onclick="showValues()">📋 Value List</a>
+    <a href="#" id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
+    <a href="#" id="btnValues" onclick="showValues()">📋 Value List</a>
   </div>
-
   <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
 </div>
 
@@ -200,23 +198,21 @@ footer{
 <div id="home">
   <div class="hero">
     <h1>Tap Simulator News</h1>
-    <p class="subtitle">
-      Latest updates, worlds, secret pets and limited events.
-    </p>
+    <p class="subtitle">Latest updates, worlds, secret pets and limited events.</p>
   </div>
 
   <div class="section news">
     <img src="/value-list/images/news/overcharged-robot.png">
     <ul>
-  <li>⚡ <strong>List Last Updated</strong> – 24/01/26</li>
-  <li>📅 <strong>Most Recent Game Update</strong> – 22/01/26</li>
-  <li>✨ <strong>Celestial World</strong></li>
-  <li>🔮 <strong>1 New Area</strong></li>
-  <li>🎈 <strong>Electric Spin Wheel</strong></li>
-  <li>🛒 <strong>New Exclusive Egg</strong></li>
-  <li>🦖 <strong>5+ New Secret Pets</strong></li>
-  <li>🥚 <strong>2 NEW EGGS</strong> (1 LIMITED)</li>
-  <li>🐾 <strong>30+ NEW PETS</strong></li>
+      <li>⚡ List Last Updated – 24/01/26</li>
+      <li>📅 Most Recent Game Update – 22/01/26</li>
+      <li>✨ Celestial World</li>
+      <li>🔮 1 New Area</li>
+      <li>🎈 Electric Spin Wheel</li>
+      <li>🛒 New Exclusive Egg</li>
+      <li>🦖 5+ New Secret Pets</li>
+      <li>🥚 2 NEW EGGS (1 LIMITED)</li>
+      <li>🐾 30+ NEW PETS</li>
     </ul>
   </div>
 
@@ -229,15 +225,15 @@ footer{
   </div>
 
   <div class="section">
-    <h3>🛠 Editors</h3>
+    <h3>🛠️ Editors</h3>
     <ul>
       <li>NotSpeedGuy (zacklist)</li>
       <li>Diamondz (diamondz_1)</li>
     </ul>
   </div>
 
-  <div class="section">
-    <h3>⚠ Disclaimer</h3>
+  <div class="section disclaimer-card">
+    <h3>⚠️ Disclaimer</h3>
     <ul>
       <li>Serials & mutations affect values</li>
       <li>O/C = Owners Choice</li>
@@ -250,7 +246,7 @@ footer{
 <div id="values" class="hidden">
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
-    <p class="subtitle">Current market prices for all pets</p>
+    <p class="subtitle">Browse and track the current market prices for all pets.</p>
   </div>
 
   <div class="tabs" id="tabs"></div>
@@ -269,13 +265,8 @@ footer{
 
 <script>
 particlesJS("particles-js",{
-  particles:{
-    number:{value:90},
-    color:{value:"#4da3ff"},
-    opacity:{value:0.2},
-    size:{value:2},
-    move:{speed:0.5}
-  }
+  particles:{number:{value:80},color:{value:"#4da3ff"},opacity:{value:0.25},size:{value:2},move:{speed:0.6}},
+  interactivity:{events:{onhover:{enable:true,mode:"repulse"}}}
 });
 </script>
 
@@ -294,12 +285,7 @@ function buildTabs(){
     const t=document.createElement("div");
     t.className="tab"+(c==="all"?" active":"");
     t.textContent=names[c];
-    t.onclick=()=>{
-      currentCat=c;
-      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-      t.classList.add("active");
-      renderPets();
-    };
+    t.onclick=()=>{currentCat=c;document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");renderPets()};
     tabs.appendChild(t);
   });
 }
@@ -314,9 +300,9 @@ function renderPets(){
         <img src="/value-list${p.image}">
         <h3>${p.name}</h3>
         <div class="price">
-          💎 Normal: ${p.normal ?? "N/A"}<br>
-          ⭐ Golden: ${p.golden ?? "N/A"}<br>
-          🌈 Rainbow: ${p.rainbow ?? "N/A"}
+          Normal: ${p.normal ?? "N/A"}<br>
+          Golden: ${p.golden ?? "N/A"}<br>
+          Rainbow: ${p.rainbow ?? "N/A"}
         </div>
       </div>`;
   });
