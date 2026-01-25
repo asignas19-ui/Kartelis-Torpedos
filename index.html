@@ -19,11 +19,12 @@
 
 body{
   margin:0;
-  background:var(--bg);
+  background:#0b0d14;
   color:var(--text);
   overflow-x:hidden;
 }
 
+/* PARTICLES */
 #particles-js{
   position:fixed;
   inset:0;
@@ -68,9 +69,9 @@ body{
 /* HERO */
 .hero{text-align:center;padding:70px 20px 30px}
 .hero h1{font-size:38px;margin:0}
-.subtitle{color:var(--muted);max-width:720px;margin:10px auto}
+.subtitle{color:var(--muted);max-width:720px;margin:8px auto}
 
-/* SECTION */
+/* SECTIONS */
 .section{
   max-width:900px;
   margin:25px auto;
@@ -81,27 +82,16 @@ body{
 .section h3{margin-top:0}
 
 /* NEWS */
-.news{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.news{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  flex-wrap:wrap;
+}
 .news img{
   width:160px;
   height:160px;
   border-radius:16px;
-}
-
-/* DISCLAIMER CENTER (PC) */
-@media(min-width:1024px){
-  .disclaimer-card{
-    text-align:center;
-  }
-  .disclaimer-card ul{
-    list-style:none;
-    padding:0;
-    margin:0 auto;
-    max-width:420px;
-  }
-  .disclaimer-card li{
-    margin:6px 0;
-  }
 }
 
 /* TABS */
@@ -126,7 +116,11 @@ body{
 }
 
 /* SEARCH */
-.search{max-width:600px;margin:0 auto 25px;position:relative}
+.search{
+  max-width:600px;
+  margin:0 auto 25px;
+  position:relative;
+}
 .search span{
   position:absolute;
   left:14px;
@@ -139,6 +133,7 @@ body{
   padding:14px 18px 14px 42px;
   border-radius:999px;
   border:none;
+  outline:none;
   background:#15192a;
   color:#fff;
 }
@@ -153,7 +148,7 @@ body{
   gap:18px;
 }
 
-/* PET */
+/* PET CARD */
 .pet{
   background:linear-gradient(180deg,#1c2034,#14182a);
   border-radius:18px;
@@ -162,11 +157,26 @@ body{
 }
 .pet img{width:100%;border-radius:14px}
 .pet h3{margin:10px 0;font-size:15px}
-.price{font-size:13px;color:var(--muted)}
+.price{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
 
 .hidden{display:none}
 
-footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
+footer{
+  text-align:center;
+  padding:30px;
+  font-size:12px;
+  color:#7f85b6;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .topbar{flex-direction:column;gap:12px}
+  .news{flex-direction:column;text-align:center}
+}
 </style>
 </head>
 
@@ -174,13 +184,15 @@ footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
 
 <div id="particles-js"></div>
 
-<!-- NAV -->
+<!-- TOP NAV -->
 <div class="topbar">
   <div class="logo">Tap Sim Values</div>
+
   <div class="nav">
-    <a href="#" id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
-    <a href="#" id="btnValues" onclick="showValues()">📋 Value List</a>
+    <a id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
+    <a id="btnValues" onclick="showValues()">📋 Value List</a>
   </div>
+
   <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
 </div>
 
@@ -188,7 +200,9 @@ footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
 <div id="home">
   <div class="hero">
     <h1>Tap Simulator News</h1>
-    <p class="subtitle">Latest updates, worlds, secret pets and limited events.</p>
+    <p class="subtitle">
+      Latest updates, worlds, secret pets and limited events.
+    </p>
   </div>
 
   <div class="section news">
@@ -206,6 +220,22 @@ footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
     </ul>
   </div>
 
+  <div class="section">
+    <h3>👑 Owners</h3>
+    <ul>
+      <li>GoldAstro (goldastro)</li>
+      <li>Hyper (rng_elixr)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🛠️ Editors</h3>
+    <ul>
+      <li>NotSpeedGuy (zacklist)</li>
+      <li>Diamondz (diamondz_1)</li>
+    </ul>
+  </div>
+
   <div class="section disclaimer-card">
     <h3>⚠️ Disclaimer</h3>
     <ul>
@@ -220,7 +250,7 @@ footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
 <div id="values" class="hidden">
   <div class="hero">
     <h1>Tap Simulator Value List</h1>
-    <p class="subtitle">Browse and track the current market prices for all pets.</p>
+    <p class="subtitle">Current market prices for all pets</p>
   </div>
 
   <div class="tabs" id="tabs"></div>
@@ -239,8 +269,13 @@ footer{text-align:center;padding:30px;font-size:12px;color:#7f85b6}
 
 <script>
 particlesJS("particles-js",{
-  particles:{number:{value:80},color:{value:"#4da3ff"},opacity:{value:0.25},size:{value:2},move:{speed:0.6}},
-  interactivity:{events:{onhover:{enable:true,mode:"repulse"}}}
+  particles:{
+    number:{value:90},
+    color:{value:"#4da3ff"},
+    opacity:{value:0.2},
+    size:{value:2},
+    move:{speed:0.5}
+  }
 });
 </script>
 
@@ -272,19 +307,18 @@ function buildTabs(){
 function renderPets(){
   const q=search.value.toLowerCase();
   grid.innerHTML="";
-  pets
-  .filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
+  pets.filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
   .forEach(p=>{
     grid.innerHTML+=`
-    <div class="pet">
-      <img src="/value-list${p.image}">
-      <h3>${p.name}</h3>
-      <div class="price">
-        💎 Normal: ${p.normal ?? "N/A"}<br>
-        ⭐ Golden: ${p.golden ?? "N/A"}<br>
-        🌈 Rainbow: ${p.rainbow ?? "N/A"}
-      </div>
-    </div>`;
+      <div class="pet">
+        <img src="/value-list${p.image}">
+        <h3>${p.name}</h3>
+        <div class="price">
+          💎 Normal: ${p.normal ?? "N/A"}<br>
+          ⭐ Golden: ${p.golden ?? "N/A"}<br>
+          🌈 Rainbow: ${p.rainbow ?? "N/A"}
+        </div>
+      </div>`;
   });
 }
 
