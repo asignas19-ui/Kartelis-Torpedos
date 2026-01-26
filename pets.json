@@ -94,5 +94,54 @@
     "golden": 840,
     "rainbow": 840,
     "category": "secret1"
-  }
+  },
+  {
+  "name": "Raging Claw",
+  "image": "/images/secret2/raging-claw.png",
+  "normal": 45,
+  "golden": 200,
+  "rainbow": 200,
+  "category": "secret2"
+},
+{
+  "name": "Chocolate Marauder",
+  "image": "/images/secret2/chocolate-marauder.png",
+  "normal": 45,
+  "golden": 200,
+  "rainbow": 200,
+  "category": "secret2"
+},
+{
+  "name": "King Kraken",
+  "image": "/images/secret2/king-kraken.png",
+  "normal": 60,
+  "golden": 240,
+  "rainbow": 240,
+  "category": "secret2"
+},
+{
+  "name": "Cosmic Chaos",
+  "image": "/images/secret2/cosmic-chaos.png",
+  "normal": 85,
+  "golden": 380,
+  "rainbow": 380,
+  "category": "secret2"
+},
+{
+  "name": "Infernal Seraphim",
+  "image": "/images/secret2/infernal-seraphim.png",
+  "normal": 650,
+  "golden": 3000,
+  "rainbow": 3000,
+  "category": "secret2"
+},
+{
+  "name": "Empyrean Sovereign",
+  "image": "/images/secret2/empyrean-sovereign.png",
+  "normal": 1000,
+  "golden": 5000,
+  "rainbow": 5000,
+  "category": "secret2"
+}
+
 ]
