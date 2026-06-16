@@ -299,12 +299,8 @@ function renderMembersGrid() {
 
   filtered.forEach(m => {
     const card = document.createElement("div");
-    card.className = `player-card ${m.online ? 'online' : 'offline'}`;
+    card.className = "player-card";
     card.setAttribute("data-member-id", m.id);
-    if (m.online && m.statusColor === 'orange') {
-      card.className = 'player-card away';
-      card.setAttribute("data-member-id", m.id);
-    }
     
     if (selectedMemberId === m.id) {
       card.classList.add("selected");
@@ -320,14 +316,11 @@ function renderMembersGrid() {
           <span class="player-card-id">${m.id}</span>
           <span class="player-card-name" title="${m.nickname}">${m.nickname}</span>
         </div>
-        <span class="status-indicator ${m.online ? (m.statusColor === 'orange' ? 'away' : 'online') : 'offline'}"></span>
       </div>
-      <div class="player-card-meta">${m.rank}</div>
-      <div class="player-card-meta" style="font-size:10px; margin-bottom:0; display:flex; justify-content:space-between;">
-        <span>Telefonas: ${m.personalInfo?.phone || '-'}</span>
-        <span style="color: var(--accent-color); font-weight:600;">${formattedSpent}</span>
+      <div class="player-card-meta" style="font-size:11px; margin-top: auto; margin-bottom:0; display:flex; justify-content:space-between; width:100%;">
+        <span>Tel: ${m.personalInfo?.phone || '-'}</span>
+        <span style="color: var(--accent-color); font-weight:700;">${formattedSpent}</span>
       </div>
-      <div class="player-card-bar"></div>
     `;
 
     card.addEventListener("click", () => {
@@ -376,24 +369,6 @@ function selectMember(id) {
   
   document.getElementById("details-birthdate").textContent = member.personalInfo?.birthDate || 'Nenurodyta';
   document.getElementById("details-phone").textContent = member.personalInfo?.phone || 'Nenurodyta';
-
-  const statusContainer = document.getElementById("details-status");
-  const indicator = statusContainer.querySelector(".status-indicator");
-  const label = statusContainer.querySelector("span:last-child");
-
-  indicator.className = "status-indicator";
-  if (member.online) {
-    if (member.statusColor === 'orange') {
-      indicator.classList.add("away");
-      label.textContent = "Mieste (AFK/Away)";
-    } else {
-      indicator.classList.add("online");
-      label.textContent = "Mieste (Online)";
-    }
-  } else {
-    indicator.classList.add("offline");
-    label.textContent = "Nėra mieste (Offline)";
-  }
 
   // Block 2: Buyouts (Supirkimai)
   renderBuyouts(member);
@@ -465,8 +440,6 @@ function renderBuyouts(member) {
 // DASHBOARD UPDATES
 function updateDashboard() {
   document.getElementById("stat-total-members").textContent = members.length;
-  document.getElementById("stat-active-members").textContent = members.filter(m => m.online).length;
-  document.getElementById("stat-torpedos-count").textContent = members.filter(m => m.rank === "Torpeda").length;
 
   let grandTotalSpent = 0;
   let allBuyouts = [];
@@ -636,12 +609,10 @@ function openMemberModal(id = null) {
       document.getElementById("member-form-birthdate").value = member.personalInfo?.birthDate || "";
       document.getElementById("member-form-phone").value = member.personalInfo?.phone || "";
       document.getElementById("member-form-rank").value = member.rank;
-      document.getElementById("member-form-online").value = member.online.toString();
     }
   } else {
     title.textContent = "Pridėti naują narį";
     document.getElementById("member-form-id").value = "";
-    document.getElementById("member-form-online").value = "false";
   }
 
   modal.classList.add("active");
@@ -657,7 +628,6 @@ function saveMemberForm() {
   const birthDate = document.getElementById("member-form-birthdate").value;
   const phone = document.getElementById("member-form-phone").value.trim();
   const rank = document.getElementById("member-form-rank").value;
-  const online = document.getElementById("member-form-online").value === "true";
 
   if (idVal) {
     // Edit existing member
@@ -666,8 +636,8 @@ function saveMemberForm() {
     if (index !== -1) {
       members[index].nickname = nickname;
       members[index].rank = rank;
-      members[index].online = online;
-      members[index].statusColor = online ? "green" : "red";
+      members[index].online = false;
+      members[index].statusColor = "red";
       members[index].personalInfo = {
         firstName,
         lastName,
@@ -693,8 +663,8 @@ function saveMemberForm() {
       id: nextId,
       nickname,
       rank,
-      online,
-      statusColor: online ? "green" : "red",
+      online: false,
+      statusColor: "red",
       personalInfo: {
         firstName,
         lastName,

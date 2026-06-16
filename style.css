@@ -1,16 +1,16 @@
 /* CUSTOM DESIGN SYSTEM - txAdmin STYLE FOR KARTELIS TORPEDOS */
 
 :root {
-  --bg-color: #0c0e14;
-  --panel-bg: #131626;
-  --card-bg: #1a1e33;
-  --card-hover-bg: #222744;
-  --border-color: #272d4a;
+  --bg-color: #06070a;         /* Darker pitch black-blue */
+  --panel-bg: #0b0d14;         /* Very dark slate panel */
+  --card-bg: #121422;          /* Slate card background */
+  --card-hover-bg: #1a1d30;    /* Card hover background */
+  --border-color: #1e223b;     /* Very clean and thin borders */
   
   --text-main: #f3f4f6;
-  --text-muted: #9ba0c7;
+  --text-muted: #8e95c2;       /* More readable muted text */
   
-  --accent-color: #10b981; /* txAdmin Green */
+  --accent-color: #10b981;     /* Emerald Green */
   --accent-color-hover: #059669;
   
   --primary-blue: #3b82f6;
@@ -26,7 +26,7 @@
   --success-color: #10b981;
   --success-bg-alpha: rgba(16, 185, 129, 0.1);
   
-  --transition-speed: 0.25s;
+  --transition-speed: 0.2s;
   --border-radius-lg: 10px;
   --border-radius-md: 6px;
   --border-radius-sm: 4px;
@@ -636,33 +636,35 @@ body {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
-  padding: 12px 14px 16px 14px;
+  padding: 12px 16px;
   cursor: pointer;
   position: relative;
   transition: all var(--transition-speed) ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 96px;
+  justify-content: center;
+  gap: 6px;
+  height: 72px;
   overflow: hidden;
 }
 
 .player-card:hover {
   background-color: var(--card-hover-bg);
   transform: translateY(-2px);
-  border-color: #3b426e;
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
 }
 
 .player-card.selected {
   border-color: var(--accent-color);
-  background-color: rgba(16, 185, 129, 0.03);
+  background-color: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
 }
 
 .player-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 6px;
 }
 
 .player-card-id-name {
@@ -677,7 +679,7 @@ body {
   font-size: 11px;
   font-weight: 700;
   color: var(--text-muted);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 2px 6px;
   border-radius: var(--border-radius-sm);
   flex-shrink: 0;
@@ -695,28 +697,6 @@ body {
   font-size: 11px;
   color: var(--text-muted);
   font-weight: 500;
-  margin-bottom: 8px;
-}
-
-/* txAdmin characteristic bottom indicator line */
-.player-card-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: #4b5563; /* grey indicator default */
-  transition: background-color var(--transition-speed) ease;
-}
-
-.player-card.online .player-card-bar {
-  background-color: var(--accent-color);
-}
-.player-card.offline .player-card-bar {
-  background-color: var(--danger-color);
-}
-.player-card.away .player-card-bar {
-  background-color: var(--warning-color);
 }
 
 /* Right Side Details Pane */

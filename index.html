@@ -14,12 +14,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- TOPBAR (txAdmin style) -->
+  <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-logo">
-      <span class="tx-prefix">tx</span><span class="admin-suffix">Admin</span>
-      <span class="version">v5.1.0</span>
-      <span class="gang-badge">TORPEDOS</span>
+      <span class="kartelis-prefix">KARTELIS</span><span class="torpedos-suffix">TORPEDOS</span>
+      <span class="gang-badge">VALDYMAS</span>
     </div>
     
     <nav class="topbar-nav">
@@ -33,11 +32,6 @@
         <i data-lucide="settings"></i> NUSTATYMAI
       </button>
     </nav>
-
-    <div class="topbar-status">
-      <span class="status-indicator online"></span>
-      <span class="server-name">OneX FiveM Cartel</span>
-    </div>
   </header>
 
   <!-- MAIN CONTAINER -->
@@ -58,24 +52,6 @@
           <div class="stat-info">
             <span class="stat-label">Iš viso narių</span>
             <span class="stat-value" id="stat-total-members">0</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon online-icon">
-            <i data-lucide="radio"></i>
-          </div>
-          <div class="stat-info">
-            <span class="stat-label">Aktyvūs mieste</span>
-            <span class="stat-value" id="stat-active-members">0</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon torpedos-icon">
-            <i data-lucide="shield-alert"></i>
-          </div>
-          <div class="stat-info">
-            <span class="stat-label">Torpedos rankas</span>
-            <span class="stat-value" id="stat-torpedos-count">0</span>
           </div>
         </div>
         <div class="stat-card">
@@ -220,12 +196,6 @@
                   <div class="info-item">
                     <span class="info-label">Telefono numeris</span>
                     <span class="info-value" id="details-phone">-</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Būsena mieste</span>
-                    <span class="info-value" id="details-status">
-                      <span class="status-indicator"></span> <span>Offline</span>
-                    </span>
                   </div>
                 </div>
               </div>
@@ -409,25 +379,16 @@
             <input type="text" id="member-form-phone" placeholder="Pvz. 555-12345">
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="member-form-rank">Rankas (Pareigos) *</label>
-            <select id="member-form-rank" required>
-              <option value="Lyderis">Lyderis</option>
-              <option value="Pavaduotojas">Pavaduotojas</option>
-              <option value="Direktorius">Direktorius</option>
-              <option value="Valdyba">Valdyba</option>
-              <option value="Torpeda" selected>Torpeda</option>
-              <option value="Naujokas">Naujokas</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="member-form-online">Būsena mieste</label>
-            <select id="member-form-online">
-              <option value="true">Online</option>
-              <option value="false" selected>Offline</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label for="member-form-rank">Rankas (Pareigos) *</label>
+          <select id="member-form-rank" required>
+            <option value="Lyderis">Lyderis</option>
+            <option value="Pavaduotojas">Pavaduotojas</option>
+            <option value="Direktorius">Direktorius</option>
+            <option value="Valdyba">Valdyba</option>
+            <option value="Torpeda" selected>Torpeda</option>
+            <option value="Naujokas">Naujokas</option>
+          </select>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline modal-cancel-btn">Atšaukti</button>
