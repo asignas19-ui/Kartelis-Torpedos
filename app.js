@@ -163,9 +163,17 @@ async function loadDatabase() {
   const localData = localStorage.getItem("torpedos_members");
   if (localData) {
     try {
-      members = JSON.parse(localData);
-      showToast("Duomenys sėkmingai užkrauti iš naršyklės atminties.", "info");
-      return;
+      const parsed = JSON.parse(localData);
+      // Check if this is the old data structure (missing buyouts property)
+      const hasBuyouts = Array.isArray(parsed) && parsed.some(m => m.hasOwnProperty('buyouts'));
+      if (hasBuyouts) {
+        members = parsed;
+        showToast("Duomenys sėkmingai užkrauti iš naršyklės atminties.", "info");
+        return;
+      } else {
+        console.log("Aptikta sena duomenų struktūra (be supirkimų). Atstatoma iš naujo...");
+        localStorage.removeItem("torpedos_members");
+      }
     } catch (e) {
       console.error("Klaida nuskaitant vietinius duomenis:", e);
     }
