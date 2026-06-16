@@ -1,147 +1,21 @@
-[
-  {
-    "name": "Frost Queen",
-    "image": "/images/secret1/frost-queen.png",
-    "normal": 25,
-    "golden": 120,
-    "rainbow": 120,
-    "category": "secret1"
-  },
-  {
-    "name": "Divine Dragon",
-    "image": "/images/secret1/divine-dragon.png",
-    "normal": 30,
-    "golden": 135,
-    "rainbow": 135,
-    "category": "secret1"
-  },
-  {
-    "name": "Weeping Angel",
-    "image": "/images/secret1/weeping-angel.png",
-    "normal": 35,
-    "golden": 160,
-    "rainbow": 160,
-    "category": "secret1"
-  },
-  {
-    "name": "Sakura Dominator",
-    "image": "/images/secret1/sakura-dominator.png",
-    "normal": 40,
-    "golden": 180,
-    "rainbow": 180,
-    "category": "secret1"
-  },
-  {
-    "name": "Magmasaur",
-    "image": "/images/secret1/magmasaur.png",
-    "normal": 40,
-    "golden": 180,
-    "rainbow": 180,
-    "category": "secret1"
-  },
-  {
-    "name": "Candy God",
-    "image": "/images/secret1/candy-god.png",
-    "normal": 40,
-    "golden": 180,
-    "rainbow": 180,
-    "category": "secret1"
-  },
-  {
-    "name": "Orca Dominator",
-    "image": "/images/secret1/orca-dominator.png",
-    "normal": 40,
-    "golden": 180,
-    "rainbow": 180,
-    "category": "secret1"
-  },
-  {
-    "name": "Luminary Star",
-    "image": "/images/secret1/luminary-star.png",
-    "normal": 45,
-    "golden": 200,
-    "rainbow": 200,
-    "category": "secret1"
-  },
-  {
-    "name": "Grand Ice Wizard",
-    "image": "/images/secret1/grand-ice-wizard.png",
-    "normal": 80,
-    "golden": 350,
-    "rainbow": 350,
-    "category": "secret1"
-  },
-  {
-    "name": "Infernal Lord",
-    "image": "/images/secret1/infernal-lord.png",
-    "normal": 110,
-    "golden": 440,
-    "rainbow": 440,
-    "category": "secret1"
-  },
-  {
-    "name": "Neon Cat",
-    "image": "/images/secret1/neon-cat.png",
-    "normal": null,
-    "golden": null,
-    "rainbow": null,
-    "category": "secret1"
-  },
-  {
-    "name": "Skybound Relic",
-    "image": "/images/secret1/skybound-relic.png",
-    "normal": 140,
-    "golden": 840,
-    "rainbow": 840,
-    "category": "secret1"
-  },
-  {
-  "name": "Raging Claw",
-  "image": "/images/secret2/raging-claw.png",
-  "normal": 45,
-  "golden": 200,
-  "rainbow": 200,
-  "category": "secret2"
-},
 {
-  "name": "Chocolate Marauder",
-  "image": "/images/secret2/chocolate-marauder.png",
-  "normal": 45,
-  "golden": 200,
-  "rainbow": 200,
-  "category": "secret2"
-},
-{
-  "name": "King Kraken",
-  "image": "/images/secret2/king-kraken.png",
-  "normal": 60,
-  "golden": 240,
-  "rainbow": 240,
-  "category": "secret2"
-},
-{
-  "name": "Cosmic Chaos",
-  "image": "/images/secret2/cosmic-chaos.png",
-  "normal": 85,
-  "golden": 380,
-  "rainbow": 380,
-  "category": "secret2"
-},
-{
-  "name": "Infernal Seraphim",
-  "image": "/images/secret2/infernal-seraphim.png",
-  "normal": 650,
-  "golden": 3000,
-  "rainbow": 3000,
-  "category": "secret2"
-},
-{
-  "name": "Empyrean Sovereign",
-  "image": "/images/secret2/empyrean-sovereign.png",
-  "normal": 1000,
-  "golden": 5000,
-  "rainbow": 5000,
-  "category": "secret2"
+  "members": [
+    {
+      "id": "example1",
+      "pravarde": "feakz",
+      "vardas": "",
+      "pavarde": "",
+      "gimimoData": "",
+      "numeris": "",
+      "pirkimai": [
+        {
+          "id": "p1",
+          "preke": "Pistoletas",
+          "kiekis": 1,
+          "kaina": 500,
+          "data": "2026-06-10"
+        }
+      ]
+    }
+  ]
 }
-
-]
