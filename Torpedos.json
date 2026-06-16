@@ -25,6 +25,13 @@
         "quantity": 500,
         "price": 15000,
         "date": "2026-06-12 18:20"
+      },
+      {
+        "id": 1001,
+        "item": "Advanced Rifle",
+        "quantity": 1,
+        "price": 5000000,
+        "date": "2026-06-16 21:23"
       }
     ]
   },
@@ -113,6 +120,14 @@
       "birthDate": "2004-07-15",
       "phone": "555-88990"
     },
-    "buyouts": []
+    "buyouts": [
+      {
+        "id": 1002,
+        "item": "Heavy Rifle",
+        "quantity": 1,
+        "price": 10000,
+        "date": "2026-06-16 21:33"
+      }
+    ]
   }
 ]
