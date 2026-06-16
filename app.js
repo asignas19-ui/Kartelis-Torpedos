@@ -133,6 +133,24 @@ const RANKS = ["Lyderis", "Pavaduotojas", "Direktorius", "Valdyba", "Torpeda", "
 
 // INITIALIZATION
 document.addEventListener("DOMContentLoaded", async () => {
+  // Check if admin parameter is in the URL to activate/deactivate admin mode
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('admin')) {
+    const isAdmin = urlParams.get('admin') === 'true' || urlParams.get('admin') === '1';
+    localStorage.setItem('torpedos_admin_mode', isAdmin ? 'true' : 'false');
+    // Remove the query parameters from URL for a clean look
+    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+  }
+
+  // Apply admin mode class to body if active
+  const adminMode = localStorage.getItem('torpedos_admin_mode') === 'true';
+  if (adminMode) {
+    document.body.classList.add('admin-mode');
+  } else {
+    document.body.classList.remove('admin-mode');
+  }
+
   // Initialize Lucide Icons
   lucide.createIcons();
 
@@ -420,7 +438,7 @@ function renderBuyouts(member) {
       <td>${formattedUnit}</td>
       <td class="text-green text-bold">${formattedPrice}</td>
       <td class="subtitle">${dateFormatted}</td>
-      <td class="buyout-action-btns">
+      <td class="buyout-action-btns admin-only">
         <button class="btn btn-icon btn-sm btn-outline edit-buyout-item-btn" data-buyout-id="${b.id}" title="Redaguoti">
           <i data-lucide="edit-2" style="width:12px;height:12px;"></i>
         </button>
@@ -953,8 +971,9 @@ async function syncWithGitHub() {
     // Step 1: Fetch current file to get SHA (needed for updates)
     let sha = null;
     try {
-      const getRes = await fetch(`${url}?ref=${gitHubSettings.branch}`, {
+      const getRes = await fetch(`${url}?ref=${gitHubSettings.branch}&t=${Date.now()}`, {
         method: "GET",
+        cache: "no-store",
         headers: {
           "Authorization": `token ${gitHubSettings.token}`,
           "Accept": "application/vnd.github.v3+json"
