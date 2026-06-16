@@ -1,19 +1,19 @@
 {
   "members": [
     {
-      "id": "example1",
-      "pravarde": "feakz",
-      "vardas": "",
-      "pavarde": "",
-      "gimimoData": "",
-      "numeris": "",
+      "id": "mqh0hwams7fk8",
+      "pravarde": "mini bosas",
+      "vardas": "hiusa",
+      "pavarde": "dadwa",
+      "gimimoData": "2026-06-18",
+      "numeris": "wdads",
       "pirkimai": [
         {
-          "id": "p1",
+          "id": "mqh0i6yrjygni",
           "preke": "Pistoletas",
           "kiekis": 1,
-          "kaina": 500,
-          "data": "2026-06-10"
+          "kaina": 122323,
+          "data": "2026-06-16"
         }
       ]
     }
