@@ -1,21 +1,118 @@
-{
-  "members": [
-    {
-      "id": "mqh0hwams7fk8",
-      "pravarde": "mini bosas",
-      "vardas": "hiusa",
-      "pavarde": "dadwa",
-      "gimimoData": "2026-06-18",
-      "numeris": "wdads",
-      "pirkimai": [
-        {
-          "id": "mqh0i6yrjygni",
-          "preke": "Pistoletas",
-          "kiekis": 1,
-          "kaina": 122323,
-          "data": "2026-06-16"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "nickname": "feakz",
+    "rank": "Lyderis",
+    "online": true,
+    "statusColor": "green",
+    "personalInfo": {
+      "firstName": "Mantas",
+      "lastName": "Jankauskas",
+      "birthDate": "1998-05-12",
+      "phone": "555-12345"
+    },
+    "buyouts": [
+      {
+        "id": 101,
+        "item": "Heavy Rifle",
+        "quantity": 2,
+        "price": 120000,
+        "date": "2026-06-10 14:30"
+      },
+      {
+        "id": 102,
+        "item": "Apvalkalai (Bullets)",
+        "quantity": 500,
+        "price": 15000,
+        "date": "2026-06-12 18:20"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nickname": "onixiukas",
+    "rank": "Torpeda",
+    "online": true,
+    "statusColor": "green",
+    "personalInfo": {
+      "firstName": "Karolis",
+      "lastName": "Petraitis",
+      "birthDate": "2001-09-24",
+      "phone": "555-98765"
+    },
+    "buyouts": [
+      {
+        "id": 103,
+        "item": "AP Pistol",
+        "quantity": 3,
+        "price": 90000,
+        "date": "2026-06-14 20:15"
+      },
+      {
+        "id": 104,
+        "item": "Kainas (Kokainas)",
+        "quantity": 50,
+        "price": 25000,
+        "date": "2026-06-15 22:00"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nickname": "neimaras",
+    "rank": "Valdyba",
+    "online": false,
+    "statusColor": "red",
+    "personalInfo": {
+      "firstName": "Tomas",
+      "lastName": "Skauda",
+      "birthDate": "1995-11-02",
+      "phone": "555-44221"
+    },
+    "buyouts": [
+      {
+        "id": 105,
+        "item": "Glock-18",
+        "quantity": 1,
+        "price": 25000,
+        "date": "2026-06-08 11:05"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nickname": "Fredisiovas",
+    "rank": "Torpeda",
+    "online": true,
+    "statusColor": "orange",
+    "personalInfo": {
+      "firstName": "Fredi",
+      "lastName": "Kriugeris",
+      "birthDate": "2000-02-29",
+      "phone": "555-66778"
+    },
+    "buyouts": [
+      {
+        "id": 106,
+        "item": "Advanced Rifle",
+        "quantity": 1,
+        "price": 85000,
+        "date": "2026-06-16 19:40"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "nickname": "kyxdzsds",
+    "rank": "Naujokas",
+    "online": false,
+    "statusColor": "red",
+    "personalInfo": {
+      "firstName": "Arnas",
+      "lastName": "Sabonis",
+      "birthDate": "2004-07-15",
+      "phone": "555-88990"
+    },
+    "buyouts": []
+  }
+]
