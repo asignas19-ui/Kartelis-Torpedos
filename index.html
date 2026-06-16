@@ -1,375 +1,558 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 <head>
 <meta charset="UTF-8">
-<title>Tap Simulator Values</title>
+<title>Kartelis Torpedos | Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 :root{
   --bg:#0b0d14;
-  --panel:#14182a;
-  --card:#1b2035;
-  --accent:#4da3ff;
+  --panel:#11141f;
+  --card:#171c2c;
+  --card-hover:#1d2336;
+  --border:rgba(255,255,255,.07);
   --text:#f2f4ff;
-  --muted:#9aa0c7;
+  --muted:#8d93ab;
+  --accent:#2dd4bf;
+  --accent-dim:rgba(45,212,191,.12);
+  --warn:#fbbf24;
+  --danger:#f3556a;
 }
-*{box-sizing:border-box;font-family:Inter,Segoe UI,system-ui}
-
-body{
-  margin:0;
-  background:#0b0d14;
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-/* PARTICLES */
-#particles-js{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
+*{box-sizing:border-box;font-family:Inter,Segoe UI,system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--text);min-height:100vh}
+button,input,select{font-family:inherit;color:inherit}
+input,select{background:#0e1119;border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:13.5px;outline:none}
+input:focus,select:focus{border-color:var(--accent)}
+button{cursor:pointer;border:none;border-radius:8px;font-size:13.5px;font-weight:600}
+.btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:9px 14px}
+.btn:hover{background:var(--card-hover)}
+.btn-accent{background:var(--accent);color:#062421}
+.btn-accent:hover{filter:brightness(1.08)}
+.btn-danger{background:rgba(243,85,106,.12);color:var(--danger)}
+.btn-danger:hover{background:rgba(243,85,106,.2)}
+.btn-ghost{background:transparent;color:var(--muted)}
+.btn-ghost:hover{color:var(--text)}
 
 /* TOP BAR */
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 18px;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  backdrop-filter: blur(6px);
-}
-.logo{font-weight:700;font-size:18px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,13,20,.92);backdrop-filter:blur(8px);z-index:20}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;letter-spacing:.3px}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.tabs{display:flex;gap:4px;background:var(--panel);padding:4px;border-radius:10px}
+.tab{padding:8px 16px;border-radius:7px;color:var(--muted);font-weight:600;font-size:13px;cursor:pointer}
+.tab.active{background:var(--card);color:var(--accent)}
+.topbar-right{display:flex;gap:10px;align-items:center}
+.stat-pill{display:flex;gap:6px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:6px 12px;font-size:12.5px;color:var(--muted)}
+.stat-pill b{color:var(--text)}
 
-.nav{display:flex;gap:10px}
-.nav a{
-  color:#dce0ff;
-  text-decoration:none;
-  font-size:15px;
-  padding:8px 14px;
-  border-radius:999px;
-  background:#20243a;
-}
-.nav a.active{
-  background:var(--accent);
-  color:#000;
-  font-weight:600;
-}
+/* PAGE */
+.page{max-width:1280px;margin:0 auto;padding:26px 22px 60px}
+.view{display:none}
+.view.active{display:block}
 
-.discord{
-  background:#5865F2;
-  padding:10px 16px;
-  border-radius:999px;
-  color:#fff;
-  font-weight:600;
-  text-decoration:none;
-}
-
-/* HERO */
-.hero{text-align:center;padding:70px 20px 30px}
-.hero h1{font-size:38px;margin:0}
-.subtitle{color:var(--muted);max-width:720px;margin:8px auto}
-
-/* SECTIONS */
-.section{
-  max-width:900px;
-  margin:25px auto;
-  background:linear-gradient(180deg,#1a1f35,#14182a);
-  border-radius:20px;
-  padding:20px;
-}
-
-/* NEWS */
-.news{
-  display:flex;
-  gap:20px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-.news img{
-  width:160px;
-  height:160px;
-  border-radius:16px;
-}
-
-/* TABS */
-.tabs{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin:30px 0 15px;
-}
-.tab{
-  background:#20243a;
-  padding:8px 18px;
-  border-radius:999px;
-  font-size:13px;
-  cursor:pointer;
-}
-.tab.active{
-  background:var(--accent);
-  color:#000;
-  font-weight:600;
-}
-
-/* SEARCH */
-.search{
-  max-width:600px;
-  margin:0 auto 25px;
-  position:relative;
-}
-.search span{
-  position:absolute;
-  left:14px;
-  top:50%;
-  transform:translateY(-50%);
-  opacity:.6;
-}
-.search input{
-  width:100%;
-  padding:14px 44px 14px 42px;
-  border-radius:999px;
-  border:none;
-  outline:none;
-  background:#15192a;
-  color:#fff;
-}
-.clear-btn{
-  position:absolute;
-  right:14px;
-  top:50%;
-  transform:translateY(-50%);
-  cursor:pointer;
-  opacity:.6;
-  display:none;
-}
+/* CONTROLS ROW */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;align-items:center}
+.search-wrap{position:relative;flex:1;min-width:220px}
+.search-wrap input{width:100%;padding:10px 14px 10px 36px}
+.search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--muted)}
+.section-title{font-size:21px;font-weight:800;margin:0 0 4px}
+.section-sub{color:var(--muted);font-size:13px;margin:0 0 18px}
 
 /* GRID */
-.grid{
-  max-width:1300px;
-  margin:auto;
-  padding:0 20px 60px;
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:18px;
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;cursor:pointer;transition:.15s}
+.card:hover{background:var(--card-hover);border-color:rgba(45,212,191,.35);transform:translateY(-1px)}
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.avatar{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+.card-name{font-weight:700;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-id{color:var(--muted);font-size:11.5px}
+.card-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.card-meta b{color:var(--warn)}
+.empty{text-align:center;padding:60px 0;color:var(--muted)}
+.empty svg{width:40px;height:40px;stroke:var(--muted);margin-bottom:10px}
 
-/* PET CARD */
-.pet{
-  background:linear-gradient(180deg,#1c2034,#14182a);
-  border-radius:18px;
-  padding:14px;
-  text-align:center;
-}
-.pet img{width:100%;border-radius:14px}
-.pet h3{margin:10px 0;font-size:15px}
-.price{
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.6;
-}
+/* PANEL (slide-over) */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.2s;z-index:40}
+.overlay.show{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;height:100%;width:440px;max-width:100vw;background:var(--panel);border-left:1px solid var(--border);transform:translateX(100%);transition:.25s ease;z-index:50;overflow-y:auto}
+.panel.show{transform:translateX(0)}
+.panel-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--panel)}
+.panel-head h2{font-size:16px;margin:0}
+.icon-btn{background:transparent;border:none;color:var(--muted);width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center}
+.icon-btn:hover{background:var(--card);color:var(--text)}
+.panel-body{padding:20px}
+.block{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px}
+.block h3{margin:0 0 14px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:4px}
+.field input,.field select{width:100%}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.block-foot{display:flex;justify-content:flex-end;margin-top:6px}
 
-.hidden{display:none}
+.purchase-row{display:grid;grid-template-columns:1fr 50px 70px 90px 30px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.purchase-row:last-child{border-bottom:none}
+.purchase-row .qty,.purchase-row .price{color:var(--muted);text-align:right}
+.purchase-row .price{color:var(--warn);font-weight:700}
+.del-x{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:14px}
+.del-x:hover{color:var(--danger)}
+.total-line{display:flex;justify-content:space-between;padding-top:10px;margin-top:6px;border-top:1px solid var(--border);font-weight:700;font-size:14px}
+.total-line span{color:var(--warn)}
 
-footer{
-  text-align:center;
-  padding:30px;
-  font-size:12px;
-  color:#7f85b6;
-}
+.add-purchase-form{display:none;grid-template-columns:1fr 60px 80px;gap:8px;margin-top:12px}
+.add-purchase-form.show{display:grid}
+.add-purchase-form .field2{grid-column:1/4;display:grid;grid-template-columns:1fr 60px 80px 95px;gap:8px}
 
-/* MOBILE */
-@media(max-width:768px){
-  .topbar{flex-direction:column;gap:12px}
-  .news{flex-direction:column;text-align:center}
-}
-@media(max-width:600px){
-  .grid{
-    padding:0 12px 50px;
-    gap:12px;
-    grid-template-columns:repeat(2,1fr);
-  }
+.panel-actions{display:flex;justify-content:space-between;gap:10px;margin-top:6px}
+.muted-small{font-size:11.5px;color:var(--muted);margin-top:8px}
+
+/* SETTINGS */
+.settings-grid{max-width:520px;display:flex;flex-direction:column;gap:14px}
+.note{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:12px 14px;border-radius:8px;font-size:12.5px;color:var(--muted);line-height:1.55}
+.note b{color:var(--text)}
+.note a{color:var(--accent)}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 16px;font-size:13px;z-index:100;transform:translateY(20px);opacity:0;transition:.25s;max-width:320px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.ok{border-left:3px solid var(--accent)}
+.toast.err{border-left:3px solid var(--danger)}
+
+@media(max-width:680px){
+  .panel{width:100%}
+  .topbar{padding:12px 14px}
+  .tabs .tab{padding:7px 11px;font-size:12px}
+  .stat-pill{display:none}
 }
 </style>
 </head>
-
 <body>
-<div id="particles-js"></div>
 
 <div class="topbar">
-  <div class="logo">Tap Simulator Values</div>
-  <div class="nav">
-    <a id="btnHome" class="active" onclick="showHome()">🏠 Home</a>
-    <a id="btnValues" onclick="showValues()">📋 Value List</a>
+  <div class="brand"><span class="dot"></span> KARTELIS TORPEDOS</div>
+  <div class="tabs">
+    <div class="tab active" data-tab="members">NARIAI</div>
+    <div class="tab" data-tab="settings">NUSTATYMAI</div>
   </div>
-  <a class="discord" href="https://discord.gg/tapsim" target="_blank">💬 Discord</a>
-</div>
-
-<!-- HOME -->
-<div id="home">
-  <div class="hero">
-    <h1>Tap Simulator News</h1>
-    <p class="subtitle">
-      Stay updated with the latest Tap Simulator news, game updates,
-      new worlds, secret pets, eggs, and limited-time events.
-    </p>
-  </div>
-
-  <div class="section news">
-    <img src="/value-list/images/news/overcharged-robot.png">
-    <ul>
-      <li>⚡ List Last Updated – 24/01/26</li>
-      <li>📅 Most Recent Game Update – 22/01/26</li>
-      <li>✨ Celestial World</li>
-      <li>🔮 1 New Area</li>
-      <li>🎈 Electric Spin Wheel</li>
-      <li>🛒 New Exclusive Egg</li>
-      <li>🦖 5+ New Secret Pets</li>
-      <li>🥚 2 NEW EGGS (1 LIMITED)</li>
-      <li>🐾 30+ NEW PETS</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h3>👑 Owners</h3>
-    <ul>
-      <li>GoldAstro (goldastro)</li>
-      <li>Hyper (rng_elixr)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h3>🛠️ Editors</h3>
-    <ul>
-      <li>NotSpeedGuy (zacklist)</li>
-      <li>Diamondz (diamondz_1)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h3>⚠️ Disclaimer</h3>
-    <ul>
-      <li>Serials & mutations affect values</li>
-      <li>O/C = Owners Choice</li>
-      <li>N/A = Not Available</li>
-    </ul>
+  <div class="topbar-right">
+    <div class="stat-pill">👤 <b id="statMembers">0</b> narių</div>
+    <div class="stat-pill">💰 <b id="statTotal">€0</b> viso</div>
   </div>
 </div>
 
-<!-- VALUES -->
-<div id="values" class="hidden">
-  <div class="hero">
-    <h1>Tap Simulator Value List</h1>
-    <p class="subtitle">
-      Browse and track the current market prices for all pets.
-      Our values are carefully researched and updated regularly.
-    </p>
+<div class="page">
+
+  <!-- MEMBERS VIEW -->
+  <div class="view active" id="view-members">
+    <div class="section-title">Nariai</div>
+    <div class="section-sub" id="membersSub">Kraunama...</div>
+
+    <div class="controls">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="searchInput" placeholder="Ieškoti pravardės...">
+      </div>
+      <select id="filterSelect">
+        <option value="all">Visi</option>
+        <option value="has">Turi pirkimų</option>
+        <option value="none">Neturi pirkimų</option>
+      </select>
+      <select id="sortSelect">
+        <option value="name">Pravardė (A-Z)</option>
+        <option value="spent">Daugiausiai išleido</option>
+        <option value="recent">Naujausi pirkimai</option>
+      </select>
+      <button class="btn btn-accent" id="addMemberBtn">+ Naujas narys</button>
+      <button class="btn" id="refreshBtn">⟳ Atnaujinti</button>
+    </div>
+
+    <div class="grid" id="membersGrid"></div>
+    <div class="empty" id="emptyState" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/></svg>
+      <div>Nieko nerasta</div>
+    </div>
   </div>
 
-  <div class="tabs" id="tabs"></div>
+  <!-- SETTINGS VIEW -->
+  <div class="view" id="view-settings">
+    <div class="section-title">Nustatymai</div>
+    <div class="section-sub">GitHub prisijungimas — reikalingas tik norint išsaugoti pakeitimus visiems</div>
 
-  <div class="search">
-    <span>🔍</span>
-    <input id="search"
-       placeholder="Search pets..."
-       oninput="onSearch()"
-       onkeydown="blurOnEnter(event)">
-    <div class="clear-btn" id="clearBtn" onclick="clearSearch()">✖</div>
+    <div class="settings-grid">
+      <div class="field"><label>GitHub vartotojas / organizacija</label><input id="cfgOwner" placeholder="pvz. asignas19-ui"></div>
+      <div class="field"><label>Saugykla (repo)</label><input id="cfgRepo" placeholder="pvz. Kartelis-Torpedos"></div>
+      <div class="row2">
+        <div class="field"><label>Šaka (branch)</label><input id="cfgBranch" placeholder="main"></div>
+        <div class="field"><label>Failo kelias</label><input id="cfgPath" placeholder="data.json"></div>
+      </div>
+      <div class="field"><label>Asmeninis prieigos žetonas (token)</label><input id="cfgToken" type="password" placeholder="github_pat_..."></div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-accent" id="saveCfgBtn">Išsaugoti nustatymus</button>
+        <button class="btn" id="testCfgBtn">Patikrinti ryšį</button>
+        <button class="btn" id="exportBtn">⬇ Eksportuoti JSON</button>
+      </div>
+
+      <div class="note">
+        <b>Kaip susikurti žetoną:</b><br>
+        1. GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token.<br>
+        2. Repository access: pasirink tik šitą repo (<i>Kartelis-Torpedos</i>).<br>
+        3. Permissions → Contents → <b>Read and write</b>.<br>
+        4. Sukurk, nukopijuok ir įklijuok čia.<br><br>
+        Žetonas laikomas <b>tik šios naršyklės kortelės atmintyje (sessionStorage)</b> — jis nepatenka į GitHub failus ir išsivalo užvėrus skirtuką. Niekam jo nesiųsk ir neįkelk į repo. Jei pamesi prieigą — gali bet kada sukurti naują ir seną panaikinti (Revoke).
+      </div>
+      <div class="note">
+        Pati svetainė (HTML/CSS/JS) ir <b>data.json</b> failas turi būti tame pačiame GitHub repo, įjungtas GitHub Pages. Kai paspaudi „Išsaugoti į GitHub" narystės lange, pakeitimai įrašomi tiesiai į data.json — visi, kas atsidaro svetainę, pamatys atnaujintus duomenis po kelių minučių (kol atsinaujina GitHub Pages).
+      </div>
+    </div>
   </div>
 
-  <div class="grid" id="grid"></div>
 </div>
 
-<footer>© 2026 Tap Sim Values</footer>
+<!-- DETAIL PANEL -->
+<div class="overlay" id="overlay"></div>
+<div class="panel" id="panel">
+  <div class="panel-head">
+    <h2 id="panelTitle">Narys</h2>
+    <button class="icon-btn" id="closePanelBtn">✕</button>
+  </div>
+  <div class="panel-body">
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <div class="block">
+      <h3>Asmens informacija</h3>
+      <div class="field"><label>Pravardė</label><input id="fPravarde"></div>
+      <div class="row2">
+        <div class="field"><label>Vardas</label><input id="fVardas"></div>
+        <div class="field"><label>Pavardė</label><input id="fPavarde"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Gimimo data</label><input id="fGimimo" type="date"></div>
+        <div class="field"><label>Numeris</label><input id="fNumeris" placeholder="tel. / ID"></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Pirkimai</h3>
+      <div id="purchaseList"></div>
+      <div class="total-line"><span>Iš viso išleista</span> <span id="purchaseTotal">€0</span></div>
+
+      <div class="block-foot">
+        <button class="btn" id="togglePurchaseFormBtn">+ Pridėti pirkimą</button>
+      </div>
+
+      <div class="add-purchase-form" id="addPurchaseForm">
+        <div class="field2">
+          <select id="newPreke">
+            <option>Pistoletas</option><option>Revolveris</option><option>SMG</option>
+            <option>Šautuvas</option><option>Snaiperinė</option><option>Šoviniai</option>
+            <option>Narkotikai</option><option value="custom">Kita...</option>
+          </select>
+          <input id="newKiekis" type="number" min="1" value="1" placeholder="Kiekis">
+          <input id="newKaina" type="number" min="0" placeholder="€ Kaina">
+          <input id="newData" type="date">
+        </div>
+        <input id="newPrekeCustom" style="display:none;grid-column:1/4;margin-top:8px" placeholder="Įrašyk prekės pavadinimą">
+        <div style="grid-column:1/4;display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+          <button class="btn btn-ghost" id="cancelPurchaseBtn">Atšaukti</button>
+          <button class="btn btn-accent" id="confirmPurchaseBtn">Pridėti</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-actions">
+      <button class="btn btn-danger" id="deleteMemberBtn">Pašalinti narį</button>
+      <button class="btn btn-accent" id="saveGithubBtn">Išsaugoti į GitHub</button>
+    </div>
+    <div class="muted-small" id="lastSavedNote"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-particlesJS("particles-js",{
-  particles:{
-    number:{value:90},
-    color:{value:"#4da3ff"},
-    opacity:{value:0.2},
-    size:{value:2},
-    move:{speed:0.5}
+let members = [];
+let selectedId = null;
+let dataFileSha = null;
+
+const $ = s => document.querySelector(s);
+const els = {
+  grid: $('#membersGrid'), empty: $('#emptyState'), sub: $('#membersSub'),
+  statMembers: $('#statMembers'), statTotal: $('#statTotal'),
+  search: $('#searchInput'), filter: $('#filterSelect'), sort: $('#sortSelect'),
+  overlay: $('#overlay'), panel: $('#panel'),
+};
+
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function money(n){ return '€' + (Number(n)||0).toLocaleString('lt-LT'); }
+function memberTotal(m){ return m.pirkimai.reduce((s,p)=>s + (Number(p.kaina)||0), 0); }
+function initials(name){ return (name||'?').slice(0,2).toUpperCase(); }
+
+function showToast(msg, type='ok'){
+  const t = $('#toast');
+  t.textContent = msg; t.className = 'toast show ' + type;
+  setTimeout(()=> t.className = 'toast ' + type, 3200);
+}
+
+/* ---------- LOAD DATA ---------- */
+async function loadData(){
+  try{
+    const res = await fetch('./data.json?t=' + Date.now());
+    const json = await res.json();
+    members = json.members || [];
+  }catch(e){
+    members = [];
+    showToast('Nepavyko užkrauti data.json — pradedama tuščiai.', 'err');
   }
+  render();
+}
+
+/* ---------- RENDER GRID ---------- */
+function render(){
+  let list = [...members];
+  const q = els.search.value.trim().toLowerCase();
+  if(q) list = list.filter(m => m.pravarde.toLowerCase().includes(q));
+
+  const f = els.filter.value;
+  if(f==='has') list = list.filter(m => m.pirkimai.length>0);
+  if(f==='none') list = list.filter(m => m.pirkimai.length===0);
+
+  const s = els.sort.value;
+  if(s==='name') list.sort((a,b)=>a.pravarde.localeCompare(b.pravarde));
+  if(s==='spent') list.sort((a,b)=>memberTotal(b)-memberTotal(a));
+  if(s==='recent') list.sort((a,b)=>{
+    const la = a.pirkimai.at(-1)?.data || ''; const lb = b.pirkimai.at(-1)?.data || '';
+    return lb.localeCompare(la);
+  });
+
+  els.grid.innerHTML = '';
+  els.empty.style.display = list.length ? 'none' : 'block';
+
+  list.forEach(m=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.onclick = () => openPanel(m.id);
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="avatar">${initials(m.pravarde)}</div>
+        <div style="overflow:hidden">
+          <div class="card-name">${m.pravarde}</div>
+          <div class="card-id">${m.vardas||''} ${m.pavarde||''}</div>
+        </div>
+      </div>
+      <div class="card-meta"><span>${m.pirkimai.length} pirkimai</span><b>${money(memberTotal(m))}</b></div>
+    `;
+    els.grid.appendChild(card);
+  });
+
+  els.statMembers.textContent = members.length;
+  els.statTotal.textContent = money(members.reduce((s,m)=>s+memberTotal(m),0));
+  els.sub.textContent = `${members.length} narių · ${money(members.reduce((s,m)=>s+memberTotal(m),0))} viso pirkimų`;
+}
+
+['input','change'].forEach(ev=>{
+  els.search.addEventListener(ev, render);
+  els.filter.addEventListener('change', render);
+  els.sort.addEventListener('change', render);
 });
 
-let pets=[],currentCat="all";
+/* ---------- ADD MEMBER ---------- */
+$('#addMemberBtn').onclick = () => {
+  const pravarde = prompt('Naujo nario pravardė:');
+  if(!pravarde) return;
+  const m = {id:uid(), pravarde, vardas:'', pavarde:'', gimimoData:'', numeris:'', pirkimai:[]};
+  members.push(m);
+  render();
+  openPanel(m.id);
+};
 
-fetch("https://asignas19-ui.github.io/value-list/pets.json?"+Date.now())
-.then(r=>r.json())
-.then(d=>{pets=d;buildTabs();renderPets()});
+$('#refreshBtn').onclick = loadData;
 
-function buildTabs(){
-  const cats=["all","mythics","exclusive","secret1","secret2","leaderboard","limited","event"];
-  const names={all:"All",mythics:"Mythics",exclusive:"Exclusive",secret1:"Secret I",secret2:"Secret II",leaderboard:"Leaderboard",limited:"Limited",event:"Event"};
-  tabs.innerHTML="";
-  cats.forEach(c=>{
-    const t=document.createElement("div");
-    t.className="tab"+(c==="all"?" active":"");
-    t.textContent=names[c];
-    t.onclick=()=>{
-      currentCat=c;
-      document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-      t.classList.add("active");
-      renderPets();
-    };
-    tabs.appendChild(t);
+/* ---------- DETAIL PANEL ---------- */
+function openPanel(id){
+  selectedId = id;
+  const m = members.find(x=>x.id===id);
+  if(!m) return;
+  $('#panelTitle').textContent = m.pravarde;
+  $('#fPravarde').value = m.pravarde||'';
+  $('#fVardas').value = m.vardas||'';
+  $('#fPavarde').value = m.pavarde||'';
+  $('#fGimimo').value = m.gimimoData||'';
+  $('#fNumeris').value = m.numeris||'';
+  renderPurchases(m);
+  els.overlay.classList.add('show');
+  els.panel.classList.add('show');
+}
+function closePanel(){
+  els.overlay.classList.remove('show');
+  els.panel.classList.remove('show');
+  $('#addPurchaseForm').classList.remove('show');
+  selectedId = null;
+}
+$('#closePanelBtn').onclick = closePanel;
+els.overlay.onclick = closePanel;
+
+function currentMember(){ return members.find(m=>m.id===selectedId); }
+
+/* live-save personal info fields back into memory as you type */
+['fPravarde','fVardas','fPavarde','fGimimo','fNumeris'].forEach(id=>{
+  $('#'+id).addEventListener('input', ()=>{
+    const m = currentMember(); if(!m) return;
+    m.pravarde = $('#fPravarde').value;
+    m.vardas = $('#fVardas').value;
+    m.pavarde = $('#fPavarde').value;
+    m.gimimoData = $('#fGimimo').value;
+    m.numeris = $('#fNumeris').value;
+    $('#panelTitle').textContent = m.pravarde || 'Narys';
   });
-}
+});
 
-function onSearch(){
-  clearBtn.style.display = search.value ? "block" : "none";
-  renderPets();
-}
-
-function clearSearch(){
-  search.value="";
-  clearBtn.style.display="none";
-  search.focus();
-  renderPets();
-}
-
-function renderPets(){
-  const q=search.value.toLowerCase();
-  grid.innerHTML="";
-  pets
-    .filter(p=>(currentCat==="all"||p.category===currentCat)&&p.name.toLowerCase().includes(q))
-    .forEach(p=>{
-      grid.innerHTML+=`
-      <div class="pet">
-        <img src="/value-list${p.image}">
-        <h3>${p.name}</h3>
-        <div class="price">
-          💎 Normal: ${p.normal ?? "N/A"}<br>
-          ⭐ Golden: ${p.golden ?? "N/A"}<br>
-          🌈 Rainbow: ${p.rainbow ?? "N/A"}
-        </div>
-      </div>`;
-    });
-}
-
-function showHome(){
-  home.classList.remove("hidden");
-  values.classList.add("hidden");
-  btnHome.classList.add("active");
-  btnValues.classList.remove("active");
-}
-function showValues(){
-  values.classList.remove("hidden");
-  home.classList.add("hidden");
-  btnValues.classList.add("active");
-  btnHome.classList.remove("active");
-}
-function blurOnEnter(e){
-  if(e.key === "Enter"){
-    e.preventDefault();
-    e.target.blur(); // nuima focus nuo search
+function renderPurchases(m){
+  const list = $('#purchaseList');
+  list.innerHTML = '';
+  if(m.pirkimai.length===0){
+    list.innerHTML = '<div class="muted-small">Pirkimų kol kas nėra.</div>';
   }
+  m.pirkimai.slice().reverse().forEach(p=>{
+    const row = document.createElement('div');
+    row.className = 'purchase-row';
+    row.innerHTML = `
+      <span>${p.preke}</span>
+      <span class="qty">x${p.kiekis}</span>
+      <span class="price">${money(p.kaina)}</span>
+      <span style="color:var(--muted)">${p.data||''}</span>
+      <button class="del-x" data-id="${p.id}">✕</button>
+    `;
+    row.querySelector('.del-x').onclick = (e)=>{
+      e.stopPropagation();
+      m.pirkimai = m.pirkimai.filter(x=>x.id!==p.id);
+      renderPurchases(m); render();
+    };
+    list.appendChild(row);
+  });
+  $('#purchaseTotal').textContent = money(memberTotal(m));
 }
+
+/* add purchase form */
+$('#togglePurchaseFormBtn').onclick = () => $('#addPurchaseForm').classList.add('show');
+$('#cancelPurchaseBtn').onclick = () => $('#addPurchaseForm').classList.remove('show');
+$('#newPreke').addEventListener('change', e=>{
+  $('#newPrekeCustom').style.display = e.target.value==='custom' ? 'block':'none';
+});
+$('#confirmPurchaseBtn').onclick = () => {
+  const m = currentMember(); if(!m) return;
+  const prekeSel = $('#newPreke').value;
+  const preke = prekeSel==='custom' ? ($('#newPrekeCustom').value.trim()||'Kita') : prekeSel;
+  const kiekis = Number($('#newKiekis').value)||1;
+  const kaina = Number($('#newKaina').value)||0;
+  const data = $('#newData').value || new Date().toISOString().slice(0,10);
+  m.pirkimai.push({id:uid(), preke, kiekis, kaina, data});
+  renderPurchases(m); render();
+  $('#addPurchaseForm').classList.remove('show');
+  $('#newKaina').value=''; $('#newPrekeCustom').value=''; $('#newKiekis').value=1;
+};
+
+$('#deleteMemberBtn').onclick = () => {
+  const m = currentMember(); if(!m) return;
+  if(!confirm(`Pašalinti narį "${m.pravarde}"? Pakeitimas bus įrašytas tik paspaudus "Išsaugoti į GitHub".`)) return;
+  members = members.filter(x=>x.id!==m.id);
+  closePanel(); render();
+};
+
+/* ---------- TABS ---------- */
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.onclick = () => {
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    tab.classList.add('active');
+    $('#view-'+tab.dataset.tab).classList.add('active');
+  };
+});
+
+/* ---------- SETTINGS / GITHUB ---------- */
+function loadCfg(){
+  $('#cfgOwner').value = localStorage.getItem('kt_owner')||'';
+  $('#cfgRepo').value = localStorage.getItem('kt_repo')||'';
+  $('#cfgBranch').value = localStorage.getItem('kt_branch')||'main';
+  $('#cfgPath').value = localStorage.getItem('kt_path')||'data.json';
+  $('#cfgToken').value = sessionStorage.getItem('kt_token')||'';
+}
+$('#saveCfgBtn').onclick = () => {
+  localStorage.setItem('kt_owner', $('#cfgOwner').value.trim());
+  localStorage.setItem('kt_repo', $('#cfgRepo').value.trim());
+  localStorage.setItem('kt_branch', $('#cfgBranch').value.trim()||'main');
+  localStorage.setItem('kt_path', $('#cfgPath').value.trim()||'data.json');
+  sessionStorage.setItem('kt_token', $('#cfgToken').value.trim());
+  showToast('Nustatymai išsaugoti šiai naršyklei.');
+};
+function getCfg(){
+  return {
+    owner: localStorage.getItem('kt_owner')||'',
+    repo: localStorage.getItem('kt_repo')||'',
+    branch: localStorage.getItem('kt_branch')||'main',
+    path: localStorage.getItem('kt_path')||'data.json',
+    token: sessionStorage.getItem('kt_token')||'',
+  };
+}
+$('#testCfgBtn').onclick = async () => {
+  const c = getCfg();
+  if(!c.owner||!c.repo){ showToast('Pirmiausa įrašyk ir išsaugok nustatymus.', 'err'); return; }
+  try{
+    const r = await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}`);
+    if(!r.ok) throw new Error();
+    showToast('Repo rastas! Ryšys veikia ✓');
+  }catch(e){ showToast('Nepavyko rasti repo — patikrink pavadinimus.', 'err'); }
+};
+
+function b64EncodeUnicode(str){
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m,p1)=>String.fromCharCode('0x'+p1)));
+}
+
+$('#exportBtn').onclick = () => {
+  const blob = new Blob([JSON.stringify({members}, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'data.json';
+  a.click();
+};
+
+$('#saveGithubBtn').onclick = async () => {
+  const c = getCfg();
+  if(!c.owner||!c.repo||!c.token){
+    showToast('Trūksta GitHub nustatymų ar žetono. Eik į Nustatymai.', 'err');
+    document.querySelector('[data-tab=settings]').click();
+    return;
+  }
+  const btn = $('#saveGithubBtn');
+  btn.disabled = true; btn.textContent = 'Saugoma...';
+  try{
+    const getUrl = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${c.path}?ref=${c.branch}`;
+    const getRes = await fetch(getUrl, {headers:{Authorization:`token ${c.token}`}});
+    let sha = undefined;
+    if(getRes.ok){ const j = await getRes.json(); sha = j.sha; }
+
+    const content = b64EncodeUnicode(JSON.stringify({members}, null, 2));
+    const putUrl = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${c.path}`;
+    const putRes = await fetch(putUrl, {
+      method:'PUT',
+      headers:{Authorization:`token ${c.token}`, 'Content-Type':'application/json'},
+      body: JSON.stringify({
+        message: 'Atnaujinti duomenis per admin panelę',
+        content, sha, branch: c.branch
+      })
+    });
+    if(!putRes.ok){
+      const err = await putRes.json().catch(()=>({}));
+      throw new Error(err.message || ('HTTP '+putRes.status));
+    }
+    showToast('Įrašyta į GitHub! Visiems atsinaujins per ~1 min.');
+    $('#lastSavedNote').textContent = 'Paskutinį kartą įrašyta: ' + new Date().toLocaleString('lt-LT');
+  }catch(e){
+    showToast('Nepavyko išsaugoti: ' + e.message, 'err');
+  }finally{
+    btn.disabled = false; btn.textContent = 'Išsaugoti į GitHub';
+  }
+};
+
+/* ---------- INIT ---------- */
+loadCfg();
+loadData();
 </script>
 </body>
 </html>
