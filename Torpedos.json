@@ -39,6 +39,34 @@
         "quantity": 1,
         "price": 1,
         "date": "2026-06-16 21:40"
+      },
+      {
+        "id": 1006,
+        "item": "1",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:40"
+      },
+      {
+        "id": 1007,
+        "item": "Heavy Rifle",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:40"
+      },
+      {
+        "id": 1008,
+        "item": "1",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:40"
+      },
+      {
+        "id": 1009,
+        "item": "1",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:41"
       }
     ]
   },
@@ -148,6 +176,27 @@
         "quantity": 1,
         "price": 10000,
         "date": "2026-06-16 21:36"
+      },
+      {
+        "id": 1010,
+        "item": "Special Carbine",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:41"
+      },
+      {
+        "id": 1011,
+        "item": "AP Pistol",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:41"
+      },
+      {
+        "id": 1012,
+        "item": "Heavy Pistol",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:41"
       }
     ]
   }
