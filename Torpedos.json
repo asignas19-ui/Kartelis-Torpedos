@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "nickname": "feakz",
+    "nickname": "Mini Bosas",
     "rank": "Lyderis",
-    "online": true,
-    "statusColor": "green",
+    "online": false,
+    "statusColor": "red",
     "personalInfo": {
       "firstName": "Mantas",
       "lastName": "Jankauskas",
@@ -197,6 +197,20 @@
         "quantity": 1,
         "price": 1,
         "date": "2026-06-16 21:41"
+      },
+      {
+        "id": 1013,
+        "item": "Glock-18",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:41"
+      },
+      {
+        "id": 1014,
+        "item": "Heavy Rifle",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:42"
       }
     ]
   }
