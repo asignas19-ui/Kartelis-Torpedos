@@ -32,6 +32,13 @@
         "quantity": 1,
         "price": 5000000,
         "date": "2026-06-16 21:23"
+      },
+      {
+        "id": 1005,
+        "item": "AP Pistol",
+        "quantity": 1,
+        "price": 1,
+        "date": "2026-06-16 21:40"
       }
     ]
   },
@@ -127,6 +134,20 @@
         "quantity": 1,
         "price": 10000,
         "date": "2026-06-16 21:33"
+      },
+      {
+        "id": 1003,
+        "item": "Heavy Pistol",
+        "quantity": 1,
+        "price": 5000000,
+        "date": "2026-06-16 21:35"
+      },
+      {
+        "id": 1004,
+        "item": "Micro SMG",
+        "quantity": 1,
+        "price": 10000,
+        "date": "2026-06-16 21:36"
       }
     ]
   }
