@@ -6,8 +6,8 @@
     "online": false,
     "statusColor": "red",
     "personalInfo": {
-      "firstName": "Mantas",
-      "lastName": "Jankauskas",
+      "firstName": "Audrius",
+      "lastName": "29",
       "birthDate": "1998-05-12",
       "phone": "555-12345"
     },
@@ -204,13 +204,6 @@
         "quantity": 1,
         "price": 1,
         "date": "2026-06-16 21:41"
-      },
-      {
-        "id": 1014,
-        "item": "Heavy Rifle",
-        "quantity": 1,
-        "price": 1,
-        "date": "2026-06-16 21:42"
       }
     ]
   }
