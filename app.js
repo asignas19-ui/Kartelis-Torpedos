@@ -176,20 +176,64 @@ document.addEventListener("DOMContentLoaded", async () => {
   populateRankFilterOptions();
 });
 
+// ============================================================
 // LOAD DATABASE
+// PATAISYTA: visada bandome krauti iš GitHub pirma,
+// localStorage naudojamas TIK kaip atsarginis variantas
+// kai GitHub nepasiekiamas (pvz. nėra interneto).
+// ============================================================
 async function loadDatabase() {
+  // Load GitHub settings first
+  loadGitHubSettings();
+
+  // Step 1: Try to load from GitHub if credentials are configured
+  if (gitHubSettings.token && gitHubSettings.repo) {
+    try {
+      const url = `https://api.github.com/repos/${gitHubSettings.repo}/contents/${gitHubSettings.path}?ref=${gitHubSettings.branch}&t=${Date.now()}`;
+      const response = await fetch(url, {
+        method: "GET",
+        cache: "no-store",
+        headers: {
+          "Authorization": `token ${gitHubSettings.token}`,
+          "Accept": "application/vnd.github.v3+json"
+        }
+      });
+
+      if (response.ok) {
+        const fileData = await response.json();
+        // GitHub returns base64 encoded content
+        const decoded = decodeURIComponent(escape(atob(fileData.content.replace(/\n/g, ''))));
+        const parsed = JSON.parse(decoded);
+        if (Array.isArray(parsed)) {
+          members = parsed;
+          // Update localStorage cache with fresh GitHub data
+          localStorage.setItem("torpedos_members", JSON.stringify(members));
+          showToast("Duomenys užkrauti iš GitHub repozitorijos.", "success");
+          return;
+        }
+      } else if (response.status === 404) {
+        // File doesn't exist yet on GitHub - fall through to localStorage/defaults
+        console.log("Torpedos.json dar neegzistuoja GitHub. Bus sukurtas sinchronizavimo metu.");
+      } else {
+        console.warn("GitHub klaida:", response.status, response.statusText);
+      }
+    } catch (error) {
+      console.warn("Nepavyko pasiekti GitHub. Bandomas lokalus variantas...", error);
+    }
+  }
+
+  // Step 2: Fallback - try localStorage cache
   const localData = localStorage.getItem("torpedos_members");
   if (localData) {
     try {
       const parsed = JSON.parse(localData);
-      // Check if this is the old data structure (missing buyouts property)
       const hasBuyouts = Array.isArray(parsed) && parsed.some(m => m.hasOwnProperty('buyouts'));
       if (hasBuyouts) {
         members = parsed;
-        showToast("Duomenys sėkmingai užkrauti iš naršyklės atminties.", "info");
+        showToast("Duomenys užkrauti iš naršyklės talpyklos (GitHub nepasiekiamas).", "info");
         return;
       } else {
-        console.log("Aptikta sena duomenų struktūra (be supirkimų). Atstatoma iš naujo...");
+        console.log("Aptikta sena duomenų struktūra. Atstatoma...");
         localStorage.removeItem("torpedos_members");
       }
     } catch (e) {
@@ -197,22 +241,22 @@ async function loadDatabase() {
     }
   }
 
-  // If no local data, attempt to load from Torpedos.json (local file or URL)
+  // Step 3: Fallback - try local Torpedos.json file
   try {
     const response = await fetch("Torpedos.json");
     if (response.ok) {
       members = await response.json();
-      saveToLocalStorage();
+      localStorage.setItem("torpedos_members", JSON.stringify(members));
       showToast("Duomenys užkrauti iš Torpedos.json failo.", "success");
       return;
     }
   } catch (error) {
-    console.warn("Nepavyko pasiekti Torpedos.json (galbūt veikia lokaliai be serverio). Naudojami pavyzdiniai duomenys.", error);
+    console.warn("Nepavyko pasiekti Torpedos.json.", error);
   }
 
-  // Fallback to static array
+  // Step 4: Last resort - default demo data
   members = [...DEFAULT_MEMBERS];
-  saveToLocalStorage();
+  localStorage.setItem("torpedos_members", JSON.stringify(members));
   showToast("Užkrauti pavyzdiniai kartelio duomenys.", "info");
 }
 
@@ -872,11 +916,15 @@ function loadGitHubSettings() {
   if (saved) {
     try {
       gitHubSettings = JSON.parse(saved);
-      // Pre-fill form
-      document.getElementById("settings-github-token").value = gitHubSettings.token || '';
-      document.getElementById("settings-github-repo").value = gitHubSettings.repo || '';
-      document.getElementById("settings-github-branch").value = gitHubSettings.branch || 'main';
-      document.getElementById("settings-github-path").value = gitHubSettings.path || 'Torpedos.json';
+      // Pre-fill form fields if they exist in DOM
+      const tokenEl = document.getElementById("settings-github-token");
+      const repoEl = document.getElementById("settings-github-repo");
+      const branchEl = document.getElementById("settings-github-branch");
+      const pathEl = document.getElementById("settings-github-path");
+      if (tokenEl) tokenEl.value = gitHubSettings.token || '';
+      if (repoEl) repoEl.value = gitHubSettings.repo || '';
+      if (branchEl) branchEl.value = gitHubSettings.branch || 'main';
+      if (pathEl) pathEl.value = gitHubSettings.path || 'Torpedos.json';
     } catch(e) {
       console.error("Klaida nuskaitant GitHub nustatymus:", e);
     }
