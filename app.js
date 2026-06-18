@@ -1,12 +1,20 @@
 // GLOBAL APP STATE
 let members = [];
 let selectedMemberId = null;
-let gitHubSettings = {
-  token: '',
-  repo: '',
+
+// ============================================================
+// ĮDĖKITE SAVO GITHUB NUSTATYMUS ČIA:
+// Šie nustatymai naudojami VISOSE įrenginiuose automatiškai.
+// Nereikia konfigūruoti kiekviename įrenginyje atskirai.
+// ============================================================
+const DEFAULT_GITHUB_SETTINGS = {
+  token: 'EIDEK_I_NUSTATYMUS_IR_ISSAUGOK',  // <-- PAKEISKITE į savo token
+  repo: 'EIDEK_I_NUSTATYMUS_IR_ISSAUGOK',   // <-- PAKEISKITE pvz. "vardas/Kartelis-Torpedos"
   branch: 'main',
   path: 'Torpedos.json'
 };
+
+let gitHubSettings = { ...DEFAULT_GITHUB_SETTINGS };
 
 // DEFAULT FALLBACK DATA (in case fetch fails or first run)
 const DEFAULT_MEMBERS = [
@@ -911,24 +919,39 @@ function deleteBuyout(buyoutId) {
 // GITHUB SYNC LOGIC
 
 // Load configuration
+// Logika: DEFAULT_GITHUB_SETTINGS visada yra bazė.
+// Jei vartotojas nustatymuose įrašė ką nors KITĄ - naudojame jo variantą.
+// Tokiu būdu visi įrenginiai automatiškai naudoja hardcoded token/repo,
+// o jei reikia - gali perrašyti per nustatymų formą.
 function loadGitHubSettings() {
+  // Start from hardcoded defaults
+  gitHubSettings = { ...DEFAULT_GITHUB_SETTINGS };
+
+  // Override with user-saved settings if they exist and have valid values
   const saved = localStorage.getItem("torpedos_github_settings");
   if (saved) {
     try {
-      gitHubSettings = JSON.parse(saved);
-      // Pre-fill form fields if they exist in DOM
-      const tokenEl = document.getElementById("settings-github-token");
-      const repoEl = document.getElementById("settings-github-repo");
-      const branchEl = document.getElementById("settings-github-branch");
-      const pathEl = document.getElementById("settings-github-path");
-      if (tokenEl) tokenEl.value = gitHubSettings.token || '';
-      if (repoEl) repoEl.value = gitHubSettings.repo || '';
-      if (branchEl) branchEl.value = gitHubSettings.branch || 'main';
-      if (pathEl) pathEl.value = gitHubSettings.path || 'Torpedos.json';
+      const parsed = JSON.parse(saved);
+      // Only override if the saved value is not empty and not the placeholder text
+      const placeholder = 'EIDEK_I_NUSTATYMUS_IR_ISSAUGOK';
+      if (parsed.token && parsed.token !== placeholder) gitHubSettings.token = parsed.token;
+      if (parsed.repo && parsed.repo !== placeholder) gitHubSettings.repo = parsed.repo;
+      if (parsed.branch) gitHubSettings.branch = parsed.branch;
+      if (parsed.path) gitHubSettings.path = parsed.path;
     } catch(e) {
       console.error("Klaida nuskaitant GitHub nustatymus:", e);
     }
   }
+
+  // Pre-fill form fields if they exist in DOM
+  const tokenEl = document.getElementById("settings-github-token");
+  const repoEl = document.getElementById("settings-github-repo");
+  const branchEl = document.getElementById("settings-github-branch");
+  const pathEl = document.getElementById("settings-github-path");
+  if (tokenEl) tokenEl.value = gitHubSettings.token || '';
+  if (repoEl) repoEl.value = gitHubSettings.repo || '';
+  if (branchEl) branchEl.value = gitHubSettings.branch || 'main';
+  if (pathEl) pathEl.value = gitHubSettings.path || 'Torpedos.json';
 }
 
 // Save configuration from form
